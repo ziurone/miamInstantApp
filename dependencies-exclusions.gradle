@@ -1,0 +1,6 @@
+ext.excl = [
+        'hamcrest': ['group': 'org.hamcrest'],
+        'assertj' : ['group': 'org.assertj'],
+        'guava'   : ['group' : 'com.google.guava',
+                     'module': 'listenablefuture']
+]

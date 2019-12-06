@@ -1,0 +1,159 @@
+def Group(Closure closure) {
+    closure.delegate = dependencies
+    return closure
+}
+
+/**
+ All groups below for easy copy/pasting:
+
+ libraries()
+ kotlin()
+ debugging()
+ dagger()
+ networking()
+ room()
+ rx()
+ architectureComponents()
+ testing()
+ androidTesting()
+
+ **/
+
+ext {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // LIBRARIES                                                                                  //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    libraries = Group {
+        implementation deps.libs
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // KOTLIN                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    kotlin = Group {
+        implementation deps.kotlin.lib
+        implementation deps.kotlin.ktx
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // DEBUGGING                                                                                  //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    debugging = Group {
+        implementation deps.timber
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // DAGGER                                                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    dagger = Group {
+        implementation deps.dagger.dagger
+        kapt deps.dagger.compiler
+        implementation deps.dagger.android
+        implementation deps.dagger.support
+        kapt deps.dagger.processor
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // NETWORKING                                                                                 //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    networking = Group {
+        implementation deps.retrofit.retrofit
+        implementation deps.retrofit.gson
+        implementation deps.retrofit.rx
+
+        implementation deps.okHttp.okHttp
+        implementation deps.okHttp.logging
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // RX                                                                                         //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    rx = Group {
+        implementation deps.rx.android
+        implementation deps.rx.java
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ARCHITECTURE COMPONENTS                                                                    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    architectureComponents = Group {
+        implementation deps.ac.viewModel
+        implementation deps.ac.liveData
+        implementation deps.ac.extensions
+        implementation deps.ac.streams
+        kapt deps.ac.compiler
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // DATABASE                                                                                       //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    room = Group {
+        api deps.room.runtime
+        kapt deps.room.compiler
+        implementation deps.room.roomRx
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // VIEW                                                                                       //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    view = Group {
+        implementation deps.compat.compat
+        implementation deps.compat.app
+        implementation deps.design.cardView
+        implementation deps.design.recyclerView
+        implementation deps.design.design
+        implementation deps.design.constraint
+        implementation deps.navigation.fragment
+        implementation deps.navigation.ui
+        implementation deps.glide.glide
+        implementation deps.lottie.lottie
+        kapt deps.glide.compiler
+        implementation deps.skeletonLayout.skeletonLayout
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // TESTING                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    testing = Group {
+        testImplementation(deps.jUnit) { exclude group: excl.hamcrest }
+        testImplementation deps.truth
+
+        testImplementation deps.mockito.core
+        testImplementation deps.mockito.inline
+
+        testImplementation deps.ac.testing
+    }
+
+    androidTesting = Group {
+
+        // Core library
+        debugImplementation(deps.androidxTest.core) { exclude group: excl.assertj }
+        androidTestImplementation deps.androidxTest.coreKtx
+
+        // AndroidJUnitRunner and JUnit Rules
+        androidTestImplementation deps.androidxTest.runner
+        androidTestImplementation deps.androidxTest.rules
+
+        // Assertions
+        androidTestImplementation deps.androidxTest.junit
+        androidTestImplementation deps.androidxTest.junitKtx
+        androidTestImplementation deps.androidxTest.truth
+        androidTestImplementation deps.truth
+
+        // Fragments
+        debugImplementation deps.androidxTest.fragmentTesting
+    }
+
+}
