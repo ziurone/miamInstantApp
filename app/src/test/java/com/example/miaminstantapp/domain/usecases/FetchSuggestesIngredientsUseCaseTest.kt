@@ -5,8 +5,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
 import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
-import com.example.miaminstantapp.domain.usecases.TestConstants.GENERIC_ERROR
-import com.example.miaminstantapp.domain.usecases.TestConstants.INGREDIENT_LIST
+import com.example.miaminstantapp.TestConstants.GENERIC_ERROR
+import com.example.miaminstantapp.TestConstants.INGREDIENT_LIST
 import com.google.common.truth.Truth
 import io.reactivex.Single
 import org.junit.ClassRule

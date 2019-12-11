@@ -27,7 +27,7 @@ class FetchSuggestedIngredientsUseCase constructor(
         return IFetchSuggestedIngredientsUseCase.Result.Error(failedResponseCode)
     }
 
-    fun onSuccess(response: SuggestedIngredientsResponse) {
+    private fun onSuccess(response: SuggestedIngredientsResponse) {
         liveData.value = IFetchSuggestedIngredientsUseCase.Result.Success(response)
         cleanUp()
     }
