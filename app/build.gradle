@@ -27,6 +27,7 @@ dependencies {
     dagger()
     debugging()
     networking()
+    rx()
     testing()
     androidTesting()
     architectureComponents()
