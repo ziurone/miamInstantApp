@@ -15,7 +15,7 @@ class FetchSuggestedIngredientsUseCase constructor(
             .getSuggestedIngredients()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
+            .subscribe(::onSuccess, ::onError)
             .track()
     }
 
