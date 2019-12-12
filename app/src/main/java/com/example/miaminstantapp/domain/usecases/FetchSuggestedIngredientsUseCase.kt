@@ -4,8 +4,9 @@ import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class FetchSuggestedIngredientsUseCase constructor(
+class FetchSuggestedIngredientsUseCase @Inject constructor(
     private val ingredientRepository: IIngredientRepository
 ) : IFetchSuggestedIngredientsUseCase, BaseUseCase<IFetchSuggestedIngredientsUseCase.Result>()
 {

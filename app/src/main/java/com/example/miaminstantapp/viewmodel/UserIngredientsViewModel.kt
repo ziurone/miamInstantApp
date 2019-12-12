@@ -1,8 +1,9 @@
 package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.usecases.IFetchSuggestedIngredientsUseCase
+import javax.inject.Inject
 
-class UserIngredientsViewModel (
+class UserIngredientsViewModel @Inject constructor(
     private val fetchSuggestedIngredientsUseCase: IFetchSuggestedIngredientsUseCase
 ): IUserIngredientsViewModel() {
 
