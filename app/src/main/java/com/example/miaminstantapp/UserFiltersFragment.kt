@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.miaminstantapp.view.BaseFragment
+import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
+import dagger.android.DaggerFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UserFiltersFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UserFiltersFragment : Fragment() {
+class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,13 +38,11 @@ class UserFiltersFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_filters, container, false)
+    override fun onStateChanged(state: IUserIngredientsViewModel.State) {
+
     }
+
+    override fun getLayoutId(): Int = R.layout.fragment_user_filters
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
