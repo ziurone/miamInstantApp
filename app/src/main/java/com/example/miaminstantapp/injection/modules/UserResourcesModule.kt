@@ -7,10 +7,7 @@ import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import com.example.miaminstantapp.domain.repositories.IVolumeUnitRepository
 import com.example.miaminstantapp.domain.repositories.IngredientRepository
 import com.example.miaminstantapp.domain.repositories.VolumeUnitRepository
-import com.example.miaminstantapp.domain.usecases.FetchSuggestedIngredientsAction
-import com.example.miaminstantapp.domain.usecases.FetchVolumeUnitsAction
-import com.example.miaminstantapp.domain.usecases.IFetchSuggestedIngredientsAction
-import com.example.miaminstantapp.domain.usecases.IFetchVolumeUnitsAction
+import com.example.miaminstantapp.domain.usecases.*
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.example.miaminstantapp.viewmodel.UserIngredientsViewModel
@@ -33,6 +30,9 @@ class UserResourcesModule {
 
     @Provides
     fun providesFetchVolumeUnitsAction(action: FetchVolumeUnitsAction): IFetchVolumeUnitsAction = action
+
+    @Provides
+    fun providesAddVolumeUnitsAction(action: AddVolumeUnitsAction): IAddVolumeUnitsAction = action
 
     @Provides
     @IntoMap

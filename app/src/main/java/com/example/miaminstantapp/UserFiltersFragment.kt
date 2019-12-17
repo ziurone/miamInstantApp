@@ -6,7 +6,6 @@ import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
-import com.google.android.material.snackbar.Snackbar
 
 class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>() {
 
@@ -19,7 +18,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         when(state) {
             is IUserIngredientsViewModel.State.Loading -> showLoading()
             is IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess -> logIngredients(state.ingredients)
-            is IUserIngredientsViewModel.State.FetchVolumeUnitsSuccess -> logVolumeUnit(state.volumeUnits)
+            is IUserIngredientsViewModel.State.AddVolumeUnitsSuccess -> logVolumeUnit()
             is IUserIngredientsViewModel.State.Error -> showError(state.error)
         }
     }
@@ -32,8 +31,8 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         Log.i("Trajo ingredientes", ingredients.first().name)
     }
 
-    fun logVolumeUnit(volumeUnits: List<VolumeUnitEntity>) {
-        Log.i("Trajo unidades", volumeUnits.first().name)
+    fun logVolumeUnit() {
+        Log.i("Inserto unidades", "bla")
     }
 
     fun showError(error: String) {

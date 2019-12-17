@@ -7,7 +7,7 @@ import io.reactivex.Single
 interface IVolumeUnitRepository {
     fun fetchAll(): Single<List<VolumeUnitEntity>>
 
-    fun insertAll(): Completable
+    fun insertAll(volumeUnits: List<VolumeUnitEntity>): Completable
 
     fun isEmpty(): Single<Boolean>
 }
