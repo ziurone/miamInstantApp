@@ -7,10 +7,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import retrofit2.HttpException
 
-abstract class BaseUseCase<T>(
+abstract class BaseAction<T>(
     private val compositeDisposable: CompositeDisposable = CompositeDisposable(),
     protected val liveData: MutableLiveData<T> = MutableLiveData()
-) : UseCase<T> {
+) : Action<T> {
 
     protected fun Disposable.track() {
         compositeDisposable.add(this)

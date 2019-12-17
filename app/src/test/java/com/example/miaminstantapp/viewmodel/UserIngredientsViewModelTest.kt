@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.miaminstantapp.TestConstants.GENERIC_ERROR
-import com.example.miaminstantapp.domain.usecases.IFetchSuggestedIngredientsUseCase
+import com.example.miaminstantapp.domain.usecases.IFetchSuggestedIngredientsAction
 import com.example.miaminstantapp.TestConstants.INGREDIENT_LIST
 import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
 import com.google.common.truth.Truth
@@ -24,13 +24,13 @@ class UserIngredientsViewModelTest {
 
     private lateinit var subject: UserIngredientsViewModel
 
-    private val fetchSuggestedIngredientsLivedata: MutableLiveData<IFetchSuggestedIngredientsUseCase.Result> = MutableLiveData()
+    private val fetchSuggestedIngredientsLivedata: MutableLiveData<IFetchSuggestedIngredientsAction.Result> = MutableLiveData()
 
     @Mock
     private lateinit var observer: Observer<IUserIngredientsViewModel.State>
 
     @Mock
-    private lateinit var fetchSuggestedIngredientsUseCase: IFetchSuggestedIngredientsUseCase
+    private lateinit var fetchSuggestedIngredientsUseCase: IFetchSuggestedIngredientsAction
 
     private fun givenASetupSubject() {
         BDDMockito.given(fetchSuggestedIngredientsUseCase.getLiveData()).willReturn(fetchSuggestedIngredientsLivedata)
@@ -43,12 +43,12 @@ class UserIngredientsViewModelTest {
         // GIVEN
         givenASetupSubject()
         BDDMockito.given(fetchSuggestedIngredientsUseCase.fetch()).will{
-            setUseCaseResult(IFetchSuggestedIngredientsUseCase.Result.Success(
+            setUseCaseResult(IFetchSuggestedIngredientsAction.Result.Success(
                 SuggestedIngredientsResponse(INGREDIENT_LIST)))
         }
 
         // WHEN
-        subject.fetchSuggestedIngredients()
+        subject.loadMasterData()
 
         //THEN
         Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess(INGREDIENT_LIST))
@@ -61,7 +61,7 @@ class UserIngredientsViewModelTest {
         BDDMockito.given(fetchSuggestedIngredientsUseCase.fetch()).will{}
 
         // WHEN
-        subject.fetchSuggestedIngredients()
+        subject.loadMasterData()
 
         //THEN
         Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.Loading)
@@ -71,16 +71,16 @@ class UserIngredientsViewModelTest {
     fun `GIVEN aan error is retrieved WHEN suggested ingredients are requested THEN state of view model is Error`() {
         // GIVEN
         givenASetupSubject()
-        BDDMockito.given(fetchSuggestedIngredientsUseCase.fetch()).will{setUseCaseResult(IFetchSuggestedIngredientsUseCase.Result.Error(GENERIC_ERROR))}
+        BDDMockito.given(fetchSuggestedIngredientsUseCase.fetch()).will{setUseCaseResult(IFetchSuggestedIngredientsAction.Result.Error(GENERIC_ERROR))}
 
         // WHEN
-        subject.fetchSuggestedIngredients()
+        subject.loadMasterData()
 
         //THEN
         Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.Error(GENERIC_ERROR))
     }
 
-    private fun setUseCaseResult(result: IFetchSuggestedIngredientsUseCase.Result) {
+    private fun setUseCaseResult(result: IFetchSuggestedIngredientsAction.Result) {
         fetchSuggestedIngredientsLivedata.value = result
     }
 

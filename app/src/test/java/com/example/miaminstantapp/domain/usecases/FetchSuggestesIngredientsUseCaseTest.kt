@@ -34,15 +34,15 @@ class FetchSuggestesIngredientsUseCaseTest {
     private lateinit var repository: IIngredientRepository
 
     @Mock
-    private lateinit var observer: Observer<IFetchSuggestedIngredientsUseCase.Result>
+    private lateinit var observer: Observer<IFetchSuggestedIngredientsAction.Result>
 
-    private lateinit var subject: FetchSuggestedIngredientsUseCase
+    private lateinit var subject: FetchSuggestedIngredientsAction
 
-    private val useCaseLivedata: MediatorLiveData<IFetchSuggestedIngredientsUseCase.Result> = MediatorLiveData()
+    private val useCaseLivedata: MediatorLiveData<IFetchSuggestedIngredientsAction.Result> = MediatorLiveData()
 
     private fun givenASetUpSubject() {
         useCaseLivedata.observeForever { observer }
-        subject = FetchSuggestedIngredientsUseCase(repository)
+        subject = FetchSuggestedIngredientsAction(repository)
     }
 
     @Test
@@ -52,7 +52,7 @@ class FetchSuggestesIngredientsUseCaseTest {
 
         subject.fetch()
 
-        Truth.assertThat(subject.getLiveData().value).isEqualTo(IFetchSuggestedIngredientsUseCase.Result.Success(getIngredientListResponse()))
+        Truth.assertThat(subject.getLiveData().value).isEqualTo(IFetchSuggestedIngredientsAction.Result.Success(getIngredientListResponse()))
     }
 
     @Test
@@ -62,7 +62,7 @@ class FetchSuggestesIngredientsUseCaseTest {
 
         subject.fetch()
 
-        Truth.assertThat(subject.getLiveData().value).isEqualTo(IFetchSuggestedIngredientsUseCase.Result.Error(GENERIC_ERROR))
+        Truth.assertThat(subject.getLiveData().value).isEqualTo(IFetchSuggestedIngredientsAction.Result.Error(GENERIC_ERROR))
     }
 
 

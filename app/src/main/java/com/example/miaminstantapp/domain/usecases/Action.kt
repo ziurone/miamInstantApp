@@ -2,7 +2,7 @@ package com.example.miaminstantapp.domain.usecases
 
 import androidx.lifecycle.LiveData
 
-interface UseCase<T> {
+interface Action<T> {
     fun getLiveData(): LiveData<T>
 
     fun cleanUp()

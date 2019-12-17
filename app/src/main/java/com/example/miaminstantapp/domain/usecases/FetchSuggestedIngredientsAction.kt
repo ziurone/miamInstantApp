@@ -6,9 +6,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class FetchSuggestedIngredientsUseCase @Inject constructor(
+class FetchSuggestedIngredientsAction @Inject constructor(
     private val ingredientRepository: IIngredientRepository
-) : IFetchSuggestedIngredientsUseCase, BaseUseCase<IFetchSuggestedIngredientsUseCase.Result>()
+) : IFetchSuggestedIngredientsAction, BaseAction<IFetchSuggestedIngredientsAction.Result>()
 {
 
     override fun fetch() {
@@ -20,16 +20,16 @@ class FetchSuggestedIngredientsUseCase @Inject constructor(
             .track()
     }
 
-    override fun getErrorResult(throwable: Throwable): IFetchSuggestedIngredientsUseCase.Result? {
-        return IFetchSuggestedIngredientsUseCase.Result.Error(throwable.localizedMessage)
+    override fun getErrorResult(throwable: Throwable): IFetchSuggestedIngredientsAction.Result? {
+        return IFetchSuggestedIngredientsAction.Result.Error(throwable.localizedMessage)
     }
 
-    override fun getFailureResult(failedResponseCode: String): IFetchSuggestedIngredientsUseCase.Result? {
-        return IFetchSuggestedIngredientsUseCase.Result.Error(failedResponseCode)
+    override fun getFailureResult(failedResponseCode: String): IFetchSuggestedIngredientsAction.Result? {
+        return IFetchSuggestedIngredientsAction.Result.Error(failedResponseCode)
     }
 
     private fun onSuccess(response: SuggestedIngredientsResponse) {
-        liveData.value = IFetchSuggestedIngredientsUseCase.Result.Success(response)
+        liveData.value = IFetchSuggestedIngredientsAction.Result.Success(response)
         cleanUp()
     }
 
