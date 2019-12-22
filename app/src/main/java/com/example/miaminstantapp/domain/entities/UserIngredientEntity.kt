@@ -7,7 +7,7 @@ import com.example.miaminstantapp.domain.entities.UserIngredientEntity.Companion
 @Entity(tableName = TABLE_NAME)
 data class UserIngredientEntity(
     @PrimaryKey
-    val id: Int,
+    val ingredientId: Int,
     val name: String,
     val volumeUnitId: Int,
     val volumeUnitQuantity: Int

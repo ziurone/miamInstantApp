@@ -2,11 +2,14 @@ package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
+import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
+import com.example.miaminstantapp.persistence.UserIngredientDao
+import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
 class IngredientRepository @Inject constructor(
-
+    private val userIngredientDao: UserIngredientDao
 ): IIngredientRepository {
     override fun getSuggestedIngredients(): Single<SuggestedIngredientsResponse> {
         return Single.just(
@@ -18,4 +21,16 @@ class IngredientRepository @Inject constructor(
         )
 
     }
+
+    override fun addIngredient(ingredient: Ingredient): Completable {
+        val userIngredientVolumeUnitsRelationList = mutableListOf<UserIngredientVolumeUnitRelation>()
+
+        ingredient.volumeUnitIds.map {
+            val userIngredientVolumeUnitRelation = UserIngredientVolumeUnitRelation(ingredient.id, it)
+            userIngredientVolumeUnitsRelationList.add(userIngredientVolumeUnitRelation)
+        }
+
+        return Completable.complete()
+    }
+
 }

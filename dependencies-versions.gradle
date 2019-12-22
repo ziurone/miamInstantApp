@@ -26,7 +26,7 @@ ext.versions = [
         'constraint'              : '1.1.2',
         'designx'                 : '1.0.0-rc01',
         'lottie'                  : '2.8.0',
-        'room'                    : '2.1.0',
+        'room'                    : '2.2.3',
         'skeletonLayout'          : '2.0.0',
         'designx'                 : '1.0.0-rc01',
 

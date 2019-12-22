@@ -3,9 +3,10 @@ package com.example.miaminstantapp.persistence
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
+import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 
-@Database(version = 1, exportSchema = false, entities = [UserIngredientEntity::class, VolumeUnitEntity::class])
+@Database(version = 1, exportSchema = false, entities = [UserIngredientEntity::class, VolumeUnitEntity::class, UserIngredientVolumeUnitRelation::class])
 abstract class MiamDataBase: RoomDatabase() {
 
     companion object {
@@ -15,4 +16,5 @@ abstract class MiamDataBase: RoomDatabase() {
     abstract fun userIngredientDao(): UserIngredientDao
 
     abstract fun volumeUnitDao(): VolumeUnitDao
+
 }

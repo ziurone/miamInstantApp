@@ -8,7 +8,7 @@ import com.example.miaminstantapp.domain.entities.VolumeUnitEntity.Companion.TAB
 data class VolumeUnitEntity(
 
     @PrimaryKey
-    val id: Int,
+    val volumeUnitId: Int,
     val name: String
 ) {
     companion object {
