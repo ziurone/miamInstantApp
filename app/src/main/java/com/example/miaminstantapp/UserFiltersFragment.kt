@@ -1,16 +1,31 @@
 package com.example.miaminstantapp
 
 import android.util.Log
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.view.BaseFragment
+import com.example.miaminstantapp.view.adapters.IngredientsChipAdapter
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
+import com.google.android.material.chip.Chip
+import kotlinx.android.synthetic.main.fragment_user_filters.*
 
 class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>() {
 
+    private lateinit var suggestedIngredientsAdapter: IngredientsChipAdapter
+
     override fun initViews() {
         viewModel.loadMasterData()
+
+        suggestedIngredientsAdapter = IngredientsChipAdapter()
+
+        suggestedIngredientsList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = suggestedIngredientsAdapter
+        }
+
         super.initViews()
     }
 
@@ -27,8 +42,20 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         Log.i("Estoy re loading", "DOWNloading")
     }
 
-    fun logIngredients(ingredients: List<Ingredient>) {
-        Log.i("Trajo ingredientes", ingredients.first().name)
+    private fun logIngredients(ingredients: List<Ingredient>) {
+        suggestedIngredientsAdapter.setData(ingredients)
+        chipsGroupSuggestedIngredients.removeAllViews()
+        ingredients.forEach{
+            val chip = Chip(context)
+            chip.apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT)
+                text = it.name
+            }
+
+            chipsGroupSuggestedIngredients.addView(chip)
+        }
     }
 
     fun logVolumeUnit() {
