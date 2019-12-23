@@ -30,7 +30,11 @@ class IngredientRepository @Inject constructor(
             userIngredientVolumeUnitsRelationList.add(userIngredientVolumeUnitRelation)
         }
 
-        return Completable.complete()
+        return userIngredientDao
+            .addIngredientVolumeUnits(userIngredientVolumeUnitsRelationList)
+            .andThen(
+                userIngredientDao.add(ingredient)
+            )
     }
 
 }
