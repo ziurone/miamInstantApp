@@ -35,6 +35,9 @@ class UserResourcesModule {
     fun providesAddVolumeUnitsAction(action: AddVolumeUnitsAction): IAddVolumeUnitsAction = action
 
     @Provides
+    fun providesAddIngredientAction(action: AddUserIngredientAction): IAddUserIngredientAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel

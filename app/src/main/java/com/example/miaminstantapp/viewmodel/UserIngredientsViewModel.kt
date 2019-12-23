@@ -1,21 +1,23 @@
 package com.example.miaminstantapp.viewmodel
 
+import android.util.Log
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
-import com.example.miaminstantapp.domain.usecases.IAddVolumeUnitsAction
-import com.example.miaminstantapp.domain.usecases.IFetchSuggestedIngredientsAction
-import com.example.miaminstantapp.domain.usecases.IFetchVolumeUnitsAction
+import com.example.miaminstantapp.domain.usecases.*
 import javax.inject.Inject
 
 class UserIngredientsViewModel @Inject constructor(
     private val fetchSuggestedIngredientsUseCase: IFetchSuggestedIngredientsAction,
     private val fetchVolumeUnitsAction: IFetchVolumeUnitsAction,
-    private val addVolumeUnitsAction: IAddVolumeUnitsAction
+    private val addVolumeUnitsAction: IAddVolumeUnitsAction,
+    private val addUserIngredientAction: AddUserIngredientAction
 ): IUserIngredientsViewModel() {
 
     init {
         listenSource(fetchSuggestedIngredientsUseCase.getLiveData(), ::onFetchIngredientsResult)
         listenSource(fetchVolumeUnitsAction.getLiveData(), ::onFetchVolumeUnitResult)
         listenSource(addVolumeUnitsAction.getLiveData(), ::onCompleteAddVolumeUnits)
+        listenSource(addUserIngredientAction.getLiveData(), ::onAddIngredient)
+
     }
 
     override fun loadMasterData() {
@@ -47,6 +49,13 @@ class UserIngredientsViewModel @Inject constructor(
 
     private fun updateVolumeUnits(volumeUnits: List<VolumeUnitEntity>) {
         addVolumeUnitsAction.add(volumeUnits)
+    }
+
+    private fun onAddIngredient(result: IAddUserIngredientAction.Result) {
+        when(result) {
+            is IAddUserIngredientAction.Result.Success -> Log.i("INGREDIENT", "Ingredient added")
+        }
+
     }
 
 }
