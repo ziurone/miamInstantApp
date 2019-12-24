@@ -12,4 +12,5 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
     }
 
     abstract fun loadMasterData()
+    abstract fun addIngredient(ingredient: Ingredient)
 }

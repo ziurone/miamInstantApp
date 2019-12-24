@@ -12,14 +12,16 @@ import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_user_filters.*
 
-class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>() {
+class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), IngredientsChipAdapter.IngredientItemClickListener {
 
     private lateinit var suggestedIngredientsAdapter: IngredientsChipAdapter
+
+    override fun getLayoutId(): Int = R.layout.fragment_user_filters
 
     override fun initViews() {
         viewModel.loadMasterData()
 
-        suggestedIngredientsAdapter = IngredientsChipAdapter()
+        suggestedIngredientsAdapter = IngredientsChipAdapter(this)
 
         suggestedIngredientsList.apply {
             layoutManager = LinearLayoutManager(context)
@@ -44,14 +46,21 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
     private fun logIngredients(ingredients: List<Ingredient>) {
         suggestedIngredientsAdapter.setData(ingredients)
+
         chipsGroupSuggestedIngredients.removeAllViews()
         ingredients.forEach{
+            val ingredient = it
             val chip = Chip(context)
             chip.apply {
                 layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT)
                 text = it.name
+            }
+
+            chip.setOnClickListener{
+                onClick(ingredient)
+                chipsGroupSuggestedIngredients.removeView(chip)
             }
 
             chipsGroupSuggestedIngredients.addView(chip)
@@ -66,5 +75,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_user_filters
+    override fun onClick(ingredient: Ingredient) {
+        viewModel.addIngredient(ingredient)
+    }
 }

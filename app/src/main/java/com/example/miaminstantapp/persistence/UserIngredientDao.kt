@@ -9,6 +9,7 @@ import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
 import com.example.miaminstantapp.domain.entities.UserIngredientWithVolumeUnits
 import io.reactivex.Completable
+import io.reactivex.Single
 
 @Dao
 interface UserIngredientDao {
@@ -19,9 +20,13 @@ interface UserIngredientDao {
 
     @Transaction
     @Insert
-    fun add(ingredient: Ingredient): Completable
+    fun add(ingredient: UserIngredientEntity): Completable
 
     @Insert
     fun addIngredientVolumeUnits(ingredientVolumeUnitsRelations: List<UserIngredientVolumeUnitRelation>): Completable
+
+    @Transaction
+    @Query("SELECT * FROM " + UserIngredientEntity.TABLE_NAME)
+    fun fetchAll(): Single<List<UserIngredientEntity>>
 
 }

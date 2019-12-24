@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.miaminstantapp.TestConstants.GENERIC_ERROR
-import com.example.miaminstantapp.domain.usecases.IFetchSuggestedIngredientsAction
+import com.example.miaminstantapp.domain.actions.IFetchSuggestedIngredientsAction
 import com.example.miaminstantapp.TestConstants.INGREDIENT_LIST
 import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
 import com.google.common.truth.Truth

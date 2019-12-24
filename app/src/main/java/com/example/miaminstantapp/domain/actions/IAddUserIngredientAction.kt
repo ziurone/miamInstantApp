@@ -1,7 +1,6 @@
-package com.example.miaminstantapp.domain.usecases
+package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.dtos.Ingredient
-import io.reactivex.Completable
 
 interface IAddUserIngredientAction: Action<IAddUserIngredientAction.Result> {
     sealed class Result {
@@ -9,5 +8,5 @@ interface IAddUserIngredientAction: Action<IAddUserIngredientAction.Result> {
         data class Error(val errorMessage: String): Result()
     }
 
-    abstract fun add(ingredient: Ingredient)
+    fun add(ingredient: Ingredient)
 }

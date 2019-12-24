@@ -1,15 +1,17 @@
 package com.example.miaminstantapp.viewmodel
 
 import android.util.Log
+import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
-import com.example.miaminstantapp.domain.usecases.*
+import com.example.miaminstantapp.domain.actions.*
 import javax.inject.Inject
 
 class UserIngredientsViewModel @Inject constructor(
     private val fetchSuggestedIngredientsUseCase: IFetchSuggestedIngredientsAction,
     private val fetchVolumeUnitsAction: IFetchVolumeUnitsAction,
     private val addVolumeUnitsAction: IAddVolumeUnitsAction,
-    private val addUserIngredientAction: AddUserIngredientAction
+    private val addUserIngredientAction: IAddUserIngredientAction,
+    private val fetchUserIngredientsAction: IFetchUserIngredientsAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -17,13 +19,17 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(fetchVolumeUnitsAction.getLiveData(), ::onFetchVolumeUnitResult)
         listenSource(addVolumeUnitsAction.getLiveData(), ::onCompleteAddVolumeUnits)
         listenSource(addUserIngredientAction.getLiveData(), ::onAddIngredient)
-
+        listenSource(fetchUserIngredientsAction.getLiveData(), ::onFetchUserIngredientsSuccess)
     }
 
     override fun loadMasterData() {
         setState(State.Loading)
         fetchSuggestedIngredientsUseCase.fetch()
         fetchVolumeUnitsAction.fetch()
+    }
+
+    override fun addIngredient(ingredient: Ingredient) {
+        addUserIngredientAction.add(ingredient)
     }
 
     private fun onFetchIngredientsResult(result: IFetchSuggestedIngredientsAction.Result) {
@@ -53,9 +59,21 @@ class UserIngredientsViewModel @Inject constructor(
 
     private fun onAddIngredient(result: IAddUserIngredientAction.Result) {
         when(result) {
-            is IAddUserIngredientAction.Result.Success -> Log.i("INGREDIENT", "Ingredient added")
+            is IAddUserIngredientAction.Result.Success -> fetchUserIngredients()
+            is IAddUserIngredientAction.Result.Error -> Log.i("ERROR_ADD", result.errorMessage)
         }
 
+    }
+
+    private fun fetchUserIngredients() {
+        fetchUserIngredientsAction.fetch()
+        Log.i("INGREDIENT", "Ingredient added")
+    }
+
+    private fun onFetchUserIngredientsSuccess(result: IFetchUserIngredientsAction.Result) {
+        when(result) {
+            is IFetchUserIngredientsAction.Result.Success -> Log.i("Ingrediente agregado", result.ingredients.last().name)
+        }
     }
 
 }

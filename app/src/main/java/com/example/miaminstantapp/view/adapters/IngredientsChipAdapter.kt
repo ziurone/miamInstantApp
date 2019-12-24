@@ -9,7 +9,9 @@ import com.example.miaminstantapp.domain.dtos.Ingredient
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_suggested_ingredient.*
 
-class IngredientsChipAdapter: RecyclerView.Adapter<IngredientsChipAdapter.IngredientViewHolder>() {
+class IngredientsChipAdapter constructor(
+    private val clickListener: IngredientItemClickListener
+): RecyclerView.Adapter<IngredientsChipAdapter.IngredientViewHolder>() {
 
     private val suggestedIngredientsList = mutableListOf<Ingredient>()
 
@@ -19,7 +21,7 @@ class IngredientsChipAdapter: RecyclerView.Adapter<IngredientsChipAdapter.Ingred
     }
 
     override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
-        holder.bind(suggestedIngredientsList[position])
+        holder.bind(suggestedIngredientsList[position], position)
     }
 
     override fun getItemCount(): Int = suggestedIngredientsList.size
@@ -29,9 +31,24 @@ class IngredientsChipAdapter: RecyclerView.Adapter<IngredientsChipAdapter.Ingred
         notifyDataSetChanged()
     }
 
+    fun removeAt(position: Int) {
+        suggestedIngredientsList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, suggestedIngredientsList.size)
+    }
+
     inner class IngredientViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bind(ingredient: Ingredient) {
+        fun bind(ingredient: Ingredient, position: Int) {
             ingredientChip.text = ingredient.name
+
+            ingredientChip.setOnClickListener {
+                clickListener.onClick(ingredient)
+                removeAt(position)
+            }
         }
+    }
+
+    interface IngredientItemClickListener {
+        fun onClick(ingredient: Ingredient)
     }
 }

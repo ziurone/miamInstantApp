@@ -1,4 +1,4 @@
-package com.example.miaminstantapp.domain.usecases
+package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository

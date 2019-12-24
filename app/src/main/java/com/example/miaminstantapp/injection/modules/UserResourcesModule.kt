@@ -7,7 +7,7 @@ import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import com.example.miaminstantapp.domain.repositories.IVolumeUnitRepository
 import com.example.miaminstantapp.domain.repositories.IngredientRepository
 import com.example.miaminstantapp.domain.repositories.VolumeUnitRepository
-import com.example.miaminstantapp.domain.usecases.*
+import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.example.miaminstantapp.viewmodel.UserIngredientsViewModel
@@ -36,6 +36,9 @@ class UserResourcesModule {
 
     @Provides
     fun providesAddIngredientAction(action: AddUserIngredientAction): IAddUserIngredientAction = action
+
+    @Provides
+    fun providesFetchUserIngredientsAction(action: FetchUserIngredientsAction): IFetchUserIngredientsAction = action
 
     @Provides
     @IntoMap

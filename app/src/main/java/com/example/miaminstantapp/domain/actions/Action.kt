@@ -1,4 +1,4 @@
-package com.example.miaminstantapp.domain.usecases
+package com.example.miaminstantapp.domain.actions
 
 import androidx.lifecycle.LiveData
 

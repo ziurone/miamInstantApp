@@ -1,4 +1,4 @@
-package com.example.miaminstantapp.domain.usecases
+package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.persistence.VolumeUnitDao

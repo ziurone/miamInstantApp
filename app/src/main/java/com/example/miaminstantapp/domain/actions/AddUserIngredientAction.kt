@@ -1,10 +1,7 @@
-package com.example.miaminstantapp.domain.usecases
+package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
-import com.example.miaminstantapp.domain.repositories.IngredientRepository
-import com.example.miaminstantapp.persistence.UserIngredientDao
-import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -23,11 +20,11 @@ class AddUserIngredientAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IAddUserIngredientAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return IAddUserIngredientAction.Result.Error(throwable.localizedMessage)
     }
 
     override fun getFailureResult(failedResponseCode: String): IAddUserIngredientAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return IAddUserIngredientAction.Result.Error(failedResponseCode)
     }
 
     private fun handleResponse() {
