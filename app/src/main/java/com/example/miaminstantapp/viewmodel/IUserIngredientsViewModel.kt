@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.dtos.Ingredient
+import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 
 abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewModel.State>() {
 
@@ -9,6 +10,7 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
         object Loading: State()
         data class FetchSuggestedIngredientsSuccess(val ingredients: List<Ingredient>): State()
         object AddVolumeUnitsSuccess: State()
+        data class UserIngredientsUpdated(val ingredients: List<UserIngredientEntity>): State()
     }
 
     abstract fun loadMasterData()

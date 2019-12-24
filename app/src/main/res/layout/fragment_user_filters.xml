@@ -15,17 +15,14 @@
         app:singleSelection="true"
         app:layout_constraintTop_toBottomOf="parent"
         android:layout_width="@dimen/match_constraint"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/suggestedIngredientsList"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/item_suggested_ingredient"/>
-
-    </com.google.android.material.chip.ChipGroup>
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/userIngredients"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipsGroupSuggestedIngredients"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

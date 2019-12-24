@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.miaminstantapp.domain.dtos.Ingredient
+import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
@@ -24,6 +25,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             is IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess -> logIngredients(state.ingredients)
             is IUserIngredientsViewModel.State.AddVolumeUnitsSuccess -> logVolumeUnit()
             is IUserIngredientsViewModel.State.Error -> showError(state.error)
+            is IUserIngredientsViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
         }
     }
 
@@ -51,6 +53,22 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
             chipsGroupSuggestedIngredients.addView(chip)
         }
+    }
+
+    fun updateSelectedIngredients(ingredients: List<UserIngredientEntity>) {
+        userIngredients.removeAllViews()
+        ingredients.forEach{
+            val chip = Chip(context)
+            chip.apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT)
+                text = it.name
+            }
+
+            userIngredients.addView(chip)
+        }
+
     }
 
     fun logVolumeUnit() {
