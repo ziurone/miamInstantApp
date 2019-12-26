@@ -13,7 +13,7 @@ import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_user_filters.*
 
-class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(){
+class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient{
 
     private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
 
@@ -24,7 +24,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
         ingredientsAutocompleteInput.afterDelayedTextChanged(::searchIngredientsByName)
 
-        autocompleteIngredientAdapter = AutocompleteUserIngredientsAdapter()
+        autocompleteIngredientAdapter = AutocompleteUserIngredientsAdapter(this)
         ingredientsAutocompleteList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = autocompleteIngredientAdapter
@@ -104,5 +104,9 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
     private fun onAddIngredient(ingredient: Ingredient) {
         viewModel.addIngredient(ingredient)
+    }
+
+    override fun onItemClick(ingredient: Ingredient) {
+        onAddIngredient(ingredient)
     }
 }
