@@ -41,6 +41,9 @@ class UserResourcesModule {
     fun providesFetchUserIngredientsAction(action: FetchUserIngredientsAction): IFetchUserIngredientsAction = action
 
     @Provides
+    fun providesGetIngredientsByNameAction(action: GetIngredientsByNameAction): IGetIngredientsByNameAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel
