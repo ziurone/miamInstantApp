@@ -3,7 +3,7 @@ package com.example.miaminstantapp.domain.actions
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
-import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
+import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import com.example.miaminstantapp.TestConstants.GENERIC_ERROR
 import com.example.miaminstantapp.TestConstants.INGREDIENT_LIST
@@ -66,8 +66,8 @@ class FetchSuggestesIngredientsUseCaseTest {
     }
 
 
-    private fun getIngredientListResponse(): SuggestedIngredientsResponse {
-        return SuggestedIngredientsResponse(INGREDIENT_LIST)
+    private fun getIngredientListResponse(): IngredientsListResponse {
+        return IngredientsListResponse(INGREDIENT_LIST)
     }
 
 }

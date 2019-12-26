@@ -11,7 +11,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val fetchVolumeUnitsAction: IFetchVolumeUnitsAction,
     private val addVolumeUnitsAction: IAddVolumeUnitsAction,
     private val addUserIngredientAction: IAddUserIngredientAction,
-    private val fetchUserIngredientsAction: IFetchUserIngredientsAction
+    private val fetchUserIngredientsAction: IFetchUserIngredientsAction,
+    private val getIngredientsByNameAction: IGetIngredientsByNameAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -20,6 +21,7 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(addVolumeUnitsAction.getLiveData(), ::onCompleteAddVolumeUnits)
         listenSource(addUserIngredientAction.getLiveData(), ::onAddIngredient)
         listenSource(fetchUserIngredientsAction.getLiveData(), ::onFetchUserIngredientsSuccess)
+        listenSource(getIngredientsByNameAction.getLiveData(), ::onGetIngredientsByNameSuccess)
     }
 
     override fun loadMasterData() {
@@ -79,6 +81,17 @@ class UserIngredientsViewModel @Inject constructor(
     private fun updateIngredients(result: IFetchUserIngredientsAction.Result.Success) {
         Log.i("Ingrediente agregado", result.ingredients.last().name)
         setState(State.UserIngredientsUpdated(result.ingredients))
+    }
+
+    override fun searchIngredientByName(ingredientName: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun onGetIngredientsByNameSuccess(result: IGetIngredientsByNameAction.Result) {
+
+        when(result) {
+            is IGetIngredientsByNameAction.Result.Success -> setState(State.SearchIngredientsByNameSuccess(result.ingredients))
+        }
     }
 
 }

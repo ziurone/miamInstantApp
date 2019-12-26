@@ -1,7 +1,7 @@
 package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.dtos.Ingredient
-import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
+import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
 import com.example.miaminstantapp.domain.entities.toUserIngredientEntity
@@ -14,9 +14,9 @@ class IngredientRepository @Inject constructor(
     private val userIngredientDao: UserIngredientDao
 ): IIngredientRepository {
 
-    override fun getSuggestedIngredients(): Single<SuggestedIngredientsResponse> {
+    override fun getSuggestedIngredients(): Single<IngredientsListResponse> {
         return Single.just(
-            SuggestedIngredientsResponse(listOf<Ingredient>(
+            IngredientsListResponse(listOf<Ingredient>(
                 Ingredient(1, "sal", 1, 100, listOf(1,2,3)),
                 Ingredient(2, "aceite", 2, 100, listOf(1,2,3)),
                 Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3))
@@ -42,6 +42,18 @@ class IngredientRepository @Inject constructor(
 
     override fun getUserIngredients(): Single<List<UserIngredientEntity>> {
         return userIngredientDao.fetchAll()
+    }
+
+    override fun getIngredientsByName(ingredientName: String): Single<IngredientsListResponse> {
+        return Single.just(
+            IngredientsListResponse(
+                listOf(
+                    Ingredient(4, "Batata", 1, 100, listOf(1,2,3)),
+                    Ingredient(5, "Papa", 1, 100, listOf(1,2,3)),
+                    Ingredient(6, "Vrema", 1, 100, listOf(1,2,3))
+                )
+            )
+        )
     }
 
 }

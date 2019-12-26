@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.example.miaminstantapp.TestConstants.GENERIC_ERROR
 import com.example.miaminstantapp.domain.actions.IFetchSuggestedIngredientsAction
 import com.example.miaminstantapp.TestConstants.INGREDIENT_LIST
-import com.example.miaminstantapp.domain.dtos.SuggestedIngredientsResponse
+import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.google.common.truth.Truth
 import org.junit.Rule
 import org.junit.Test
@@ -44,7 +44,7 @@ class UserIngredientsViewModelTest {
         givenASetupSubject()
         BDDMockito.given(fetchSuggestedIngredientsUseCase.fetch()).will{
             setUseCaseResult(IFetchSuggestedIngredientsAction.Result.Success(
-                SuggestedIngredientsResponse(INGREDIENT_LIST)))
+                IngredientsListResponse(INGREDIENT_LIST)))
         }
 
         // WHEN

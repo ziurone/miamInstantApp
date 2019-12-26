@@ -11,8 +11,10 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
         data class FetchSuggestedIngredientsSuccess(val ingredients: List<Ingredient>): State()
         object AddVolumeUnitsSuccess: State()
         data class UserIngredientsUpdated(val ingredients: List<UserIngredientEntity>): State()
+        data class SearchIngredientsByNameSuccess(val ingredients: List<Ingredient>): State()
     }
 
     abstract fun loadMasterData()
     abstract fun addIngredient(ingredient: Ingredient)
+    abstract fun searchIngredientByName(ingredientName: String)
 }

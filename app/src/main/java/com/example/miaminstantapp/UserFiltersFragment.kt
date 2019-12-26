@@ -33,7 +33,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         }
     }
 
-    fun searchIngredientsByName(ingredientName: CharSequence) {
+    private fun searchIngredientsByName(ingredientName: CharSequence) {
 
     }
 
