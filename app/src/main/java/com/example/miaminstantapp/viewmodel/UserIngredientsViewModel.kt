@@ -84,7 +84,7 @@ class UserIngredientsViewModel @Inject constructor(
     }
 
     override fun searchIngredientByName(ingredientName: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        getIngredientsByNameAction.getIngredients(ingredientName)
     }
 
     private fun onGetIngredientsByNameSuccess(result: IGetIngredientsByNameAction.Result) {

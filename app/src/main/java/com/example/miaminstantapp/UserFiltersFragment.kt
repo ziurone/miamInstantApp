@@ -3,15 +3,19 @@ package com.example.miaminstantapp
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.BaseFragment
+import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_user_filters.*
 
 class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(){
+
+    private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
 
     override fun getLayoutId(): Int = R.layout.fragment_user_filters
 
@@ -19,6 +23,12 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         viewModel.loadMasterData()
 
         ingredientsAutocompleteInput.afterDelayedTextChanged(::searchIngredientsByName)
+
+        autocompleteIngredientAdapter = AutocompleteUserIngredientsAdapter()
+        ingredientsAutocompleteList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = autocompleteIngredientAdapter
+        }
 
         super.initViews()
     }
@@ -30,11 +40,16 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             is IUserIngredientsViewModel.State.AddVolumeUnitsSuccess -> logVolumeUnit()
             is IUserIngredientsViewModel.State.Error -> showError(state.error)
             is IUserIngredientsViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
+            is IUserIngredientsViewModel.State.SearchIngredientsByNameSuccess -> updateIngredientsAutocomplete(state.ingredients)
         }
     }
 
-    private fun searchIngredientsByName(ingredientName: CharSequence) {
+    private fun updateIngredientsAutocomplete(ingredients: List<Ingredient>) {
+        autocompleteIngredientAdapter.setData(ingredients)
+    }
 
+    private fun searchIngredientsByName(ingredientName: CharSequence) {
+        viewModel.searchIngredientByName(ingredientName.toString())
     }
 
     fun showLoading() {

@@ -50,7 +50,7 @@ class IngredientRepository @Inject constructor(
                 listOf(
                     Ingredient(4, "Batata", 1, 100, listOf(1,2,3)),
                     Ingredient(5, "Papa", 1, 100, listOf(1,2,3)),
-                    Ingredient(6, "Vrema", 1, 100, listOf(1,2,3))
+                    Ingredient(6, "Crema", 1, 100, listOf(1,2,3))
                 )
             )
         )

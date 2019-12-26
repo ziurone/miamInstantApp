@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.item_user_ingredient_autocomplete.*
 class AutocompleteUserIngredientsAdapter:
     RecyclerView.Adapter<AutocompleteUserIngredientsAdapter.ViewHolder>() {
 
-    private val ingredients: List<Ingredient> = mutableListOf()
+    private var ingredients: List<Ingredient> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_ingredient_autocomplete, parent, false)
@@ -21,6 +21,11 @@ class AutocompleteUserIngredientsAdapter:
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(ingredients[position])
+    }
+
+    fun setData(ingredientList: List<Ingredient>) {
+        this.ingredients = ingredientList
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int  = ingredients.size
