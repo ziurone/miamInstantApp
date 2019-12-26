@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
+import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
@@ -16,6 +17,9 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
     override fun initViews() {
         viewModel.loadMasterData()
+
+        ingredientsAutocompleteInput.afterDelayedTextChanged(::searchIngredientsByName)
+
         super.initViews()
     }
 
@@ -27,6 +31,10 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             is IUserIngredientsViewModel.State.Error -> showError(state.error)
             is IUserIngredientsViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
         }
+    }
+
+    fun searchIngredientsByName(ingredientName: CharSequence) {
+
     }
 
     fun showLoading() {

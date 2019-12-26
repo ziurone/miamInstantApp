@@ -25,4 +25,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chipsGroupSuggestedIngredients"/>
 
+    <EditText
+        android:id="@+id/ingredientsAutocompleteInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userIngredients" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
