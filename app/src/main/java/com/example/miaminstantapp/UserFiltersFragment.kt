@@ -13,7 +13,7 @@ import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_user_filters.*
 
-class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient{
+class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
 
     private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
 
@@ -78,7 +78,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         }
     }
 
-    fun updateSelectedIngredients(ingredients: List<UserIngredientEntity>) {
+    private fun updateSelectedIngredients(ingredients: List<UserIngredientEntity>) {
         userIngredients.removeAllViews()
         ingredients.forEach{
             val chip = Chip(context)
@@ -98,7 +98,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         Log.i("Inserto unidades", "bla")
     }
 
-    fun showError(error: String) {
+    private fun showError(error: String) {
         Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     }
 
@@ -108,5 +108,6 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
     override fun onItemClick(ingredient: Ingredient) {
         onAddIngredient(ingredient)
+        autocompleteIngredientAdapter.setData(listOf())
     }
 }
