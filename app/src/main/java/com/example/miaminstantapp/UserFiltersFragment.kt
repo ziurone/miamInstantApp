@@ -157,5 +157,6 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     private fun showSelectedAddress(data: Intent?) {
         val place = Autocomplete.getPlaceFromIntent(data!!)
         userAddress.text = place.address
+        viewModel.fetchZoneShops(place.latLng?.latitude.toString(), place.latLng?.longitude.toString(), 10)
     }
 }

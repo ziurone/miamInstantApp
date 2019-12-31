@@ -13,7 +13,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val addUserIngredientAction: IAddUserIngredientAction,
     private val fetchUserIngredientsAction: IFetchUserIngredientsAction,
     private val getIngredientsByNameAction: IGetIngredientsByNameAction,
-    private val setUserMoneyAction: ISetUserMoneyAction
+    private val setUserMoneyAction: ISetUserMoneyAction,
+    private val fetchShopsAction: IFetchShopsAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -24,6 +25,13 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(fetchUserIngredientsAction.getLiveData(), ::onFetchUserIngredientsSuccess)
         listenSource(getIngredientsByNameAction.getLiveData(), ::onGetIngredientsByNameSuccess)
         listenSource(setUserMoneyAction.getLiveData(), ::onSetUserMoney)
+        listenSource(fetchShopsAction.getLiveData(), ::onFetchShopsAction)
+    }
+
+    private fun onFetchShopsAction(result: IFetchShopsAction.Result) {
+        when(result) {
+            is IFetchShopsAction.Result.Success -> Log.i("FETCH_SHOPS_SUCCESS", "SUCCESS")
+        }
     }
 
     override fun loadMasterData() {
@@ -38,6 +46,10 @@ class UserIngredientsViewModel @Inject constructor(
 
     override fun setUserMoney(money: Int) {
         setUserMoneyAction.set(money)
+    }
+
+    override fun fetchZoneShops(lat: String, long: String, squares: Int) {
+        fetchShopsAction.fetchShopsAndBranches(lat, long, squares)
     }
 
     private fun onSetUserMoney(result: ISetUserMoneyAction.Result) {

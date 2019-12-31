@@ -29,6 +29,9 @@ class UserResourcesModule {
     fun providesUserMoneyRepository(repository: UserMoneyRepository): IUserMoneyRepository = repository
 
     @Provides
+    fun providesBranchesRepository(repository: BranchRepository): IBranchRepository = repository
+
+    @Provides
     fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides
@@ -52,7 +55,8 @@ class UserResourcesModule {
     @Provides
     fun providesSetUserMoneyAction(action: SetUserMoneyAction): ISetUserMoneyAction = action
 
-
+    @Provides
+    fun providesFetchShopsAction(action: FetchShopsAction): IFetchShopsAction = action
 
     @Provides
     @IntoMap

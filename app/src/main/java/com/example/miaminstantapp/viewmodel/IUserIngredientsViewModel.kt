@@ -13,10 +13,12 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
         data class UserIngredientsUpdated(val ingredients: List<UserIngredientEntity>): State()
         data class SearchIngredientsByNameSuccess(val ingredients: List<Ingredient>): State()
         object AddMoneySuccess: State()
+        object FetchShopsSuccess: State()
     }
 
     abstract fun loadMasterData()
     abstract fun addIngredient(ingredient: Ingredient)
     abstract fun searchIngredientByName(ingredientName: String)
     abstract fun setUserMoney(money: Int)
+    abstract fun fetchZoneShops(lat: String, long: String, squares: Int)
 }
