@@ -1,5 +1,6 @@
 package com.example.miaminstantapp
 
+import android.content.Intent
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,12 +11,19 @@ import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_user_filters.*
 
 class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
 
     private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
+
+    companion object {
+        const val AUTOCOMPLETE_REQUEST_CODE = 1
+    }
 
     override fun getLayoutId(): Int = R.layout.fragment_user_filters
 
@@ -28,6 +36,10 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         ingredientsAutocompleteList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = autocompleteIngredientAdapter
+        }
+
+        addAddress.setOnClickListener {
+            navigateToAddressComponent()
         }
 
         userMoneyInput.afterDelayedTextChanged(::setUserMoney)
@@ -120,5 +132,30 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     override fun onItemClick(ingredient: Ingredient) {
         onAddIngredient(ingredient)
         autocompleteIngredientAdapter.setData(listOf())
+    }
+
+    private fun navigateToAddressComponent() {
+        val autocompleteFields = listOf(
+            Place.Field.ID,
+            Place.Field.ADDRESS)
+
+        val intent = Autocomplete.IntentBuilder(
+            AutocompleteActivityMode.FULLSCREEN,
+            autocompleteFields
+        ).build(context!!)
+
+
+        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when(requestCode) {
+            AUTOCOMPLETE_REQUEST_CODE -> showSelectedAddress(data)
+        }
+    }
+
+    private fun showSelectedAddress(data: Intent?) {
+        val place = Autocomplete.getPlaceFromIntent(data!!)
+        userAddress.text = place.address
     }
 }
