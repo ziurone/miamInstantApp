@@ -76,6 +76,9 @@ ext.deps = [
         'skeletonLayout': [
                 'skeletonLayout': "com.faltenreich:skeletonlayout:$versions.skeletonLayout"
         ],
+        'geolocation' : [
+                'places': "com.google.android.libraries.places:places:$versions.places"
+        ],
         ////////////////////////////////////////////////////////////////////////////////////////////
         // TESTING                                                                                //
         ////////////////////////////////////////////////////////////////////////////////////////////
