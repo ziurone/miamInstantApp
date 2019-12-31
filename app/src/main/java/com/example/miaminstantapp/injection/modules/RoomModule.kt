@@ -3,10 +3,7 @@ package com.example.miaminstantapp.injection.modules
 import android.content.Context
 import androidx.room.Room
 import com.example.miaminstantapp.injection.qualifiers.AppContext
-import com.example.miaminstantapp.persistence.BranchDao
-import com.example.miaminstantapp.persistence.MiamDataBase
-import com.example.miaminstantapp.persistence.UserIngredientDao
-import com.example.miaminstantapp.persistence.VolumeUnitDao
+import com.example.miaminstantapp.persistence.*
 import com.example.miaminstantapp.scopes.PerApplication
 import dagger.Module
 import dagger.Provides
@@ -29,4 +26,8 @@ class RoomModule {
     @Provides
     @PerApplication
     fun provideBranchesDao(miamDataBase: MiamDataBase): BranchDao = miamDataBase.branchDao()
+
+    @Provides
+    @PerApplication
+    fun providesShopDao(miamDataBase: MiamDataBase): ShopDao = miamDataBase.shopDao()
 }

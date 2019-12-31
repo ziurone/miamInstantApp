@@ -32,6 +32,9 @@ class UserResourcesModule {
     fun providesBranchesRepository(repository: BranchRepository): IBranchRepository = repository
 
     @Provides
+    fun providesShopRepository(repository: ShopRepository): IShopRepository = repository
+
+    @Provides
     fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides

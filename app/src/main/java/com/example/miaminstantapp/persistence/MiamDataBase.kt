@@ -2,16 +2,14 @@ package com.example.miaminstantapp.persistence
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.miaminstantapp.domain.entities.BranchEntity
-import com.example.miaminstantapp.domain.entities.UserIngredientEntity
-import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
-import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
+import com.example.miaminstantapp.domain.entities.*
 
 @Database(version = 1, exportSchema = false, entities = [
     UserIngredientEntity::class,
     VolumeUnitEntity::class,
     UserIngredientVolumeUnitRelation::class,
-    BranchEntity::class])
+    BranchEntity::class,
+    ShopEntity::class])
 abstract class MiamDataBase: RoomDatabase() {
 
     companion object {
@@ -24,4 +22,5 @@ abstract class MiamDataBase: RoomDatabase() {
 
     abstract fun branchDao(): BranchDao
 
+    abstract fun shopDao(): ShopDao
 }
