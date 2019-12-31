@@ -1,14 +1,14 @@
 package com.example.miaminstantapp.injection.modules
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.example.miaminstantapp.UserFiltersFragment
-import com.example.miaminstantapp.domain.repositories.IIngredientRepository
-import com.example.miaminstantapp.domain.repositories.IVolumeUnitRepository
-import com.example.miaminstantapp.domain.repositories.IngredientRepository
-import com.example.miaminstantapp.domain.repositories.VolumeUnitRepository
 import com.example.miaminstantapp.domain.actions.*
+import com.example.miaminstantapp.domain.repositories.*
+import com.example.miaminstantapp.injection.qualifiers.AppContext
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
+import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.example.miaminstantapp.viewmodel.UserIngredientsViewModel
 import com.example.miaminstantapp.viewmodel.ViewModelFactory
@@ -24,6 +24,12 @@ class UserResourcesModule {
 
     @Provides
     fun providesIngredientRepository(repository: IngredientRepository): IIngredientRepository = repository
+
+    @Provides
+    fun providesUserMoneyRepository(repository: UserMoneyRepository): IUserMoneyRepository = repository
+
+    @Provides
+    fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides
     fun providesFetchSuggestedIngredientsUseCase(useCase: FetchSuggestedIngredientsAction): IFetchSuggestedIngredientsAction = useCase
@@ -42,6 +48,11 @@ class UserResourcesModule {
 
     @Provides
     fun providesGetIngredientsByNameAction(action: GetIngredientsByNameAction): IGetIngredientsByNameAction = action
+
+    @Provides
+    fun providesSetUserMoneyAction(action: SetUserMoneyAction): ISetUserMoneyAction = action
+
+
 
     @Provides
     @IntoMap

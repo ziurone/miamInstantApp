@@ -12,7 +12,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val addVolumeUnitsAction: IAddVolumeUnitsAction,
     private val addUserIngredientAction: IAddUserIngredientAction,
     private val fetchUserIngredientsAction: IFetchUserIngredientsAction,
-    private val getIngredientsByNameAction: IGetIngredientsByNameAction
+    private val getIngredientsByNameAction: IGetIngredientsByNameAction,
+    private val setUserMoneyAction: ISetUserMoneyAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -22,6 +23,7 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(addUserIngredientAction.getLiveData(), ::onAddIngredient)
         listenSource(fetchUserIngredientsAction.getLiveData(), ::onFetchUserIngredientsSuccess)
         listenSource(getIngredientsByNameAction.getLiveData(), ::onGetIngredientsByNameSuccess)
+        listenSource(setUserMoneyAction.getLiveData(), ::onSetUserMoney)
     }
 
     override fun loadMasterData() {
@@ -32,6 +34,16 @@ class UserIngredientsViewModel @Inject constructor(
 
     override fun addIngredient(ingredient: Ingredient) {
         addUserIngredientAction.add(ingredient)
+    }
+
+    override fun setUserMoney(money: Int) {
+        setUserMoneyAction.set(money)
+    }
+
+    private fun onSetUserMoney(result: ISetUserMoneyAction.Result) {
+        when(result) {
+            is ISetUserMoneyAction.Result.Success -> setState(State.AddMoneySuccess)
+        }
     }
 
     private fun onFetchIngredientsResult(result: IFetchSuggestedIngredientsAction.Result) {

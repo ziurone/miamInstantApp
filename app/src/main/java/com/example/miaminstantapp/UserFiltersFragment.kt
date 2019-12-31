@@ -30,7 +30,13 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             adapter = autocompleteIngredientAdapter
         }
 
+        userMoneyInput.afterDelayedTextChanged(::setUserMoney)
+
         super.initViews()
+    }
+
+    private fun setUserMoney(money: CharSequence) {
+        viewModel.setUserMoney(money.toString().toInt())
     }
 
     override fun onStateChanged(state: IUserIngredientsViewModel.State) {
@@ -41,7 +47,12 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             is IUserIngredientsViewModel.State.Error -> showError(state.error)
             is IUserIngredientsViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
             is IUserIngredientsViewModel.State.SearchIngredientsByNameSuccess -> updateIngredientsAutocomplete(state.ingredients)
+            is IUserIngredientsViewModel.State.AddMoneySuccess -> setMoneySuccess()
         }
+    }
+
+    private fun setMoneySuccess() {
+        Log.i("MONEY_ADDED", "Success")
     }
 
     private fun updateIngredientsAutocomplete(ingredients: List<Ingredient>) {
