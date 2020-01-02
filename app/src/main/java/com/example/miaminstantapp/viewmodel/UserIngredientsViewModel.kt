@@ -14,7 +14,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val fetchUserIngredientsAction: IFetchUserIngredientsAction,
     private val getIngredientsByNameAction: IGetIngredientsByNameAction,
     private val setUserMoneyAction: ISetUserMoneyAction,
-    private val fetchShopsAction: IFetchShopsAction
+    private val fetchShopsAction: IFetchShopsAction,
+    private val searchRecipesAction: ISearchRecipesAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -26,6 +27,7 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(getIngredientsByNameAction.getLiveData(), ::onGetIngredientsByNameSuccess)
         listenSource(setUserMoneyAction.getLiveData(), ::onSetUserMoney)
         listenSource(fetchShopsAction.getLiveData(), ::onFetchShopsAction)
+        listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
     }
 
     private fun onFetchShopsAction(result: IFetchShopsAction.Result) {
@@ -38,6 +40,14 @@ class UserIngredientsViewModel @Inject constructor(
         setState(State.Loading)
         fetchSuggestedIngredientsUseCase.fetch()
         fetchVolumeUnitsAction.fetch()
+    }
+
+    override fun searchRecipes() {
+        searchRecipesAction.searchRecipes()
+    }
+
+    private fun onSearchRecipes(result: ISearchRecipesAction.Result) {
+
     }
 
     override fun addIngredient(ingredient: Ingredient) {

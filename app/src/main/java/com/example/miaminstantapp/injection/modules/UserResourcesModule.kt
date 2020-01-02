@@ -35,6 +35,12 @@ class UserResourcesModule {
     fun providesShopRepository(repository: ShopRepository): IShopRepository = repository
 
     @Provides
+    fun providesMarketRecipeRepository(repository: MarketRecipesRepository): IMarketRecipesRepository = repository
+
+    @Provides
+    fun providesMarketIngredientRepository(repository: MarketIngredientRepository): IMarketIngredientRepository = repository
+
+    @Provides
     fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides
@@ -60,6 +66,9 @@ class UserResourcesModule {
 
     @Provides
     fun providesFetchShopsAction(action: FetchShopsAction): IFetchShopsAction = action
+
+    @Provides
+    fun providesSearchRecipesAction(action: SearchRecipesAction): ISearchRecipesAction = action
 
     @Provides
     @IntoMap

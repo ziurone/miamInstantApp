@@ -44,7 +44,15 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
         userMoneyInput.afterDelayedTextChanged(::setUserMoney)
 
+        searchRecipes.setOnClickListener {
+            searchRecipes()
+        }
+
         super.initViews()
+    }
+
+    private fun searchRecipes() {
+        viewModel.searchRecipes()
     }
 
     private fun setUserMoney(money: CharSequence) {
