@@ -103,7 +103,6 @@ class UserIngredientsViewModel @Inject constructor(
 
     private fun fetchUserIngredients() {
         fetchUserIngredientsAction.fetch()
-        Log.i("INGREDIENT", "Ingredient added")
     }
 
     private fun onFetchUserIngredientsSuccess(result: IFetchUserIngredientsAction.Result) {
@@ -113,7 +112,6 @@ class UserIngredientsViewModel @Inject constructor(
     }
 
     private fun updateIngredients(result: IFetchUserIngredientsAction.Result.Success) {
-        Log.i("Ingrediente agregado", result.ingredients.last().name)
         setState(State.UserIngredientsUpdated(result.ingredients))
     }
 

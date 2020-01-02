@@ -1,7 +1,5 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.dtos.MarketRecipesListResponse
-
 interface ISearchRecipesAction: Action<ISearchRecipesAction.Result> {
 
     sealed class Result {

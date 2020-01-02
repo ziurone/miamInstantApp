@@ -14,7 +14,7 @@ class FetchShopsAction @Inject constructor(
     private val shopRepository: IShopRepository,
     private val shopDao: ShopDao
 ):
-    BaseAction<IFetchShopsAction.Result>(),
+    BaseAction< IFetchShopsAction.Result>(),
     IFetchShopsAction
 {
     override fun fetchShopsAndBranches(lat: String, long: String, squares: Int) {
