@@ -6,8 +6,6 @@ import com.example.miaminstantapp.domain.entities.MarketIngredientEntity.Compani
 
 @Entity(tableName = TABLE_NAME)
 data class MarketIngredientEntity (
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
     val ingredientId: Int,
     val ingredientName: String,
     val branchArticleId: Int,
@@ -23,4 +21,7 @@ data class MarketIngredientEntity (
     companion object {
         const val TABLE_NAME = "marketIngredients"
     }
+
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
 }
