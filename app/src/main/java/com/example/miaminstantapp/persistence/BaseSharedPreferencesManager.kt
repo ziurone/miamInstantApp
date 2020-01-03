@@ -17,5 +17,4 @@ open class BaseSharedPreferencesManager constructor(
                 it.edit().also(batch).apply()
             }
         }
-
 }

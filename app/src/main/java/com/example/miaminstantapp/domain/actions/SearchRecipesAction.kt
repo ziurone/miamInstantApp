@@ -6,6 +6,7 @@ import com.example.miaminstantapp.domain.dtos.toMarketRecipeEntity
 import com.example.miaminstantapp.domain.repositories.IMarketIngredientRepository
 import com.example.miaminstantapp.domain.repositories.IMarketRecipesRepository
 import com.example.miaminstantapp.domain.repositories.MarketIngredientRepository
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -20,20 +21,23 @@ class SearchRecipesAction @Inject constructor(
             .search()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .flatMapCompletable { recipes ->
-
+            .flatMap { recipes ->
                 recipesRepository.insertAll(recipes.map {
                     it.toMarketRecipeEntity()
-                }).andThen{
-                    val marketIngredients = mutableListOf<MarketIngredientDTO>()
-                    recipes.map {
-                        marketIngredients.addAll(it.marketIngredients)
-                    }
-                    marketIngredientRepository.insertAll(marketIngredients)
+                })
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .toSingleDefault(recipes)
+            }
+            .flatMapCompletable { recipes ->
+                val marketIngredients = mutableListOf<MarketIngredientDTO>()
+                recipes.map {
+                    marketIngredients.addAll(it.marketIngredients)
                 }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-
+                marketIngredientRepository
+                    .insertAll(marketIngredients)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
             }
             .subscribe(::onSuccess, ::onError)
             .track()
