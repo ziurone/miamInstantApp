@@ -38,4 +38,8 @@ class RoomModule {
     @Provides
     @PerApplication
     fun providesMarketIngredientsDao(miamDataBase: MiamDataBase): MarketIngredientDao = miamDataBase.marketIngredientDao()
+
+    @Provides
+    @PerApplication
+    fun providesRecipeUserIngredientsDao(miamDataBase: MiamDataBase): UserRecipeIngredientDao = miamDataBase.userIngredientsOnRecipeDao()
 }

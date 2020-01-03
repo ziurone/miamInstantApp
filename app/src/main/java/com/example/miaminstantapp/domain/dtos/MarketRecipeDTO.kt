@@ -2,6 +2,7 @@ package com.example.miaminstantapp.domain.dtos
 
 import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
 import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
+import com.example.miaminstantapp.domain.entities.RecipeUserIngredientEntity
 
 data class MarketRecipeDTO(
     val id: Int,
@@ -78,7 +79,7 @@ fun MarketIngredientDTO.toMarketIngredientEntity(): MarketIngredientEntity {
     )
 }
 
-data class UserIngredientDTO(
+data class UserIngredientDTO (
     val id: Int,
     val usedQuantity: Int
 )
