@@ -47,7 +47,9 @@ class UserIngredientsViewModel @Inject constructor(
     }
 
     private fun onSearchRecipes(result: ISearchRecipesAction.Result) {
-
+        when(result) {
+            is ISearchRecipesAction.Result.Success -> setState(State.SaveRecipesSuccess)
+        }
     }
 
     override fun addIngredient(ingredient: Ingredient) {

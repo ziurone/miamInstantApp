@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
@@ -68,7 +69,12 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             is IUserIngredientsViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
             is IUserIngredientsViewModel.State.SearchIngredientsByNameSuccess -> updateIngredientsAutocomplete(state.ingredients)
             is IUserIngredientsViewModel.State.AddMoneySuccess -> setMoneySuccess()
+            is IUserIngredientsViewModel.State.SaveRecipesSuccess -> navigateToRecipeList()
         }
+    }
+
+    private fun navigateToRecipeList() {
+        findNavController().navigate(R.id.action_userFilters_to_doableRecipes)
     }
 
     private fun setMoneySuccess() {

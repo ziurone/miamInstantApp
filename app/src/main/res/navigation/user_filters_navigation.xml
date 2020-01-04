@@ -2,11 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/userFiltersNavigation"
-    app:startDestination="@id/userFiltersNavigation"
-    >
+    app:startDestination="@id/userFiltersNavigation">
+
     <fragment
         android:id="@+id/userFiltersNavigation"
         android:name="com.example.miaminstantapp.UserFiltersFragment">
+
+        <action
+            android:id="@+id/action_userFilters_to_doableRecipes"
+            app:destination="@+id/doableRecipesList"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/doableRecipesList"
+        android:name="com.example.miaminstantapp.view.DoableRecipesListFragment">
     </fragment>
 
 </navigation>

@@ -14,6 +14,7 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
         data class SearchIngredientsByNameSuccess(val ingredients: List<Ingredient>): State()
         object AddMoneySuccess: State()
         object FetchShopsSuccess: State()
+        object SaveRecipesSuccess: State()
     }
 
     abstract fun loadMasterData()

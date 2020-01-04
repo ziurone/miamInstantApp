@@ -75,6 +75,6 @@ class SearchRecipesAction @Inject constructor(
     }
 
     private fun onSuccess() {
-        Log.i("INGREDIENTS_INSERTED", "SUCCESS")
+        liveData.value = ISearchRecipesAction.Result.Success
     }
 }

@@ -9,9 +9,8 @@ import com.example.miaminstantapp.domain.repositories.*
 import com.example.miaminstantapp.injection.qualifiers.AppContext
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
-import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
-import com.example.miaminstantapp.viewmodel.UserIngredientsViewModel
-import com.example.miaminstantapp.viewmodel.ViewModelFactory
+import com.example.miaminstantapp.view.DoableRecipesListFragment
+import com.example.miaminstantapp.viewmodel.*
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -80,5 +79,13 @@ class UserResourcesModule {
 
     @Provides
     fun providesUserResources(fragment: UserFiltersFragment, viewModelFactory: ViewModelFactory): IUserIngredientsViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IUserIngredientsViewModel::class.java]
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(IDoableRecipesViewModel::class)
+    fun provideDoableRecipesViewModelIntoMap(viewModel: DoableRecipesViewModel): ViewModel = viewModel
+
+    @Provides
+    fun providesDoableRecipes(fragment: DoableRecipesListFragment, viewModelFactory: ViewModelFactory): IDoableRecipesViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IDoableRecipesViewModel::class.java]
 
 }
