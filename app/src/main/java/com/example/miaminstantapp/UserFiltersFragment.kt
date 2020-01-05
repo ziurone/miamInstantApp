@@ -31,13 +31,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     override fun initViews() {
         viewModel.loadMasterData()
 
-        ingredientsAutocompleteInput.afterDelayedTextChanged(::searchIngredientsByName)
-
-        autocompleteIngredientAdapter = AutocompleteUserIngredientsAdapter(this)
-        ingredientsAutocompleteList.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = autocompleteIngredientAdapter
-        }
+        initializeAutocomplete()
 
         addAddress.setOnClickListener {
             navigateToAddressComponent()
@@ -50,6 +44,21 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         }
 
         super.initViews()
+    }
+
+    // Region autocomplete
+    private fun initializeAutocomplete() {
+        ingredientsAutocompleteInput.afterDelayedTextChanged(::searchIngredientsByName)
+
+        autocompleteIngredientAdapter = AutocompleteUserIngredientsAdapter(this)
+        ingredientsAutocompleteList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = autocompleteIngredientAdapter
+        }
+    }
+
+    private fun updateIngredientsAutocomplete(ingredients: List<Ingredient>) {
+        autocompleteIngredientAdapter.setData(ingredients)
     }
 
     private fun searchRecipes() {
@@ -79,10 +88,6 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
     private fun setMoneySuccess() {
         Log.i("MONEY_ADDED", "Success")
-    }
-
-    private fun updateIngredientsAutocomplete(ingredients: List<Ingredient>) {
-        autocompleteIngredientAdapter.setData(ingredients)
     }
 
     private fun searchIngredientsByName(ingredientName: CharSequence) {

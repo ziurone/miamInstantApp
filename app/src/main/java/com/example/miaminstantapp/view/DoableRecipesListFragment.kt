@@ -1,18 +1,33 @@
 package com.example.miaminstantapp.view
 
-import android.util.Log
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.RecipeWithUserIngredients
+import com.example.miaminstantapp.view.adapters.DoableRecipesListAdapter
 import com.example.miaminstantapp.viewmodel.IDoableRecipesViewModel
+import kotlinx.android.synthetic.main.fragment_doable_recipes_list.*
 
-class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRecipesViewModel.State>() {
+class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRecipesViewModel.State>(), DoableRecipesListAdapter.onRecipeItemClickListener {
+
+    private lateinit var doableRecipesAdapter: DoableRecipesListAdapter
 
     override fun getLayoutId(): Int = R.layout.fragment_doable_recipes_list
 
     override fun initViews() {
         super.initViews()
 
+        initRecipeList()
         viewModel.fetchRecipes()
+    }
+
+    private fun initRecipeList() {
+        doableRecipesAdapter = DoableRecipesListAdapter(this)
+        recipeList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = doableRecipesAdapter
+        }
     }
 
     override fun onStateChanged(state: IDoableRecipesViewModel.State) {
@@ -23,9 +38,15 @@ class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRe
     }
 
     private fun showRecipes(recipes: List<RecipeWithUserIngredients>) {
-        recipes.forEach {
-            Log.i("RECIPES_FETCHED", it.recipe.title)
-            Log.i("RECIPES_FETCHED", it.userIngredients.first().ingredientId.toString())
-        }
+        doableRecipesAdapter.addRecipes(recipes)
     }
+
+    override fun onItemClick(recipeId: Int) {
+        val bundle = bundleOf(
+            DoableRecipeFragment.RECIPE_ID_KEY to recipeId
+        )
+
+        findNavController().navigate(R.id.action_doableRecipeList_to_doableRecipeDetail, bundle)
+    }
+
 }
