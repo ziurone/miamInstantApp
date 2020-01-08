@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
-import com.example.miaminstantapp.domain.entities.RecipeWithUserIngredients
+import com.example.miaminstantapp.domain.entities.DoableRecipe
 import io.reactivex.Completable
 import io.reactivex.Single
 
@@ -14,5 +14,9 @@ interface MarketRecipeDao {
     fun insertAll(recipes: List<MarketRecipeEntity>): Completable
 
     @Query("Select * FROM " + MarketRecipeEntity.TABLE_NAME)
-    fun fetchAll(): Single<List<RecipeWithUserIngredients>>
+    fun fetchAll(): Single<List<DoableRecipe>>
+
+    @Query("SELECT * FROM " + MarketRecipeEntity.TABLE_NAME + " WHERE id = :id ")
+    fun fetchById(id: Int): Single<DoableRecipe>
+
 }

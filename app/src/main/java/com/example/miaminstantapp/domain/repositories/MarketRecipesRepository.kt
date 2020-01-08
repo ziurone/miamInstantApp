@@ -4,7 +4,7 @@ import com.example.miaminstantapp.domain.dtos.MarketIngredientDTO
 import com.example.miaminstantapp.domain.dtos.MarketRecipeDTO
 import com.example.miaminstantapp.domain.dtos.UserIngredientDTO
 import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
-import com.example.miaminstantapp.domain.entities.RecipeWithUserIngredients
+import com.example.miaminstantapp.domain.entities.DoableRecipe
 import com.example.miaminstantapp.persistence.MarketRecipeDao
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -19,7 +19,9 @@ class MarketRecipesRepository @Inject constructor(
         return marketRecipeDao.insertAll(recipes)
     }
 
-    override fun fetchSearchRecipes(): Single<List<RecipeWithUserIngredients>> = marketRecipeDao.fetchAll()
+    override fun fetchRecipeById(id: Int): Single<DoableRecipe> = marketRecipeDao.fetchById(id)
+
+    override fun fetchSearchRecipes(): Single<List<DoableRecipe>> = marketRecipeDao.fetchAll()
 
     override fun search(): Single<List<MarketRecipeDTO>> {
         return Single.just(

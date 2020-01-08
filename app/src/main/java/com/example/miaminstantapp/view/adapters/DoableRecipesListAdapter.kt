@@ -5,15 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.RecipeWithUserIngredients
+import com.example.miaminstantapp.domain.entities.DoableRecipe
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_doable_recipe.*
 
 class DoableRecipesListAdapter constructor(
-    private val listener: onRecipeItemClickListener
+    private val listener: OnRecipeItemClickListener
 ): RecyclerView.Adapter<DoableRecipesListAdapter.ViewHolder>() {
 
-    private val recipes = mutableListOf<RecipeWithUserIngredients>()
+    private val recipes = mutableListOf<DoableRecipe>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_doable_recipe, parent, false)
@@ -26,23 +26,23 @@ class DoableRecipesListAdapter constructor(
 
     override fun getItemCount(): Int = recipes.size
 
-    fun addRecipes(doableRecipes: List<RecipeWithUserIngredients>) {
-        this.recipes.addAll(doableRecipes)
+    fun addRecipes(doableDoableRecipes: List<DoableRecipe>) {
+        this.recipes.addAll(doableDoableRecipes)
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bind(recipe: RecipeWithUserIngredients) {
-            title.text = recipe.recipe.title
+        fun bind(doableRecipe: DoableRecipe) {
+            title.text = doableRecipe.recipe.title
 
             containerView.setOnClickListener {
-                listener.onItemClick(recipe.recipe.id)
+                listener.onItemClick(doableRecipe.recipe.id)
             }
 
         }
     }
 
-    interface onRecipeItemClickListener {
+    interface OnRecipeItemClickListener {
         fun onItemClick(recipeId: Int)
     }
 }

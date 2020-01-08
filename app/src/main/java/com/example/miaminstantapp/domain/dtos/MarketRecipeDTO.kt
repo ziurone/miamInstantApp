@@ -75,7 +75,8 @@ fun MarketIngredientDTO.toMarketIngredientEntity(): MarketIngredientEntity {
         articleName = articleName,
         unitPrice = unitPrice,
         totalPrice = totalPrice,
-        branchId = branchId
+        branchId = branchId,
+        recipeId = recipeId
     )
 }
 

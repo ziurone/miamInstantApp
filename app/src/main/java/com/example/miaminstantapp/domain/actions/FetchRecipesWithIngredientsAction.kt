@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.entities.RecipeWithUserIngredients
+import com.example.miaminstantapp.domain.entities.DoableRecipe
 import com.example.miaminstantapp.domain.repositories.MarketRecipesRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -30,7 +30,7 @@ class FetchRecipesWithIngredientsAction @Inject constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    fun onSuccess(recipes: List<RecipeWithUserIngredients>) {
-        liveData.value = IFetchRecipesWithIngredientsAction.Result.Success(recipes)
+    fun onSuccess(doableRecipes: List<DoableRecipe>) {
+        liveData.value = IFetchRecipesWithIngredientsAction.Result.Success(doableRecipes)
     }
 }

@@ -74,6 +74,9 @@ class UserResourcesModule {
     fun providesSearchRecipesAction(action: SearchRecipesAction): ISearchRecipesAction = action
 
     @Provides
+    fun providesGetDoableRecipeWithIdAction(action: GetDoableRecipeByIdAction): IGetDoableRecipeByIdAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel

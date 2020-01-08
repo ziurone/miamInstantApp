@@ -17,11 +17,17 @@ class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRe
 
         arguments?.let {
             val recipeId = it.getInt(RECIPE_ID_KEY)
-            Log.i("RECIPE__ID", recipeId.toString())
+            viewModel.fetchRecipe(recipeId)
         }
     }
 
     override fun onStateChanged(state: IDoableRecipeDetailViewModel.State) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when(state) {
+            is IDoableRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe()
+        }
+    }
+
+    private fun showRecipe() {
+        Log.i("DOABLE_RECIPE", "SUCCESS")
     }
 }

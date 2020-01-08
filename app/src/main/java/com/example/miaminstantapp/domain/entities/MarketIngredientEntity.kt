@@ -16,7 +16,8 @@ data class MarketIngredientEntity (
     val articleName: String,
     val unitPrice: Float,
     val totalPrice: Float,
-    val branchId: Int
+    val branchId: Int,
+    val recipeId: Int
 ) {
     companion object {
         const val TABLE_NAME = "marketIngredients"

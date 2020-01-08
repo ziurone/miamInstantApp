@@ -4,12 +4,12 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.RecipeWithUserIngredients
+import com.example.miaminstantapp.domain.entities.DoableRecipe
 import com.example.miaminstantapp.view.adapters.DoableRecipesListAdapter
 import com.example.miaminstantapp.viewmodel.IDoableRecipesViewModel
 import kotlinx.android.synthetic.main.fragment_doable_recipes_list.*
 
-class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRecipesViewModel.State>(), DoableRecipesListAdapter.onRecipeItemClickListener {
+class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRecipesViewModel.State>(), DoableRecipesListAdapter.OnRecipeItemClickListener {
 
     private lateinit var doableRecipesAdapter: DoableRecipesListAdapter
 
@@ -33,12 +33,12 @@ class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRe
     override fun onStateChanged(state: IDoableRecipesViewModel.State) {
 
         when(state) {
-            is IDoableRecipesViewModel.State.FetchedRecipesSuccess -> showRecipes(state.recipes)
+            is IDoableRecipesViewModel.State.FetchedRecipesSuccess -> showRecipes(state.doableRecipes)
         }
     }
 
-    private fun showRecipes(recipes: List<RecipeWithUserIngredients>) {
-        doableRecipesAdapter.addRecipes(recipes)
+    private fun showRecipes(doableRecipes: List<DoableRecipe>) {
+        doableRecipesAdapter.addRecipes(doableRecipes)
     }
 
     override fun onItemClick(recipeId: Int) {
