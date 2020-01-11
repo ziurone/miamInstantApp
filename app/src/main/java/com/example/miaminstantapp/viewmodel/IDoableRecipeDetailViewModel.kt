@@ -6,7 +6,9 @@ abstract class IDoableRecipeDetailViewModel: BaseViewModel<IDoableRecipeDetailVi
     sealed class State {
         data class FetchRecipeSuccess(val doableRecipe: DoableRecipe): State()
         data class Error(val errorMessage: String): State()
+        object AddRecipeSuccess: State()
     }
 
     abstract fun fetchRecipe(recipeId: Int)
+    abstract fun addRecipe(doableRecipe: DoableRecipe)
 }

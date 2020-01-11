@@ -26,3 +26,14 @@ data class MarketIngredientEntity (
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
+
+fun MarketIngredientEntity.toShopArticle(): ShopArticleEntity {
+    return ShopArticleEntity(
+        branchId = branchId,
+        branchArticleId = branchArticleId,
+        articlesQuantity = articlesQuantity,
+        articleName = articleName,
+        unitPrice = unitPrice,
+        totalPrice = totalPrice
+    )
+}

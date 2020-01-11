@@ -41,6 +41,9 @@ class UserResourcesModule {
     fun providesMarketIngredientRepository(repository: MarketIngredientRepository): IMarketIngredientRepository = repository
 
     @Provides
+    fun providesShopArticleRepository(repository: ShopArticleRepository): IShopArticleRepository = repository
+
+    @Provides
     fun providesUserIngredientsOnRecipeRepository(repository: UserRecipeIngredientRepository): IUserRecipeIngredientRepository = repository
 
     @Provides
@@ -75,6 +78,9 @@ class UserResourcesModule {
 
     @Provides
     fun providesGetDoableRecipeWithIdAction(action: GetDoableRecipeByIdAction): IGetDoableRecipeByIdAction = action
+
+    @Provides
+    fun providesAddRecipeAction(action: AddRecipeAction): IAddRecipeAction = action
 
     @Provides
     @IntoMap
