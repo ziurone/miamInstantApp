@@ -4,10 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
-import com.example.miaminstantapp.domain.entities.UserIngredientWithVolumeUnits
+import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import io.reactivex.Completable
 import io.reactivex.Single
 

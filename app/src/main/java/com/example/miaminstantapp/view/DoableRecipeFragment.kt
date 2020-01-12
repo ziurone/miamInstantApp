@@ -1,8 +1,9 @@
 package com.example.miaminstantapp.view
 
 import android.util.Log
+import androidx.navigation.fragment.findNavController
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.DoableRecipe
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.viewmodel.IDoableRecipeDetailViewModel
 import kotlinx.android.synthetic.main.fragment_doable_recipe.*
 
@@ -33,9 +34,13 @@ class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRe
         when(state) {
             is IDoableRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.doableRecipe)
             is IDoableRecipeDetailViewModel.State.AddRecipeSuccess -> {
-                Log.i("RECIPED_ADD_SUCCESS", "SUCCESS")
+                recipeAddessSuccess()
             }
         }
+    }
+
+    private fun recipeAddessSuccess() {
+        findNavController().navigate(R.id.action_doableRecipeDetailToTicketFragment)
     }
 
     private fun showRecipe(doableRecipe: DoableRecipe) {

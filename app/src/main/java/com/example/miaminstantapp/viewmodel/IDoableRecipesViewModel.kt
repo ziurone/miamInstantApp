@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.viewmodel
 
-import com.example.miaminstantapp.domain.entities.DoableRecipe
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 
 abstract class IDoableRecipesViewModel: BaseViewModel<IDoableRecipesViewModel.State>() {
     sealed class State {

@@ -1,7 +1,10 @@
-package com.example.miaminstantapp.domain.entities
+package com.example.miaminstantapp.domain.relations
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
+import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
+import com.example.miaminstantapp.domain.entities.RecipeUserIngredientEntity
 
 data class DoableRecipe (
 

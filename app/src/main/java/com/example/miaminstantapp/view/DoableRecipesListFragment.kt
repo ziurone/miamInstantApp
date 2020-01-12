@@ -4,7 +4,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.DoableRecipe
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.view.adapters.DoableRecipesListAdapter
 import com.example.miaminstantapp.viewmodel.IDoableRecipesViewModel
 import kotlinx.android.synthetic.main.fragment_doable_recipes_list.*

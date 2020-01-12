@@ -11,6 +11,7 @@ import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.DoableRecipeFragment
 import com.example.miaminstantapp.view.DoableRecipesListFragment
+import com.example.miaminstantapp.view.TicketFragment
 import com.example.miaminstantapp.viewmodel.*
 import dagger.Module
 import dagger.Provides
@@ -83,6 +84,9 @@ class UserResourcesModule {
     fun providesAddRecipeAction(action: AddRecipeAction): IAddRecipeAction = action
 
     @Provides
+    fun providesFetchShopArticlesAction(action: FetchShopArticlesAction): IFetchShopArticlesAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel
@@ -105,5 +109,13 @@ class UserResourcesModule {
 
     @Provides
     fun providesDoableRecipe(fragment: DoableRecipeFragment, viewModelFactory: ViewModelFactory): IDoableRecipeDetailViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IDoableRecipeDetailViewModel::class.java]
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(ITicketViewModel::class)
+    fun proviesTicketViewModelIntoMap(viewModel: TicketViewModel): ViewModel = viewModel
+
+    @Provides
+    fun providesTicket(fragment: TicketFragment, viewModelFactory: ViewModelFactory): ITicketViewModel = ViewModelProviders.of(fragment, viewModelFactory)[ITicketViewModel::class.java]
 
 }

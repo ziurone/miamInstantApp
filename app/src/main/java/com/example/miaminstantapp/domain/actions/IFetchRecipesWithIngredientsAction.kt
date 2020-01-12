@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.entities.DoableRecipe
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 
 interface IFetchRecipesWithIngredientsAction: Action<IFetchRecipesWithIngredientsAction.Result> {
 

@@ -1,8 +1,11 @@
-package com.example.miaminstantapp.domain.entities
+package com.example.miaminstantapp.domain.relations
 
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
+import com.example.miaminstantapp.domain.entities.UserIngredientEntity
+import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
+import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 
 data class UserIngredientWithVolumeUnits(
     @Embedded

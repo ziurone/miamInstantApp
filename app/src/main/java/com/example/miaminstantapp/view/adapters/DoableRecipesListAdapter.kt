@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.DoableRecipe
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_doable_recipe.*
 

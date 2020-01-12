@@ -26,6 +26,15 @@
 
     <fragment
         android:id="@+id/doableRecipeDetailFragment"
-        android:name="com.example.miaminstantapp.view.DoableRecipeFragment"/>
+        android:name="com.example.miaminstantapp.view.DoableRecipeFragment">
+
+        <action
+            android:id="@+id/action_doableRecipeDetailToTicketFragment"
+            app:destination="@id/ticketFragment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/ticketFragment"
+        android:name="com.example.miaminstantapp.view.TicketFragment"/>
 
 </navigation>

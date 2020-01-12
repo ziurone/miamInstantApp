@@ -2,7 +2,7 @@ package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.dtos.MarketRecipeDTO
 import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
-import com.example.miaminstantapp.domain.entities.DoableRecipe
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 import io.reactivex.Completable
 import io.reactivex.Single
 

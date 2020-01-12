@@ -2,7 +2,7 @@ package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.actions.IAddRecipeAction
 import com.example.miaminstantapp.domain.actions.IGetDoableRecipeByIdAction
-import com.example.miaminstantapp.domain.entities.DoableRecipe
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 import javax.inject.Inject
 
 class DoableRecipeDetailViewModel @Inject constructor(

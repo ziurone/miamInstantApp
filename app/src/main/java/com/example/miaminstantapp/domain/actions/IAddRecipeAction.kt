@@ -1,10 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.entities.DoableRecipe
-import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
-import com.example.miaminstantapp.domain.entities.RecipeUserIngredientEntity
-import com.example.miaminstantapp.domain.entities.ShopArticleEntity
-import io.reactivex.Completable
+import com.example.miaminstantapp.domain.relations.DoableRecipe
 
 interface IAddRecipeAction: Action<IAddRecipeAction.Result> {
     sealed class Result {
