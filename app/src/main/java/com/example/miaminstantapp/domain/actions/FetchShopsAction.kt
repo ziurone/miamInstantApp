@@ -21,8 +21,7 @@ class FetchShopsAction @Inject constructor(
         branchRepository
             .fetchBranches(lat, long, squares)
             .flatMapCompletable { branches ->
-                    branchDao.insertAll(branches)
-
+                branchDao.insertAll(branches)
             }
             .andThen(shopRepository.fetchShops(listOf(1,2,3)))
             .flatMapCompletable { shops ->
@@ -32,7 +31,6 @@ class FetchShopsAction @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)
             .track()
-
     }
 
     override fun getFailureResult(failedResponseCode: String): IFetchShopsAction.Result? {

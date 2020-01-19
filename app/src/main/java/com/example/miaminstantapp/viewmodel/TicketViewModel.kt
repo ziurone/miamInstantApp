@@ -1,29 +1,31 @@
 package com.example.miaminstantapp.viewmodel
 
+import com.example.miaminstantapp.domain.actions.FetchShopsPurchaseAction
 import com.example.miaminstantapp.domain.actions.IFetchShopArticlesAction
-import com.example.miaminstantapp.domain.relations.ShopWithBranchesAndArticles
+import com.example.miaminstantapp.domain.actions.IFetchShopsPurchaseAction
+import com.example.miaminstantapp.domain.relations.ShopPurchase
 import javax.inject.Inject
 
 class TicketViewModel @Inject constructor(
-    private val fetchShopArticlesAction: IFetchShopArticlesAction
+    private val fetchShopsPurchaseAction: IFetchShopsPurchaseAction
 ) : ITicketViewModel() {
 
     init {
-        listenSource(fetchShopArticlesAction.getLiveData(), ::onFetchShopArticlesResult)
+        listenSource(fetchShopsPurchaseAction.getLiveData(), ::onFetchShopArticlesResult)
     }
 
-    private fun onFetchShopArticlesResult(result: IFetchShopArticlesAction.Result) {
+    private fun onFetchShopArticlesResult(result: IFetchShopsPurchaseAction.Result) {
         when (result) {
-            is IFetchShopArticlesAction.Result.Success -> orderArticlesByShop(result.shopsWithArticles)
+            is IFetchShopsPurchaseAction.Result.Success -> showShopPurchases(result.shopPurchaes)
         }
     }
 
-    private fun orderArticlesByShop(articles: List<ShopWithBranchesAndArticles>) {
-        setState(State.FetchShopArticlesSuccess(articles))
+    private fun showShopPurchases(shopPurchases: List<ShopPurchase>) {
+        setState(State.FetchShopPurchasesSuccess(shopPurchases))
     }
 
     override fun fetch() {
-        fetchShopArticlesAction.fetch()
+        fetchShopsPurchaseAction.fetch()
     }
 
 }

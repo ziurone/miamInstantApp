@@ -100,7 +100,6 @@ class UserIngredientsViewModel @Inject constructor(
             is IAddUserIngredientAction.Result.Success -> fetchUserIngredients()
             is IAddUserIngredientAction.Result.Error -> Log.i("ERROR_ADD", result.errorMessage)
         }
-
     }
 
     private fun fetchUserIngredients() {

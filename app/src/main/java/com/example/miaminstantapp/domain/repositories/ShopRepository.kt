@@ -1,10 +1,14 @@
 package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.entities.ShopEntity
+import com.example.miaminstantapp.domain.relations.ShopPurchase
+import com.example.miaminstantapp.persistence.ShopDao
 import io.reactivex.Single
 import javax.inject.Inject
 
-class ShopRepository @Inject constructor(): IShopRepository {
+class ShopRepository @Inject constructor(
+    val shopDao: ShopDao
+): IShopRepository {
     override fun fetchShops(shopsIds: List<Int>): Single<List<ShopEntity>> {
         return Single.just(
             listOf(
@@ -13,4 +17,7 @@ class ShopRepository @Inject constructor(): IShopRepository {
             )
         )
     }
+
+    override fun fetchShopsPurchase(): Single<List<ShopPurchase>> = shopDao.getShopPurchase()
+
 }
