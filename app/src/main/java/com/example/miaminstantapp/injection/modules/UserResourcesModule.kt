@@ -84,7 +84,7 @@ class UserResourcesModule {
     fun providesAddRecipeAction(action: AddRecipeAction): IAddRecipeAction = action
 
     @Provides
-    fun providesFetchShopArticlesAction(action: FetchShopArticlesAction): IFetchShopArticlesAction = action
+    fun providesFetchShopArticlesAction(action: FetchShopArticlesByShopAction): IFetchShopArticlesAction = action
 
     @Provides
     fun providesFetchShopsPurchaseAction(action: FetchShopsPurchaseAction): IFetchShopsPurchaseAction = action
