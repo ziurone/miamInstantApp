@@ -12,7 +12,7 @@ import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.DoableRecipeFragment
 import com.example.miaminstantapp.view.DoableRecipesListFragment
 import com.example.miaminstantapp.view.TicketArticlesFragment
-import com.example.miaminstantapp.view.TicketFragment
+import com.example.miaminstantapp.view.ShopPurchaseTicketFragment
 import com.example.miaminstantapp.viewmodel.*
 import dagger.Module
 import dagger.Provides
@@ -120,7 +120,7 @@ class UserResourcesModule {
     fun proviesTicketViewModelIntoMap(viewModel: TicketViewModel): ViewModel = viewModel
 
     @Provides
-    fun providesTicket(fragment: TicketFragment, viewModelFactory: ViewModelFactory): ITicketViewModel = ViewModelProviders.of(fragment, viewModelFactory)[ITicketViewModel::class.java]
+    fun providesTicket(fragment: ShopPurchaseTicketFragment, viewModelFactory: ViewModelFactory): ITicketViewModel = ViewModelProviders.of(fragment, viewModelFactory)[ITicketViewModel::class.java]
 
     @Provides
     @IntoMap

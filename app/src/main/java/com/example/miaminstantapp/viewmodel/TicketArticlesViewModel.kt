@@ -13,7 +13,7 @@ class TicketArticlesViewModel @Inject constructor(
     }
 
     override fun fetch(shopId: Int) {
-
+        fetchShopArticlesByShopAction.fetchByShop(shopId)
     }
 
     private fun onFetchArticlesResult(result: IFetchShopArticlesAction.Result) {

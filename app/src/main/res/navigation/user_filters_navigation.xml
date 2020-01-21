@@ -35,6 +35,17 @@
     </fragment>
 
     <fragment android:id="@+id/ticketFragment"
-        android:name="com.example.miaminstantapp.view.TicketFragment"/>
+        android:name="com.example.miaminstantapp.view.ShopPurchaseTicketFragment">
+
+        <action
+            android:id="@+id/action_shopPurchaseTicket_to_articlesTicket"
+            app:destination="@+id/ticketArticlesFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ticketArticlesFragment"
+        android:name="com.example.miaminstantapp.view.TicketArticlesFragment"
+        />
 
 </navigation>

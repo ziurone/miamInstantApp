@@ -11,9 +11,9 @@ class FetchShopArticlesByShopAction @Inject constructor(
 ) : BaseAction<IFetchShopArticlesAction.Result>(),
     IFetchShopArticlesAction
 {
-    override fun fetch() {
+    override fun fetchByShop(shopId: Int) {
         shopArticleRepository
-            .fetch()
+            .fetchByShopId(shopId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)

@@ -9,7 +9,7 @@ class BranchRepository @Inject constructor() : IBranchRepository {
         return Single.just(
             listOf(
                 BranchEntity(1, "Coto Boedo", "34.100000", "32.100000", "Boedo 900", 1),
-                BranchEntity(2, "Coto Boedo 2", "34.100000", "32.100000", "Boedo 1000", 1)
+                BranchEntity(2, "Coto Boedo 2", "34.100000", "32.100000", "Boedo 1000", 2)
             )
         )
     }

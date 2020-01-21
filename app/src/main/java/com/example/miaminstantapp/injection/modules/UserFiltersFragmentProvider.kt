@@ -4,7 +4,7 @@ import com.example.miaminstantapp.UserFiltersFragment
 import com.example.miaminstantapp.view.DoableRecipeFragment
 import com.example.miaminstantapp.view.DoableRecipesListFragment
 import com.example.miaminstantapp.view.TicketArticlesFragment
-import com.example.miaminstantapp.view.TicketFragment
+import com.example.miaminstantapp.view.ShopPurchaseTicketFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -21,7 +21,7 @@ abstract class UserFiltersFragmentProvider {
     abstract fun providesDoableRecipeFragment(): DoableRecipeFragment
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
-    abstract fun providesTicketFragment(): TicketFragment
+    abstract fun providesTicketFragment(): ShopPurchaseTicketFragment
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
     abstract fun providesTicketArticlesFragment(): TicketArticlesFragment

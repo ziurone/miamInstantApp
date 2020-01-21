@@ -1,6 +1,8 @@
 package com.example.miaminstantapp.view
 
 import android.util.Log
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
@@ -8,7 +10,7 @@ import com.example.miaminstantapp.view.adapters.ShopPurchaseAdapter
 import com.example.miaminstantapp.viewmodel.ITicketViewModel
 import kotlinx.android.synthetic.main.fragment_shop_purchase_ticket.*
 
-class TicketFragment: BaseFragment<ITicketViewModel, ITicketViewModel.State>(), ShopPurchaseAdapter.OnShopPurchaseItemClickListener {
+class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewModel.State>(), ShopPurchaseAdapter.OnShopPurchaseItemClickListener {
 
     private lateinit var shopPurchaseAdapter: ShopPurchaseAdapter
 
@@ -40,6 +42,10 @@ class TicketFragment: BaseFragment<ITicketViewModel, ITicketViewModel.State>(), 
     }
 
     override fun onClick(shopPurchase: ShopPurchaseRelation) {
-        Log.i("CLICK_PURCHASE", "CLICK")
+        val bundle = bundleOf(
+            TicketArticlesFragment.SHOP_ID_KEY to shopPurchase.shop.shopId
+        )
+
+        findNavController().navigate(R.id.action_shopPurchaseTicket_to_articlesTicket, bundle)
     }
 }

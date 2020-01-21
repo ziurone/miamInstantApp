@@ -11,4 +11,5 @@ class ShopArticleRepository @Inject constructor(
 ): IShopArticleRepository {
     override fun insertAll(articles: List<ShopArticleEntity>): Completable = shopArticleDao.insertAll(articles)
     override fun fetch(): Single<List<ShopArticleEntity>> = shopArticleDao.fetch()
+    override fun fetchByShopId(shopId: Int): Single<List<ShopArticleEntity>> = shopArticleDao.fetchByShopId(shopId)
 }

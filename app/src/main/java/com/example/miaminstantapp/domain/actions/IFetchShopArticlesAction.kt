@@ -8,5 +8,5 @@ interface IFetchShopArticlesAction: Action<IFetchShopArticlesAction.Result> {
         data class Error(val errorMessage: String): Result()
     }
 
-    fun fetch()
+    fun fetchByShop(shopId: Int)
 }
