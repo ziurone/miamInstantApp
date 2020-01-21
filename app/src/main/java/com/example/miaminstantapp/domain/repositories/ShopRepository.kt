@@ -1,7 +1,7 @@
 package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.entities.ShopEntity
-import com.example.miaminstantapp.domain.relations.ShopPurchase
+import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
 import com.example.miaminstantapp.persistence.ShopDao
 import io.reactivex.Single
 import javax.inject.Inject
@@ -18,6 +18,6 @@ class ShopRepository @Inject constructor(
         )
     }
 
-    override fun fetchShopsPurchase(): Single<List<ShopPurchase>> = shopDao.getShopPurchase()
+    override fun fetchShopsPurchase(): Single<List<ShopPurchaseRelation>> = shopDao.getShopPurchase()
 
 }

@@ -1,17 +1,25 @@
 package com.example.miaminstantapp.view
 
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.ShopPurchase
-import com.example.miaminstantapp.domain.relations.ShopWithBranchesAndArticles
+import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
+import com.example.miaminstantapp.view.adapters.ShopPurchaseAdapter
 import com.example.miaminstantapp.viewmodel.ITicketViewModel
+import kotlinx.android.synthetic.main.fragment_shop_purchase_ticket.*
 
-class TicketFragment: BaseFragment<ITicketViewModel, ITicketViewModel.State>() {
+class TicketFragment: BaseFragment<ITicketViewModel, ITicketViewModel.State>(), ShopPurchaseAdapter.OnShopPurchaseItemClickListener {
+
+    private lateinit var shopPurchaseAdapter: ShopPurchaseAdapter
 
     override fun initViews() {
         super.initViews()
 
-        Log.i("TicketFragmet", "Enter Success")
+        shopPurchaseAdapter = ShopPurchaseAdapter(this)
+        shopPurchasesList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = shopPurchaseAdapter
+        }
     }
 
     override fun startInitialDomainAction() {
@@ -19,20 +27,19 @@ class TicketFragment: BaseFragment<ITicketViewModel, ITicketViewModel.State>() {
         viewModel.fetch()
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_ticket
+    override fun getLayoutId(): Int = R.layout.fragment_shop_purchase_ticket
 
     override fun onStateChanged(state: ITicketViewModel.State) {
         when(state) {
-            is ITicketViewModel.State.FetchShopPurchasesSuccess -> showShopsWithTotal(state.shopsPurchases)
+            is ITicketViewModel.State.FetchShopPurchasesSuccess -> showShopPurchases(state.shopsPurchases)
         }
     }
 
-    private fun showShopsWithTotal(shopPurchases: List<ShopPurchase>) {
-        shopPurchases.map {
+    private fun showShopPurchases(shopPurchases: List<ShopPurchaseRelation>) {
+        shopPurchaseAdapter.setData(shopPurchases)
+    }
 
-            Log.i("SHOP_NAME", it.shop.name)
-            Log.i("PRiCE", it.purchasePrice.toString())
-
-        }
+    override fun onClick(shopPurchase: ShopPurchaseRelation) {
+        Log.i("CLICK_PURCHASE", "CLICK")
     }
 }

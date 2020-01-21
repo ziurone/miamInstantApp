@@ -1,9 +1,7 @@
 package com.example.miaminstantapp.viewmodel
 
-import com.example.miaminstantapp.domain.actions.FetchShopsPurchaseAction
-import com.example.miaminstantapp.domain.actions.IFetchShopArticlesAction
 import com.example.miaminstantapp.domain.actions.IFetchShopsPurchaseAction
-import com.example.miaminstantapp.domain.relations.ShopPurchase
+import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
 import javax.inject.Inject
 
 class TicketViewModel @Inject constructor(
@@ -20,7 +18,7 @@ class TicketViewModel @Inject constructor(
         }
     }
 
-    private fun showShopPurchases(shopPurchases: List<ShopPurchase>) {
+    private fun showShopPurchases(shopPurchases: List<ShopPurchaseRelation>) {
         setState(State.FetchShopPurchasesSuccess(shopPurchases))
     }
 

@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.relations.ShopPurchase
+import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
 import com.example.miaminstantapp.domain.repositories.IShopRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,7 +29,7 @@ class FetchShopsPurchaseAction @Inject constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    fun onSuccess(shopPurchases: List<ShopPurchase>) {
+    fun onSuccess(shopPurchases: List<ShopPurchaseRelation>) {
         liveData.value = IFetchShopsPurchaseAction.Result.Success(shopPurchases)
     }
 }
