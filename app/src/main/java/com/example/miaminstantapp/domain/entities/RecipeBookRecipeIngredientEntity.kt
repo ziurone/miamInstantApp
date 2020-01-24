@@ -2,10 +2,10 @@ package com.example.miaminstantapp.domain.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.miaminstantapp.domain.entities.UserRecipeIngredientEntity.Companion.TABLE_NAME
+import com.example.miaminstantapp.domain.entities.RecipeBookRecipeIngredientEntity.Companion.TABLE_NAME
 
 @Entity(tableName = TABLE_NAME)
-data class UserRecipeIngredientEntity(
+data class RecipeBookRecipeIngredientEntity(
     @PrimaryKey
     val id: Int,
 

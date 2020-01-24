@@ -5,6 +5,7 @@ import androidx.room.Relation
 import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
 import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
 import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredient
+import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 
 data class DoableRecipe (
 
@@ -17,4 +18,16 @@ data class DoableRecipe (
     @Relation(parentColumn = "id", entityColumn = "recipeId")
     val marketIngredients: List<MarketIngredientEntity>
 
+)
+
+fun DoableRecipe.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
+    name = recipe.title,
+    content = recipe.content,
+    link = recipe.link,
+    servings = recipe.servings,
+    preparingMinutes = recipe.preparingMinutes,
+    cookingMinutes = recipe.cookingMinutes,
+    totalMinutes = recipe.totalMinutes,
+    siteId = recipe.siteId,
+    imageUrl = recipe.imageUrl
 )
