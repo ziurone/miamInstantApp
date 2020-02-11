@@ -10,6 +10,7 @@ import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredient.Com
 @Entity(tableName = TABLE_NAME)
 data class DoableRecipeUserIngredient(
     val ingredientId: Int,
+    val ingredientName: String,
     val usedQuantity: Int,
     val recipeId: Int
 ) {
@@ -20,3 +21,9 @@ data class DoableRecipeUserIngredient(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
+
+fun DoableRecipeUserIngredient.toRecipeBookIngredient(recipe: Int) = RecipeBookRecipeIngredientEntity(
+    name = ingredientName,
+    quantity = usedQuantity,
+    recipeId = recipe
+)

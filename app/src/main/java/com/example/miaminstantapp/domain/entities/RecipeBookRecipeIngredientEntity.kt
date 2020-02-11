@@ -6,12 +6,8 @@ import com.example.miaminstantapp.domain.entities.RecipeBookRecipeIngredientEnti
 
 @Entity(tableName = TABLE_NAME)
 data class RecipeBookRecipeIngredientEntity(
-    @PrimaryKey
-    val id: Int,
 
     val name: String,
-
-    val volumeUnitId: Int,
 
     val quantity: Int,
 
@@ -20,5 +16,9 @@ data class RecipeBookRecipeIngredientEntity(
 ) {
     companion object {
         const val TABLE_NAME = "user_recipe_ingredients"
+        
     }
+
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
 }

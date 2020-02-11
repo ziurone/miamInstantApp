@@ -44,10 +44,11 @@ class SearchRecipesAction @Inject constructor(
                 recipes.map {
                     val r = it
                     userIngredientsEntities.addAll(
-                        it.userIngredients.map {
+                        it.userIngredients.map { ingDTO ->
                             DoableRecipeUserIngredient(
-                                ingredientId = it.id,
-                                usedQuantity = it.usedQuantity,
+                                ingredientId = ingDTO.id,
+                                ingredientName = ingDTO.name,
+                                usedQuantity = ingDTO.usedQuantity,
                                 recipeId = r.id
                             )
                         }

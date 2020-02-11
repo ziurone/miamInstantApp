@@ -27,6 +27,12 @@ data class MarketIngredientEntity (
     var id: Int = 0
 }
 
+fun MarketIngredientEntity.toRecipeBookIngredient(recipe: Int): RecipeBookRecipeIngredientEntity = RecipeBookRecipeIngredientEntity(
+    name = ingredientName,
+    quantity = usedQuantity,
+    recipeId = recipe
+)
+
 fun MarketIngredientEntity.toShopArticle(): ShopArticleEntity {
     return ShopArticleEntity(
         branchId = branchId,

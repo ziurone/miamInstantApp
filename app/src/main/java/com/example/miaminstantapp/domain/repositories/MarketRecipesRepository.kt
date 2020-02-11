@@ -57,6 +57,7 @@ class MarketRecipesRepository @Inject constructor(
                     listOf(
                         UserIngredientDTO(
                             1,
+                            "sal",
                             100
                         )
                     )
