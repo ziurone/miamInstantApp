@@ -48,4 +48,11 @@
         android:name="com.example.miaminstantapp.view.TicketArticlesFragment"
         />
 
+    <fragment
+        android:id="@+id/recipeBookFragment"
+        android:name="com.example.miaminstantapp.view.RecipeBookFragment"/>
+
+    <action android:id="@+id/global_action_toRecipeBookFragment"
+        app:destination="@id/recipeBookFragment"/>
+
 </navigation>

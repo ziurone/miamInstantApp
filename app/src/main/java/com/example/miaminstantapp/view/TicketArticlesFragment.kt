@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view
 
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.ShopArticleEntity
@@ -29,6 +30,10 @@ class TicketArticlesFragment: BaseFragment<ITicketArticlesViewModel, ITicketArti
         articlesList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = articlesAdapter
+        }
+
+        showRecipeBook.setOnClickListener {
+            findNavController().navigate(R.id.global_action_toRecipeBookFragment)
         }
 
         super.initViews()

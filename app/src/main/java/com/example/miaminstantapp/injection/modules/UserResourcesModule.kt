@@ -9,10 +9,7 @@ import com.example.miaminstantapp.domain.repositories.*
 import com.example.miaminstantapp.injection.qualifiers.AppContext
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
-import com.example.miaminstantapp.view.DoableRecipeFragment
-import com.example.miaminstantapp.view.DoableRecipesListFragment
-import com.example.miaminstantapp.view.TicketArticlesFragment
-import com.example.miaminstantapp.view.ShopPurchaseTicketFragment
+import com.example.miaminstantapp.view.*
 import com.example.miaminstantapp.viewmodel.*
 import dagger.Module
 import dagger.Provides
@@ -97,6 +94,9 @@ class UserResourcesModule {
     fun providesFetchShopsPurchaseAction(action: FetchShopsPurchaseAction): IFetchShopsPurchaseAction = action
 
     @Provides
+    fun providesFetchRecipeBookRecipesAction(action: FetchRecipeBookRecipesAction): IFetchRecipeBookRecipesAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel
@@ -135,5 +135,13 @@ class UserResourcesModule {
 
     @Provides
     fun providesTicketArticles(fragment: TicketArticlesFragment, viewModelFactory: ViewModelFactory): ITicketArticlesViewModel = ViewModelProviders.of(fragment, viewModelFactory)[ITicketArticlesViewModel::class.java]
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(IRecipeBookViewModel::class)
+    fun providesRecipeBookViewModelIntoMap(viewModel: RecipeBookViewModel): ViewModel = viewModel
+
+    @Provides
+    fun providesRecipeBook(fragment: RecipeBookFragment, viewModelFactory: ViewModelFactory): IRecipeBookViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IRecipeBookViewModel::class.java]
 
 }
