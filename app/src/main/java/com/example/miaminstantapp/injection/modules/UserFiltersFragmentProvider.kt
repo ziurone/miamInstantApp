@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.injection.modules
 
-import com.example.miaminstantapp.UserFiltersFragment
+import com.example.miaminstantapp.view.UserFiltersFragment
 import com.example.miaminstantapp.view.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

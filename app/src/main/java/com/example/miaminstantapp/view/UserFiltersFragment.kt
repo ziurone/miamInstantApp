@@ -1,4 +1,4 @@
-package com.example.miaminstantapp
+package com.example.miaminstantapp.view
 
 import android.content.Intent
 import android.util.Log
@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
-import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.libraries.places.api.model.Place
@@ -109,6 +109,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT)
                 text = it.name
+                textSize = 16f
             }
 
             chip.setOnClickListener{
@@ -129,6 +130,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT)
                 text = it.name
+                textSize = 16f
             }
 
             userIngredients.addView(chip)
@@ -164,7 +166,9 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         ).build(context!!)
 
 
-        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
+        startActivityForResult(intent,
+            AUTOCOMPLETE_REQUEST_CODE
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -9,5 +9,8 @@
         <item name="android:background">@drawable/rounded_borders_badget</item>
         <item name="android:padding">@dimen/badget_padding</item>
     </style>
-    
+
+    <style name="GenericCardTitle" parent="TextAppearance.MaterialComponents.Headline6">
+    </style>
+
 </resources>

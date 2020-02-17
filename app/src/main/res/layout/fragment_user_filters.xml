@@ -5,17 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".UserFiltersFragment">
+    tools:context=".view.UserFiltersFragment">
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipsGroupSuggestedIngredients"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/suggestedIngredientsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:singleSelection="true"
-        app:layout_constraintTop_toBottomOf="parent"
-        android:layout_width="@dimen/match_constraint"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/generic_card_outter_margin"
+        android:padding="@dimen/generic_card_inner_padding">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/generic_card_inner_padding">
+
+            <TextView
+                android:id="@+id/suggestedIngredientsCardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/GenericCardTitle"
+                android:text="Ingredientes sugeridos"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipsGroupSuggestedIngredients"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsCardTitle"
+                app:singleSelection="true"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:chipSpacing="10dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/userIngredients"
@@ -23,7 +50,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipsGroupSuggestedIngredients"/>
+        app:layout_constraintTop_toBottomOf="@+id/suggestedIngredientsCard"/>
 
     <EditText
         android:id="@+id/ingredientsAutocompleteInput"
