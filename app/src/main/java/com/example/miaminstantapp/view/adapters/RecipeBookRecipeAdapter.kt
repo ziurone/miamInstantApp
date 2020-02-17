@@ -32,6 +32,7 @@ class RecipeBookRecipeAdapter: RecyclerView.Adapter<RecipeBookRecipeAdapter.View
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(recipe: RecipeBookRecipeEntity) {
             recipeName.text = recipe.name
+            totalMinutes.text = recipe.totalMinutes.toString()
         }
     }
 }

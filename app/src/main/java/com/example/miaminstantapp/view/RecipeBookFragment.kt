@@ -1,6 +1,5 @@
 package com.example.miaminstantapp.view
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
@@ -31,7 +30,7 @@ class RecipeBookFragment: BaseFragment<IRecipeBookViewModel, IRecipeBookViewMode
         viewModel.fetchRecipes()
     }
 
-    fun initRecipeList() {
+    private fun initRecipeList() {
         recipesAdapter = RecipeBookRecipeAdapter()
         recipesList.apply {
             layoutManager = LinearLayoutManager(context)

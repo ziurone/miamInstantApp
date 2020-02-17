@@ -37,7 +37,7 @@ class MarketRecipesRepository @Inject constructor(
                     10,
                     20,
                     1,
-                    "http://image",
+                    "https://images.media-allrecipes.com/userphotos/720x405/667748.jpg",
                     listOf(
                         MarketIngredientDTO(
                             1,

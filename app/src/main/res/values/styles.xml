@@ -4,4 +4,10 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
     </style>
 
+    <style name="RecipeCardBadget">
+        <item name="android:textColor">@color/quantum_white_100</item>
+        <item name="android:background">@drawable/rounded_borders_badget</item>
+        <item name="android:padding">@dimen/badget_padding</item>
+    </style>
+    
 </resources>
