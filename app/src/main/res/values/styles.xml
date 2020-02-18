@@ -13,4 +13,7 @@
     <style name="GenericCardTitle" parent="TextAppearance.MaterialComponents.Headline6">
     </style>
 
+    <style name="GenericItemTitle" parent="TextAppearance.MaterialComponents.Body1">
+    </style>
+
 </resources>

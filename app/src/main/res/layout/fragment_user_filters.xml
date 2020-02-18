@@ -1,102 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.UserFiltersFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/suggestedIngredientsCard"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="@dimen/generic_card_outter_margin"
-        android:padding="@dimen/generic_card_inner_padding">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".view.UserFiltersFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/suggestedIngredientsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/generic_card_outter_margin"
             android:padding="@dimen/generic_card_inner_padding">
 
-            <TextView
-                android:id="@+id/suggestedIngredientsCardTitle"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/GenericCardTitle"
-                android:text="Ingredientes sugeridos"/>
+                android:padding="@dimen/generic_card_inner_padding">
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipsGroupSuggestedIngredients"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsCardTitle"
-                app:singleSelection="true"
-                android:layout_width="@dimen/match_constraint"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:chipSpacing="10dp" />
+                <TextView
+                    android:id="@+id/suggestedIngredientsCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/GenericCardTitle"
+                    android:text="Ingredientes sugeridos"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipsGroupSuggestedIngredients"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsCardTitle"
+                    app:singleSelection="true"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:chipSpacing="10dp" />
 
-    </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/userIngredients"
-        android:layout_width="@dimen/match_constraint"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/suggestedIngredientsCard"/>
+        </com.google.android.material.card.MaterialCardView>
 
-    <EditText
-        android:id="@+id/ingredientsAutocompleteInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/userIngredients" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ingredientsAutocompleteList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ingredientsAutocompleteInput"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/userMoney"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ingredientsAutocompleteList"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/userMoneyInput"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/selectedIngredientsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsCard"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/generic_card_outter_margin"
+            android:padding="@dimen/generic_card_inner_padding">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/generic_card_inner_padding">
 
-    <TextView
-        android:id="@+id/userAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/userMoney"/>
+                <TextView
+                    android:id="@+id/selectedIngredientsCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/GenericCardTitle"
+                    android:text="Ingredientes seleccionados"/>
 
-    <Button
-        android:id="@+id/addAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/userAddress"
-        android:text="Agregar direccion"/>
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/userIngredients"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    android:layout_marginTop="16dp"
+                    app:chipSpacing="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/selectedIngredientsCardTitle"/>
 
-    <Button
-        android:id="@+id/searchRecipes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/addAddress"
-        android:text="Buscar recetas"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ingredientsInputCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/selectedIngredientsCard"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/generic_card_outter_margin"
+            android:padding="@dimen/generic_card_inner_padding">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/generic_card_inner_padding">
+
+                <TextView
+                    android:id="@+id/ingredientsInputTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/GenericCardTitle"
+                    android:text="Agregar ingredientes"/>
+
+                <EditText
+                    android:id="@+id/ingredientsAutocompleteInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/ingredientsInputTitle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ingredientsAutocompleteList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/ingredientsAutocompleteInput"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/userMoneyCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ingredientsInputCard"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/generic_card_outter_margin"
+            android:padding="@dimen/generic_card_inner_padding">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/generic_card_inner_padding">
+
+                <TextView
+                    android:id="@+id/userMoneyCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Dinero disponible"
+                    style="@style/GenericCardTitle"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/userMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userMoneyCardTitle"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userMoneyInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/userAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/userMoneyCard"/>
+
+        <Button
+            android:id="@+id/addAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/userAddress"
+            android:text="Agregar direccion"/>
+
+        <Button
+            android:id="@+id/searchRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/addAddress"
+            android:text="Buscar recetas"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
