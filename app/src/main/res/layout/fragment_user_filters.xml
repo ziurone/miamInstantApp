@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_margin="@dimen/generic_card_outter_margin"
+            android:layout_margin="@dimen/generic_card_outer_margin"
             android:padding="@dimen/generic_card_inner_padding">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsCard"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_margin="@dimen/generic_card_outter_margin"
+            android:layout_margin="@dimen/generic_card_outer_margin"
             android:padding="@dimen/generic_card_inner_padding">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/selectedIngredientsCard"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_margin="@dimen/generic_card_outter_margin"
+            android:layout_margin="@dimen/generic_card_outer_margin"
             android:padding="@dimen/generic_card_inner_padding">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/ingredientsInputCard"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_margin="@dimen/generic_card_outter_margin"
+            android:layout_margin="@dimen/generic_card_outer_margin"
             android:padding="@dimen/generic_card_inner_padding">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -165,24 +165,61 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/userAddress"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/userAddressCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/userMoneyCard"/>
+            app:layout_constraintTop_toBottomOf="@id/userMoneyCard"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/generic_card_outer_margin"
+            android:padding="@dimen/generic_card_inner_padding">
 
-        <Button
-            android:id="@+id/addAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/userAddress"
-            android:text="Agregar direccion"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/generic_card_inner_padding">
+
+                <TextView
+                    android:id="@+id/userAddressCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Selecciona la direccion"
+                    style="@style/GenericCardTitle"/>
+
+                <TextView
+                    android:id="@+id/userAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userAddressCardTitle"/>
+
+                <TextView
+                    android:id="@+id/noAddressMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userAddressCardTitle"
+                    android:text="Debe agregar una direccion"/>
+
+                <Button
+                    android:id="@+id/addAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userAddress"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Agregar direccion"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <Button
             android:id="@+id/searchRecipes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/addAddress"
+            app:layout_constraintTop_toBottomOf="@id/userAddressCard"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:text="Buscar recetas"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     <dimen name="recipe_item_image_height">50dp</dimen>
 
     <!-- Cards  -->
-    <dimen name="generic_card_outter_margin">16dp</dimen>
+    <dimen name="generic_card_outer_margin">16dp</dimen>
     <dimen name="generic_card_inner_padding">10dp</dimen>
 
     <!--  Badgets  -->

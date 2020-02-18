@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
@@ -180,6 +181,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     private fun showSelectedAddress(data: Intent?) {
         val place = Autocomplete.getPlaceFromIntent(data!!)
         userAddress.text = place.address
+        noAddressMessage.isVisible = false
         viewModel.fetchZoneShops(place.latLng?.latitude.toString(), place.latLng?.longitude.toString(), 10)
     }
 }
