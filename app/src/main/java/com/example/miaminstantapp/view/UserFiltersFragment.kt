@@ -12,6 +12,7 @@ import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
+import com.example.miaminstantapp.view.utils.ViewEnabler
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
@@ -22,6 +23,12 @@ import kotlinx.android.synthetic.main.fragment_user_filters.*
 class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
 
     private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
+    private lateinit var buttonEnabler: ViewEnabler
+    private lateinit var branchesAddedCondition: ViewEnabler.Condition
+    private lateinit var moneyOrIngredientAddedCondition: ViewEnabler.Condition
+    private var branchesAdded = false
+    private var ingredientsAdded = 0
+    private var moneyAdded = false
 
     companion object {
         const val AUTOCOMPLETE_REQUEST_CODE = 1
@@ -40,11 +47,28 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
 
         userMoneyInput.afterDelayedTextChanged(::setUserMoney)
 
-        searchRecipes.setOnClickListener {
+        searchRecipesButton.setOnClickListener {
             searchRecipes()
         }
 
+        initSearchButtonEnabler()
+
         super.initViews()
+    }
+
+    private fun initSearchButtonEnabler() {
+        searchRecipesButton.isEnabled = false
+        buttonEnabler = ViewEnabler(searchRecipesButton)
+        moneyOrIngredientAddedCondition = buttonEnabler.createCondition()
+        branchesAddedCondition = buttonEnabler.createCondition()
+        branchesAddedCondition.update(false)
+        moneyOrIngredientAddedCondition.update(false)
+        buttonEnabler.start()
+    }
+
+    private fun checkSearchButtonEnabledConditions() {
+        branchesAddedCondition.update(branchesAdded)
+        moneyOrIngredientAddedCondition.update(ingredientsAdded > 0 || moneyAdded)
     }
 
     // Region autocomplete
@@ -73,14 +97,20 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     override fun onStateChanged(state: IUserIngredientsViewModel.State) {
         when(state) {
             is IUserIngredientsViewModel.State.Loading -> showLoading()
-            is IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess -> logIngredients(state.ingredients)
+            is IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess -> showSuggestedIngredients(state.ingredients)
             is IUserIngredientsViewModel.State.AddVolumeUnitsSuccess -> logVolumeUnit()
             is IUserIngredientsViewModel.State.Error -> showError(state.error)
             is IUserIngredientsViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
             is IUserIngredientsViewModel.State.SearchIngredientsByNameSuccess -> updateIngredientsAutocomplete(state.ingredients)
             is IUserIngredientsViewModel.State.AddMoneySuccess -> setMoneySuccess()
             is IUserIngredientsViewModel.State.SaveRecipesSuccess -> navigateToRecipeList()
+            is IUserIngredientsViewModel.State.FetchShopsSuccess -> branchesAddedSuccesfully()
         }
+    }
+
+    private fun branchesAddedSuccesfully() {
+        branchesAdded = true
+        checkSearchButtonEnabledConditions()
     }
 
     private fun navigateToRecipeList() {
@@ -88,7 +118,8 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     }
 
     private fun setMoneySuccess() {
-        Log.i("MONEY_ADDED", "Success")
+        moneyAdded = true
+        checkSearchButtonEnabledConditions()
     }
 
     private fun searchIngredientsByName(ingredientName: CharSequence) {
@@ -99,7 +130,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         Log.i("Estoy re loading", "DOWNloading")
     }
 
-    private fun logIngredients(ingredients: List<Ingredient>) {
+    private fun showSuggestedIngredients(ingredients: List<Ingredient>) {
 
         chipsGroupSuggestedIngredients.removeAllViews()
         ingredients.forEach{
@@ -123,6 +154,8 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     }
 
     private fun updateSelectedIngredients(ingredients: List<UserIngredientEntity>) {
+        ingredientsAdded = ingredients.size
+        checkSearchButtonEnabledConditions()
         userIngredients.removeAllViews()
         ingredients.forEach{
             val chip = Chip(context)

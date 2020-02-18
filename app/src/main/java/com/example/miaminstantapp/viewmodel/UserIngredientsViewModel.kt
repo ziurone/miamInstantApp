@@ -32,7 +32,7 @@ class UserIngredientsViewModel @Inject constructor(
 
     private fun onFetchShopsAction(result: IFetchShopsAction.Result) {
         when(result) {
-            is IFetchShopsAction.Result.Success -> Log.i("FETCH_SHOPS_SUCCESS", "SUCCESS")
+            is IFetchShopsAction.Result.Success -> setState(State.FetchShopsSuccess)
         }
     }
 
