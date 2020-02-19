@@ -2,6 +2,8 @@ package com.example.miaminstantapp.persistence
 
 import android.content.SharedPreferences
 import io.reactivex.Completable
+import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
@@ -20,5 +22,9 @@ class UserMoneySharedPreferences @Inject constructor (
         .editSharedPreferences {
             putInt(USER_MONEY_KEY, money)
         }
+
+    fun getUserMoney(): Observable<Int> = subject.map {
+        it.getInt(USER_MONEY_KEY, 0)
+    }
 
 }

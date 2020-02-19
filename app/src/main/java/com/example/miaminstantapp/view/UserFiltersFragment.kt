@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
+import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
@@ -48,7 +49,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         userMoneyInput.afterDelayedTextChanged(::setUserMoney)
 
         searchRecipesButton.setOnClickListener {
-            searchRecipes()
+            fetchSearchCriteria()
         }
 
         initSearchButtonEnabler()
@@ -86,7 +87,12 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         autocompleteIngredientAdapter.setData(ingredients)
     }
 
-    private fun searchRecipes() {
+    private fun fetchSearchCriteria() {
+        viewModel.fetchSearchRecipeCriteria()
+    }
+
+    private fun onFetchSearchRecipeCriteriaSuccess(criteria: RecipeSearchCriteria) {
+        Log.i("Criteria fetch success", criteria.ingredients.first().name)
         viewModel.searchRecipes()
     }
 
@@ -105,6 +111,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             is IUserIngredientsViewModel.State.AddMoneySuccess -> setMoneySuccess()
             is IUserIngredientsViewModel.State.SaveRecipesSuccess -> navigateToRecipeList()
             is IUserIngredientsViewModel.State.FetchShopsSuccess -> branchesAddedSuccesfully()
+            is IUserIngredientsViewModel.State.FetchSearchRecipeCriteriaSuccess -> onFetchSearchRecipeCriteriaSuccess(state.criteria)
         }
     }
 

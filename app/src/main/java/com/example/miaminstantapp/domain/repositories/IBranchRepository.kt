@@ -5,4 +5,5 @@ import io.reactivex.Single
 
 interface IBranchRepository {
     fun fetchBranches(lat: String, long: String, squares: Int): Single<List<BranchEntity>>
+    fun fetchAllFromLocal(): Single<List<BranchEntity>>
 }

@@ -97,6 +97,9 @@ class UserResourcesModule {
     fun providesFetchRecipeBookRecipesAction(action: FetchRecipeBookRecipesAction): IFetchRecipeBookRecipesAction = action
 
     @Provides
+    fun providesFetchRecipeSearchCriteriaAction(action: FetchSearchRecipeCriteriaAction): IFetchSearchRecipeCriteriaAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel

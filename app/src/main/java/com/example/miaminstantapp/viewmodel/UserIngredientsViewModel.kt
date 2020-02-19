@@ -15,7 +15,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val getIngredientsByNameAction: IGetIngredientsByNameAction,
     private val setUserMoneyAction: ISetUserMoneyAction,
     private val fetchShopsAction: IFetchShopsAction,
-    private val searchRecipesAction: ISearchRecipesAction
+    private val searchRecipesAction: ISearchRecipesAction,
+    private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -28,12 +29,23 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(setUserMoneyAction.getLiveData(), ::onSetUserMoney)
         listenSource(fetchShopsAction.getLiveData(), ::onFetchShopsAction)
         listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
+        listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteria)
+    }
+
+    private fun onFetchSearchRecipeCriteria(result: IFetchSearchRecipeCriteriaAction.Result) {
+        when(result) {
+            is IFetchSearchRecipeCriteriaAction.Result.Success -> setState(State.FetchSearchRecipeCriteriaSuccess(result.recipeSearchCriteria))
+        }
     }
 
     private fun onFetchShopsAction(result: IFetchShopsAction.Result) {
         when(result) {
             is IFetchShopsAction.Result.Success -> setState(State.FetchShopsSuccess)
         }
+    }
+
+    override fun fetchSearchRecipeCriteria() {
+        fetchSearchRecipeCriteriaAction.fetch()
     }
 
     override fun loadMasterData() {

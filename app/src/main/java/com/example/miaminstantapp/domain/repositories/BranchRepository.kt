@@ -1,10 +1,13 @@
 package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.entities.BranchEntity
+import com.example.miaminstantapp.persistence.BranchDao
 import io.reactivex.Single
 import javax.inject.Inject
 
-class BranchRepository @Inject constructor() : IBranchRepository {
+class BranchRepository @Inject constructor(
+    private val branchDao: BranchDao
+) : IBranchRepository {
     override fun fetchBranches(lat: String, long: String, squares: Int): Single<List<BranchEntity>> {
         return Single.just(
             listOf(
@@ -13,4 +16,6 @@ class BranchRepository @Inject constructor() : IBranchRepository {
             )
         )
     }
+
+    override fun fetchAllFromLocal(): Single<List<BranchEntity>> = branchDao.fetchAll()
 }
