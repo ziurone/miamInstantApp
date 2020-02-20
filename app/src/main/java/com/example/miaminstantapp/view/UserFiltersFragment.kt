@@ -92,8 +92,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     }
 
     private fun onFetchSearchRecipeCriteriaSuccess(criteria: RecipeSearchCriteria) {
-        Log.i("Criteria fetch success", criteria.ingredients.first().name)
-        viewModel.searchRecipes()
+        viewModel.searchRecipes(criteria)
     }
 
     private fun setUserMoney(money: CharSequence) {

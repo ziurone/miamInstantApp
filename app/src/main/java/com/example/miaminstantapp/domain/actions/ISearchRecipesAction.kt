@@ -1,5 +1,7 @@
 package com.example.miaminstantapp.domain.actions
 
+import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
+
 interface ISearchRecipesAction: Action<ISearchRecipesAction.Result> {
 
     sealed class Result {
@@ -7,5 +9,5 @@ interface ISearchRecipesAction: Action<ISearchRecipesAction.Result> {
         data class Error(val errorMessage: String): Result()
     }
 
-    fun searchRecipes()
+    fun searchRecipes(searchCriteria: RecipeSearchCriteria)
 }

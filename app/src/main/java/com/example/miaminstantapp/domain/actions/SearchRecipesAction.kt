@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.dtos.MarketIngredientDTO
+import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.dtos.toMarketRecipeEntity
 import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredient
 import com.example.miaminstantapp.domain.repositories.*
@@ -14,9 +15,9 @@ class SearchRecipesAction @Inject constructor(
     private val userRecipeIngredientRepository: IUserRecipeIngredientRepository
 ): BaseAction<ISearchRecipesAction.Result>(), ISearchRecipesAction {
 
-    override fun searchRecipes() {
+    override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
         recipesRepository
-            .search()
+            .search(searchCriteria)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .flatMap { recipes ->

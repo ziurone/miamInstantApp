@@ -26,7 +26,7 @@ class FetchSearchRecipeCriteriaAction @Inject constructor(
         val branchesSingle = branchesRepository.fetchAllFromLocal()
 
 
-        Single.zip(userIngredientsSingle, Single.fromObservable(userMoneySingle), branchesSingle,
+        Single.zip(userIngredientsSingle, userMoneySingle, branchesSingle,
             Function3<List<UserIngredientEntity>, Int, List<BranchEntity>, IFetchSearchRecipeCriteriaAction.Result.Success> {
                 userIngredients: List<UserIngredientEntity>, userMoney: Int, branches: List<BranchEntity> ->
                     IFetchSearchRecipeCriteriaAction.Result.Success(RecipeSearchCriteria(

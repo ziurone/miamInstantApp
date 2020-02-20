@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.domain.actions.*
+import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import javax.inject.Inject
 
 class UserIngredientsViewModel @Inject constructor(
@@ -29,10 +30,10 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(setUserMoneyAction.getLiveData(), ::onSetUserMoney)
         listenSource(fetchShopsAction.getLiveData(), ::onFetchShopsAction)
         listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
-        listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteria)
+        listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteriaResult)
     }
 
-    private fun onFetchSearchRecipeCriteria(result: IFetchSearchRecipeCriteriaAction.Result) {
+    private fun onFetchSearchRecipeCriteriaResult(result: IFetchSearchRecipeCriteriaAction.Result) {
         when(result) {
             is IFetchSearchRecipeCriteriaAction.Result.Success -> setState(State.FetchSearchRecipeCriteriaSuccess(result.recipeSearchCriteria))
         }
@@ -54,8 +55,8 @@ class UserIngredientsViewModel @Inject constructor(
         fetchVolumeUnitsAction.fetch()
     }
 
-    override fun searchRecipes() {
-        searchRecipesAction.searchRecipes()
+    override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
+        searchRecipesAction.searchRecipes(searchCriteria)
     }
 
     private fun onSearchRecipes(result: ISearchRecipesAction.Result) {

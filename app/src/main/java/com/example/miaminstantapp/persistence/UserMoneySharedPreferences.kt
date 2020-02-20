@@ -23,8 +23,6 @@ class UserMoneySharedPreferences @Inject constructor (
             putInt(USER_MONEY_KEY, money)
         }
 
-    fun getUserMoney(): Observable<Int> = subject.map {
-        it.getInt(USER_MONEY_KEY, 0)
-    }
+    fun getUserMoney(): Single<Int> = Single.just(sharedPreferences.getInt(USER_MONEY_KEY, 0))
 
 }

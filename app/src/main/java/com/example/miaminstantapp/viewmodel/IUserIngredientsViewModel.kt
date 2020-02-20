@@ -24,6 +24,6 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
     abstract fun searchIngredientByName(ingredientName: String)
     abstract fun setUserMoney(money: Int)
     abstract fun fetchZoneShops(lat: String, long: String, squares: Int)
-    abstract fun searchRecipes()
+    abstract fun searchRecipes(searchCriteria: RecipeSearchCriteria)
     abstract fun fetchSearchRecipeCriteria()
 }

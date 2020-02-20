@@ -10,5 +10,5 @@ class UserMoneyRepository @Inject constructor(
     private val userMoneySharedPreferences: UserMoneySharedPreferences
 ): IUserMoneyRepository {
     override fun setUserMoney(money: Int): Completable = userMoneySharedPreferences.setUserMoney(money)
-    override fun getUserMoney(): Observable<Int> = userMoneySharedPreferences.getUserMoney()
+    override fun getUserMoney(): Single<Int> = userMoneySharedPreferences.getUserMoney()
 }

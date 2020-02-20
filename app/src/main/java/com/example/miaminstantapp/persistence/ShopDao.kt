@@ -2,6 +2,7 @@ package com.example.miaminstantapp.persistence
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.BranchEntity
 import com.example.miaminstantapp.domain.entities.ShopArticleEntity
@@ -13,7 +14,7 @@ import io.reactivex.Single
 @Dao
 interface ShopDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(shops: List<ShopEntity>): Completable
 
     @Query("SELECT s.*, SUM(a.totalPrice) as purchasePrice FROM "
