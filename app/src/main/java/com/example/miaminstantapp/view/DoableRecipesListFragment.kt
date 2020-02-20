@@ -7,13 +7,13 @@ import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.view.adapters.DoableRecipesListAdapter
 import com.example.miaminstantapp.viewmodel.IDoableRecipesViewModel
-import kotlinx.android.synthetic.main.fragment_doable_recipes_list.*
+import kotlinx.android.synthetic.main.fragment_market_recipes_list.*
 
 class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRecipesViewModel.State>(), DoableRecipesListAdapter.OnRecipeItemClickListener {
 
     private lateinit var doableRecipesAdapter: DoableRecipesListAdapter
 
-    override fun getLayoutId(): Int = R.layout.fragment_doable_recipes_list
+    override fun getLayoutId(): Int = R.layout.fragment_market_recipes_list
 
     override fun initViews() {
         super.initViews()

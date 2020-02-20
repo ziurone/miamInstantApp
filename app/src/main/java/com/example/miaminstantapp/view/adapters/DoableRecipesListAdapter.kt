@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
+import com.example.miaminstantapp.extensions.loadImageURL
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_doable_recipe.*
+import kotlinx.android.synthetic.main.item_market_recipe.*
 
 class DoableRecipesListAdapter constructor(
     private val listener: OnRecipeItemClickListener
@@ -16,7 +17,7 @@ class DoableRecipesListAdapter constructor(
     private val recipes = mutableListOf<DoableRecipe>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_doable_recipe, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_market_recipe, parent, false)
         return ViewHolder(view)
     }
 
@@ -33,7 +34,10 @@ class DoableRecipesListAdapter constructor(
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(doableRecipe: DoableRecipe) {
-            title.text = doableRecipe.recipe.title
+            recipeName.text = doableRecipe.recipe.title
+            totalMinutes.text = doableRecipe.recipe.totalMinutes.toString()
+            price.text = doableRecipe.recipe.price.toString()
+            recipeImage.loadImageURL(doableRecipe.recipe.imageUrl)
 
             containerView.setOnClickListener {
                 listener.onItemClick(doableRecipe.recipe.id)

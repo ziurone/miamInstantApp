@@ -1,11 +1,10 @@
 package com.example.miaminstantapp.view
 
-import android.util.Log
 import androidx.navigation.fragment.findNavController
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.viewmodel.IDoableRecipeDetailViewModel
-import kotlinx.android.synthetic.main.fragment_doable_recipe.*
+import kotlinx.android.synthetic.main.fragment_market_recipe.*
 
 class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRecipeDetailViewModel.State>() {
 
@@ -15,7 +14,7 @@ class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRe
 
     private lateinit var recipe: DoableRecipe
 
-    override fun getLayoutId(): Int = R.layout.fragment_doable_recipe
+    override fun getLayoutId(): Int = R.layout.fragment_market_recipe
 
     override fun initViews() {
         super.initViews()
