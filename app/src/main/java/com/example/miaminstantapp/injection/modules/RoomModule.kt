@@ -54,4 +54,8 @@ class RoomModule {
     @Provides
     @PerApplication
     fun providesRecipeBookRecipeDao(miamDataBase: MiamDataBase): RecipeBookRecipeDao = miamDataBase.recipeBookRecipeDao()
+
+    @Provides
+    @PerApplication
+    fun providesUserAddressDao(miamDataBase: MiamDataBase): UserAddressDao = miamDataBase.userAddressDao()
 }

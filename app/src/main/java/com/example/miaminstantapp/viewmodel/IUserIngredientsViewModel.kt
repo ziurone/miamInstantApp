@@ -2,6 +2,7 @@ package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
+import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 
 abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewModel.State>() {
@@ -28,4 +29,5 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
     abstract fun fetchSearchRecipeCriteria()
     abstract fun fetchUserIngredients()
     abstract fun fetchSuggestedIngredients(ingredients: List<UserIngredientEntity>)
+    abstract fun addAddress(userAddress: UserAddressEntity)
 }

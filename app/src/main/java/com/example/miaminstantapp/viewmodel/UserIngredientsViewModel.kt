@@ -5,6 +5,7 @@ import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
+import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import javax.inject.Inject
 
@@ -18,7 +19,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val setUserMoneyAction: ISetUserMoneyAction,
     private val fetchShopsAction: IFetchShopsAction,
     private val searchRecipesAction: ISearchRecipesAction,
-    private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction
+    private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction,
+    private val addUserAddressAction: IAddUserAddressAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -32,6 +34,19 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(fetchShopsAction.getLiveData(), ::onFetchShopsAction)
         listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
         listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteriaResult)
+        listenSource(addUserAddressAction.getLiveData(), ::onAddUserAddressSuccess)
+    }
+
+    private fun onAddUserAddressSuccess(result: IAddUserAddressAction.Result) {
+        when(result) {
+            is IAddUserAddressAction.Result.Success -> Log.i("ADDRESS_ADDED", "SUCCESS")
+            is IAddUserAddressAction.Result.Error -> Log.i("ADDRESS_ADDED", "ERROR")
+        }
+
+    }
+
+    override fun addAddress(userAddress: UserAddressEntity) {
+        addUserAddressAction.add(userAddress)
     }
 
     private fun onFetchSearchRecipeCriteriaResult(result: IFetchSearchRecipeCriteriaAction.Result) {

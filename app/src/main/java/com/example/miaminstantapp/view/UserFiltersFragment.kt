@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
+import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
+import com.example.miaminstantapp.persistence.UserAddressDao
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
 import com.example.miaminstantapp.view.utils.ViewEnabler
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
@@ -223,6 +225,12 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
         val place = Autocomplete.getPlaceFromIntent(data!!)
         userAddress.text = place.address
         noAddressMessage.isVisible = false
+
+        place.address?.let {
+            address -> viewModel.addAddress(UserAddressEntity(address))
+        }
+
         viewModel.fetchZoneShops(place.latLng?.latitude.toString(), place.latLng?.longitude.toString(), 10)
+
     }
 }

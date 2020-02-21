@@ -97,6 +97,9 @@ class UserResourcesModule {
     fun providesFetchRecipeBookRecipesAction(action: FetchRecipeBookRecipesAction): IFetchRecipeBookRecipesAction = action
 
     @Provides
+    fun providesAddUserAddressAction(action: AddUserAddressAction): IAddUserAddressAction = action
+
+    @Provides
     fun providesFetchRecipeSearchCriteriaAction(action: FetchSearchRecipeCriteriaAction): IFetchSearchRecipeCriteriaAction = action
 
     @Provides
