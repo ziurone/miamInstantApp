@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
+import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -11,9 +12,9 @@ class FetchSuggestedIngredientsAction @Inject constructor(
 ) : IFetchSuggestedIngredientsAction, BaseAction<IFetchSuggestedIngredientsAction.Result>()
 {
 
-    override fun fetch() {
+    override fun fetch(alreadyAddedIngredients: List<UserIngredientEntity>) {
         ingredientRepository
-            .getSuggestedIngredients()
+            .getSuggestedIngredients(alreadyAddedIngredients)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)

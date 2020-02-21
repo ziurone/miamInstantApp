@@ -38,7 +38,8 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     override fun getLayoutId(): Int = R.layout.fragment_user_filters
 
     override fun initViews() {
-        viewModel.loadMasterData()
+        viewModel.loadVolumeUnits()
+        viewModel.fetchUserIngredients()
 
         initializeAutocomplete()
 
@@ -176,6 +177,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             userIngredients.addView(chip)
         }
 
+        viewModel.fetchSuggestedIngredients(ingredients)
     }
 
     fun logVolumeUnit() {

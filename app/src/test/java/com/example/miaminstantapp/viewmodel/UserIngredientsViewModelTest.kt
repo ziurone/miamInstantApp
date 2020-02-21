@@ -48,7 +48,7 @@ class UserIngredientsViewModelTest {
         }
 
         // WHEN
-        subject.loadMasterData()
+        subject.loadVolumeUnits()
 
         //THEN
         Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess(INGREDIENT_LIST))
@@ -61,7 +61,7 @@ class UserIngredientsViewModelTest {
         BDDMockito.given(fetchSuggestedIngredientsUseCase.fetch()).will{}
 
         // WHEN
-        subject.loadMasterData()
+        subject.loadVolumeUnits()
 
         //THEN
         Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.Loading)
@@ -74,7 +74,7 @@ class UserIngredientsViewModelTest {
         BDDMockito.given(fetchSuggestedIngredientsUseCase.fetch()).will{setUseCaseResult(IFetchSuggestedIngredientsAction.Result.Error(GENERIC_ERROR))}
 
         // WHEN
-        subject.loadMasterData()
+        subject.loadVolumeUnits()
 
         //THEN
         Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.Error(GENERIC_ERROR))

@@ -19,11 +19,13 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
         data class FetchSearchRecipeCriteriaSuccess(val criteria: RecipeSearchCriteria): State()
     }
 
-    abstract fun loadMasterData()
+    abstract fun loadVolumeUnits()
     abstract fun addIngredient(ingredient: Ingredient)
     abstract fun searchIngredientByName(ingredientName: String)
     abstract fun setUserMoney(money: Int)
     abstract fun fetchZoneShops(lat: String, long: String, squares: Int)
     abstract fun searchRecipes(searchCriteria: RecipeSearchCriteria)
     abstract fun fetchSearchRecipeCriteria()
+    abstract fun fetchUserIngredients()
+    abstract fun fetchSuggestedIngredients(ingredients: List<UserIngredientEntity>)
 }

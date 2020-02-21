@@ -5,6 +5,7 @@ import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
+import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import javax.inject.Inject
 
 class UserIngredientsViewModel @Inject constructor(
@@ -21,7 +22,7 @@ class UserIngredientsViewModel @Inject constructor(
 ): IUserIngredientsViewModel() {
 
     init {
-        listenSource(fetchSuggestedIngredientsUseCase.getLiveData(), ::onFetchIngredientsResult)
+        listenSource(fetchSuggestedIngredientsUseCase.getLiveData(), ::onFetchSuggestedIngredientsResult)
         listenSource(fetchVolumeUnitsAction.getLiveData(), ::onFetchVolumeUnitResult)
         listenSource(addVolumeUnitsAction.getLiveData(), ::onCompleteAddVolumeUnits)
         listenSource(addUserIngredientAction.getLiveData(), ::onAddIngredient)
@@ -49,10 +50,13 @@ class UserIngredientsViewModel @Inject constructor(
         fetchSearchRecipeCriteriaAction.fetch()
     }
 
-    override fun loadMasterData() {
+    override fun loadVolumeUnits() {
         setState(State.Loading)
-        fetchSuggestedIngredientsUseCase.fetch()
         fetchVolumeUnitsAction.fetch()
+    }
+
+    override fun fetchSuggestedIngredients(ingredients: List<UserIngredientEntity>) {
+        fetchSuggestedIngredientsUseCase.fetch(ingredients)
     }
 
     override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
@@ -83,7 +87,7 @@ class UserIngredientsViewModel @Inject constructor(
         }
     }
 
-    private fun onFetchIngredientsResult(result: IFetchSuggestedIngredientsAction.Result) {
+    private fun onFetchSuggestedIngredientsResult(result: IFetchSuggestedIngredientsAction.Result) {
         when (result) {
             is IFetchSuggestedIngredientsAction.Result.Error -> setState(State.Error(result.message))
             is IFetchSuggestedIngredientsAction.Result.Success -> setState(State.FetchSuggestedIngredientsSuccess(result.data.ingredients))
@@ -115,7 +119,7 @@ class UserIngredientsViewModel @Inject constructor(
         }
     }
 
-    private fun fetchUserIngredients() {
+    override fun fetchUserIngredients() {
         fetchUserIngredientsAction.fetch()
     }
 

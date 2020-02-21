@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
+import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 
 interface IFetchSuggestedIngredientsAction: Action<IFetchSuggestedIngredientsAction.Result> {
     sealed class Result {
@@ -8,5 +9,5 @@ interface IFetchSuggestedIngredientsAction: Action<IFetchSuggestedIngredientsAct
         data class Error(val message: String): Result()
     }
 
-    fun fetch()
+    fun fetch(alreadyAddedIngredients: List<UserIngredientEntity>)
 }
