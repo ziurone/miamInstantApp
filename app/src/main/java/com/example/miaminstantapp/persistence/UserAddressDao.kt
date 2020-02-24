@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Maybe
 
 @Dao
 interface UserAddressDao {
@@ -13,5 +13,5 @@ interface UserAddressDao {
     fun insert(address: UserAddressEntity): Completable
 
     @Query("SELECT * FROM " + UserAddressEntity.TABLE_NAME + " LIMIT 1")
-    fun fetch(): Single<UserAddressEntity>
+    fun fetch(): Maybe<UserAddressEntity>
 }

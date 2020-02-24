@@ -18,6 +18,7 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
         object FetchShopsSuccess: State()
         object SaveRecipesSuccess: State()
         data class FetchSearchRecipeCriteriaSuccess(val criteria: RecipeSearchCriteria): State()
+        data class FetchCurrentUserAddressSucess(val address: UserAddressEntity?): State()
     }
 
     abstract fun loadVolumeUnits()
@@ -30,4 +31,5 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
     abstract fun fetchUserIngredients()
     abstract fun fetchSuggestedIngredients(ingredients: List<UserIngredientEntity>)
     abstract fun addAddress(userAddress: UserAddressEntity)
+    abstract fun fetchCurrentAddress()
 }

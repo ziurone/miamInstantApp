@@ -20,7 +20,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val fetchShopsAction: IFetchShopsAction,
     private val searchRecipesAction: ISearchRecipesAction,
     private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction,
-    private val addUserAddressAction: IAddUserAddressAction
+    private val addUserAddressAction: IAddUserAddressAction,
+    private val fetchCurrentUserAddressAction: FetchCurrentUserAddressAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -35,6 +36,13 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
         listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteriaResult)
         listenSource(addUserAddressAction.getLiveData(), ::onAddUserAddressSuccess)
+        listenSource(fetchCurrentUserAddressAction.getLiveData(), ::onFetchUserAddressResult)
+    }
+
+    private fun onFetchUserAddressResult(result: IFetchCurrentUserAddressAction.Result) {
+        when(result) {
+            is IFetchCurrentUserAddressAction.Result.Success -> setState(State.FetchCurrentUserAddressSucess(result.userAddress))
+        }
     }
 
     private fun onAddUserAddressSuccess(result: IAddUserAddressAction.Result) {
@@ -47,6 +55,10 @@ class UserIngredientsViewModel @Inject constructor(
 
     override fun addAddress(userAddress: UserAddressEntity) {
         addUserAddressAction.add(userAddress)
+    }
+
+    override fun fetchCurrentAddress() {
+        fetchCurrentUserAddressAction.fetch()
     }
 
     private fun onFetchSearchRecipeCriteriaResult(result: IFetchSearchRecipeCriteriaAction.Result) {

@@ -103,6 +103,9 @@ class UserResourcesModule {
     fun providesFetchRecipeSearchCriteriaAction(action: FetchSearchRecipeCriteriaAction): IFetchSearchRecipeCriteriaAction = action
 
     @Provides
+    fun providesFetchUserAddressAction(action: FetchCurrentUserAddressAction): IFetchCurrentUserAddressAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel

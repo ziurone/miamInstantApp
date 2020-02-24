@@ -42,6 +42,9 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     override fun initViews() {
         viewModel.loadVolumeUnits()
         viewModel.fetchUserIngredients()
+        viewModel.fetchCurrentAddress()
+
+        userAddress.isVisible = false
 
         initializeAutocomplete()
 
@@ -114,6 +117,7 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
             is IUserIngredientsViewModel.State.SaveRecipesSuccess -> navigateToRecipeList()
             is IUserIngredientsViewModel.State.FetchShopsSuccess -> branchesAddedSuccesfully()
             is IUserIngredientsViewModel.State.FetchSearchRecipeCriteriaSuccess -> onFetchSearchRecipeCriteriaSuccess(state.criteria)
+            is IUserIngredientsViewModel.State.FetchCurrentUserAddressSucess -> onFetchCurrentUserAddressSuccess(state.address)
         }
     }
 
@@ -218,6 +222,14 @@ class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredi
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when(requestCode) {
             AUTOCOMPLETE_REQUEST_CODE -> showSelectedAddress(data)
+        }
+    }
+
+    private fun onFetchCurrentUserAddressSuccess(userAddressEntity: UserAddressEntity?) {
+        userAddressEntity?.let {address ->
+            noAddressMessage.isVisible = false
+            userAddress.text = address.street
+            userAddress.isVisible = true
         }
     }
 
