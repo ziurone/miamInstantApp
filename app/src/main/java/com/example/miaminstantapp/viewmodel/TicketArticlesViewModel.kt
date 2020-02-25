@@ -1,11 +1,11 @@
 package com.example.miaminstantapp.viewmodel
 
-import com.example.miaminstantapp.domain.actions.FetchShopArticlesByShopAction
-import com.example.miaminstantapp.domain.actions.IFetchShopArticlesAction
+import com.example.miaminstantapp.domain.actions.FetchShopArticlesByShopByShopAction
+import com.example.miaminstantapp.domain.actions.IFetchShopArticlesByShopAction
 import javax.inject.Inject
 
 class TicketArticlesViewModel @Inject constructor(
-    private val fetchShopArticlesByShopAction: FetchShopArticlesByShopAction
+    private val fetchShopArticlesByShopAction: FetchShopArticlesByShopByShopAction
 ): ITicketArticlesViewModel() {
 
     init {
@@ -16,9 +16,9 @@ class TicketArticlesViewModel @Inject constructor(
         fetchShopArticlesByShopAction.fetchByShop(shopId)
     }
 
-    private fun onFetchArticlesResult(result: IFetchShopArticlesAction.Result) {
+    private fun onFetchArticlesResult(result: IFetchShopArticlesByShopAction.Result) {
         when(result) {
-            is IFetchShopArticlesAction.Result.Success -> setState(State.FetchArticlesSuccess(result.articles))
+            is IFetchShopArticlesByShopAction.Result.Success -> setState(State.FetchArticlesSuccess(result.articles))
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.persistence
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.BranchEntity
@@ -27,4 +28,10 @@ interface ShopArticleDao {
             "INNER JOIN " + ShopEntity.TABLE_NAME + " s ON s.shopId = b.shopId " +
             "WHERE s.shopId = :shopId")
     fun fetchByShopId(shopId: Int): Single<List<ShopArticleEntity>>
+
+    @Query("DELETE FROM " + ShopArticleEntity.TABLE_NAME)
+    fun deleteAll(): Completable
+
+    @Query("SELECT SUM(totalPrice) as purchasePrice FROM " + ShopArticleEntity.TABLE_NAME)
+    fun getPurchaseTotal(): Single<Int>
 }

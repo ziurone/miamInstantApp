@@ -20,6 +20,8 @@ class MarketRecipesRepository @Inject constructor(
         return marketRecipeDao.insertAll(recipes)
     }
 
+    override fun deleteAll(): Completable  = marketRecipeDao.deleteAll()
+
     override fun fetchRecipeById(id: Int): Single<DoableRecipe> = marketRecipeDao.fetchById(id)
 
     override fun fetchSearchRecipes(): Single<List<DoableRecipe>> = marketRecipeDao.fetchAll()

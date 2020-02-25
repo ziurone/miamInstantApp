@@ -19,4 +19,7 @@ interface MarketRecipeDao {
     @Query("SELECT * FROM " + MarketRecipeEntity.TABLE_NAME + " WHERE id = :id ")
     fun fetchById(id: Int): Single<DoableRecipe>
 
+    @Query("DELETE FROM " + MarketRecipeEntity.TABLE_NAME)
+    fun deleteAll(): Completable
+
 }

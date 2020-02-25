@@ -6,10 +6,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class FetchShopArticlesByShopAction @Inject constructor(
+class FetchShopArticlesByShopByShopAction @Inject constructor(
     private val shopArticleRepository: IShopArticleRepository
-) : BaseAction<IFetchShopArticlesAction.Result>(),
-    IFetchShopArticlesAction
+) : BaseAction<IFetchShopArticlesByShopAction.Result>(),
+    IFetchShopArticlesByShopAction
 {
     override fun fetchByShop(shopId: Int) {
         shopArticleRepository
@@ -20,15 +20,15 @@ class FetchShopArticlesByShopAction @Inject constructor(
             .track()
     }
 
-    override fun getErrorResult(throwable: Throwable): IFetchShopArticlesAction.Result? {
+    override fun getErrorResult(throwable: Throwable): IFetchShopArticlesByShopAction.Result? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getFailureResult(failedResponseCode: String): IFetchShopArticlesAction.Result? {
+    override fun getFailureResult(failedResponseCode: String): IFetchShopArticlesByShopAction.Result? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun onSuccess(shopArticles: List<ShopArticleEntity>) {
-        liveData.value = IFetchShopArticlesAction.Result.Success(shopArticles)
+        liveData.value = IFetchShopArticlesByShopAction.Result.Success(shopArticles)
     }
 }

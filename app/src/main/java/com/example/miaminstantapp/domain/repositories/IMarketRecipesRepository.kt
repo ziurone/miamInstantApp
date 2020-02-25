@@ -12,4 +12,5 @@ interface IMarketRecipesRepository {
     fun insertAll(recipes: List<MarketRecipeEntity>): Completable
     fun fetchSearchRecipes(): Single<List<DoableRecipe>>
     fun fetchRecipeById(id: Int): Single<DoableRecipe>
+    fun deleteAll(): Completable
 }

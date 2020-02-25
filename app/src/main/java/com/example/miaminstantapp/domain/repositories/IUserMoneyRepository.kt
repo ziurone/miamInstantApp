@@ -7,4 +7,5 @@ import io.reactivex.Single
 interface IUserMoneyRepository {
     fun setUserMoney(money: Int): Completable
     fun getUserMoney(): Single<Int>
+    fun restMoney(money: Int): Completable
 }

@@ -88,7 +88,7 @@ class UserResourcesModule {
     fun providesAddRecipeAction(action: AddRecipeAction): IAddRecipeAction = action
 
     @Provides
-    fun providesFetchShopArticlesAction(action: FetchShopArticlesByShopAction): IFetchShopArticlesAction = action
+    fun providesFetchShopArticlesAction(action: FetchShopArticlesByShopByShopAction): IFetchShopArticlesByShopAction = action
 
     @Provides
     fun providesFetchShopsPurchaseAction(action: FetchShopsPurchaseAction): IFetchShopsPurchaseAction = action
@@ -104,6 +104,9 @@ class UserResourcesModule {
 
     @Provides
     fun providesFetchUserAddressAction(action: FetchCurrentUserAddressAction): IFetchCurrentUserAddressAction = action
+
+    @Provides
+    fun providesDoRecipesAction(action: DoRecipesAction): IDoRecipesAction = action
 
     @Provides
     @IntoMap

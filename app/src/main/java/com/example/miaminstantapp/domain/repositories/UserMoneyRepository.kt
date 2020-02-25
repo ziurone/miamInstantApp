@@ -11,4 +11,11 @@ class UserMoneyRepository @Inject constructor(
 ): IUserMoneyRepository {
     override fun setUserMoney(money: Int): Completable = userMoneySharedPreferences.setUserMoney(money)
     override fun getUserMoney(): Single<Int> = userMoneySharedPreferences.getUserMoney()
+    override fun restMoney(money: Int): Completable {
+        return userMoneySharedPreferences
+            .getUserMoney()
+            .flatMapCompletable {
+                userMoney -> userMoneySharedPreferences.setUserMoney(userMoney - money)
+            }
+    }
 }
