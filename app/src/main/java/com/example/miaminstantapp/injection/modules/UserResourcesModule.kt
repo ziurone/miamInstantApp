@@ -106,7 +106,7 @@ class UserResourcesModule {
     fun providesFetchUserAddressAction(action: FetchCurrentUserAddressAction): IFetchCurrentUserAddressAction = action
 
     @Provides
-    fun providesDoRecipesAction(action: DoRecipesAction): IDoRecipesAction = action
+    fun providesDoRecipesAction(action: DoPurchaseAction): IDoPurchaseAction = action
 
     @Provides
     @IntoMap

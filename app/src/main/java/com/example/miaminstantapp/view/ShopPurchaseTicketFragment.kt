@@ -1,6 +1,5 @@
 package com.example.miaminstantapp.view
 
-import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +21,10 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
             layoutManager = LinearLayoutManager(context)
             adapter = shopPurchaseAdapter
         }
+
+        doPurchaseButton.setOnClickListener {
+            viewModel.doPurchase()
+        }
     }
 
     override fun startInitialDomainAction() {
@@ -34,7 +37,12 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
     override fun onStateChanged(state: ITicketViewModel.State) {
         when(state) {
             is ITicketViewModel.State.FetchShopPurchasesSuccess -> showShopPurchases(state.shopsPurchases)
+            is ITicketViewModel.State.DoPurchaseSuccess -> recipesDone()
         }
+    }
+
+    private fun recipesDone() {
+        findNavController().navigate(R.id.global_action_toRecipeBookFragment)
     }
 
     private fun showShopPurchases(shopPurchases: List<ShopPurchaseRelation>) {

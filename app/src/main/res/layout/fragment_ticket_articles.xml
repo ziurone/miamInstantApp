@@ -11,13 +11,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <Button
-        android:id="@+id/showRecipeBook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/articlesList"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Ver recetario"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

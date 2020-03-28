@@ -7,18 +7,25 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class DoRecipesAction @Inject constructor(
+/**
+ * Executes purchase.
+ * Rest puchase money to user money.
+ * Remove MarketsRecipe.
+ *
+ *
+ */
+class DoPurchaseAction @Inject constructor(
     private val shopArticleRepository: IShopArticleRepository,
     private val moneyRepository: IUserMoneyRepository,
     private val marketRecipesRepository: IMarketRecipesRepository
-): BaseAction<IDoRecipesAction.Result>(), IDoRecipesAction {
+): BaseAction<IDoPurchaseAction.Result>(), IDoPurchaseAction {
 
-    override fun doRecipes() {
+    override fun doPurchase() {
         shopArticleRepository
-            .cleanPurchase()
-            .andThen(shopArticleRepository.getPurchaseMoney())
+            .getPurchaseMoney()
             .flatMapCompletable { purchaseMoney -> moneyRepository.restMoney(purchaseMoney) }
             .andThen(marketRecipesRepository.deleteAll())
+            .andThen(shopArticleRepository.cleanPurchase())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)
@@ -26,14 +33,14 @@ class DoRecipesAction @Inject constructor(
     }
 
     private fun onSuccess() {
-        liveData.value = IDoRecipesAction.Result.Success
+        liveData.value = IDoPurchaseAction.Result.Success
     }
 
-    override fun getErrorResult(throwable: Throwable): IDoRecipesAction.Result? {
+    override fun getErrorResult(throwable: Throwable): IDoPurchaseAction.Result? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getFailureResult(failedResponseCode: String): IDoRecipesAction.Result? {
+    override fun getFailureResult(failedResponseCode: String): IDoPurchaseAction.Result? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

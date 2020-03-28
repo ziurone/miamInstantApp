@@ -32,10 +32,6 @@ class TicketArticlesFragment: BaseFragment<ITicketArticlesViewModel, ITicketArti
             adapter = articlesAdapter
         }
 
-        showRecipeBook.setOnClickListener {
-            findNavController().navigate(R.id.global_action_toRecipeBookFragment)
-        }
-
         super.initViews()
     }
 

@@ -6,8 +6,10 @@ abstract class ITicketViewModel: BaseViewModel<ITicketViewModel.State>() {
     sealed class State {
         data class FetchShopPurchasesSuccess(val shopsPurchases: List<ShopPurchaseRelation>): State()
         data class Error(val errorMessage: String): State()
+        object DoPurchaseSuccess: State()
     }
 
     abstract fun fetch()
+    abstract fun doPurchase()
 
 }
