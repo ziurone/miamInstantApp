@@ -8,10 +8,6 @@
         android:id="@+id/userFiltersNavigation"
         android:name="com.example.miaminstantapp.view.UserFiltersFragment">
 
-        <action
-            android:id="@+id/action_userFilters_to_doableRecipes"
-            app:destination="@+id/doableRecipesList"/>
-
     </fragment>
 
     <fragment
@@ -54,5 +50,9 @@
 
     <action android:id="@+id/global_action_toRecipeBookFragment"
         app:destination="@id/recipeBookFragment"/>
+
+    <action
+        android:id="@+id/action_global_market_recipes"
+        app:destination="@+id/doableRecipesList"/>
 
 </navigation>
