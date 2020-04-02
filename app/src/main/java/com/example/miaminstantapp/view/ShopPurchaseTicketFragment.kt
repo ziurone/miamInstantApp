@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view
 
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
@@ -16,6 +17,8 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
     override fun initViews() {
         super.initViews()
 
+        doPurchaseButton.isEnabled = false
+
         shopPurchaseAdapter = ShopPurchaseAdapter(this)
         shopPurchasesList.apply {
             layoutManager = LinearLayoutManager(context)
@@ -29,16 +32,28 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
 
     override fun startInitialDomainAction() {
         super.startInitialDomainAction()
-        viewModel.fetch()
+        viewModel.fetchArticlesQuantity()
     }
 
     override fun getLayoutId(): Int = R.layout.fragment_shop_purchase_ticket
 
     override fun onStateChanged(state: ITicketViewModel.State) {
         when(state) {
+            is ITicketViewModel.State.PurchaseHaveArticles -> fetchShopPurchases()
+            is ITicketViewModel.State.PurchaseIsEmpty -> showEmptyView()
             is ITicketViewModel.State.FetchShopPurchasesSuccess -> showShopPurchases(state.shopsPurchases)
             is ITicketViewModel.State.DoPurchaseSuccess -> recipesDone()
         }
+    }
+
+    private fun showEmptyView() {
+        shoppingCartEmptyMessage.isVisible = true
+        doPurchaseButton.isEnabled = false
+    }
+
+    private fun fetchShopPurchases() {
+        shoppingCartEmptyMessage.isVisible = false
+        viewModel.fetchShopPurchases()
     }
 
     private fun recipesDone() {
@@ -47,6 +62,7 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
 
     private fun showShopPurchases(shopPurchases: List<ShopPurchaseRelation>) {
         shopPurchaseAdapter.setData(shopPurchases)
+        doPurchaseButton.isEnabled = true
     }
 
     override fun onClick(shopPurchase: ShopPurchaseRelation) {

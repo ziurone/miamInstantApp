@@ -109,6 +109,9 @@ class UserResourcesModule {
     fun providesDoRecipesAction(action: DoPurchaseAction): IDoPurchaseAction = action
 
     @Provides
+    fun providesFetchShopArticlesQuantityAction(action: FetchShopArticlesQuantityAction): IFetchShopArticlesQuantityAction = action
+
+    @Provides
     @IntoMap
     @ViewModelKey(IUserIngredientsViewModel::class)
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel

@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view
 
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
@@ -38,7 +39,8 @@ class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRe
     }
 
     private fun showRecipes(doableRecipes: List<DoableRecipe>) {
-        doableRecipesAdapter.addRecipes(doableRecipes)
+        if (doableRecipes.isNotEmpty()) doableRecipesAdapter.addRecipes(doableRecipes)
+        else recipeListEmptyView.isVisible = true
     }
 
     override fun onItemClick(recipeId: Int) {

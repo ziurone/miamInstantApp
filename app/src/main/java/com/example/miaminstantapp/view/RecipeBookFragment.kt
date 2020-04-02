@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view
 
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
@@ -20,13 +21,15 @@ class RecipeBookFragment: BaseFragment<IRecipeBookViewModel, IRecipeBookViewMode
     }
 
     private fun showRecipes(recipes: List<RecipeBookRecipeEntity>) {
-        recipesAdapter.setRecipes(recipes)
+        if (recipes.isNotEmpty()) recipesAdapter.setRecipes(recipes)
+        else recipeBookEmptyView.isVisible = true
     }
 
     override fun initViews() {
         super.initViews()
 
         initRecipeList()
+        recipeBookEmptyView.isVisible = false
         viewModel.fetchRecipes()
     }
 

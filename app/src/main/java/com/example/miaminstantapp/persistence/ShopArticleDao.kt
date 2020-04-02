@@ -34,4 +34,7 @@ interface ShopArticleDao {
 
     @Query("SELECT SUM(totalPrice) as purchasePrice FROM " + ShopArticleEntity.TABLE_NAME)
     fun getPurchaseTotal(): Single<Int>
+
+    @Query("SELECT COUNT(id) FROM " + ShopArticleEntity.TABLE_NAME)
+    fun getInShoppingCart(): Single<Int>
 }

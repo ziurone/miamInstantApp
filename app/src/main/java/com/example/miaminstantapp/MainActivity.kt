@@ -17,6 +17,14 @@ class MainActivity : DaggerAppCompatActivity() {
                         findNavController(R.id.userFiltersFragmentHost).navigate(R.id.action_global_market_recipes)
                         true
                     }
+                    R.id.appBarRecipeBook -> {
+                        findNavController(R.id.userFiltersFragmentHost).navigate(R.id.global_action_toRecipeBookFragment)
+                        true
+                    }
+                    R.id.appBarShoppingCart -> {
+                        findNavController(R.id.userFiltersFragmentHost).navigate(R.id.action_global_toShopPurchase)
+                        true
+                    }
                     else -> false
                 }
         }

@@ -14,7 +14,7 @@ class GetDoableRecipeByIdAction @Inject constructor(
 {
 
     override fun getErrorResult(throwable: Throwable): IGetDoableRecipeByIdAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return IGetDoableRecipeByIdAction.Result.Error(throwable.localizedMessage)
     }
 
     override fun getFailureResult(failedResponseCode: String): IGetDoableRecipeByIdAction.Result? {

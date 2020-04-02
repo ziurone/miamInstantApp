@@ -10,4 +10,5 @@ interface IShopArticleRepository {
     fun fetchByShopId(shopId: Int): Single<List<ShopArticleEntity>>
     fun cleanPurchase(): Completable
     fun getPurchaseMoney(): Single<Int>
+    fun getQuantityInShoppingCart(): Single<Int>
 }

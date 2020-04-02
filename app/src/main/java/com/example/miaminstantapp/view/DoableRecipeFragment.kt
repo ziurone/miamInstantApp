@@ -39,7 +39,7 @@ class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRe
     }
 
     private fun recipeAddessSuccess() {
-        findNavController().navigate(R.id.action_doableRecipeDetailToTicketFragment)
+        findNavController().navigate(R.id.action_global_toShopPurchase)
     }
 
     private fun showRecipe(doableRecipe: DoableRecipe) {

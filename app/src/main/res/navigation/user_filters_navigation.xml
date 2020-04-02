@@ -24,13 +24,9 @@
         android:id="@+id/doableRecipeDetailFragment"
         android:name="com.example.miaminstantapp.view.DoableRecipeFragment">
 
-        <action
-            android:id="@+id/action_doableRecipeDetailToTicketFragment"
-            app:destination="@id/ticketFragment"/>
-
     </fragment>
 
-    <fragment android:id="@+id/ticketFragment"
+    <fragment android:id="@+id/shopPurchaseFragment"
         android:name="com.example.miaminstantapp.view.ShopPurchaseTicketFragment">
 
         <action
@@ -54,5 +50,9 @@
     <action
         android:id="@+id/action_global_market_recipes"
         app:destination="@+id/doableRecipesList"/>
+
+    <action
+        android:id="@+id/action_global_toShopPurchase"
+        app:destination="@id/shopPurchaseFragment"/>
 
 </navigation>

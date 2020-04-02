@@ -22,7 +22,7 @@ class FetchShopsPurchaseAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IFetchShopsPurchaseAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return IFetchShopsPurchaseAction.Result.Error(throwable.localizedMessage)
     }
 
     override fun getFailureResult(failedResponseCode: String): IFetchShopsPurchaseAction.Result? {
