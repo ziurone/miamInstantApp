@@ -63,6 +63,7 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
     private fun showShopPurchases(shopPurchases: List<ShopPurchaseRelation>) {
         shopPurchaseAdapter.setData(shopPurchases)
         doPurchaseButton.isEnabled = true
+        doPurchaseButton.isVisible = true
     }
 
     override fun onClick(shopPurchase: ShopPurchaseRelation) {

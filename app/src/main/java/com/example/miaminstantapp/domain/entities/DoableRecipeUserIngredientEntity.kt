@@ -2,13 +2,13 @@ package com.example.miaminstantapp.domain.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredient.Companion.TABLE_NAME
+import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredientEntity.Companion.TABLE_NAME
 
 /**
  * User ingredients in doableRecipe
  */
 @Entity(tableName = TABLE_NAME)
-data class DoableRecipeUserIngredient(
+data class DoableRecipeUserIngredientEntity(
     val ingredientId: Int,
     val ingredientName: String,
     val usedQuantity: Int,
@@ -22,7 +22,7 @@ data class DoableRecipeUserIngredient(
     var id: Int = 0
 }
 
-fun DoableRecipeUserIngredient.toRecipeBookIngredient(recipe: Int) = RecipeBookRecipeIngredientEntity(
+fun DoableRecipeUserIngredientEntity.toRecipeBookIngredient(recipe: Int) = RecipeBookRecipeIngredientEntity(
     name = ingredientName,
     quantity = usedQuantity,
     recipeId = recipe

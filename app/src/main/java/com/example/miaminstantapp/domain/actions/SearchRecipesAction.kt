@@ -3,7 +3,7 @@ package com.example.miaminstantapp.domain.actions
 import com.example.miaminstantapp.domain.dtos.MarketIngredientDTO
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.dtos.toMarketRecipeEntity
-import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredient
+import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.repositories.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -40,13 +40,13 @@ class SearchRecipesAction @Inject constructor(
                     .toSingleDefault(recipes)
             }
             .flatMapCompletable { recipes ->
-                val userIngredientsEntities = mutableListOf<DoableRecipeUserIngredient>()
+                val userIngredientsEntities = mutableListOf<DoableRecipeUserIngredientEntity>()
 
                 recipes.map {
                     val r = it
                     userIngredientsEntities.addAll(
                         it.userIngredients.map { ingDTO ->
-                            DoableRecipeUserIngredient(
+                            DoableRecipeUserIngredientEntity(
                                 ingredientId = ingDTO.id,
                                 ingredientName = ingDTO.name,
                                 usedQuantity = ingDTO.usedQuantity,

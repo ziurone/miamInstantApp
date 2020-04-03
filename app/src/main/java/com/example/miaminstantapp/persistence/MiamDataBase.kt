@@ -12,7 +12,7 @@ import com.example.miaminstantapp.domain.entities.*
     ShopEntity::class,
     MarketRecipeEntity::class,
     MarketIngredientEntity::class,
-    DoableRecipeUserIngredient::class,
+    DoableRecipeUserIngredientEntity::class,
     ShopArticleEntity::class,
     RecipeBookRecipeEntity::class,
     RecipeBookRecipeIngredientEntity::class,
