@@ -17,7 +17,7 @@
             android:id="@+id/userFiltersFragmentHost"
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/user_filters_navigation">
+            app:navGraph="@navigation/navigation_graph">
         </fragment>
 
     </androidx.core.widget.NestedScrollView>

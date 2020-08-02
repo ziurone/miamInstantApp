@@ -3,7 +3,7 @@ package com.example.miaminstantapp.injection.modules
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.example.miaminstantapp.view.UserFiltersFragment
+import com.example.miaminstantapp.view.DispensaryFragment
 import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.repositories.*
 import com.example.miaminstantapp.injection.qualifiers.AppContext
@@ -117,7 +117,7 @@ class UserResourcesModule {
     fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel
 
     @Provides
-    fun providesUserResources(fragment: UserFiltersFragment, viewModelFactory: ViewModelFactory): IUserIngredientsViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IUserIngredientsViewModel::class.java]
+    fun providesUserResources(fragment: DispensaryFragment, viewModelFactory: ViewModelFactory): IUserIngredientsViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IUserIngredientsViewModel::class.java]
 
     @Provides
     @IntoMap

@@ -22,7 +22,7 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_user_filters.*
 
-class UserFiltersFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
+class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
 
     private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
     private lateinit var buttonEnabler: ViewEnabler

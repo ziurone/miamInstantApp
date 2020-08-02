@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/userFiltersNavigation"
-    app:startDestination="@id/userFiltersNavigation">
+    android:id="@+id/dispensary"
+    app:startDestination="@id/dispensary">
 
     <fragment
-        android:id="@+id/userFiltersNavigation"
-        android:name="com.example.miaminstantapp.view.UserFiltersFragment">
+        android:id="@+id/dispensary"
+        android:name="com.example.miaminstantapp.view.DispensaryFragment">
 
     </fragment>
 
