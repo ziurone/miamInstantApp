@@ -8,6 +8,7 @@ import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.repositories.*
 import com.example.miaminstantapp.injection.qualifiers.AppContext
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
+import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.*
 import com.example.miaminstantapp.viewmodel.*
@@ -55,6 +56,9 @@ class UserResourcesModule {
     fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides
+    fun providesUserFirstTimeInAppPreference(@AppContext context: Context): IsFirstTimeInAppPreference = IsFirstTimeInAppPreference(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
+
+    @Provides
     fun providesFetchSuggestedIngredientsUseCase(useCase: FetchSuggestedIngredientsAction): IFetchSuggestedIngredientsAction = useCase
 
     @Provides
@@ -80,6 +84,9 @@ class UserResourcesModule {
 
     @Provides
     fun providesSearchRecipesAction(action: SearchRecipesAction): ISearchRecipesAction = action
+
+    @Provides
+    fun providesUserFirstTimeInAppAction(action: IsFirstTimeOpeningAppAction): IIsFirstTimeOpeningAppAction = action
 
     @Provides
     fun providesGetDoableRecipeWithIdAction(action: GetDoableRecipeByIdAction): IGetDoableRecipeByIdAction = action
@@ -158,5 +165,14 @@ class UserResourcesModule {
 
     @Provides
     fun providesRecipeBook(fragment: RecipeBookFragment, viewModelFactory: ViewModelFactory): IRecipeBookViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IRecipeBookViewModel::class.java]
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(ISplashScreenViewModel::class)
+    fun providesSplashScreenViewModelIntoMap(viewModel: SplashScreenViewModel): ViewModel = viewModel
+
+    @Provides
+    fun providesSplashScreen(activity: SplashScreenActivity, viewModelFactory: ViewModelFactory): ISplashScreenViewModel = ViewModelProviders.of(activity, viewModelFactory)[ISplashScreenViewModel::class.java]
+
 
 }
