@@ -36,5 +36,6 @@ dependencies {
     architectureComponents()
     room()
     geolocation()
+    viewPager()
     implementation 'com.android.support:multidex:1.0.3'
 }

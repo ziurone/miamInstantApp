@@ -164,4 +164,8 @@ ext {
         debugImplementation deps.androidxTest.fragmentTesting
     }
 
+    viewPager = Group {
+        implementation deps.viewPager.viewPager
+    }
+
 }

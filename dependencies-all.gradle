@@ -100,6 +100,9 @@ ext.deps = [
         'mockito'       : [
                 'core'  : "org.mockito:mockito-core:$versions.mockito",
                 'inline': "org.mockito:mockito-inline:$versions.mockito",
+        ],
+        'viewPager' : [
+                'viewPager':  "androidx.viewpager2:viewpager2:$versions.viewPager"
         ]
 ]
 

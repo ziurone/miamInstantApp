@@ -1,9 +1,7 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
-import com.example.miaminstantapp.domain.repositories.IngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
