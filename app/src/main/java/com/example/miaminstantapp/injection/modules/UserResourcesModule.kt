@@ -32,6 +32,9 @@ class UserResourcesModule {
     fun providesBranchesRepository(repository: BranchRepository): IBranchRepository = repository
 
     @Provides
+    fun providesDietsRepository(repository: DietRepository): IDietRepository = repository
+
+    @Provides
     fun providesShopRepository(repository: ShopRepository): IShopRepository = repository
 
     @Provides

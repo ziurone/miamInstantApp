@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.miaminstantapp.R
+import com.example.miaminstantapp.routing.Launcher
 import kotlinx.android.synthetic.main.fragment_presentation.*
 
 
@@ -28,6 +29,10 @@ class PresentationFragment: Fragment() {
 
         arguments?.let {
             description.text = it.getString(DESCRIPTION_KEY, "")
+        }
+
+        nextFlow.setOnClickListener {
+            Launcher(requireContext()).filtersDislikeIngredients()
         }
 
     }

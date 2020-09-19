@@ -29,6 +29,10 @@ class RoomModule {
 
     @Provides
     @PerApplication
+    fun provideDietsDao(miamDataBase: MiamDataBase): DietDao = miamDataBase.userDietsDao()
+
+    @Provides
+    @PerApplication
     fun providesShopDao(miamDataBase: MiamDataBase): ShopDao = miamDataBase.shopDao()
 
     @Provides
