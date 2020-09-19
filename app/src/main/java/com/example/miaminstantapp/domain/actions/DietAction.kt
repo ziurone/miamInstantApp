@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
+import android.util.Log
 import com.example.miaminstantapp.domain.enums.Diet
 import com.example.miaminstantapp.domain.repositories.DietRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,6 +14,8 @@ class DietAction @Inject constructor(
     sealed class Result {
         object SUCCESS: Result()
     }
+
+    fun getDiets() = dietRepository.getDiets()
 
     fun addDiet(diet: Diet) {
         dietRepository
@@ -30,6 +33,8 @@ class DietAction @Inject constructor(
     override fun getFailureResult(failedResponseCode: String): Result? {
         TODO("Not yet implemented")}
 
-    fun onSuccess() {}
+    fun onSuccess() {
+        Log.i("DB_INTERACTION", "Diet added successfully")
+    }
 
 }

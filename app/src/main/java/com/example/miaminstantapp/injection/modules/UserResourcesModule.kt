@@ -12,6 +12,8 @@ import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.*
 import com.example.miaminstantapp.viewmodel.*
+import com.example.miaminstantapp.viewmodel.userfilters.AddUserDietsViewModel
+import com.example.miaminstantapp.viewmodel.userfilters.IAddUserDietsViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -177,5 +179,12 @@ class UserResourcesModule {
     @Provides
     fun providesSplashScreen(activity: SplashScreenActivity, viewModelFactory: ViewModelFactory): ISplashScreenViewModel = ViewModelProviders.of(activity, viewModelFactory)[ISplashScreenViewModel::class.java]
 
+    @Provides
+    @IntoMap
+    @ViewModelKey(IAddUserDietsViewModel::class)
+    fun providesAddUserDietsViewModelIntoMap(viewModel: AddUserDietsViewModel): ViewModel = viewModel
+
+    @Provides
+    fun providesAddUserDiets(fragment: AddUserDietsFragment, viewModelFactory: ViewModelFactory) : IAddUserDietsViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IAddUserDietsViewModel::class.java]
 
 }
