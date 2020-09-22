@@ -120,6 +120,7 @@ ext {
         implementation deps.lottie.lottie
         kapt deps.glide.compiler
         implementation deps.skeletonLayout.skeletonLayout
+        implementation deps.groupie.groupie
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

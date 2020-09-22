@@ -79,6 +79,9 @@ ext.deps = [
         'geolocation' : [
                 'places': "com.google.android.libraries.places:places:$versions.places"
         ],
+        'groupie' : [
+                'groupie': "com.xwray:groupie:$versions.groupie"
+        ],
         ////////////////////////////////////////////////////////////////////////////////////////////
         // TESTING                                                                                //
         ////////////////////////////////////////////////////////////////////////////////////////////
