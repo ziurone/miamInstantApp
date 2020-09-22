@@ -10,6 +10,7 @@ import com.example.miaminstantapp.viewmodel.userfilters.IAddUserDietsViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_add_user_diets.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class AddUserDietsFragment: BaseFragment<IAddUserDietsViewModel, IAddUserDietsViewModel.State>() {
 
@@ -24,6 +25,8 @@ class AddUserDietsFragment: BaseFragment<IAddUserDietsViewModel, IAddUserDietsVi
             adapter = dietsAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
+
+        toolbarClose.title = getString(R.string.step_1_of_3)
     }
 
     override fun getLayoutId(): Int = R.layout.fragment_add_user_diets

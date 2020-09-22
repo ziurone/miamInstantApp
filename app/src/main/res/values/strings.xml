@@ -20,6 +20,9 @@
     <string name="celiac_name">Celíaca</string>
     <string name="diets_list_title">¿Seguís alguna dieta?</string>
 
+    <!-- User filters steps -->
+    <string name="step_1_of_3">Paso 1 de 3</string>
+
     <string name="vegan_description">Solo alimentos de origen vegetal</string>
     <string name="vegetarian_description">Sigo una dieta sin carne</string>
     <string name="celiac_description">Sigo una dieta libre de glúten</string>
