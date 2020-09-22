@@ -13,7 +13,9 @@ class AddUserDietsViewModel @Inject constructor(
     }
 
     private fun addedSuccess(result: DietAction.Result) {
-
+        when(result) {
+            is DietAction.Result.FetchUserDietsSuccess -> setState(State.UserDietsFetched(result.diets))
+        }
     }
 
     override fun addUserDiet(diet: Diet) {
@@ -22,6 +24,7 @@ class AddUserDietsViewModel @Inject constructor(
 
     override fun fetchDiets() {
         setState(State.DietsFetched(dietAction.getDiets()))
+        dietAction.getUserDiets()
     }
 
 }

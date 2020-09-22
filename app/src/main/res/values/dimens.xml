@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Spacing  -->
+    <dimen name="spacing_none">0dp</dimen>
+    <dimen name="spacing_xthin">1dp</dimen>
+    <dimen name="spacing_thin">2dp</dimen>
+    <dimen name="spacing_xsmall">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">8dp</dimen>
+    <dimen name="spacing_standard">12dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_xlarge">16dp</dimen>
+    <dimen name="spacing_xxlarge">16dp</dimen>
+    <dimen name="spacing_xxxlarge">24dp</dimen>
+    <dimen name="spacing_item">48dp</dimen>
+    <dimen name="medium_centered_item">150dp</dimen>
+
     <dimen name="match_constraint">0dp</dimen>
     <dimen name="recipe_item_image_height">50dp</dimen>
 
@@ -13,6 +29,10 @@
     <dimen name="recipe_list_badget_margin_bottom">10dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--  Diets -->
+    <dimen name="diet_item_height">80dp</dimen>
+
 
 
 </resources>

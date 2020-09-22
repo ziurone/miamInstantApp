@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#5E001D</color>
+    <color name="secondary">#FFF9EF</color>
+    <color name="secondary_light">#FFFFFF</color>
+    <color name="colorPrimaryDark">#350000</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="black">#242424</color>
+    <color name="tertiary">#838080</color>
 
     <!--  Custom colors  -->
     <color name="cardGenericBadgetBackgroundColor">@color/quantum_black_100</color>

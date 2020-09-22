@@ -16,4 +16,15 @@
     <style name="GenericItemTitle" parent="TextAppearance.MaterialComponents.Body1">
     </style>
 
+    <style name="DietCardTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DietCardSubtitle">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/tertiary</item>
+    </style>
+
+
 </resources>

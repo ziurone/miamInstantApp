@@ -12,7 +12,5 @@ class DietRepository @Inject constructor(
 
     override fun addDiet(diet: Diet): Completable = dietDao.insert(diet.toEntity())
 
-    override fun getUserDiets() {
-        TODO("Not yet implemented")
-    }
+    override fun getUserDiets() = dietDao.fetchAll()
 }

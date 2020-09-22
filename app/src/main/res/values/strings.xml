@@ -11,4 +11,14 @@
     <string name="shopping_cart_empty_message">El carrito de compras esta vacio.</string>
     <string name="app_bottom_bar_menu_recipe_book_title">RecipeBook</string>
     <string name="app_bottom_bar_menu_shopping_cart_title">ShoppingCart</string>
+
+    <!-- Diets -->
+    <string name="vegan_name">Vegana</string>
+    <string name="vegetarian_name">Vegetariana</string>
+    <string name="celiac_name">Celíaca</string>
+
+    <string name="vegan_description">Solo alimentos de origen vegetal</string>
+    <string name="vegetarian_description">Sigo una dieta sin carne</string>
+    <string name="celiac_description">Sigo una dieta libre de glúten</string>
+
 </resources>

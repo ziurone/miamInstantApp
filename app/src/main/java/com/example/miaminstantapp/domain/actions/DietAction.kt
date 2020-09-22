@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import android.util.Log
+import com.example.miaminstantapp.domain.entities.DietEntity
 import com.example.miaminstantapp.domain.enums.Diet
 import com.example.miaminstantapp.domain.repositories.DietRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,17 +12,31 @@ class DietAction @Inject constructor(
 ): BaseAction<DietAction.Result>() {
 
     sealed class Result {
-        object SUCCESS: Result()
+        data class FetchUserDietsSuccess(val diets: List<DietEntity>): Result()
+        object AddUserDietSuccess: Result()
     }
 
     fun getDiets() = dietRepository.getDiets()
+
+    fun getUserDiets() {
+        dietRepository
+            .getUserDiets()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::onFetchAllSuccess, ::onError)
+            .track()
+    }
+
+    private fun onFetchAllSuccess(diets: List<DietEntity>) {
+        liveData.value = Result.FetchUserDietsSuccess(diets)
+    }
 
     fun addDiet(diet: Diet) {
         dietRepository
             .addDiet(diet)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::onSuccess, ::onError)
+            .subscribe(::onAddSuccess, ::onError)
             .track()
     }
 
@@ -33,8 +47,8 @@ class DietAction @Inject constructor(
     override fun getFailureResult(failedResponseCode: String): Result? {
         TODO("Not yet implemented")}
 
-    fun onSuccess() {
-        Log.i("DB_INTERACTION", "Diet added successfully")
+    private fun onAddSuccess() {
+        liveData.value = Result.AddUserDietSuccess
     }
 
 }
