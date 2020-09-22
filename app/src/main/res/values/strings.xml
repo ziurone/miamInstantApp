@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">miamInstantApp</string>
 
+    <string name="next">Siguiente</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test">asdasdasdasda</string>
@@ -16,6 +18,7 @@
     <string name="vegan_name">Vegana</string>
     <string name="vegetarian_name">Vegetariana</string>
     <string name="celiac_name">Celíaca</string>
+    <string name="diets_list_title">¿Seguís alguna dieta?</string>
 
     <string name="vegan_description">Solo alimentos de origen vegetal</string>
     <string name="vegetarian_description">Sigo una dieta sin carne</string>

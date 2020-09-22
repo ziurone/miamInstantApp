@@ -26,5 +26,13 @@
         <item name="android:textColor">@color/tertiary</item>
     </style>
 
+    <style name="Title" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/bebas_neue_bold</item>
+    </style>
+
+    <style name="ButtonPrimary">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 
 </resources>

@@ -6,6 +6,8 @@
     <color name="colorPrimaryDark">#350000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="black">#242424</color>
+    <color name="black_dark">#000000</color>
+    <color name="white">#FFFFFF</color>
     <color name="tertiary">#838080</color>
 
     <!--  Custom colors  -->

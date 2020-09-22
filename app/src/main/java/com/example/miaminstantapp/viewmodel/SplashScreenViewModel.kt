@@ -16,12 +16,12 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     private fun onIsUserFirstTimeInApp(result: IIsFirstTimeOpeningAppAction.Result) {
-        when(result) {
-            is IIsFirstTimeOpeningAppAction.Result.UserFirstTimeInApp -> {
+//        when(result) {
+//            is IIsFirstTimeOpeningAppAction.Result.UserFirstTimeInApp -> {
                 setState(ISplashScreenViewModel.State.IsUserFirstTimeInApp)
-
-            }
-            is IIsFirstTimeOpeningAppAction.Result.UserHasUsedApp -> setState(ISplashScreenViewModel.State.UserHasAlreadyUseTheApp)
-        }
+//
+//            }
+//            is IIsFirstTimeOpeningAppAction.Result.UserHasUsedApp -> setState(ISplashScreenViewModel.State.UserHasAlreadyUseTheApp)
+//        }
     }
 }
