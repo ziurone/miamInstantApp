@@ -43,6 +43,9 @@
     <style name="ButtonPrimary">
         <item name="backgroundTint">@color/colorPrimary</item>
         <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/spacing_corner_button_medium</item>
+        <item name="android:paddingLeft">@dimen/spacing_xxxlarge</item>
+        <item name="android:paddingRight">@dimen/spacing_xxxlarge</item>
     </style>
 
 </resources>

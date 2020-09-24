@@ -16,8 +16,11 @@
     <dimen name="spacing_item">48dp</dimen>
     <dimen name="medium_centered_item">150dp</dimen>
 
+    <!-- Constraints utils  -->
     <dimen name="match_constraint">0dp</dimen>
-    <dimen name="recipe_item_image_height">50dp</dimen>
+
+    <!-- Buttons  -->
+    <dimen name="spacing_corner_button_medium">20dp</dimen>
 
     <!-- Cards  -->
     <dimen name="generic_card_outer_margin">16dp</dimen>
