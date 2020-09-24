@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.repositories
 
+import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
@@ -56,6 +57,26 @@ class IngredientRepository @Inject constructor(
                     Ingredient(5, "Papa", 1, 100, listOf(1,2,3)),
                     Ingredient(6, "Crema", 1, 100, listOf(1,2,3))
                 )
+            )
+        )
+    }
+
+    override fun getShortIngredientsByName(queryText: String): Single<List<IngredientShortDto>> {
+        return Single.just(
+            listOf(
+                IngredientShortDto(
+                    1,
+                    "mani"
+                ),
+                IngredientShortDto(
+                    2,
+                    "nueces"
+                ),
+                IngredientShortDto(
+                    3,
+                    "morron"
+                )
+
             )
         )
     }
