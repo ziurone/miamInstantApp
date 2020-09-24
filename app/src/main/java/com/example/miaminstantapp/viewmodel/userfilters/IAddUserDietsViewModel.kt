@@ -12,5 +12,6 @@ abstract class IAddUserDietsViewModel: BaseViewModel<IAddUserDietsViewModel.Stat
     }
 
     abstract fun addUserDiet(diet: Diet)
+    abstract fun removeDiet(diet: Diet)
     abstract fun fetchDiets()
 }

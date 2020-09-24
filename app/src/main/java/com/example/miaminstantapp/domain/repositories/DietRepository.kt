@@ -13,4 +13,6 @@ class DietRepository @Inject constructor(
     override fun addDiet(diet: Diet): Completable = dietDao.insert(diet.toEntity())
 
     override fun getUserDiets() = dietDao.fetchAll()
+
+    override fun removeDiet(diet: Diet): Completable = dietDao.remove(diet.name)
 }

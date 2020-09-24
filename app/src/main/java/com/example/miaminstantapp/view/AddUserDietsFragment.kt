@@ -46,7 +46,7 @@ class AddUserDietsFragment: BaseFragment<IAddUserDietsViewModel, IAddUserDietsVi
             if(isActive) {
                 viewModel.addUserDiet(it)
             } else {
-                // TODO Add remove diet action.
+                viewModel.removeDiet(it)
             }
         }
         }
