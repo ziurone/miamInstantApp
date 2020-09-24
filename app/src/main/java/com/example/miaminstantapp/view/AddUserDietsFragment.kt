@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view
 
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.DietEntity
@@ -27,6 +28,10 @@ class AddUserDietsFragment: BaseFragment<IAddUserDietsViewModel, IAddUserDietsVi
         }
 
         toolbarClose.title = getString(R.string.step_1_of_3)
+
+        next.setOnClickListener {
+            findNavController().navigate(R.id.from_addUserDiets_to_AddUserAlergies)
+        }
     }
 
     override fun getLayoutId(): Int = R.layout.fragment_add_user_diets

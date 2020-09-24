@@ -12,6 +12,7 @@ import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.*
 import com.example.miaminstantapp.viewmodel.*
+import com.example.miaminstantapp.viewmodel.userfilters.AddAlergiesViewModel
 import com.example.miaminstantapp.viewmodel.userfilters.AddUserDietsViewModel
 import com.example.miaminstantapp.viewmodel.userfilters.IAddUserDietsViewModel
 import dagger.Module
@@ -186,5 +187,11 @@ class UserResourcesModule {
 
     @Provides
     fun providesAddUserDiets(fragment: AddUserDietsFragment, viewModelFactory: ViewModelFactory) : IAddUserDietsViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IAddUserDietsViewModel::class.java]
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(AddAlergiesViewModel::class)
+    fun providesAddAlergiesViewModelIntoMap(viewModel: AddAlergiesViewModel): ViewModel = viewModel
+
 
 }

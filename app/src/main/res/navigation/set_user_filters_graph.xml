@@ -7,6 +7,16 @@
 
     <fragment
         android:id="@+id/addUserDiets"
-        android:name="com.example.miaminstantapp.view.AddUserDietsFragment"/>
+        android:name="com.example.miaminstantapp.view.AddUserDietsFragment">
+
+        <action
+            android:id="@+id/from_addUserDiets_to_AddUserAlergies"
+            app:destination="@id/addUserAlergies"></action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addUserAlergies"
+        android:name="com.example.miaminstantapp.view.AddAlergiesFragment"/>
 
 </navigation>

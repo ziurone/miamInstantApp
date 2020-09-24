@@ -29,4 +29,7 @@ abstract class UserFiltersFragmentProvider {
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
     abstract fun providesAddUserDietsFragment(): AddUserDietsFragment
 
+    @ContributesAndroidInjector(modules = [UserResourcesModule::class])
+    abstract fun providesAddAlergiesFragment(): AddAlergiesFragment
+
 }
