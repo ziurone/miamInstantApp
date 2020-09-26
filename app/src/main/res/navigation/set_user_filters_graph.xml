@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/set_user_filters_graph"
     app:startDestination="@id/addUserDiets">
 
@@ -11,12 +11,13 @@
 
         <action
             android:id="@+id/from_addUserDiets_to_AddUserAlergies"
-            app:destination="@id/addUserAlergies"></action>
+            app:destination="@id/addUserAlergies" />
 
     </fragment>
 
     <fragment
         android:id="@+id/addUserAlergies"
-        android:name="com.example.miaminstantapp.view.AddAlergiesFragment"/>
+        android:name="com.example.miaminstantapp.view.AddAlergiesFragment"
+        tools:layout="@layout/fragment_add_alergies"/>
 
 </navigation>
