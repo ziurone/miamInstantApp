@@ -2,7 +2,10 @@ package com.example.miaminstantapp.view
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
@@ -24,6 +27,7 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
             is AddAlergiesViewModel.State.IngredientsFetched -> showIngredients(state.ingredients)
             is AddAlergiesViewModel.State.ExcludeIngredientAdded -> showAddedIngredient(state.ingredient)
             is AddAlergiesViewModel.State.ExcludedIngredientsFetched -> state.ingredients.map { addExcludedIngredient(it) }
+            AddAlergiesViewModel.State.ExcludedIngredientRemove -> Log.i("NON_ACTION_EVENT", "Excluded ingredient remove")
         }
     }
 
@@ -34,7 +38,12 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT)
             text = ingredient.name
+            isCloseIconVisible = true
             textSize = 16f
+            setOnCloseIconClickListener{
+                viewModel.remove(ingredient.ingredientId)
+                visibility = View.GONE
+            }
         }
 
         allergiesChipGroup.addView(chip)
@@ -48,7 +57,12 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT)
             text = ingredient.name
+            isCloseIconVisible = true
             textSize = 16f
+            setOnCloseIconClickListener{
+                viewModel.remove(ingredient.id)
+                visibility = View.GONE
+            }
         }
 
         allergiesChipGroup.addView(chip)

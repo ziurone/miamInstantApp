@@ -8,4 +8,5 @@ import io.reactivex.Single
 interface IExcludedIngredientRepository {
     fun add(ingredient: IngredientShortDto): Completable
     fun fetchAll(): Single<List<ExcludedIngredientEntity>>
+    fun remove(ingredientId: Int): Completable
 }

@@ -12,5 +12,6 @@ data class IngredientShortDto(
 }
 
 fun IngredientShortDto.toExcludedIngredientEntity() = ExcludedIngredientEntity(
+    ingredientId = id,
     name = name
 )

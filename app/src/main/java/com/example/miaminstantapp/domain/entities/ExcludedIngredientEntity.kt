@@ -6,6 +6,7 @@ import com.example.miaminstantapp.domain.entities.ExcludedIngredientEntity.Compa
 
 @Entity(tableName = TABLE_NAME)
 data class ExcludedIngredientEntity(
+    val ingredientId: Int,
     val name: String
 ) {
 

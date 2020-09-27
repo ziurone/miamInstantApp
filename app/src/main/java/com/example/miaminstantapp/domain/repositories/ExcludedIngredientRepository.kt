@@ -13,4 +13,5 @@ class ExcludedIngredientRepository @Inject constructor(
 ): IExcludedIngredientRepository {
     override fun add(ingredient: IngredientShortDto): Completable = excludedIngredientDao.insert(ingredient.toExcludedIngredientEntity())
     override fun fetchAll(): Single<List<ExcludedIngredientEntity>> = excludedIngredientDao.fetchAll()
+    override fun remove(ingredientId: Int): Completable = excludedIngredientDao.remove(ingredientId)
 }
