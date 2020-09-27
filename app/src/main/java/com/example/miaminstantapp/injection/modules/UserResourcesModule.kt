@@ -59,6 +59,9 @@ class UserResourcesModule {
     fun providesRecipeBookRecipeIngredientRepository(repository: RecipeBookRecipeIngredientRepository): IRecipeBookRecipeIngredientRepository = repository
 
     @Provides
+    fun providesExcludedIngredientRepository(repository: ExcludedIngredientRepository): IExcludedIngredientRepository = repository
+
+    @Provides
     fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides

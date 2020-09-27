@@ -2,13 +2,17 @@ package com.example.miaminstantapp.view
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
+import com.example.miaminstantapp.domain.entities.ExcludedIngredientEntity
 import com.example.miaminstantapp.view.items.ShortIngredientItem
 import com.example.miaminstantapp.viewmodel.userfilters.AddAlergiesViewModel
+import com.google.android.material.chip.Chip
 import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_add_alergies.*
+import kotlinx.android.synthetic.main.fragment_user_filters.*
 
 class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewModel.State>() {
 
@@ -18,12 +22,42 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
     override fun onStateChanged(state: AddAlergiesViewModel.State) {
         when(state) {
             is AddAlergiesViewModel.State.IngredientsFetched -> showIngredients(state.ingredients)
+            is AddAlergiesViewModel.State.ExcludeIngredientAdded -> showAddedIngredient(state.ingredient)
+            is AddAlergiesViewModel.State.ExcludedIngredientsFetched -> state.ingredients.map { addExcludedIngredient(it) }
         }
+    }
+
+    private fun addExcludedIngredient(ingredient: ExcludedIngredientEntity) {
+        val chip = Chip(context)
+        chip.apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+            text = ingredient.name
+            textSize = 16f
+        }
+
+        allergiesChipGroup.addView(chip)
+
+    }
+
+    private fun showAddedIngredient(ingredient: IngredientShortDto) {
+        val chip = Chip(context)
+        chip.apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+            text = ingredient.name
+            textSize = 16f
+        }
+
+        allergiesChipGroup.addView(chip)
+
     }
 
     private fun showIngredients(ingredients: List<IngredientShortDto>) {
         ingredientsAdapter.clear()
-        ingredientsAdapter.update(ingredients.map { ShortIngredientItem(it) })
+        ingredientsAdapter.update(ingredients.map { ingredient -> ShortIngredientItem(ingredient) { viewModel.add(ingredient) } })
     }
 
     override fun initViews() {
@@ -33,6 +67,8 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
             adapter = ingredientsAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+
+        viewModel.fetchAdded()
 
         search.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {

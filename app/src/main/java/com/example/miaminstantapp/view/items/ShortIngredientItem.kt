@@ -6,9 +6,11 @@ import com.example.miaminstantapp.R
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import com.xwray.groupie.OnItemClickListener
 
 class ShortIngredientItem(
-    private val shortIngredient: IngredientShortDto
+    private val shortIngredient: IngredientShortDto,
+    private val itemClickListener: (shortIngredient: IngredientShortDto) -> Unit
 ): Item<ShortIngredientItem.ShortIngredientItemViewHolder>() {
 
     class ShortIngredientItemViewHolder(view: View): GroupieViewHolder(view) {
@@ -21,5 +23,9 @@ class ShortIngredientItem(
 
     override fun bind(viewHolder: ShortIngredientItemViewHolder, position: Int) {
         viewHolder.name.text = shortIngredient.name
+
+        viewHolder.name.setOnClickListener {
+            itemClickListener(shortIngredient)
+        }
     }
 }
