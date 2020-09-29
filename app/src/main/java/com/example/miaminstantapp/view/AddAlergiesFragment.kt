@@ -16,6 +16,7 @@ import com.google.android.material.chip.Chip
 import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_add_alergies.*
 import kotlinx.android.synthetic.main.fragment_user_filters.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewModel.State>() {
 
@@ -40,6 +41,7 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
             text = ingredient.name
             isCloseIconVisible = true
             textSize = 16f
+            setBackgroundColor(ContextCompat.getColor(context, R.color.secondary))
             setOnCloseIconClickListener{
                 viewModel.remove(ingredient.ingredientId)
                 visibility = View.GONE
@@ -58,6 +60,7 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
                 ViewGroup.LayoutParams.WRAP_CONTENT)
             text = ingredient.name
             isCloseIconVisible = true
+            setBackgroundColor(ContextCompat.getColor(context, R.color.secondary))
             textSize = 16f
             setOnCloseIconClickListener{
                 viewModel.remove(ingredient.id)
@@ -82,6 +85,7 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
             layoutManager = LinearLayoutManager(requireContext())
         }
 
+        toolbarClose.title = getString(R.string.step_2_of_3)
         viewModel.fetchAdded()
 
         search.addTextChangedListener(object: TextWatcher {

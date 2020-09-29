@@ -5,13 +5,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/allergiesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/spacing_item"
+        android:textColor="@color/black_dark"
+        android:gravity="center"
+        style="@style/Title"
+        android:text="@string/allergies_filters_step_title"/>
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/spacing_xxxlarge"
+        android:layout_marginEnd="@dimen/spacing_xxxlarge"
+        android:layout_marginTop="@dimen/spacing_xxxlarge"
+        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/allergiesTitle"
+        android:layout_marginBottom="@dimen/spacing_item"
         app:layout_constraintLeft_toLeftOf="parent"
         android:background="@color/white" />
 
@@ -19,6 +43,8 @@
         android:id="@+id/ingredientList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xxxlarge"
+        android:layout_marginEnd="@dimen/spacing_xxxlarge"
         app:layout_constraintTop_toBottomOf="@id/search"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -26,8 +52,35 @@
         android:id="@+id/allergiesChipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xxxlarge"
+        android:layout_marginStart="@dimen/spacing_xxxlarge"
+        android:layout_marginEnd="@dimen/spacing_xxxlarge"
         app:layout_constraintTop_toBottomOf="@+id/ingredientList"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/skip"
+        android:layout_marginBottom="@dimen/spacing_large"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/next"
+        style="@style/ButtonPrimary"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/spacing_large"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/skip"
+        style="@style/ButtonPrimary.Inverse"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

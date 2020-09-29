@@ -2,6 +2,7 @@
     <string name="app_name">miamInstantApp</string>
 
     <string name="next">Siguiente</string>
+    <string name="skip">Saltar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -20,8 +21,12 @@
     <string name="celiac_name">Celíaca</string>
     <string name="diets_list_title">¿Seguís alguna dieta?</string>
 
+    <!-- Allergies -->
+    <string name="allergies_filters_step_title">¿Tenes alguna alergia o intolerancia?</string>
+    
     <!-- User filters steps -->
     <string name="step_1_of_3">Paso 1 de 3</string>
+    <string name="step_2_of_3">Paso 2 de 3</string>
 
     <string name="vegan_description">Solo alimentos de origen vegetal</string>
     <string name="vegetarian_description">Sigo una dieta sin carne</string>
