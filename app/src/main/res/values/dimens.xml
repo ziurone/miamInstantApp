@@ -11,7 +11,7 @@
     <dimen name="spacing_standard">12dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_xlarge">16dp</dimen>
-    <dimen name="spacing_xxlarge">16dp</dimen>
+    <dimen name="spacing_xxlarge">20dp</dimen>
     <dimen name="spacing_xxxlarge">24dp</dimen>
     <dimen name="spacing_item">48dp</dimen>
     <dimen name="medium_centered_item">150dp</dimen>

@@ -3,10 +3,8 @@
 
     <string name="next">Siguiente</string>
     <string name="skip">Saltar</string>
+    <string name="to_cook">¡A cocinar!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="test">asdasdasdasda</string>
     <string name="article_name">Mayonesa hellmans</string>
     <string name="app_bottom_bar_menu_recipe_list_title">RecipeList</string>
     <string name="recipe_list_empty_message">No se encontraron recetas con los recursos actuales</string>
@@ -18,18 +16,27 @@
     <!-- Diets -->
     <string name="vegan_name">Vegana</string>
     <string name="vegetarian_name">Vegetariana</string>
+    <string name="vegan_description">Solo alimentos de origen vegetal</string>
+    <string name="vegetarian_description">Sigo una dieta sin carne</string>
+    <string name="celiac_description">Sigo una dieta libre de glúten</string>
     <string name="celiac_name">Celíaca</string>
+
     <string name="diets_list_title">¿Seguís alguna dieta?</string>
 
     <!-- Allergies -->
     <string name="allergies_filters_step_title">¿Tenes alguna alergia\n o intolerancia?</string>
-    
+
+    <!-- Address -->
+    <string name="add_address_screen_title">¿Cual es tu ubicación?</string>
+    <string name="add_address_screen_subtitle">Cuando te falten ingrediente para cocinar una receta, te voy a \nsugerir tiendas cercanas donde vas a poder comprarlos.</string>
+    <string name="add_address_input_hint">Agrega una dirección</string>
+
     <!-- User filters steps -->
     <string name="step_1_of_3">Paso 1 de 3</string>
     <string name="step_2_of_3">Paso 2 de 3</string>
+    <string name="step_3_of_3">Paso 3 de 3</string>
 
-    <string name="vegan_description">Solo alimentos de origen vegetal</string>
-    <string name="vegetarian_description">Sigo una dieta sin carne</string>
-    <string name="celiac_description">Sigo una dieta libre de glúten</string>
+
+
 
 </resources>

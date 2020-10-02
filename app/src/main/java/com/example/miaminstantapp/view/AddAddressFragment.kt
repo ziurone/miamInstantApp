@@ -9,6 +9,7 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import kotlinx.android.synthetic.main.fragment_add_address.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.State>() {
 
@@ -19,6 +20,7 @@ class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.
         addAddress.setOnClickListener {
             navigateToAddressComponent()
         }
+        toolbarClose.title = getString(R.string.step_3_of_3)
     }
 
     override fun onStateChanged(state: AddAddressViewModel.State) {
