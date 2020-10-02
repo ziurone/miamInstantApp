@@ -6,8 +6,7 @@
     android:id="@+id/dietItemParent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/spacing_small"
-    android:layout_marginRight="@dimen/spacing_small"
+    android:layout_marginLeft="@dimen/spacing_large"
     android:layout_marginTop="@dimen/spacing_small"
     android:layout_marginBottom="@dimen/spacing_small"
     android:background="@color/secondary_light">
@@ -20,37 +19,34 @@
             android:id="@+id/dietIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/spacing_xxxlarge"
+            android:src="@drawable/ic_lettuce"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/spacing_xxxlarge"
-            android:src="@drawable/ic_lettuce"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/dietName"
+            style="@style/DietCardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_large"
-            app:layout_constraintTop_toBottomOf="@id/dietIcon"
+            android:layout_marginTop="@dimen/spacing_standard"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            style="@style/DietCardTitle"
-            tools:text="Vegano"
-            />
+            app:layout_constraintTop_toBottomOf="@id/dietIcon"
+            tools:text="Vegano" />
 
         <TextView
             android:id="@+id/dietDescription"
+            style="@style/Body1"
             android:layout_width="@dimen/medium_centered_item"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/spacing_item"
             android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/dietName"
+            android:paddingBottom="@dimen/spacing_large"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:paddingBottom="@dimen/spacing_large"
-            style="@style/DietCardSubtitle"
-            tools:text="Solo alimentos de origen vegetal"
-            />
+            app:layout_constraintTop_toBottomOf="@id/dietName"
+            tools:text="Solo alimentos de origen vegetal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

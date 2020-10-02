@@ -35,9 +35,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="@dimen/spacing_item"
+                android:layout_marginTop="@dimen/with_navbar_title_margin_top"
                 android:textColor="@color/black_dark"
-                style="@style/Title"
+                style="@style/Headline3"
                 android:text="@string/diets_list_title"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -46,6 +46,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_diet"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/content_with_title_margin_top"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 />

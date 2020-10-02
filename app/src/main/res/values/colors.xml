@@ -9,6 +9,7 @@
     <color name="black_dark">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="tertiary">#838080</color>
+    <color name="quaternary">#FAFAFA</color>
 
     <!--  Custom colors  -->
     <color name="cardGenericBadgetBackgroundColor">@color/quantum_black_100</color>

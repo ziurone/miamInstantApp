@@ -22,7 +22,7 @@
     <string name="diets_list_title">¿Seguís alguna dieta?</string>
 
     <!-- Allergies -->
-    <string name="allergies_filters_step_title">¿Tenes alguna alergia o intolerancia?</string>
+    <string name="allergies_filters_step_title">¿Tenes alguna alergia\n o intolerancia?</string>
     
     <!-- User filters steps -->
     <string name="step_1_of_3">Paso 1 de 3</string>

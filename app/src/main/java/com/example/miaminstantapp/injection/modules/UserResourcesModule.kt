@@ -196,5 +196,10 @@ class UserResourcesModule {
     @ViewModelKey(AddAlergiesViewModel::class)
     fun providesAddAlergiesViewModelIntoMap(viewModel: AddAlergiesViewModel): ViewModel = viewModel
 
+    @Provides
+    @IntoMap
+    @ViewModelKey(AddAddressViewModel::class)
+    fun providesAddAddressViewModelIntoMap(viewModel: AddAddressViewModel): ViewModel = viewModel
+
 
 }
