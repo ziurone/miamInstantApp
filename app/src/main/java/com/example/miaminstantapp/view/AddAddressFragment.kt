@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view
 
 import android.content.Intent
+import android.view.View
 import androidx.core.view.isVisible
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.UserAddressEntity
@@ -17,8 +18,11 @@ class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.
 
     override fun initViews() {
         super.initViews()
-        addAddress.setOnClickListener {
-            navigateToAddressComponent()
+        addAddress.keyListener = null
+        addAddress.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if(hasFocus) {
+                navigateToAddressComponent()
+            }
         }
         toolbarClose.title = getString(R.string.step_3_of_3)
     }
@@ -54,8 +58,12 @@ class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.
 
     private fun showSelectedAddress(data: Intent?) {
         val place = Autocomplete.getPlaceFromIntent(data!!)
-        userAddress.text = place.address
+        showAddress.isVisible = true
+        addAddressLayout.isVisible = false
+        addedAddress.text = place.address
+        nextButton.isEnabled = true
 
+        viewModel.removeAddresses()
         place.address?.let {
                 address -> viewModel.addUserAddress(UserAddressEntity(address))
         }

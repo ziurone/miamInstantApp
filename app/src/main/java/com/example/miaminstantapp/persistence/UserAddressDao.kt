@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.persistence
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.UserAddressEntity
@@ -14,4 +15,7 @@ interface UserAddressDao {
 
     @Query("SELECT * FROM " + UserAddressEntity.TABLE_NAME + " LIMIT 1")
     fun fetch(): Maybe<UserAddressEntity>
+
+    @Query("DELETE * FROM " + UserAddressEntity.TABLE_NAME)
+    fun removeAll(): Completable
 }

@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">miamInstantApp</string>
 
+    <!-- Common actions -->
     <string name="next">Siguiente</string>
     <string name="skip">Saltar</string>
     <string name="to_cook">¡A cocinar!</string>
+    <string name="edit">Editar</string>
 
     <string name="article_name">Mayonesa hellmans</string>
     <string name="app_bottom_bar_menu_recipe_list_title">RecipeList</string>

@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <include
         android:id="@+id/toolbar"
@@ -37,10 +38,15 @@
         android:text="@string/add_address_screen_subtitle"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addAddressLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
         android:hint="@string/add_address_input_hint"
         android:layout_marginTop="@dimen/spacing_xxlarge"
+        style="@style/InputPrimary"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/addAddressSubtitle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -53,14 +59,65 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@id/addAddressSubtitle"
+        android:id="@+id/showAddress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_item"
+        android:background="@color/secondary_light"
+        android:layout_marginTop="@dimen/spacing_xxlarge"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/addressIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:src="@drawable/ic_close_24px"/>
+
+        <TextView
+            android:id="@+id/addedAddress"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:ellipsize="end"
+            android:lines="1"
+            style="@style/Body2"
+            app:layout_constraintLeft_toRightOf="@id/addressIcon"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_large"
+            app:layout_constraintRight_toLeftOf="@+id/changeAddressButton"
+            tools:text="Av. Boedo 900, Buenos Aires, Argentina"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/changeAddressButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/edit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/spacing_xxxlarge"
+            android:layout_marginEnd="@dimen/spacing_xxxlarge"
+            style="@style/ButtonPrimary.Inverse"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:enabled="false"
+        style="@style/ButtonPrimary"
         android:text="@string/to_cook"/>
 
     <TextView

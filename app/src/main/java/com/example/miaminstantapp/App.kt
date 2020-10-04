@@ -13,7 +13,7 @@ open class App: DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        Places.initialize(applicationContext, "AIzaSyCEURjYf0e5I7qJUr7gnTbSVfjSzGvluTw")
+        Places.initialize(applicationContext, "AIzaSyDRSiECReQeFo_xRjv5aktyl_jZ8AinKQc")
         Places.createClient(this)
     }
 }
