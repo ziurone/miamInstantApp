@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_user_ingredient_autocomplete.*
+import kotlinx.android.synthetic.main.item_user_ingredient_autocomplete.name
 
 class AutocompleteUserIngredientsAdapter(
     private val itemClickListener: OnAddSearchedIngredient
@@ -17,7 +17,7 @@ class AutocompleteUserIngredientsAdapter(
     private var ingredients: List<Ingredient> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_ingredient_autocomplete, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_autocomplete, parent, false)
         return ViewHolder(view)
     }
 
@@ -34,7 +34,7 @@ class AutocompleteUserIngredientsAdapter(
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(ingredient: Ingredient) {
-            ingredientName.text = ingredient.name
+            name.text = ingredient.name
 
             containerView.setOnClickListener {
                 itemClickListener.onItemClick(ingredient)

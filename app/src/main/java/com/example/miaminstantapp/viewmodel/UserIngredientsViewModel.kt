@@ -5,7 +5,6 @@ import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
-import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import javax.inject.Inject
 
@@ -16,12 +15,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val addUserIngredientAction: IAddUserIngredientAction,
     private val fetchUserIngredientsAction: IFetchUserIngredientsAction,
     private val getIngredientsByNameAction: IGetIngredientsByNameAction,
-    private val setUserMoneyAction: ISetUserMoneyAction,
-    private val fetchShopsAction: IFetchShopsAction,
     private val searchRecipesAction: ISearchRecipesAction,
-    private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction,
-    private val addUserAddressAction: IAddUserAddressAction,
-    private val fetchCurrentUserAddressAction: FetchCurrentUserAddressAction
+    private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction
 ): IUserIngredientsViewModel() {
 
     init {
@@ -31,45 +26,13 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(addUserIngredientAction.getLiveData(), ::onAddIngredient)
         listenSource(fetchUserIngredientsAction.getLiveData(), ::onFetchUserIngredientsSuccess)
         listenSource(getIngredientsByNameAction.getLiveData(), ::onGetIngredientsByNameSuccess)
-        listenSource(setUserMoneyAction.getLiveData(), ::onSetUserMoney)
-        listenSource(fetchShopsAction.getLiveData(), ::onFetchShopsAction)
         listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
         listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteriaResult)
-        listenSource(addUserAddressAction.getLiveData(), ::onAddUserAddressSuccess)
-        listenSource(fetchCurrentUserAddressAction.getLiveData(), ::onFetchUserAddressResult)
-    }
-
-    private fun onFetchUserAddressResult(result: IFetchCurrentUserAddressAction.Result) {
-        when(result) {
-            is IFetchCurrentUserAddressAction.Result.Success -> setState(State.FetchCurrentUserAddressSucess(result.userAddress))
-        }
-    }
-
-    private fun onAddUserAddressSuccess(result: IAddUserAddressAction.Result) {
-        when(result) {
-            is IAddUserAddressAction.Result.Success -> Log.i("ADDRESS_ADDED", "SUCCESS")
-            is IAddUserAddressAction.Result.Error -> Log.i("ADDRESS_ADDED", "ERROR")
-        }
-
-    }
-
-    override fun addAddress(userAddress: UserAddressEntity) {
-        addUserAddressAction.add(userAddress)
-    }
-
-    override fun fetchCurrentAddress() {
-        fetchCurrentUserAddressAction.fetch()
     }
 
     private fun onFetchSearchRecipeCriteriaResult(result: IFetchSearchRecipeCriteriaAction.Result) {
         when(result) {
             is IFetchSearchRecipeCriteriaAction.Result.Success -> setState(State.FetchSearchRecipeCriteriaSuccess(result.recipeSearchCriteria))
-        }
-    }
-
-    private fun onFetchShopsAction(result: IFetchShopsAction.Result) {
-        when(result) {
-            is IFetchShopsAction.Result.Success -> setState(State.FetchShopsSuccess)
         }
     }
 
@@ -98,20 +61,6 @@ class UserIngredientsViewModel @Inject constructor(
 
     override fun addIngredient(ingredient: Ingredient) {
         addUserIngredientAction.add(ingredient)
-    }
-
-    override fun setUserMoney(money: Int) {
-        setUserMoneyAction.set(money)
-    }
-
-    override fun fetchZoneShops(lat: String, long: String, squares: Int) {
-        fetchShopsAction.fetchShopsAndBranches(lat, long, squares)
-    }
-
-    private fun onSetUserMoney(result: ISetUserMoneyAction.Result) {
-        when(result) {
-            is ISetUserMoneyAction.Result.Success -> setState(State.AddMoneySuccess)
-        }
     }
 
     private fun onFetchSuggestedIngredientsResult(result: IFetchSuggestedIngredientsAction.Result) {

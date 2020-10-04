@@ -33,7 +33,7 @@ class MarketRecipeUserIngredientsAdapter constructor(
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(userIngredient: DoableRecipeUserIngredientEntity) {
-            ingredientName.text = userIngredient.ingredientName
+            name.text = userIngredient.ingredientName
         }
     }
 }

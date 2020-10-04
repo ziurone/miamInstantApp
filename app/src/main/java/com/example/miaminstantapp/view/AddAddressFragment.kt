@@ -7,14 +7,18 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.UserAddressEntity
+import com.example.miaminstantapp.routing.Launcher
 import com.example.miaminstantapp.viewmodel.AddAddressViewModel
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import kotlinx.android.synthetic.main.fragment_add_address.*
 import kotlinx.android.synthetic.main.toolbar.*
+import javax.inject.Inject
 
 class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.State>() {
+
+    private lateinit var launcher: Launcher
 
     override fun getLayoutId(): Int = R.layout.fragment_add_address
 
@@ -32,6 +36,10 @@ class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.
         toolbarClose.navigationIcon =
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
         toolbarClose.setNavigationOnClickListener { findNavController().popBackStack() }
+
+        nextButton.setOnClickListener {
+            Launcher(requireContext()).dispensary()
+        }
     }
 
     override fun onStateChanged(state: AddAddressViewModel.State) {

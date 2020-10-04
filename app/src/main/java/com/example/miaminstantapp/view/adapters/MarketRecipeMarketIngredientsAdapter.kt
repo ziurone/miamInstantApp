@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_market_recipe_user_ingredient.*
@@ -34,7 +33,7 @@ class MarketRecipeMarketIngredientsAdapter constructor(
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(marketIngredient: MarketIngredientEntity) {
-            ingredientName.text = marketIngredient.ingredientName
+            name.text = marketIngredient.ingredientName
         }
     }
 }

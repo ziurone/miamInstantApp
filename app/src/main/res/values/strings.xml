@@ -37,8 +37,11 @@
     <string name="step_1_of_3">Paso 1 de 3</string>
     <string name="step_2_of_3">Paso 2 de 3</string>
     <string name="step_3_of_3">Paso 3 de 3</string>
+    <string name="suggested_ingredients_title">Quizas tengas...</string>
+    <string name="dispensary_button">Ver recetas</string>
+    <string name="selected_ingredients_title">Ingredientes seleccionados</string>
 
-
-
+    <!-- Dispensar -->
+    <string name="dispensary">Despensa</string>
 
 </resources>

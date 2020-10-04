@@ -6,7 +6,6 @@ import com.example.miaminstantapp.R
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import com.xwray.groupie.OnItemClickListener
 
 class ShortIngredientItem(
     private val shortIngredient: IngredientShortDto,
@@ -14,10 +13,10 @@ class ShortIngredientItem(
 ): Item<ShortIngredientItem.ShortIngredientItemViewHolder>() {
 
     class ShortIngredientItemViewHolder(view: View): GroupieViewHolder(view) {
-        val name: TextView = view.findViewById(R.id.ingredientName)
+        val name: TextView = view.findViewById(R.id.name)
     }
 
-    override fun getLayout(): Int = R.layout.item_ingredient_short
+    override fun getLayout(): Int = R.layout.item_autocomplete
 
     override fun createViewHolder(itemView: View): ShortIngredientItemViewHolder = ShortIngredientItemViewHolder(itemView)
 

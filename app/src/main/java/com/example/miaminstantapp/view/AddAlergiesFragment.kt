@@ -15,13 +15,12 @@ import com.example.miaminstantapp.view.items.ShortIngredientItem
 import com.example.miaminstantapp.viewmodel.userfilters.AddAlergiesViewModel
 import com.google.android.material.chip.Chip
 import com.xwray.groupie.GroupAdapter
-import kotlinx.android.synthetic.main.fragment_add_alergies.*
-import kotlinx.android.synthetic.main.fragment_user_filters.*
+import kotlinx.android.synthetic.main.fragment_add_allergies.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewModel.State>() {
 
-    override fun getLayoutId(): Int = R.layout.fragment_add_alergies
+    override fun getLayoutId(): Int = R.layout.fragment_add_allergies
     lateinit var ingredientsAdapter: GroupAdapter<ShortIngredientItem.ShortIngredientItemViewHolder>
 
     override fun onStateChanged(state: AddAlergiesViewModel.State) {
