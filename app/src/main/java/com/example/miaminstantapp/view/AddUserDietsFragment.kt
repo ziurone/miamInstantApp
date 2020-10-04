@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view
 
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.miaminstantapp.R
@@ -28,6 +29,9 @@ class AddUserDietsFragment: BaseFragment<IAddUserDietsViewModel, IAddUserDietsVi
         }
 
         toolbarClose.title = getString(R.string.step_1_of_3)
+        toolbarClose.navigationIcon =
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
+        toolbarClose.setNavigationOnClickListener { activity?.onBackPressed() }
 
         next.setOnClickListener {
             findNavController().navigate(R.id.from_addUserDiets_to_AddUserAlergies)

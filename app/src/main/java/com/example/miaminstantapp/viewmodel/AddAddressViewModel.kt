@@ -19,7 +19,7 @@ class AddAddressViewModel @Inject constructor(
     init {
         listenSource(addUserAddressAction.getLiveData(), ::onAddressAdded)
         listenSource(fetchShopsAction.getLiveData(), ::onShopsFetchedSuccess)
-        listenSource(fetchShopsAction.getLiveData(), ::onShopsFetchedSuccess)
+        listenSource(removeAddressAction.getLiveData()) {}
     }
 
     private fun onAddressAdded(result: IAddUserAddressAction.Result) {

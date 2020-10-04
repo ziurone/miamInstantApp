@@ -91,6 +91,9 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
         }
 
         toolbarClose.title = getString(R.string.step_2_of_3)
+        toolbarClose.navigationIcon =
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
+        toolbarClose.setNavigationOnClickListener { findNavController().popBackStack() }
         viewModel.fetchAdded()
 
         search.addTextChangedListener(object: TextWatcher {

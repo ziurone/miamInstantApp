@@ -2,7 +2,9 @@ package com.example.miaminstantapp.view
 
 import android.content.Intent
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import com.example.miaminstantapp.viewmodel.AddAddressViewModel
@@ -25,6 +27,11 @@ class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.
             }
         }
         toolbarClose.title = getString(R.string.step_3_of_3)
+
+
+        toolbarClose.navigationIcon =
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
+        toolbarClose.setNavigationOnClickListener { findNavController().popBackStack() }
     }
 
     override fun onStateChanged(state: AddAddressViewModel.State) {

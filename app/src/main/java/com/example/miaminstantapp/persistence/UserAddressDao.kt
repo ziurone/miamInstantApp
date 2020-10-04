@@ -16,6 +16,6 @@ interface UserAddressDao {
     @Query("SELECT * FROM " + UserAddressEntity.TABLE_NAME + " LIMIT 1")
     fun fetch(): Maybe<UserAddressEntity>
 
-    @Query("DELETE * FROM " + UserAddressEntity.TABLE_NAME)
+    @Query("DELETE FROM " + UserAddressEntity.TABLE_NAME)
     fun removeAll(): Completable
 }
