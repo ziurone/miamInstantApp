@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/ingredientName"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/ItemTitle"
+        tools:text="Manzana"/>
+
+    <TextView
+        android:id="@+id/ingredientDefaultQuantity"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ingredientName"
+        app:layout_constraintRight_toLeftOf="@id/editButton"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:gravity="end"
+        style="@style/ItemTitle"
+        tools:text="2 Unid."/>
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/deleteButton"
+        android:background="@color/secondary_light"
+        android:src="@drawable/ic_edit"/>
+
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/secondary_light"
+        android:src="@drawable/ic_close_24px"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

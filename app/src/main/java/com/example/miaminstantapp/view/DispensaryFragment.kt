@@ -13,14 +13,17 @@ import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
+import com.example.miaminstantapp.view.items.UserIngredientItem
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
+import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_dispensary.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
 
     private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
+    private lateinit var selectedIngredientsAdapter: GroupAdapter<UserIngredientItem.UserIngredientItemViewHolder>
     private var ingredientsAdded = 0
 
     companion object {
@@ -42,6 +45,11 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
 
         searchRecipesButton.setOnClickListener {
             fetchSearchCriteria()
+        }
+
+        selectedIngredientsAdapter = GroupAdapter()
+        userIngredientsList.apply {
+            adapter = selectedIngredientsAdapter
         }
 
         super.initViews()
@@ -115,6 +123,7 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
                 setBackgroundColor(ContextCompat.getColor(context, R.color.secondary))
                 setOnCloseIconClickListener {
                     visibility = View.GONE
+                    viewModel.fetchSuggestedIngredients(ingredient.id)
                 }
             }
 
@@ -130,24 +139,12 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
 
     private fun updateSelectedIngredients(ingredients: List<UserIngredientEntity>) {
         ingredientsAdded = ingredients.size
-        userIngredients.removeAllViews()
-        ingredients.forEach{
-            val chip = Chip(context)
-            chip.apply {
-                layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT)
-                text = it.name
-                isCloseIconVisible = true
-                textSize = 16f
-                setBackgroundColor(ContextCompat.getColor(context, R.color.secondary))
-                setOnCloseIconClickListener{
-                    visibility = View.GONE
-                }
-            }
-
-            userIngredients.addView(chip)
+        selectedIngredientsAdapter.clear()
+        val ingredientsItems = ingredients.map{
+            UserIngredientItem(it)
         }
+
+        selectedIngredientsAdapter.update(ingredientsItems)
 
         viewModel.fetchSuggestedIngredients()
     }

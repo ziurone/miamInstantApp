@@ -5,4 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/spacing_item"
     android:background="@color/white"
+    android:layout_marginLeft="@dimen/spacing_small"
     style="@style/Body2"/>
