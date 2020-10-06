@@ -79,6 +79,9 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
                 android:src="@drawable/ic_salad"/>
 
             <TextView
@@ -89,6 +92,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/dispensaryIcon"
                 app:layout_constraintLeft_toRightOf="@id/dispensaryIcon"
                 android:textSize="22sp"
+                android:paddingTop="@dimen/spacing_large"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginStart="@dimen/spacing_large"
                 style="@style/Headline3"
@@ -99,6 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/selectedIngredientsCardTitle"
+                android:paddingTop="@dimen/spacing_large"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginRight="@dimen/spacing_large"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
