@@ -13,7 +13,6 @@ import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
-import com.example.miaminstantapp.view.utils.ViewEnabler
 import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_dispensary.*
@@ -97,21 +96,31 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
     }
 
     private fun showSuggestedIngredients(ingredients: List<Ingredient>) {
-
         chipsGroupSuggestedIngredients.removeAllViews()
-        ingredients.forEach{
+        addSuggestedIngredients(ingredients)
+    }
+
+    private fun addSuggestedIngredients(ingredients: List<Ingredient>) {
+        ingredients.forEach {
             val ingredient = it
             val chip = Chip(context)
             chip.apply {
                 layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT)
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
                 text = it.name
+                isCloseIconVisible = true
                 textSize = 16f
+                setBackgroundColor(ContextCompat.getColor(context, R.color.secondary))
+                setOnCloseIconClickListener {
+                    visibility = View.GONE
+                }
             }
 
-            chip.setOnClickListener{
+            chip.setOnClickListener {
                 onAddIngredient(ingredient)
+                viewModel.fetchSuggestedIngredients(ingredient.id)
                 chipsGroupSuggestedIngredients.removeView(chip)
             }
 
@@ -121,7 +130,7 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
 
     private fun updateSelectedIngredients(ingredients: List<UserIngredientEntity>) {
         ingredientsAdded = ingredients.size
-//        userIngredients.removeAllViews()
+        userIngredients.removeAllViews()
         ingredients.forEach{
             val chip = Chip(context)
             chip.apply {
@@ -140,7 +149,7 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
             userIngredients.addView(chip)
         }
 
-        viewModel.fetchSuggestedIngredients(ingredients)
+        viewModel.fetchSuggestedIngredients()
     }
 
     fun logVolumeUnit() {

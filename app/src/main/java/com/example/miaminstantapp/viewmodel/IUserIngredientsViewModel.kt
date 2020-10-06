@@ -24,5 +24,5 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
     abstract fun searchRecipes(searchCriteria: RecipeSearchCriteria)
     abstract fun fetchSearchRecipeCriteria()
     abstract fun fetchUserIngredients()
-    abstract fun fetchSuggestedIngredients(ingredients: List<UserIngredientEntity>)
+    abstract fun fetchSuggestedIngredients(excludeIngredientId: Int = 0)
 }

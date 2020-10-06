@@ -9,7 +9,7 @@ import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import javax.inject.Inject
 
 class UserIngredientsViewModel @Inject constructor(
-    private val fetchSuggestedIngredientsUseCase: IFetchSuggestedIngredientsAction,
+    private val fetchSuggestedIngredientsAction: IFetchSuggestedIngredientsAction,
     private val fetchVolumeUnitsAction: IFetchVolumeUnitsAction,
     private val addVolumeUnitsAction: IAddVolumeUnitsAction,
     private val addUserIngredientAction: IAddUserIngredientAction,
@@ -19,8 +19,15 @@ class UserIngredientsViewModel @Inject constructor(
     private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction
 ): IUserIngredientsViewModel() {
 
+    companion object {
+        const val REFRESH_SUGGESTED_INGREDIENTS_COUNT = 2
+    }
+
+    private val excludedSuggestedIngredientsIds: MutableList<Int> = mutableListOf()
+    private var showedIngredients: Int = 0
+
     init {
-        listenSource(fetchSuggestedIngredientsUseCase.getLiveData(), ::onFetchSuggestedIngredientsResult)
+        listenSource(fetchSuggestedIngredientsAction.getLiveData(), ::onFetchSuggestedIngredientsResult)
         listenSource(fetchVolumeUnitsAction.getLiveData(), ::onFetchVolumeUnitResult)
         listenSource(addVolumeUnitsAction.getLiveData(), ::onCompleteAddVolumeUnits)
         listenSource(addUserIngredientAction.getLiveData(), ::onAddIngredient)
@@ -45,8 +52,14 @@ class UserIngredientsViewModel @Inject constructor(
         fetchVolumeUnitsAction.fetch()
     }
 
-    override fun fetchSuggestedIngredients(ingredients: List<UserIngredientEntity>) {
-        fetchSuggestedIngredientsUseCase.fetch(ingredients)
+    override fun fetchSuggestedIngredients(excludeIngredientId: Int) {
+        if(excludeIngredientId != 0) {
+            showedIngredients =+ 1
+            if(showedIngredients < REFRESH_SUGGESTED_INGREDIENTS_COUNT) {
+                excludedSuggestedIngredientsIds.add(excludeIngredientId)
+            }
+        }
+        fetchSuggestedIngredientsAction.fetch(excludedSuggestedIngredientsIds)
     }
 
     override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
@@ -60,6 +73,7 @@ class UserIngredientsViewModel @Inject constructor(
     }
 
     override fun addIngredient(ingredient: Ingredient) {
+        excludedSuggestedIngredientsIds.add(ingredient.id)
         addUserIngredientAction.add(ingredient)
     }
 

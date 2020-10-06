@@ -8,7 +8,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 interface IIngredientRepository {
-    fun getSuggestedIngredients(excludeIngredients: List<UserIngredientEntity>): Single<IngredientsListResponse>
+    fun getSuggestedIngredients(excludeIngredientsIds: List<Int>): Single<IngredientsListResponse>
     fun addIngredient(ingredient: Ingredient): Completable
     fun getUserIngredients(): Single<List<UserIngredientEntity>>
     fun getIngredientsByName(ingredientName: String): Single<IngredientsListResponse>

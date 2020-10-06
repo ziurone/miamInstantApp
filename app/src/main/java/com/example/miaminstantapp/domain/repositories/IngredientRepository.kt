@@ -15,17 +15,19 @@ class IngredientRepository @Inject constructor(
     private val userIngredientDao: UserIngredientDao
 ): IIngredientRepository {
 
-    override fun getSuggestedIngredients(excludeIngredients: List<UserIngredientEntity>): Single<IngredientsListResponse> {
-        val excludedIds = excludeIngredients.map { ingredient -> ingredient.ingredientId }
+    override fun getSuggestedIngredients(excludeIngredientsIds: List<Int>): Single<IngredientsListResponse> {
 
         val suggestedIngredients = mutableListOf(
             Ingredient(1, "sal", 1, 100, listOf(1,2,3)),
             Ingredient(2, "aceite", 2, 100, listOf(1,2,3)),
-            Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3))
+            Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3)),
+            Ingredient(4, "ajo", 2, 100, listOf(1,2,3)),
+            Ingredient(5, "zapallito", 2, 100, listOf(1,2,3)),
+            Ingredient(6, "cebolla", 2, 100, listOf(1,2,3))
         )
 
         return Single.just(
-            IngredientsListResponse(suggestedIngredients.filter { ingredient -> !excludedIds.contains(ingredient.id)})
+            IngredientsListResponse(suggestedIngredients.filter { ingredient -> !excludeIngredientsIds.contains(ingredient.id)})
         )
 
     }

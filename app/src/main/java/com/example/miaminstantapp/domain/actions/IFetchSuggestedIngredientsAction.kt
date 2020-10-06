@@ -9,5 +9,5 @@ interface IFetchSuggestedIngredientsAction: Action<IFetchSuggestedIngredientsAct
         data class Error(val message: String): Result()
     }
 
-    fun fetch(alreadyAddedIngredients: List<UserIngredientEntity>)
+    fun fetch(excludeIngredientsIds: List<Int>)
 }

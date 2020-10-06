@@ -12,9 +12,9 @@ class FetchSuggestedIngredientsAction @Inject constructor(
 ) : IFetchSuggestedIngredientsAction, BaseAction<IFetchSuggestedIngredientsAction.Result>()
 {
 
-    override fun fetch(alreadyAddedIngredients: List<UserIngredientEntity>) {
+    override fun fetch(excludeIngredientsIds: List<Int>) {
         ingredientRepository
-            .getSuggestedIngredients(alreadyAddedIngredients)
+            .getSuggestedIngredients(excludeIngredientsIds)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)
