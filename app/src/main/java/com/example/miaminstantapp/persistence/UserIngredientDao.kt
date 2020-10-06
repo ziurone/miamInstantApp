@@ -1,9 +1,6 @@
 package com.example.miaminstantapp.persistence
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
 import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
@@ -27,5 +24,8 @@ interface UserIngredientDao {
     @Transaction
     @Query("SELECT * FROM " + UserIngredientEntity.TABLE_NAME)
     fun fetchAll(): Single<List<UserIngredientEntity>>
+
+    @Delete
+    fun delete(ingredient: UserIngredientEntity): Completable
 
 }

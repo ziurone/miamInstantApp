@@ -16,7 +16,8 @@ class UserIngredientsViewModel @Inject constructor(
     private val fetchUserIngredientsAction: IFetchUserIngredientsAction,
     private val getIngredientsByNameAction: IGetIngredientsByNameAction,
     private val searchRecipesAction: ISearchRecipesAction,
-    private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction
+    private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction,
+    private val removeUserIngredientAction: RemoveUserIngredientAction
 ): IUserIngredientsViewModel() {
 
     companion object {
@@ -35,6 +36,15 @@ class UserIngredientsViewModel @Inject constructor(
         listenSource(getIngredientsByNameAction.getLiveData(), ::onGetIngredientsByNameSuccess)
         listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
         listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteriaResult)
+        listenSource(removeUserIngredientAction.getLiveData(), ::onRemoveUserIngredientResult)
+    }
+
+    override fun removeUserIngredient(userIngredientEntity: UserIngredientEntity) {
+        removeUserIngredientAction.delete(userIngredientEntity)
+    }
+
+    private fun onRemoveUserIngredientResult(result: RemoveUserIngredientAction.Result) {
+
     }
 
     private fun onFetchSearchRecipeCriteriaResult(result: IFetchSearchRecipeCriteriaAction.Result) {

@@ -141,7 +141,10 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
         ingredientsAdded = ingredients.size
         selectedIngredientsAdapter.clear()
         val ingredientsItems = ingredients.map{
-            UserIngredientItem(it)
+            UserIngredientItem(it) {
+                viewModel.removeUserIngredient(it)
+                viewModel.fetchUserIngredients()
+            }
         }
 
         selectedIngredientsAdapter.update(ingredientsItems)

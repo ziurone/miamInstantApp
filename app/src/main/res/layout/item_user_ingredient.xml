@@ -35,6 +35,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/deleteButton"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@color/secondary_light"
         android:src="@drawable/ic_edit"/>
 
@@ -46,6 +48,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@color/secondary_light"
         android:src="@drawable/ic_close_24px"/>
 
