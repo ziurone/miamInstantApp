@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view
 
 import android.content.Intent
+import android.os.Bundle
 import com.example.miaminstantapp.MainActivity
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.viewmodel.ISplashScreenViewModel
@@ -12,6 +13,11 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
     override fun initViews() {
         viewModel.hasUserUsedAppBefore()
         super.initViews()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash_screen)
     }
 
     override fun onStateChanged(state: ISplashScreenViewModel.State) {
