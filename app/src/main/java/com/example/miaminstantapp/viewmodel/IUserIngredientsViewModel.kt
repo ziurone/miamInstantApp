@@ -4,6 +4,7 @@ import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
+import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 
 abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewModel.State>() {
 
@@ -12,7 +13,7 @@ abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewMode
         object Loading: State()
         data class FetchSuggestedIngredientsSuccess(val ingredients: List<Ingredient>): State()
         object AddVolumeUnitsSuccess: State()
-        data class UserIngredientsUpdated(val ingredients: List<UserIngredientEntity>): State()
+        data class UserIngredientsUpdated(val ingredients: List<UserIngredientWithVolumeUnits>): State()
         data class SearchIngredientsByNameSuccess(val ingredients: List<Ingredient>): State()
         object SaveRecipesSuccess: State()
         data class FetchSearchRecipeCriteriaSuccess(val criteria: RecipeSearchCriteria): State()

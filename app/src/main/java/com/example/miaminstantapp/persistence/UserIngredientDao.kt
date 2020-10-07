@@ -12,7 +12,11 @@ interface UserIngredientDao {
 
     @Transaction
     @Query("SELECT * FROM " + UserIngredientEntity.TABLE_NAME)
-    fun getUserIngredientsWithVolumeUnits(): List<UserIngredientWithVolumeUnits>
+    fun getUserIngredientsWithVolumeUnits(): Single<List<UserIngredientWithVolumeUnits>>
+
+    @Transaction
+    @Query("SELECT * FROM " + UserIngredientEntity.TABLE_NAME + " WHERE ingredientId = :ingredientId ")
+    fun getUserIngredientWithVolumeUnits(ingredientId: Int): Single<List<UserIngredientWithVolumeUnits>>
 
     @Transaction
     @Insert

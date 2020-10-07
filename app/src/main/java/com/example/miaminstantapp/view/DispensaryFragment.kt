@@ -11,6 +11,7 @@ import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
+import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
 import com.example.miaminstantapp.view.items.UserIngredientItem
@@ -137,12 +138,12 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
         }
     }
 
-    private fun updateSelectedIngredients(ingredients: List<UserIngredientEntity>) {
+    private fun updateSelectedIngredients(ingredients: List<UserIngredientWithVolumeUnits>) {
         ingredientsAdded = ingredients.size
         selectedIngredientsAdapter.clear()
         val ingredientsItems = ingredients.map{
             UserIngredientItem(it) {
-                viewModel.removeUserIngredient(it)
+                viewModel.removeUserIngredient(it.ingredient)
                 viewModel.fetchUserIngredients()
             }
         }

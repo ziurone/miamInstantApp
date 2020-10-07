@@ -5,11 +5,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
+import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
 class UserIngredientItem constructor(
-    private val userIngredient: UserIngredientEntity,
+    private val userIngredient: UserIngredientWithVolumeUnits,
     private val deleteIconClickListemer: () -> Unit
 ): Item<UserIngredientItem.UserIngredientItemViewHolder>() {
 
@@ -23,7 +24,7 @@ class UserIngredientItem constructor(
 
     override fun isSameAs(other: Item<*>): Boolean {
         return when(other) {
-            is UserIngredientItem -> userIngredient.ingredientId == other.userIngredient.ingredientId
+            is UserIngredientItem -> userIngredient.ingredient.ingredientId == other.userIngredient.ingredient.ingredientId
             else -> false
         }
     }
@@ -31,8 +32,12 @@ class UserIngredientItem constructor(
     override fun getLayout(): Int = R.layout.item_user_ingredient
 
     override fun bind(viewHolder: UserIngredientItemViewHolder, position: Int) {
-        viewHolder.name.text = userIngredient.name
-        viewHolder.ingredientDefaultQuantity.text = userIngredient.volumeUnitQuantity.toString()
+        viewHolder.name.text = userIngredient.ingredient.name
+        val defaultVolumeUnit = userIngredient.volumeUnits.filter { userIngredient.ingredient.volumeUnitId == it.volumeUnitId }[0]
+
+        viewHolder.ingredientDefaultQuantity.text =
+            userIngredient.ingredient.volumeUnitQuantity.toString() + " " + defaultVolumeUnit.name
+
         viewHolder.deleteButton.setOnClickListener { deleteIconClickListemer() }
     }
 }

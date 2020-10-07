@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
+import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import com.example.miaminstantapp.domain.repositories.IngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -14,7 +15,7 @@ class FetchUserIngredientsAction @Inject constructor(
 
     override fun fetch() {
         ingredientRepository
-            .getUserIngredients()
+            .getUserIngredientsWithVolumeUnits()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)
@@ -29,7 +30,7 @@ class FetchUserIngredientsAction @Inject constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private fun onSuccess(ingredients: List<UserIngredientEntity>) {
+    private fun onSuccess(ingredients: List<UserIngredientWithVolumeUnits>) {
         liveData.value = IFetchUserIngredientsAction.Result.Success(ingredients)
     }
 

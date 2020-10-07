@@ -6,6 +6,7 @@ import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
 import com.example.miaminstantapp.domain.entities.toUserIngredientEntity
+import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import com.example.miaminstantapp.persistence.UserIngredientDao
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -46,6 +47,8 @@ class IngredientRepository @Inject constructor(
                 userIngredientDao.add(ingredient.toUserIngredientEntity())
             )
     }
+
+    override fun getUserIngredientsWithVolumeUnits(): Single<List<UserIngredientWithVolumeUnits>> = userIngredientDao.getUserIngredientsWithVolumeUnits()
 
     override fun getUserIngredients(): Single<List<UserIngredientEntity>> {
         return userIngredientDao.fetchAll()
