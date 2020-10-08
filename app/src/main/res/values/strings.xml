@@ -41,7 +41,8 @@
     <string name="dispensary_button">Ver recetas</string>
     <string name="selected_ingredients_title">Ingredientes seleccionados</string>
 
-    <!-- Dispensar -->
+    <!-- Dispensary -->
     <string name="dispensary">Despensa</string>
+    <string name="add_ingredient_hint">Agregá un ingrediente</string>
 
 </resources>

@@ -25,6 +25,7 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
             ISplashScreenViewModel.State.UserHasAlreadyUseTheApp -> navigateToUserIngredients()
             ISplashScreenViewModel.State.IsUserFirstTimeInApp -> navigateToPresentationFlow()
         }
+        finish()
     }
 
     private fun navigateToUserIngredients() {

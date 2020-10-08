@@ -79,6 +79,7 @@
     <!-- Input -->
     <style name="InputPrimary" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@color/secondary_light</item>
+        <item name="rippleColor">@color/secondary_light</item>
     </style>
 
 </resources>
