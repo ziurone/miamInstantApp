@@ -10,6 +10,6 @@
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:closeIcon="@drawable/ic_close_24px"
+    app:closeIcon="@drawable/ic_close_active"
     tools:text="Ingrediente sugerido"
     app:closeIconVisible="false" />

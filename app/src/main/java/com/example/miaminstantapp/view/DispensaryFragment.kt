@@ -110,6 +110,11 @@ class DispensaryFragment : BaseFragment<IDispensaryViewModel, IDispensaryViewMod
     }
 
     private fun addSuggestedIngredients(ingredients: List<Ingredient>) {
+
+        if(ingredients.isEmpty()) {
+            suggestedIngredientsCardTitle.isVisible = false
+        }
+
         ingredients.forEach {
             val ingredient = it
             val chip = Chip(context)
@@ -120,6 +125,7 @@ class DispensaryFragment : BaseFragment<IDispensaryViewModel, IDispensaryViewMod
                 )
                 text = it.name
                 isCloseIconVisible = true
+                closeIcon = ContextCompat.getDrawable(context, R.drawable.ic_item_close)
                 textSize = 16f
                 setBackgroundColor(ContextCompat.getColor(context, R.color.secondary))
                 setOnCloseIconClickListener {
