@@ -34,7 +34,7 @@ class AutocompleteUserIngredientsAdapter(
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(ingredient: Ingredient) {
-            name.text = ingredient.name
+            name.text = ingredient.name.capitalize()
 
             containerView.setOnClickListener {
                 itemClickListener.onItemClick(ingredient)

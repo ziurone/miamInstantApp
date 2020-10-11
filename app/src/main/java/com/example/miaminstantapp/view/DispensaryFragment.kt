@@ -156,7 +156,7 @@ class DispensaryFragment : BaseFragment<IDispensaryViewModel, IDispensaryViewMod
         }
 
         val ingredientsItems = ingredients.map{
-            UserIngredientItem(it) {
+            UserIngredientItem(it, requireContext()) {
                 selectedIngredientsAdapter.clear()
                 viewModel.removeUserIngredient(it.ingredient)
                 viewModel.fetchUserIngredients()

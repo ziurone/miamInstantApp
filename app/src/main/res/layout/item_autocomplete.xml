@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/spacing_item"
     android:background="@color/white"
-    android:layout_marginStart="@dimen/spacing_small"
-    android:layout_marginLeft="@dimen/spacing_small"
+    android:paddingStart="@dimen/spacing_small"
+    android:paddingLeft="@dimen/spacing_small"
     android:gravity="center_vertical"
+    android:textColor="@color/primaryDark"
     style="@style/Body2"/>
