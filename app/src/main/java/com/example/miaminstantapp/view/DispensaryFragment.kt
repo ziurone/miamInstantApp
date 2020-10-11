@@ -168,7 +168,7 @@ class DispensaryFragment : BaseFragment<IDispensaryViewModel, IDispensaryViewMod
         viewModel.fetchSuggestedIngredients()
     }
 
-    fun logVolumeUnit() {
+    private fun logVolumeUnit() {
         Log.i("Inserto unidades", "bla")
     }
 

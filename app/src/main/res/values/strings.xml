@@ -39,7 +39,7 @@
     <string name="step_3_of_3">Paso 3 de 3</string>
     <string name="suggested_ingredients_title">Quizas tengas...</string>
     <string name="dispensary_button">Ver recetas</string>
-    <string name="selected_ingredients_title">Ingredientes seleccionados</string>
+    <string name="selected_ingredients_title">Tenés</string>
 
     <!-- Dispensary -->
     <string name="dispensary">Despensa</string>
