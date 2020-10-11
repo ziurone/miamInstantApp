@@ -129,11 +129,11 @@ class UserResourcesModule {
 
     @Provides
     @IntoMap
-    @ViewModelKey(IUserIngredientsViewModel::class)
-    fun providesUserIngredientsViewModelIntoMap(viewModel: UserIngredientsViewModel): ViewModel = viewModel
+    @ViewModelKey(IDispensaryViewModel::class)
+    fun providesUserIngredientsViewModelIntoMap(viewModel: DispensaryViewModel): ViewModel = viewModel
 
     @Provides
-    fun providesUserResources(fragment: DispensaryFragment, viewModelFactory: ViewModelFactory): IUserIngredientsViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IUserIngredientsViewModel::class.java]
+    fun providesUserResources(fragment: DispensaryFragment, viewModelFactory: ViewModelFactory): IDispensaryViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IDispensaryViewModel::class.java]
 
     @Provides
     @IntoMap

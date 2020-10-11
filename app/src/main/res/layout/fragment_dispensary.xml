@@ -80,6 +80,48 @@
                 app:chipSpacing="10dp" />
 
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/chipsGroupSuggestedIngredients"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/spacing_large">
+
+                <ImageView
+                    android:id="@+id/addIngredientIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_plus_big"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <TextView
+                    android:id="@+id/addIngredientTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/addIngredientIcon"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="@string/dispensary_empty_view_title"
+                    style="@style/Headline3"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <TextView
+                    android:id="@+id/addIngredientSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/addIngredientTitle"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    style="@style/Body1"
+                    android:text="@string/dispensary_empty_view_subtitle"
+                    android:textColor="@color/secondary_dark"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/selectedIngredientsCard"
                 android:layout_width="match_parent"

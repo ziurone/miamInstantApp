@@ -51,6 +51,6 @@
         android:clickable="true"
         android:focusable="true"
         android:background="@color/secondary_light"
-        android:src="@drawable/ic_close_24px"/>
+        android:src="@drawable/ic_item_close"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

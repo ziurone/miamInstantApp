@@ -5,23 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
-import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import com.example.miaminstantapp.extensions.afterDelayedTextChanged
 import com.example.miaminstantapp.view.adapters.AutocompleteUserIngredientsAdapter
 import com.example.miaminstantapp.view.items.UserIngredientItem
-import com.example.miaminstantapp.viewmodel.IUserIngredientsViewModel
+import com.example.miaminstantapp.viewmodel.IDispensaryViewModel
 import com.google.android.material.chip.Chip
 import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_dispensary.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredientsViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
+class DispensaryFragment : BaseFragment<IDispensaryViewModel, IDispensaryViewModel.State>(), AutocompleteUserIngredientsAdapter.OnAddSearchedIngredient {
 
     private lateinit var autocompleteIngredientAdapter: AutocompleteUserIngredientsAdapter
     private lateinit var selectedIngredientsAdapter: GroupAdapter<UserIngredientItem.UserIngredientItemViewHolder>
@@ -79,16 +79,16 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
         viewModel.searchRecipes(criteria)
     }
 
-    override fun onStateChanged(state: IUserIngredientsViewModel.State) {
+    override fun onStateChanged(state: IDispensaryViewModel.State) {
         when(state) {
-            is IUserIngredientsViewModel.State.Loading -> showLoading()
-            is IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess -> showSuggestedIngredients(state.ingredients)
-            is IUserIngredientsViewModel.State.AddVolumeUnitsSuccess -> logVolumeUnit()
-            is IUserIngredientsViewModel.State.Error -> showError(state.error)
-            is IUserIngredientsViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
-            is IUserIngredientsViewModel.State.SearchIngredientsByNameSuccess -> updateIngredientsAutocomplete(state.ingredients)
-            is IUserIngredientsViewModel.State.SaveRecipesSuccess -> navigateToRecipeList()
-            is IUserIngredientsViewModel.State.FetchSearchRecipeCriteriaSuccess -> onFetchSearchRecipeCriteriaSuccess(state.criteria)
+            is IDispensaryViewModel.State.Loading -> showLoading()
+            is IDispensaryViewModel.State.FetchSuggestedIngredientsSuccess -> showSuggestedIngredients(state.ingredients)
+            is IDispensaryViewModel.State.AddVolumeUnitsSuccess -> logVolumeUnit()
+            is IDispensaryViewModel.State.Error -> showError(state.error)
+            is IDispensaryViewModel.State.UserIngredientsUpdated -> updateSelectedIngredients(state.ingredients)
+            is IDispensaryViewModel.State.SearchIngredientsByNameSuccess -> updateIngredientsAutocomplete(state.ingredients)
+            is IDispensaryViewModel.State.SaveRecipesSuccess -> navigateToRecipeList()
+            is IDispensaryViewModel.State.FetchSearchRecipeCriteriaSuccess -> onFetchSearchRecipeCriteriaSuccess(state.criteria)
         }
     }
 
@@ -140,9 +140,18 @@ class DispensaryFragment : BaseFragment<IUserIngredientsViewModel, IUserIngredie
 
     private fun updateSelectedIngredients(ingredients: List<UserIngredientWithVolumeUnits>) {
         ingredientsAdded = ingredients.size
-        selectedIngredientsAdapter.clear()
+
+        if(ingredientsAdded == 0) {
+            emptyView.isVisible = true
+            selectedIngredientsCard.isVisible = false
+        } else {
+            selectedIngredientsCard.isVisible = true
+            emptyView.isVisible = false
+        }
+
         val ingredientsItems = ingredients.map{
             UserIngredientItem(it) {
+                selectedIngredientsAdapter.clear()
                 viewModel.removeUserIngredient(it.ingredient)
                 viewModel.fetchUserIngredients()
             }

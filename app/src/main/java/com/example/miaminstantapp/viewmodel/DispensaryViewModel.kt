@@ -8,7 +8,7 @@ import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import javax.inject.Inject
 
-class UserIngredientsViewModel @Inject constructor(
+class DispensaryViewModel @Inject constructor(
     private val fetchSuggestedIngredientsAction: IFetchSuggestedIngredientsAction,
     private val fetchVolumeUnitsAction: IFetchVolumeUnitsAction,
     private val addVolumeUnitsAction: IAddVolumeUnitsAction,
@@ -18,7 +18,7 @@ class UserIngredientsViewModel @Inject constructor(
     private val searchRecipesAction: ISearchRecipesAction,
     private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction,
     private val removeUserIngredientAction: RemoveUserIngredientAction
-): IUserIngredientsViewModel() {
+): IDispensaryViewModel() {
 
     companion object {
         const val REFRESH_SUGGESTED_INGREDIENTS_COUNT = 2

@@ -22,19 +22,19 @@ class UserIngredientsViewModelTest {
     @JvmField
     val instantTaskRule = InstantTaskExecutorRule()
 
-    private lateinit var subject: UserIngredientsViewModel
+    private lateinit var subject: DispensaryViewModel
 
     private val fetchSuggestedIngredientsLivedata: MutableLiveData<IFetchSuggestedIngredientsAction.Result> = MutableLiveData()
 
     @Mock
-    private lateinit var observer: Observer<IUserIngredientsViewModel.State>
+    private lateinit var observer: Observer<IDispensaryViewModel.State>
 
     @Mock
     private lateinit var fetchSuggestedIngredientsUseCase: IFetchSuggestedIngredientsAction
 
     private fun givenASetupSubject() {
         BDDMockito.given(fetchSuggestedIngredientsUseCase.getLiveData()).willReturn(fetchSuggestedIngredientsLivedata)
-        subject = UserIngredientsViewModel(fetchSuggestedIngredientsUseCase)
+        subject = DispensaryViewModel(fetchSuggestedIngredientsUseCase)
         subject.getState().observeForever { observer }
     }
 
@@ -51,7 +51,7 @@ class UserIngredientsViewModelTest {
         subject.loadVolumeUnits()
 
         //THEN
-        Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.FetchSuggestedIngredientsSuccess(INGREDIENT_LIST))
+        Truth.assertThat(subject.getState().value).isEqualTo(IDispensaryViewModel.State.FetchSuggestedIngredientsSuccess(INGREDIENT_LIST))
     }
 
     @Test
@@ -64,7 +64,7 @@ class UserIngredientsViewModelTest {
         subject.loadVolumeUnits()
 
         //THEN
-        Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.Loading)
+        Truth.assertThat(subject.getState().value).isEqualTo(IDispensaryViewModel.State.Loading)
     }
 
     @Test
@@ -77,7 +77,7 @@ class UserIngredientsViewModelTest {
         subject.loadVolumeUnits()
 
         //THEN
-        Truth.assertThat(subject.getState().value).isEqualTo(IUserIngredientsViewModel.State.Error(GENERIC_ERROR))
+        Truth.assertThat(subject.getState().value).isEqualTo(IDispensaryViewModel.State.Error(GENERIC_ERROR))
     }
 
     private fun setUseCaseResult(result: IFetchSuggestedIngredientsAction.Result) {

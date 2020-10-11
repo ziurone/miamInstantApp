@@ -1,10 +1,9 @@
 package com.example.miaminstantapp.domain.entities
 
 import androidx.room.Entity
-import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation.Companion.INGREDIENT_ID_COLUMN_NAME
-import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation.Companion.VOLUME_UNIT_ID_COLUMN_NAME
+import androidx.room.PrimaryKey
 
-@Entity(primaryKeys = [INGREDIENT_ID_COLUMN_NAME, VOLUME_UNIT_ID_COLUMN_NAME])
+@Entity
 data class UserIngredientVolumeUnitRelation(
     val ingredientId: Int,
     val volumeUnitId: Int
@@ -14,4 +13,8 @@ data class UserIngredientVolumeUnitRelation(
         const val INGREDIENT_ID_COLUMN_NAME = "ingredientId"
         const val VOLUME_UNIT_ID_COLUMN_NAME = "volumeUnitId"
     }
+
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+
 }

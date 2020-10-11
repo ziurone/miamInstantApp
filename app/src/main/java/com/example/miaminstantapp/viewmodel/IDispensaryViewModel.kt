@@ -2,11 +2,10 @@ package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
-import com.example.miaminstantapp.domain.entities.UserAddressEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 
-abstract class IUserIngredientsViewModel: BaseViewModel<IUserIngredientsViewModel.State>() {
+abstract class IDispensaryViewModel: BaseViewModel<IDispensaryViewModel.State>() {
 
     sealed class State {
         data class Error(val error: String): State()

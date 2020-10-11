@@ -58,9 +58,9 @@ class IngredientRepository @Inject constructor(
         return Single.just(
             IngredientsListResponse(
                 listOf(
-                    Ingredient(4, "Batata", 1, 100, listOf(1,2,3)),
-                    Ingredient(5, "Papa", 1, 100, listOf(1,2,3)),
-                    Ingredient(6, "Crema", 1, 100, listOf(1,2,3))
+                    Ingredient(10, "Batata", 1, 100, listOf(1,2,3)),
+                    Ingredient(11, "Papa", 1, 100, listOf(1,2,3)),
+                    Ingredient(12, "Crema", 1, 100, listOf(1,2,3))
                 )
             )
         )
@@ -70,15 +70,15 @@ class IngredientRepository @Inject constructor(
         return Single.just(
             listOf(
                 IngredientShortDto(
-                    1,
+                    7,
                     "mani"
                 ),
                 IngredientShortDto(
-                    2,
+                    8,
                     "nueces"
                 ),
                 IngredientShortDto(
-                    3,
+                    9,
                     "morron"
                 )
 
