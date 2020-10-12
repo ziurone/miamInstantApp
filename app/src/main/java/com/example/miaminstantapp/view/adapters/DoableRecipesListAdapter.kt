@@ -39,7 +39,7 @@ class DoableRecipesListAdapter constructor(
             totalMinutesText.text = doableRecipe.recipe.totalMinutes.toString()
             if(doableRecipe.recipe.price > 0) {
                 price.text = doableRecipe.recipe.price.toString()
-                price.isVisible = true
+//                price.isVisible = true
             } else {
                 recipeFulfilledGroup.isVisible = true
             }

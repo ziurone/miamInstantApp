@@ -2,6 +2,7 @@ package com.example.miaminstantapp.persistence
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
 import com.example.miaminstantapp.domain.relations.DoableRecipe
@@ -10,7 +11,7 @@ import io.reactivex.Single
 
 @Dao
 interface MarketRecipeDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(recipes: List<MarketRecipeEntity>): Completable
 
     @Query("Select * FROM " + MarketRecipeEntity.TABLE_NAME)
