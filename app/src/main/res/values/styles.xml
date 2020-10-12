@@ -60,6 +60,12 @@
         <item name="android:textSize">29sp</item>
     </style>
 
+    <style name="Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black_dark</item>
+    </style>
+    
     <!-- Button -->
     <style name="ButtonPrimary">
         <item name="backgroundTint">@color/colorPrimary</item>

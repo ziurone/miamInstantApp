@@ -35,8 +35,11 @@
 
     <!--  Diets -->
     <dimen name="diet_item_height">80dp</dimen>
-
     <dimen name="with_navbar_title_margin_top">70dp</dimen>
     <dimen name="content_with_title_margin_top">40dp</dimen>
+
+    <!--  Recipe list -->
+    <dimen name="recipe_card_image_height">178dp</dimen>
+
 
 </resources>

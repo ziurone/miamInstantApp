@@ -13,7 +13,7 @@ class IsFirstTimeInAppPreference @Inject constructor(
     private val subject = BehaviorSubject.createDefault(sharedPreferences)
 
     companion object {
-        const val USER_IS_FIRST_TIME_IN_APP = "User.MoneyKey"
+        const val USER_IS_FIRST_TIME_IN_APP = "User.IsFirstTimeInApp"
     }
 
     fun setIsFirstTimeInApp(isFirstTime: Boolean): Completable = subject

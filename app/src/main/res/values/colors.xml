@@ -8,10 +8,11 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="black">#242424</color>
-    <color name="black_dark">#000000</color>
+    <color name="black_dark">#393939</color>
     <color name="white">#FFFFFF</color>
     <color name="tertiary">#838080</color>
     <color name="quaternary">#FAFAFA</color>
+    <color name="success_color">#00B577</color>
 
     <!--  Custom colors  -->
     <color name="cardGenericBadgetBackgroundColor">@color/quantum_black_100</color>

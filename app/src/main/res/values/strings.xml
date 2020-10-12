@@ -48,4 +48,8 @@
     <string name="dispensary_empty_view_subtitle">Para que pueda recomendarte recetas</string>
     <string name="ingredient_item_volume_unit_with_quantity">%1$d %2$s</string>
 
+    <!-- Recipe list -->
+    <string name="search_recipe_hint">Buscar recetas</string>
+    <string name="card_recipe_fulfilled_text">Tenés todo</string>
+
 </resources>

@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.view.adapters.DoableRecipesListAdapter
-import com.example.miaminstantapp.viewmodel.IDoableRecipesViewModel
+import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
 import kotlinx.android.synthetic.main.fragment_market_recipes_list.*
 
-class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRecipesViewModel.State>(), DoableRecipesListAdapter.OnRecipeItemClickListener {
+class DoableRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>(), DoableRecipesListAdapter.OnRecipeItemClickListener {
 
     private lateinit var doableRecipesAdapter: DoableRecipesListAdapter
 
@@ -31,10 +31,10 @@ class DoableRecipesListFragment: BaseFragment<IDoableRecipesViewModel, IDoableRe
         }
     }
 
-    override fun onStateChanged(state: IDoableRecipesViewModel.State) {
+    override fun onStateChanged(state: ICatalogRecipesListViewModel.State) {
 
         when(state) {
-            is IDoableRecipesViewModel.State.FetchedRecipesSuccess -> showRecipes(state.doableRecipes)
+            is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.doableRecipes)
         }
     }
 

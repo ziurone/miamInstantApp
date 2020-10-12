@@ -3,6 +3,7 @@ package com.example.miaminstantapp.view.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
@@ -35,8 +36,14 @@ class DoableRecipesListAdapter constructor(
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(doableRecipe: DoableRecipe) {
             recipeName.text = doableRecipe.recipe.title
-            totalMinutes.text = doableRecipe.recipe.totalMinutes.toString()
-            price.text = doableRecipe.recipe.price.toString()
+            totalMinutesText.text = doableRecipe.recipe.totalMinutes.toString()
+            if(doableRecipe.recipe.price > 0) {
+                price.text = doableRecipe.recipe.price.toString()
+                price.isVisible = true
+            } else {
+                recipeFulfilledGroup.isVisible = true
+            }
+
             recipeImage.loadImageURL(doableRecipe.recipe.imageUrl)
 
             containerView.setOnClickListener {

@@ -4,9 +4,9 @@ import com.example.miaminstantapp.domain.actions.FetchRecipesWithIngredientsActi
 import com.example.miaminstantapp.domain.actions.IFetchRecipesWithIngredientsAction
 import javax.inject.Inject
 
-class DoableRecipesViewModel @Inject constructor(
+class CatalogRecipesListViewModel @Inject constructor(
     private val fetchRecipesWithIngredientsAction: FetchRecipesWithIngredientsAction
-): IDoableRecipesViewModel() {
+): ICatalogRecipesListViewModel() {
 
     init {
         listenSource(fetchRecipesWithIngredientsAction.getLiveData(), ::onFetchRecipesResult)
