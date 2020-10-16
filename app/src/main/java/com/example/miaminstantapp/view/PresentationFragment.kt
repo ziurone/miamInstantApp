@@ -14,6 +14,7 @@ class PresentationFragment: Fragment() {
 
     companion object {
         const val DESCRIPTION_KEY = "descriptionKey"
+        const val ICON_KEY = "iconKey"
     }
 
     override fun onCreateView(
@@ -29,6 +30,7 @@ class PresentationFragment: Fragment() {
 
         arguments?.let {
             description.text = it.getString(DESCRIPTION_KEY, "")
+            presentation_icon.setImageResource(it.getInt(ICON_KEY, R.drawable.ic_inactive_dot))
         }
 
         nextFlow.setOnClickListener {
