@@ -2,7 +2,7 @@ package com.example.miaminstantapp.view
 
 import android.content.Intent
 import android.os.Bundle
-import com.example.miaminstantapp.MainActivity
+import com.example.miaminstantapp.SessionActivity
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.viewmodel.ISplashScreenViewModel
 
@@ -29,7 +29,7 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
     }
 
     private fun navigateToUserIngredients() {
-        this.startActivity(Intent(this, MainActivity::class.java))
+        this.startActivity(Intent(this, SessionActivity::class.java))
     }
 
     private fun navigateToPresentationFlow() {

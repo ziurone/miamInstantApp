@@ -51,13 +51,16 @@ class AddUserDietsFragment: BaseFragment<IAddUserDietsViewModel, IAddUserDietsVi
     private fun createItems(userDiets: List<DietEntity>) {
 
         val dietItemPresenter = DietItemsPresenter(requireContext())
-        val items = diets.map { DietItem(it, dietItemPresenter, userDiets) { isActive ->
-            if(isActive) {
-                viewModel.addUserDiet(it)
-            } else {
-                viewModel.removeDiet(it)
+        val items = diets.map { DietItem(it, dietItemPresenter, userDiets) {
+                isActive ->
+                if(it != Diet.NONE) {
+                    if(isActive) {
+                        viewModel.addUserDiet(it)
+                    } else {
+                        viewModel.removeDiet(it)
+                    }
+                }
             }
-        }
         }
         dietsAdapter.update(items)
     }

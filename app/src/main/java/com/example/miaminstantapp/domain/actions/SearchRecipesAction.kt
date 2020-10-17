@@ -24,9 +24,9 @@ class SearchRecipesAction @Inject constructor(
                 recipesRepository.insertAll(recipes.map {
                     it.toMarketRecipeEntity()
                 })
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .toSingleDefault(recipes)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .toSingleDefault(recipes)
             }
             .flatMap { recipes ->
                 val marketIngredients = mutableListOf<MarketIngredientDTO>()
