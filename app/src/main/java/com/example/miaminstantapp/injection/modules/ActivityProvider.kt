@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.injection.modules
 
-import com.example.miaminstantapp.MainActivity
+import com.example.miaminstantapp.SessionActivity
 import com.example.miaminstantapp.scopes.PerActivity
 import com.example.miaminstantapp.view.PresentationFlowActivity
 import com.example.miaminstantapp.view.SetUserFiltersActivity
@@ -13,7 +13,7 @@ abstract class ActivityProvider {
 
     @PerActivity
     @ContributesAndroidInjector(modules = [UserFiltersFragmentProvider::class, UserResourcesModule::class])
-    abstract fun bindUserResourcesActivity(): MainActivity
+    abstract fun bindUserResourcesActivity(): SessionActivity
 
     @PerActivity
     @ContributesAndroidInjector(modules = [UserFiltersFragmentProvider::class, UserResourcesModule::class])

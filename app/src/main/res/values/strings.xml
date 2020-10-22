@@ -6,6 +6,7 @@
     <string name="skip">Saltar</string>
     <string name="to_cook">¡A cocinar!</string>
     <string name="edit">Editar</string>
+    <string name="none">Ninguna</string>
 
     <string name="article_name">Mayonesa hellmans</string>
     <string name="app_bottom_bar_menu_recipe_list_title">RecipeList</string>
@@ -22,6 +23,7 @@
     <string name="vegetarian_description">Sigo una dieta sin carne</string>
     <string name="celiac_description">Sigo una dieta libre de glúten</string>
     <string name="celiac_name">Celíaca</string>
+    <string name="none_description">¡Como casi todo!</string>
 
     <string name="diets_list_title">¿Seguís alguna dieta?</string>
 

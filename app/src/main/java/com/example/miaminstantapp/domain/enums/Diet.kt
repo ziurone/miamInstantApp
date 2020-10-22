@@ -5,7 +5,8 @@ import com.example.miaminstantapp.domain.entities.DietEntity
 enum class Diet {
     VEGAN,
     VEGETARIAN,
-    CELIAC;
+    CELIAC,
+    NONE;
 
     fun toEntity(): DietEntity = DietEntity(this.toString())
 }

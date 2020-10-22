@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/addUserAlergies"
-        android:name="com.example.miaminstantapp.view.AddAlergiesFragment"
+        android:name="com.example.miaminstantapp.view.AddAllergiesFragment"
         tools:layout="@layout/fragment_add_allergies">
 
         <action

@@ -18,7 +18,7 @@ import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_add_allergies.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewModel.State>() {
+class AddAllergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewModel.State>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_add_allergies
     lateinit var ingredientsAdapter: GroupAdapter<ShortIngredientItem.ShortIngredientItemViewHolder>
@@ -74,7 +74,10 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
 
     private fun showIngredients(ingredients: List<IngredientShortDto>) {
         ingredientsAdapter.clear()
-        ingredientsAdapter.update(ingredients.map { ingredient -> ShortIngredientItem(ingredient) { viewModel.add(ingredient) } })
+        ingredientsAdapter.update(ingredients.map { ingredient -> ShortIngredientItem(ingredient) {
+            viewModel.add(ingredient)
+            ingredientsAdapter.clear()
+        } })
     }
 
     override fun initViews() {
@@ -86,6 +89,10 @@ class AddAlergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMod
         }
 
         next.setOnClickListener {
+            findNavController().navigate(R.id.from_addUserAlergies_to_AddUserAddress)
+        }
+
+        skip.setOnClickListener {
             findNavController().navigate(R.id.from_addUserAlergies_to_AddUserAddress)
         }
 

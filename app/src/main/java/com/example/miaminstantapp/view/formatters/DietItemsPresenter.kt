@@ -14,6 +14,7 @@ class DietItemsPresenter constructor(
             Diet.VEGAN -> context.getString(R.string.vegan_name)
             Diet.VEGETARIAN -> context.getString(R.string.vegetarian_name)
             Diet.CELIAC -> context.getString(R.string.celiac_name)
+            Diet.NONE -> context.getString(R.string.none)
         }
     }
 
@@ -22,6 +23,7 @@ class DietItemsPresenter constructor(
             Diet.VEGAN -> context.getString(R.string.vegan_description)
             Diet.VEGETARIAN -> context.getString(R.string.vegetarian_description)
             Diet.CELIAC -> context.getString(R.string.celiac_description)
+            Diet.NONE -> context.getString(R.string.none_description)
         }
     }
 
@@ -30,6 +32,7 @@ class DietItemsPresenter constructor(
             Diet.VEGAN -> R.drawable.ic_lettuce
             Diet.VEGETARIAN -> R.drawable.ic_salad_bowl
             Diet.CELIAC -> R.drawable.ic_tac
+            Diet.NONE -> R.drawable.ic_hot_dish
         }
     }
 

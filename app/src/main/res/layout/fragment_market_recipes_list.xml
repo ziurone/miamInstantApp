@@ -44,6 +44,8 @@
         app:layout_constraintTop_toTopOf="@id/addIngredientsLayout"
         app:layout_constraintBottom_toBottomOf="@id/addIngredientsLayout"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
         android:background="@color/secondary_light"
         android:src="@drawable/ic_filter"/>
 

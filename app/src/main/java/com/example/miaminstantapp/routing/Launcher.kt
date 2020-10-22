@@ -1,8 +1,7 @@
 package com.example.miaminstantapp.routing
 
 import android.content.Context
-import com.example.miaminstantapp.MainActivity
-import com.example.miaminstantapp.view.NavigationActivity
+import com.example.miaminstantapp.SessionActivity
 import com.example.miaminstantapp.view.SetUserFiltersActivity
 
 class Launcher constructor(
@@ -14,6 +13,6 @@ class Launcher constructor(
     }
 
     fun dispensary() {
-        MainActivity.startActivity(context)
+        SessionActivity.startActivity(context)
     }
 }
