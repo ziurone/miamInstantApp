@@ -4,22 +4,33 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/appBarRecipeList"
-        android:icon="@drawable/ic_recipe_list"
-        android:title="@string/app_bottom_bar_menu_recipe_list_title"
-        app:showAsAction="always"/>
+        android:id="@+id/dispensary"
+        android:icon="@drawable/ic_refrigerator_small"
+        android:title="@string/app_bottom_bar_menu_dispensary_title"
+        app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/appBarRecipeBook"
-        android:icon="@drawable/ic_recipe_book"
+        android:id="@+id/appBarRecipeList"
+        android:icon="@drawable/ic_recipe_book_small"
         android:title="@string/app_bottom_bar_menu_recipe_book_title"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/appBarFavorites"
+        android:icon="@drawable/ic_favorite_small"
+        android:title="@string/app_bottom_bar_menu_favorites_title"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/appBarShoppingCart"
-        android:icon="@drawable/ic_shopping_cart"
+        android:icon="@drawable/ic_shopping_cart_small"
         android:title="@string/app_bottom_bar_menu_shopping_cart_title"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile_small"
+        android:title="@string/app_bottom_bar_menu_profile_title"
+        app:showAsAction="ifRoom"/>
 
 </menu>

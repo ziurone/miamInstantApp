@@ -16,7 +16,6 @@
         app:navGraph="@navigation/navigation_graph">
     </fragment>
 
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"

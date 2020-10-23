@@ -29,12 +29,20 @@ class SessionActivity : DaggerAppCompatActivity() {
                         findNavController(R.id.userFiltersFragmentHost).navigate(R.id.action_global_market_recipes)
                         true
                     }
-                    R.id.appBarRecipeBook -> {
+                    R.id.appBarFavorites -> {
                         findNavController(R.id.userFiltersFragmentHost).navigate(R.id.global_action_toRecipeBookFragment)
                         true
                     }
                     R.id.appBarShoppingCart -> {
                         findNavController(R.id.userFiltersFragmentHost).navigate(R.id.action_global_toShopPurchase)
+                        true
+                    }
+                    R.id.dispensary -> {
+                        findNavController(R.id.userFiltersFragmentHost).navigate(R.id.global_action_toDispensaryFragment)
+                        true
+                    }
+                    R.id.profile -> {
+                        findNavController(R.id.userFiltersFragmentHost).navigate(R.id.global_action_toDispensaryFragment)
                         true
                     }
                     else -> false

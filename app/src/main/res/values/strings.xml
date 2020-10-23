@@ -13,8 +13,14 @@
     <string name="recipe_list_empty_message">No se encontraron recetas con los recursos actuales</string>
     <string name="recipe_book_empty_message">No se agregaron recetas aun.</string>
     <string name="shopping_cart_empty_message">El carrito de compras esta vacio.</string>
-    <string name="app_bottom_bar_menu_recipe_book_title">RecipeBook</string>
-    <string name="app_bottom_bar_menu_shopping_cart_title">ShoppingCart</string>
+
+
+    <!-- Bottom bar -->
+    <string name="app_bottom_bar_menu_dispensary_title">Heladera</string>
+    <string name="app_bottom_bar_menu_recipe_book_title">Recetas</string>
+    <string name="app_bottom_bar_menu_favorites_title">Guardados</string>
+    <string name="app_bottom_bar_menu_shopping_cart_title">Mi lista</string>
+    <string name="app_bottom_bar_menu_profile_title">Perfil</string>
 
     <!-- Diets -->
     <string name="vegan_name">Vegana</string>
