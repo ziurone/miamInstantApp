@@ -7,6 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.view.PresentationFragment
 import com.example.miaminstantapp.view.PresentationFragment.Companion.DESCRIPTION_KEY
+import com.example.miaminstantapp.view.PresentationFragment.Companion.ENABLE_BUTTON_KEY
 import com.example.miaminstantapp.view.PresentationFragment.Companion.ICON_KEY
 
 class PresentationFragmentAdapter (val fa: FragmentActivity): FragmentStateAdapter(fa) {
@@ -15,10 +16,10 @@ class PresentationFragmentAdapter (val fa: FragmentActivity): FragmentStateAdapt
 
     override fun createFragment(position: Int): Fragment {
         val bundle = when(position) {
-            0 -> bundleOf(DESCRIPTION_KEY to  fa.getString(R.string.presentation_first_step_text), ICON_KEY to R.drawable.ic_chef_hat )
-            1 -> bundleOf(DESCRIPTION_KEY to fa.getString(R.string.presentation_second_step_text))
-            2 -> bundleOf(DESCRIPTION_KEY to fa.getString(R.string.presentation_third_step_text), ICON_KEY to R.drawable.ic_chef_hat  )
-            3 -> bundleOf(DESCRIPTION_KEY to fa.getString(R.string.presentation_fourth_step_text), ICON_KEY to R.drawable.ic_chef_hat )
+            0 -> bundleOf(DESCRIPTION_KEY to  fa.getString(R.string.presentation_first_step_text), ICON_KEY to R.drawable.ic_chef_hat, ENABLE_BUTTON_KEY to false )
+            1 -> bundleOf(DESCRIPTION_KEY to fa.getString(R.string.presentation_second_step_text),ICON_KEY to R.drawable.ic_fridge_big, ENABLE_BUTTON_KEY to false )
+            2 -> bundleOf(DESCRIPTION_KEY to fa.getString(R.string.presentation_third_step_text), ICON_KEY to R.drawable.ic_recipe_book_big,ENABLE_BUTTON_KEY to false  )
+            3 -> bundleOf(DESCRIPTION_KEY to fa.getString(R.string.presentation_fourth_step_text), ICON_KEY to R.drawable.ic_delivery_big, ENABLE_BUTTON_KEY to true )
             else -> bundleOf(DESCRIPTION_KEY to "etc etc" )
         }
 

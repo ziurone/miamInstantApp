@@ -35,7 +35,7 @@ class IsFirstTimeOpeningAppAction @Inject constructor(
             }
             true -> {
                 isFirstTimeInAppPreference
-                    .setIsFirstTimeInApp(true)
+                    .setIsFirstTimeInApp(false)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
