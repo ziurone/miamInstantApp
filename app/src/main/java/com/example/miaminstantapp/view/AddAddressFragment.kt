@@ -2,6 +2,7 @@ package com.example.miaminstantapp.view
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -16,7 +17,6 @@ import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import kotlinx.android.synthetic.main.fragment_add_address.*
 import kotlinx.android.synthetic.main.toolbar.*
-import javax.inject.Inject
 
 class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.State>() {
 
@@ -92,19 +92,25 @@ class AddAddressFragment: BaseFragment<AddAddressViewModel, AddAddressViewModel.
     }
 
     private fun showSelectedAddress(data: Intent?) {
-        val place = Autocomplete.getPlaceFromIntent(data!!)
-        showAddress.isVisible = true
-        addAddressLayout.isVisible = false
-        addedAddress.text = place.address
-        nextButton.isEnabled = true
+        data?.let {
+            try {
+                val place = Autocomplete.getPlaceFromIntent(it)
+                showAddress.isVisible = true
+                addAddressLayout.isVisible = false
+                addedAddress.text = place.address
+                nextButton.isEnabled = true
+                viewModel.removeAddresses()
+                place.address?.let {
+                        address -> viewModel.addUserAddress(UserAddressEntity(address))
+                }
 
-        viewModel.removeAddresses()
+                viewModel.fetchZoneShops(place.latLng?.latitude.toString(), place.latLng?.longitude.toString(), 10)
+            } catch (e : RuntimeException) {
+                Log.e("ERROR", "La direccion no es valida")
+            }
 
-        place.address?.let {
-                address -> viewModel.addUserAddress(UserAddressEntity(address))
+        }?: run  {
+            Log.e("ERROR","NO INTENT")
         }
-
-        viewModel.fetchZoneShops(place.latLng?.latitude.toString(), place.latLng?.longitude.toString(), 10)
-
     }
 }

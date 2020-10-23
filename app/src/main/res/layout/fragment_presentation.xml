@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/presentation_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Presentation fragment"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/nextFlow"
+        style="@style/Headline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Navegar a filtros"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="@dimen/spacing_xxlarge"
+        android:layout_marginTop="@dimen/spacing_item"
+        android:layout_marginRight="@dimen/spacing_xxlarge"
+        android:gravity="center_horizontal"
+        tools:text="Presentation fragment"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintTop_toBottomOf="@id/presentation_icon" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/continueButton"
+        style="@style/ButtonPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

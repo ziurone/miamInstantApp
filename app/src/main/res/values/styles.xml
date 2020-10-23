@@ -88,4 +88,8 @@
         <item name="rippleColor">@color/secondary_light</item>
     </style>
 
+    <style name="PresentationTab" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#FAFAFA</item>
+    </style>
+
 </resources>
