@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.navigation.findNavController
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_session.*
 
 class SessionActivity : DaggerAppCompatActivity() {
 
@@ -21,9 +21,8 @@ class SessionActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        bottomAppBar.inflateMenu(R.menu.bottom_app_bar_menu)
-        bottomAppBar.setOnMenuItemClickListener{ menuItem ->
+        setContentView(R.layout.activity_session)
+        bottomAppBar.setOnNavigationItemSelectedListener{ menuItem ->
                 when(menuItem.itemId) {
                     R.id.appBarRecipeList -> {
                         findNavController(R.id.userFiltersFragmentHost).navigate(R.id.action_global_market_recipes)

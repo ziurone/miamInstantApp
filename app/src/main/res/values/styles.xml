@@ -2,6 +2,7 @@
 
     <!-- Base application theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="bottomNavigationStyle">@style/BottomBar</item>
     </style>
 
     <!-- Toolbar -->
@@ -90,6 +91,11 @@
 
     <style name="PresentationTab" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">#FAFAFA</item>
+    </style>
+
+    <!-- Bottom bar -->
+    <style name="BottomBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="backgroundTint">@color/quaternary</item>
     </style>
 
 </resources>
