@@ -119,7 +119,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     style="@style/Body1"
                     android:text="@string/dispensary_empty_view_subtitle"
-                    android:textColor="@color/secondary_dark"/>
+                    android:textColor="@color/colorSecondaryDark"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

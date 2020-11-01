@@ -7,18 +7,21 @@
         android:id="@+id/dispensary"
         android:icon="@drawable/ic_refrigerator_small"
         android:title="@string/app_bottom_bar_menu_dispensary_title"
+        android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/appBarRecipeList"
         android:icon="@drawable/ic_recipe_book_small"
         android:title="@string/app_bottom_bar_menu_recipe_book_title"
+        android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/appBarFavorites"
         android:icon="@drawable/ic_favorite_small"
         android:title="@string/app_bottom_bar_menu_favorites_title"
+        android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
@@ -31,6 +34,7 @@
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile_small"
         android:title="@string/app_bottom_bar_menu_profile_title"
+        android:enabled="true"
         app:showAsAction="ifRoom"/>
 
 </menu>

@@ -95,7 +95,15 @@
 
     <!-- Bottom bar -->
     <style name="BottomBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
-        <item name="backgroundTint">@color/quaternary</item>
+        <item name="backgroundTint">@color/secondary_light</item>
+        <item name="tabSelectedTextColor">@color/colorPrimary</item>
+        <item name="itemTextAppearanceActive">@style/Caption</item>
+        <item name="itemIconTint">@color/colorPrimary</item>
+        <item name="itemTextColor">@color/colorSecondaryDark</item>
+    </style>
+
+    <style name="Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>
