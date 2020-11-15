@@ -14,7 +14,7 @@ class AddAddressViewModel @Inject constructor(
     sealed class State {
         object AddedSuccess: State()
         object FetchShopsSuccess: State()
-    }
+    }   
 
     init {
         listenSource(addUserAddressAction.getLiveData(), ::onAddressAdded)

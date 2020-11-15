@@ -6,30 +6,18 @@ import com.example.miaminstantapp.domain.entities.MarketRecipeEntity.Companion.T
 
 @Entity(tableName = TABLE_NAME)
 data class MarketRecipeEntity(
-
     @PrimaryKey
     val id: Int,
-
     val title: String,
-
     val content: String,
-
     val link: String,
-
     val servings: Int,
-
     val price: Float,
-
     val preparingMinutes: Int,
-
     val cookingMinutes: Int,
-
     val totalMinutes: Int,
-
     val siteId: Int,
-
     val imageUrl: String
-
 ) {
     companion object {
         const val TABLE_NAME = "marketRecipes"

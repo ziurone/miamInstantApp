@@ -5,29 +5,17 @@ import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
 
 data class MarketRecipeDTO(
     val id: Int,
-
     val title: String,
-
     val content: String,
-
     val link: String,
-
     val servings: Int,
-
     val price: Float,
-
     val preparingMinutes: Int,
-
     val cookingMinutes: Int,
-
     val totalMinutes: Int,
-
     val siteId: Int,
-
     val imageUrl: String,
-
     val marketIngredients: List<MarketIngredientDTO>,
-
     val userIngredients: List<UserIngredientDTO>
 )
 
