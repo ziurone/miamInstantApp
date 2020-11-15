@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.view.adapters.DoableRecipesListAdapter
+import com.example.miaminstantapp.view.items.RecipeItem
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
+import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_market_recipes_list.*
 
-class DoableRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>(), DoableRecipesListAdapter.OnRecipeItemClickListener {
-
-    private lateinit var doableRecipesAdapter: DoableRecipesListAdapter
+class DoableRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_market_recipes_list
+
+    private val recipeAdapter = GroupAdapter<RecipeItem.RecipeItemViewHolder>()
 
     override fun initViews() {
         super.initViews()
@@ -24,10 +26,9 @@ class DoableRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICat
     }
 
     private fun initRecipeList() {
-        doableRecipesAdapter = DoableRecipesListAdapter(this)
         recipeList.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = doableRecipesAdapter
+            adapter = recipeAdapter
         }
     }
 
@@ -39,16 +40,18 @@ class DoableRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICat
     }
 
     private fun showRecipes(doableRecipes: List<DoableRecipe>) {
-        if (doableRecipes.isNotEmpty()) doableRecipesAdapter.addRecipes(doableRecipes)
-        else recipeListEmptyView.isVisible = true
-    }
+        if (doableRecipes.isNotEmpty()) {
+            val items = doableRecipes.map { doableRecipe ->
+                RecipeItem(doableRecipe) {
+                    val bundle = bundleOf(
+                        DoableRecipeFragment.RECIPE_ID_KEY to doableRecipe.recipe.id
+                    )
+                    findNavController().navigate(R.id.action_doableRecipeList_to_doableRecipeDetail, bundle)
+                }
+            }
 
-    override fun onItemClick(recipeId: Int) {
-        val bundle = bundleOf(
-            DoableRecipeFragment.RECIPE_ID_KEY to recipeId
-        )
-
-        findNavController().navigate(R.id.action_doableRecipeList_to_doableRecipeDetail, bundle)
+            recipeAdapter.update(items)
+        } else  { recipeListEmptyView.isVisible = true }
     }
 
 }
