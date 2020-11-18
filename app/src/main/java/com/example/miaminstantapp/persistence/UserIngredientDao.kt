@@ -16,7 +16,7 @@ interface UserIngredientDao {
 
     @Transaction
     @Query("SELECT * FROM " + UserIngredientEntity.TABLE_NAME + " WHERE ingredientId = :ingredientId ")
-    fun getUserIngredientWithVolumeUnits(ingredientId: Int): Single<List<UserIngredientWithVolumeUnits>>
+    fun getUserIngredientWithVolumeUnits(ingredientId: Int): Single<UserIngredientWithVolumeUnits>
 
     @Transaction
     @Insert

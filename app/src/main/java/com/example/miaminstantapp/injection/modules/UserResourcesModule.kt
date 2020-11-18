@@ -3,7 +3,6 @@ package com.example.miaminstantapp.injection.modules
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.example.miaminstantapp.view.DispensaryFragment
 import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.repositories.*
 import com.example.miaminstantapp.injection.qualifiers.AppContext
@@ -201,5 +200,9 @@ class UserResourcesModule {
     @ViewModelKey(AddAddressViewModel::class)
     fun providesAddAddressViewModelIntoMap(viewModel: AddAddressViewModel): ViewModel = viewModel
 
+    @Provides
+    @IntoMap
+    @ViewModelKey(EditUserIngredientViewModel::class)
+    fun providesEditUserIngredientsViewModelIntoMap(viewModel: EditUserIngredientViewModel): ViewModel = viewModel
 
 }

@@ -1,6 +1,5 @@
 package com.example.miaminstantapp.injection.modules
 
-import com.example.miaminstantapp.view.DispensaryFragment
 import com.example.miaminstantapp.view.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -34,5 +33,8 @@ abstract class UserFiltersFragmentProvider {
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
     abstract fun providesAddAddressFragment(): AddAddressFragment
+
+    @ContributesAndroidInjector(modules = [UserResourcesModule::class])
+    abstract fun providesEditUserIngredientFragment(): EditUserIngredientFragment
 
 }
