@@ -19,114 +19,115 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/recipeName"
-            style="@style/Subtitle2"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recipeImage"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:layout_marginStart="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:layout_marginBottom="@dimen/spacing_large"
-            tools:text="Zanahoria" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/hasIngredientsBadge"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/match_constraint"
-            app:constraint_referenced_ids="recipeFulfilledIcon, recipeFulfilledText"
-            android:visibility="gone"
-            tools:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/recipeFulfilledIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_large"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recipeName"
-            android:layout_marginTop="@dimen/spacing_standard"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:src="@drawable/ic_checked"/>
+            app:layout_constraintTop_toBottomOf="@id/recipeImage">
 
-        <TextView
-            android:id="@+id/recipeFulfilledText"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/recipeFulfilledIcon"
-            app:layout_constraintBottom_toBottomOf="@id/recipeFulfilledIcon"
-            app:layout_constraintLeft_toRightOf="@id/recipeFulfilledIcon"
-            app:layout_constraintRight_toRightOf="@+id/totalMinutesText"
-            style="@style/Body1"
-            android:textColor="@color/success_color"
-            android:text="@string/card_recipe_fulfilled_text"/>
+            <TextView
+                android:id="@+id/totalMinutesText"
+                style="@style/Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_time_inactive"
+                android:drawableLeft="@drawable/ic_time_inactive"
+                android:drawablePadding="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:textColor="@color/tertiary"
+                app:layout_constraintRight_toLeftOf="@+id/iconLike"
+                app:layout_constraintTop_toTopOf="@+id/missingIngredientBadgeIcon"
+                tools:text="30 min." />
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/missingIngredientsBadge"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="@dimen/match_constraint"
-            android:visibility="gone"
-            app:constraint_referenced_ids="missingIngredientBadgeIcon, missingIngredientsBadgeText"
-            tools:visibility="visible"/>
+            <TextView
+                android:id="@+id/recipeName"
+                style="@style/Subtitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Zanahoria" />
 
-        <ImageView
-            android:id="@+id/missingIngredientBadgeIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recipeName"
-            android:layout_marginTop="@dimen/spacing_standard"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:src="@drawable/ic_shopping_cart_small"/>
 
-        <TextView
-            android:id="@+id/missingIngredientsBadgeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/missingIngredientBadgeIcon"
-            app:layout_constraintBottom_toBottomOf="@id/missingIngredientBadgeIcon"
-            app:layout_constraintLeft_toRightOf="@id/missingIngredientBadgeIcon"
-            android:layout_marginLeft="@dimen/spacing_small"
-            style="@style/Body1"
-            android:textColor="@color/colorAccent"/>
+            <ImageButton
+                android:id="@+id/iconLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/secondary_light"
+                android:src="@drawable/ic_like"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/totalMinutesText"
+                app:layout_constraintTop_toTopOf="@+id/missingIngredientBadgeIcon" />
 
-        <TextView
-            android:id="@+id/totalMinutesText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Body1"
-            android:textColor="@color/tertiary"
-            app:layout_constraintTop_toTopOf="@id/recipeName"
-            app:layout_constraintBottom_toBottomOf="@id/recipeName"
-            app:layout_constraintRight_toLeftOf="@id/iconLike"
-            android:layout_marginRight="@dimen/spacing_large"
-            android:layout_marginEnd="@dimen/spacing_large"
-            tools:text="30 min."/>
 
-        <ImageButton
-            android:id="@+id/iconLike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            android:src="@drawable/ic_like"
-            app:layout_constraintTop_toTopOf="@id/recipeName"
-            app:layout_constraintBottom_toBottomOf="@id/recipeName"
-            android:background="@color/secondary_light"/>
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/hasIngredientsBadge"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/match_constraint"
+                android:visibility="gone"
+                app:constraint_referenced_ids="recipeFulfilledIcon, recipeFulfilledText"
+                tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/price"
-            style="@style/RecipeCardBadget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="@dimen/recipe_list_badget_margin_bottom"
-            app:layout_constraintLeft_toRightOf="@id/recipeFulfilledIcon"
-            app:layout_constraintTop_toTopOf="@id/recipeFulfilledIcon"
-            app:layout_constraintBottom_toBottomOf="@id/recipeFulfilledIcon"
-            android:visibility="gone"
-            tools:text="100" />
+            <TextView
+                android:id="@+id/recipeFulfilledText"
+                style="@style/Body1"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:text="@string/card_recipe_fulfilled_text"
+                android:textColor="@color/success_color"
+                android:layout_marginLeft="@dimen/spacing_large"
+                tools:text="Tenes todo pa"
+                app:layout_constraintLeft_toRightOf="@id/recipeFulfilledIcon"
+                app:layout_constraintTop_toTopOf="@id/recipeFulfilledIcon"/>
+
+            <ImageView
+                android:id="@+id/recipeFulfilledIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_checked"
+                android:layout_marginTop="@dimen/spacing_small"
+                tools:layout_editor_absoluteY="215dp"
+                app:layout_constraintStart_toStartOf="@+id/recipeName"
+                app:layout_constraintTop_toBottomOf="@+id/recipeName"/>
+
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/missingIngredientsBadge"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="@dimen/match_constraint"
+                android:visibility="gone"
+                app:constraint_referenced_ids="missingIngredientBadgeIcon, missingIngredientsBadgeText"
+                tools:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/missingIngredientBadgeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:src="@drawable/ic_shopping_cart_small"
+                app:layout_constraintStart_toStartOf="@+id/recipeName"
+                app:layout_constraintTop_toBottomOf="@+id/recipeName" />
+
+            <TextView
+                android:id="@+id/missingIngredientsBadgeText"
+                style="@style/Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:layout_marginLeft="@dimen/spacing_small"
+                tools:text="Te faltan 2 ingredientes"
+                app:layout_constraintStart_toEndOf="@+id/missingIngredientBadgeIcon"
+                app:layout_constraintTop_toTopOf="@id/missingIngredientBadgeIcon"
+                />
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

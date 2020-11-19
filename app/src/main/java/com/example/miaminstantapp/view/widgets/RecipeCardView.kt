@@ -40,7 +40,7 @@ class RecipeCardView @JvmOverloads constructor(
     }
 
     private fun setTotalMinutes() {
-        totalMinutesText.text = doableRecipe.recipe.totalMinutes.toString()
+        totalMinutesText.text = context.getString( R.string.total_minutes ,doableRecipe.recipe.totalMinutes)
     }
 
     private fun setMissingIngredientsBadge() {
@@ -51,7 +51,7 @@ class RecipeCardView @JvmOverloads constructor(
             hasIngredientsBadge.isVisible = false
             missingIngredientsBadge.isVisible = true
             missingIngredientsBadgeText.isVisible = true
-            missingIngredientsBadgeText.text = context.getString(R.string.missing_ingredients_badge_text, doableRecipe.marketIngredients.size)
+            missingIngredientsBadgeText.text = context.getString(R.string.missing_ingredients_badge_text, doableRecipe.marketIngredients.size, doableRecipe.recipe.price)
         }
     }
 
