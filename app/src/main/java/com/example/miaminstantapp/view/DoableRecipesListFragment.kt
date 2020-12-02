@@ -6,7 +6,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
-import com.example.miaminstantapp.view.adapters.DoableRecipesListAdapter
 import com.example.miaminstantapp.view.items.RecipeItem
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
 import com.xwray.groupie.GroupAdapter
