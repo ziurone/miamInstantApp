@@ -36,7 +36,7 @@ class RecipeCardView @JvmOverloads constructor(
     }
 
     private fun setImage() {
-        recipeImage.loadImageURL(doableRecipe.recipe.imageUrl)
+        recipeImage.loadImageURL(doableRecipe.recipe.imageUrl, R.drawable.placeholder_recipe_list_image)
     }
 
     private fun setTotalMinutes() {
