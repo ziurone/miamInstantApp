@@ -86,4 +86,6 @@ class IngredientRepository @Inject constructor(
         )
     }
 
+    override fun getIngredientWithVolumeUnitsById(ingredientId: Int): Single<UserIngredientWithVolumeUnits> = userIngredientDao.getUserIngredientWithVolumeUnits(ingredientId)
+
 }

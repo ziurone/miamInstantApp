@@ -2,6 +2,7 @@ package com.example.miaminstantapp.view
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
+import com.example.miaminstantapp.viewmodel.EditUserIngredientViewModel
 
 class EditUserIngredientFragment : BaseBottomSheetDialogFragment<EditUserIngredientViewModel, EditUserIngredientViewModel.State>() {
 

@@ -1,7 +1,6 @@
-package com.example.miaminstantapp.view
+package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
-import com.example.miaminstantapp.viewmodel.BaseViewModel
 import javax.inject.Inject
 
 class EditUserIngredientViewModel @Inject constructor() : BaseViewModel<EditUserIngredientViewModel.State>() {
@@ -10,5 +9,9 @@ class EditUserIngredientViewModel @Inject constructor() : BaseViewModel<EditUser
         data class FetchIngredientSuccess(val ingredient: UserIngredientWithVolumeUnits): State()
         object UserEditSuccess: State()
         object Loading: State()
+    }
+
+    fun fetchIngredient(ingredientId: Int) {
+
     }
 }

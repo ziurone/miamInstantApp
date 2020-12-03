@@ -16,4 +16,5 @@ interface IIngredientRepository {
     fun getIngredientsByName(ingredientName: String): Single<IngredientsListResponse>
     fun getShortIngredientsByName(queryText: String): Single<List<IngredientShortDto>>
     fun getUserIngredientsWithVolumeUnits(): Single<List<UserIngredientWithVolumeUnits>>
+    fun getIngredientWithVolumeUnitsById(ingredientId: Int): Single<UserIngredientWithVolumeUnits>
 }
