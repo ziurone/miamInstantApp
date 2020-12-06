@@ -34,7 +34,7 @@ abstract class UserFiltersFragmentProvider {
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
     abstract fun providesAddAddressFragment(): AddAddressFragment
 
-    @ContributesAndroidInjector(modules = [UserResourcesModule::class])
+    @ContributesAndroidInjector(modules = [UserResourcesModule::class, RoomModule::class])
     abstract fun providesEditUserIngredientFragment(): EditUserIngredientFragment
 
 }
