@@ -156,16 +156,22 @@ class DispensaryFragment : BaseFragment<IDispensaryViewModel, IDispensaryViewMod
         }
 
         val ingredientsItems = ingredients.map{
-            UserIngredientItem(it, requireContext()) {
+            UserIngredientItem(it, requireContext(),{
                 selectedIngredientsAdapter.clear()
                 viewModel.removeUserIngredient(it.ingredient)
                 viewModel.fetchUserIngredients()
-            }
+            }, {
+                ingredientId -> openEditIngredientScreen(ingredientId)
+            })
         }
 
         selectedIngredientsAdapter.update(ingredientsItems)
 
         viewModel.fetchSuggestedIngredients()
+    }
+
+    private fun openEditIngredientScreen(ingredientId: Int) {
+        findNavController().navigate(DispensaryFragmentDirections.fromDispensaryToEditIngredientFragment(ingredientId))
     }
 
     private fun logVolumeUnit() {

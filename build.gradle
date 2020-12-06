@@ -12,6 +12,9 @@ buildscript {
         apply from: 'dependencies-all.gradle'
         apply from: 'dependencies-exclusions.gradle'
 
+        def nav_version = "2.3.2"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
         classpath deps.build.gradle
         classpath deps.build.kotlin
     }

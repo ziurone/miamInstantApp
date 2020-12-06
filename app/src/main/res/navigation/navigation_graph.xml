@@ -8,6 +8,20 @@
         android:id="@+id/dispensary"
         android:name="com.example.miaminstantapp.view.DispensaryFragment">
 
+        <action
+            android:id="@+id/from_dispensary_to_editIngredientFragment"
+            app:destination="@+id/editIngredient"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/editIngredient"
+        android:name="com.example.miaminstantapp.view.EditUserIngredientFragment">
+
+        <argument
+            android:name="ingredientId"
+            app:argType="integer"/>
+
     </fragment>
 
     <fragment
