@@ -48,6 +48,8 @@ class IngredientRepository @Inject constructor(
             )
     }
 
+    override fun editIngredient(ingredientId: Int, volumeUnitId: Int, volumeUnitQuantity: Int): Completable = userIngredientDao.update(ingredientId, volumeUnitId, volumeUnitQuantity)
+
     override fun getUserIngredientsWithVolumeUnits(): Single<List<UserIngredientWithVolumeUnits>> = userIngredientDao.getUserIngredientsWithVolumeUnits()
 
     override fun getUserIngredients(): Single<List<UserIngredientEntity>> {

@@ -22,6 +22,9 @@ interface UserIngredientDao {
     @Insert
     fun add(ingredient: UserIngredientEntity): Completable
 
+    @Query("UPDATE " + UserIngredientEntity.TABLE_NAME + " SET volumeUnitId = :volumeUnitId, volumeUnitQuantity = :volumeUnitQuantity WHERE ingredientId = :ingredientId")
+    fun update(ingredientId: Int, volumeUnitId: Int, volumeUnitQuantity: Int): Completable
+
     @Insert
     fun addIngredientVolumeUnits(ingredientVolumeUnitsRelations: List<UserIngredientVolumeUnitRelation>): Completable
 
