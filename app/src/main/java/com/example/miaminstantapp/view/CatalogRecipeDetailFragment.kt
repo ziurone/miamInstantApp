@@ -7,9 +7,9 @@ import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.view.adapters.MarketRecipeMarketIngredientsAdapter
 import com.example.miaminstantapp.view.adapters.MarketRecipeUserIngredientsAdapter
 import com.example.miaminstantapp.viewmodel.IDoableRecipeDetailViewModel
-import kotlinx.android.synthetic.main.fragment_market_recipe.*
+import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail.*
 
-class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRecipeDetailViewModel.State>() {
+class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRecipeDetailViewModel.State>() {
 
     companion object {
         const val RECIPE_ID_KEY = "RecipeId"
@@ -19,7 +19,7 @@ class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRe
     private lateinit var userIngredientsAdapter: MarketRecipeUserIngredientsAdapter
     private lateinit var marketIngredientsAdapter: MarketRecipeMarketIngredientsAdapter
 
-    override fun getLayoutId(): Int = R.layout.fragment_market_recipe
+    override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_detail
 
     override fun initViews() {
         super.initViews()
@@ -59,6 +59,7 @@ class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRe
             is IDoableRecipeDetailViewModel.State.AddRecipeSuccess -> {
                 recipeAddessSuccess()
             }
+            is IDoableRecipeDetailViewModel.State.Error -> Unit
         }
     }
 
@@ -68,6 +69,7 @@ class DoableRecipeFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRe
 
     private fun showRecipe(doableRecipe: DoableRecipe) {
         recipe = doableRecipe
+        recipeCard.setRecipe(doableRecipe)
         if (doableRecipe.userIngredients.isNotEmpty()) userIngredientsAdapter.addIngredients(doableRecipe.userIngredients)
         if (doableRecipe.marketIngredients.isNotEmpty()) marketIngredientsAdapter.addIngredients(doableRecipe.marketIngredients)
     }

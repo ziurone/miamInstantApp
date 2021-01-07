@@ -148,7 +148,7 @@ class UserResourcesModule {
     fun provideDoableRecipeViewModelIntoMap(viewModel: DoableRecipeDetailViewModel): ViewModel = viewModel
 
     @Provides
-    fun providesDoableRecipe(fragment: DoableRecipeFragment, viewModelFactory: ViewModelFactory): IDoableRecipeDetailViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IDoableRecipeDetailViewModel::class.java]
+    fun providesDoableRecipe(detailFragment: CatalogRecipeDetailFragment, viewModelFactory: ViewModelFactory): IDoableRecipeDetailViewModel = ViewModelProviders.of(detailFragment, viewModelFactory)[IDoableRecipeDetailViewModel::class.java]
 
     @Provides
     @IntoMap

@@ -9,11 +9,11 @@ import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.view.items.RecipeItem
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
 import com.xwray.groupie.GroupAdapter
-import kotlinx.android.synthetic.main.fragment_market_recipes_list.*
+import kotlinx.android.synthetic.main.fragment_catalog_recipes_list.*
 
 class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>() {
 
-    override fun getLayoutId(): Int = R.layout.fragment_market_recipes_list
+    override fun getLayoutId(): Int = R.layout.fragment_catalog_recipes_list
 
     private val recipeAdapter = GroupAdapter<RecipeItem.RecipeItemViewHolder>()
 
@@ -44,7 +44,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
             val items = doableRecipes.map { doableRecipe ->
                 RecipeItem(doableRecipe) {
                     val bundle = bundleOf(
-                        DoableRecipeFragment.RECIPE_ID_KEY to doableRecipe.recipe.id
+                        CatalogRecipeDetailFragment.RECIPE_ID_KEY to doableRecipe.recipe.id
                     )
                     findNavController().navigate(R.id.action_doableRecipeList_to_doableRecipeDetail, bundle)
                 }
