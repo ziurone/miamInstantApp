@@ -18,7 +18,7 @@ class PresentationFlowActivity: DaggerAppCompatActivity() {
         val adapter = PresentationFragmentAdapter(this)
         presentationPager.adapter = adapter
         TabLayoutMediator(presentationTabLayout, presentationPager) { tab, position ->
-            tab?.icon = ContextCompat.getDrawable(baseContext, R.drawable.ic_inactive_dot)
+            tab.icon = ContextCompat.getDrawable(baseContext, R.drawable.ic_inactive_dot)
             presentationTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabReselected(tab: TabLayout.Tab?) {
                     tab?.icon = ContextCompat.getDrawable(baseContext , R.drawable.ic_active_dot)

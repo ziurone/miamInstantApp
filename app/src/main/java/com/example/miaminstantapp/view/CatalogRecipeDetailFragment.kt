@@ -6,7 +6,9 @@ import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.DoableRecipe
 import com.example.miaminstantapp.view.adapters.MarketRecipeMarketIngredientsAdapter
 import com.example.miaminstantapp.view.adapters.MarketRecipeUserIngredientsAdapter
+import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
 import com.example.miaminstantapp.viewmodel.IDoableRecipeDetailViewModel
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail.*
 
 class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRecipeDetailViewModel.State>() {
@@ -29,6 +31,17 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
 
         addRecipe.setOnClickListener {
             viewModel.addRecipe(recipe)
+        }
+
+        val adapter = CatalogRecipeDetailStateAdapter(requireActivity())
+        recipeContentPager.adapter = adapter
+        TabLayoutMediator(recipeContentTabLayout, recipeContentPager) { tab, position ->
+            tab.text = when(position) {
+                0 -> "Ingredientes"
+                1 -> "Contenido"
+                else -> ""
+            }
+
         }
 
         arguments?.let {
