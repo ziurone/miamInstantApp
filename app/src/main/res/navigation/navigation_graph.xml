@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/doableRecipesList"
-        android:name="com.example.miaminstantapp.view.DoableRecipesListFragment">
+        android:name="com.example.miaminstantapp.view.CatalogRecipesListFragment">
 
         <action
             android:id="@+id/action_doableRecipeList_to_doableRecipeDetail"

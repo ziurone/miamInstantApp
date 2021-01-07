@@ -9,7 +9,7 @@ import com.xwray.groupie.Item
 
 class RecipeItem(
     private val doableRecipe: DoableRecipe,
-    private val clickListener: (Int) -> Unit
+    private val clickListener: () -> Unit
 ): Item<RecipeItem.RecipeItemViewHolder>() {
 
     override fun createViewHolder(itemView: View): RecipeItemViewHolder = RecipeItemViewHolder(itemView)
@@ -19,6 +19,9 @@ class RecipeItem(
     override fun bind(viewHolder: RecipeItemViewHolder, position: Int) {
         val recipeCard = viewHolder.recipeCard
         recipeCard.setRecipe(doableRecipe)
+        recipeCard.setOnClickListener {
+            clickListener()
+        }
     }
 
     class RecipeItemViewHolder(view: View): GroupieViewHolder(view) {

@@ -11,7 +11,7 @@ import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
 import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_market_recipes_list.*
 
-class DoableRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>() {
+class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_market_recipes_list
 
@@ -35,6 +35,7 @@ class DoableRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICat
 
         when(state) {
             is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.doableRecipes)
+            is ICatalogRecipesListViewModel.State.Error -> Unit
         }
     }
 
