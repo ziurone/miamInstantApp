@@ -13,6 +13,6 @@ class CatalogRecipeDetailIngredientsListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_catalog_recipe_detail_content, container, false)
+        return inflater.inflate(R.layout.fragment_catalog_recipe_detail_ingredients_list, container, false)
     }
 }

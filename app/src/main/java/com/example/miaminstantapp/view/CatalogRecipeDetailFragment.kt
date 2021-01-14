@@ -39,10 +39,10 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
             tab.text = when(position) {
                 0 -> "Ingredientes"
                 1 -> "Contenido"
-                else -> ""
+                else -> "Contenido no esperado"
             }
 
-        }
+        }.attach()
 
         arguments?.let {
             val recipeId = it.getInt(RECIPE_ID_KEY)
