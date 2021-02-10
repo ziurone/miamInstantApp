@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.relations.DoableRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipe
 import com.example.miaminstantapp.domain.repositories.IMarketRecipesRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -30,7 +30,7 @@ class GetDoableRecipeByIdAction @Inject constructor(
             .track()
     }
 
-    fun onSuccess(recipe: DoableRecipe) {
+    fun onSuccess(recipe: CatalogRecipe) {
         liveData.value = IGetDoableRecipeByIdAction.Result.Success(recipe)
     }
 }

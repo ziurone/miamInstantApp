@@ -3,7 +3,7 @@ package com.example.miaminstantapp.view
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.DoableRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipe
 import com.example.miaminstantapp.view.adapters.MarketRecipeMarketIngredientsAdapter
 import com.example.miaminstantapp.view.adapters.MarketRecipeUserIngredientsAdapter
 import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
@@ -17,7 +17,7 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
         const val RECIPE_ID_KEY = "RecipeId"
     }
 
-    private lateinit var recipe: DoableRecipe
+    private lateinit var recipe: CatalogRecipe
     private lateinit var userIngredientsAdapter: MarketRecipeUserIngredientsAdapter
     private lateinit var marketIngredientsAdapter: MarketRecipeMarketIngredientsAdapter
 
@@ -68,7 +68,7 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
 
     override fun onStateChanged(state: IDoableRecipeDetailViewModel.State) {
         when(state) {
-            is IDoableRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.doableRecipe)
+            is IDoableRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipe)
             is IDoableRecipeDetailViewModel.State.AddRecipeSuccess -> {
                 recipeAddessSuccess()
             }
@@ -80,11 +80,11 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
         findNavController().navigate(R.id.action_global_toShopPurchase)
     }
 
-    private fun showRecipe(doableRecipe: DoableRecipe) {
-        recipe = doableRecipe
-        recipeCard.setRecipe(doableRecipe)
-        if (doableRecipe.userIngredients.isNotEmpty()) userIngredientsAdapter.addIngredients(doableRecipe.userIngredients)
-        if (doableRecipe.marketIngredients.isNotEmpty()) marketIngredientsAdapter.addIngredients(doableRecipe.marketIngredients)
+    private fun showRecipe(catalogRecipe: CatalogRecipe) {
+        recipe = catalogRecipe
+        recipeCard.setRecipe(catalogRecipe)
+        if (catalogRecipe.userIngredients.isNotEmpty()) userIngredientsAdapter.addIngredients(catalogRecipe.userIngredients)
+        if (catalogRecipe.marketIngredients.isNotEmpty()) marketIngredientsAdapter.addIngredients(catalogRecipe.marketIngredients)
     }
 
 

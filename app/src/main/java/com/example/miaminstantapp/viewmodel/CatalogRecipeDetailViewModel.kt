@@ -2,10 +2,10 @@ package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.actions.IAddRecipeAction
 import com.example.miaminstantapp.domain.actions.IGetDoableRecipeByIdAction
-import com.example.miaminstantapp.domain.relations.DoableRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipe
 import javax.inject.Inject
 
-class DoableRecipeDetailViewModel @Inject constructor(
+class CatalogRecipeDetailViewModel @Inject constructor(
     private val getDoableRecipeByIdAction: IGetDoableRecipeByIdAction,
     private val addRecipeAction: IAddRecipeAction
 ): IDoableRecipeDetailViewModel() {
@@ -19,8 +19,8 @@ class DoableRecipeDetailViewModel @Inject constructor(
         getDoableRecipeByIdAction.fetchRecipeById(recipeId)
     }
 
-    override fun addRecipe(doableRecipe: DoableRecipe) {
-        addRecipeAction.addRecipe(doableRecipe)
+    override fun addRecipe(catalogRecipe: CatalogRecipe) {
+        addRecipeAction.addRecipe(catalogRecipe)
     }
 
     private fun onAddDoableRecipe(result: IAddRecipeAction.Result) {
@@ -28,8 +28,6 @@ class DoableRecipeDetailViewModel @Inject constructor(
             is IAddRecipeAction.Result.Success -> setState(State.AddRecipeSuccess)
         }
     }
-
-
 
     private fun onGetDoableRecipeByIdResult(result: IGetDoableRecipeByIdAction.Result) {
         when(result) {

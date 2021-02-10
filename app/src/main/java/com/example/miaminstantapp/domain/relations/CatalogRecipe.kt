@@ -3,24 +3,24 @@ package com.example.miaminstantapp.domain.relations
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
-import com.example.miaminstantapp.domain.entities.MarketRecipeEntity
-import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredientEntity
+import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
+import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 
-data class DoableRecipe (
+data class CatalogRecipe (
 
     @Embedded
-    val recipe: MarketRecipeEntity,
+    val recipe: CatalogRecipeEntity,
 
     @Relation(parentColumn = "id", entityColumn = "recipeId")
-    val userIngredients: List<DoableRecipeUserIngredientEntity>,
+    val userIngredients: List<CatalogRecipeUserIngredientEntity>,
 
     @Relation(parentColumn = "id", entityColumn = "recipeId")
     val marketIngredients: List<MarketIngredientEntity>
 
 )
 
-fun DoableRecipe.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
+fun CatalogRecipe.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
     name = recipe.title,
     content = recipe.content,
     link = recipe.link,

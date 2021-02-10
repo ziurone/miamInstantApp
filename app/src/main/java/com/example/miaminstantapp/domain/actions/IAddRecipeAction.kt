@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.relations.DoableRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipe
 
 interface IAddRecipeAction: Action<IAddRecipeAction.Result> {
     sealed class Result {
@@ -8,5 +8,5 @@ interface IAddRecipeAction: Action<IAddRecipeAction.Result> {
         data class Error(val errorMessage: String): Result()
     }
 
-    fun addRecipe(recipe: DoableRecipe)
+    fun addRecipe(recipe: CatalogRecipe)
 }

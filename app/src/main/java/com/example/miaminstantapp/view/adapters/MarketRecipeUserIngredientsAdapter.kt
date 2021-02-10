@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.DoableRecipeUserIngredientEntity
+import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_market_recipe_user_ingredient.*
 
 class MarketRecipeUserIngredientsAdapter constructor(
 ): RecyclerView.Adapter<MarketRecipeUserIngredientsAdapter.ViewHolder>() {
 
-    private val userIngredients = mutableListOf<DoableRecipeUserIngredientEntity>()
+    private val userIngredients = mutableListOf<CatalogRecipeUserIngredientEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_market_recipe_user_ingredient, parent, false)
@@ -26,13 +26,13 @@ class MarketRecipeUserIngredientsAdapter constructor(
 
     override fun getItemCount(): Int = userIngredients.size
 
-    fun addIngredients(userIngredients: List<DoableRecipeUserIngredientEntity>) {
+    fun addIngredients(userIngredients: List<CatalogRecipeUserIngredientEntity>) {
         this.userIngredients.addAll(userIngredients)
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bind(userIngredient: DoableRecipeUserIngredientEntity) {
+        fun bind(userIngredient: CatalogRecipeUserIngredientEntity) {
             name.text = userIngredient.ingredientName
         }
     }

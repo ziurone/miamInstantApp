@@ -2,7 +2,7 @@ package com.example.miaminstantapp.domain.actions
 
 import android.util.Log
 import com.example.miaminstantapp.domain.entities.*
-import com.example.miaminstantapp.domain.relations.DoableRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipe
 import com.example.miaminstantapp.domain.relations.toRecipeBookRecipe
 import com.example.miaminstantapp.domain.repositories.IRecipeBookRecipeIngredientRepository
 import com.example.miaminstantapp.domain.repositories.IRecipeBookRepository
@@ -17,7 +17,7 @@ class AddRecipeAction @Inject constructor(
     private val recipeBookRecipeIngredientRepository: IRecipeBookRecipeIngredientRepository
 ): BaseAction<IAddRecipeAction.Result>(), IAddRecipeAction {
 
-    override fun addRecipe(recipe: DoableRecipe) {
+    override fun addRecipe(recipe: CatalogRecipe) {
         shopArticleRepository
             .insertAll(recipe.marketIngredients.map { it.toShopArticle() })
             .andThen(recipeBookRepository.addRecipe(recipe.toRecipeBookRecipe()))

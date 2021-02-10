@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class AddUserAddressAction @Inject constructor(
-    val userAddressDao: UserAddressDao
+    private val userAddressDao: UserAddressDao
 ): BaseAction<IAddUserAddressAction.Result>(), IAddUserAddressAction {
 
     override fun add(address: UserAddressEntity) {
