@@ -33,20 +33,20 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
             viewModel.addRecipe(recipe)
         }
 
-        val adapter = CatalogRecipeDetailStateAdapter(requireActivity())
-        recipeContentPager.adapter = adapter
-        TabLayoutMediator(recipeContentTabLayout, recipeContentPager) { tab, position ->
-            tab.text = when(position) {
-                0 -> "Ingredientes"
-                1 -> "Contenido"
-                else -> "Contenido no esperado"
-            }
-
-        }.attach()
-
         arguments?.let {
             val recipeId = it.getInt(RECIPE_ID_KEY)
             viewModel.fetchRecipe(recipeId)
+
+            val adapter = CatalogRecipeDetailStateAdapter(requireActivity(), recipeId)
+            recipeContentPager.adapter = adapter
+            TabLayoutMediator(recipeContentTabLayout, recipeContentPager) { tab, position ->
+                tab.text = when(position) {
+                    0 -> "Ingredientes"
+                    1 -> "Contenido"
+                    else -> throw IllegalArgumentException("Tab title error")
+                }
+
+            }.attach()
         }
     }
 
@@ -81,10 +81,9 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
     }
 
     private fun showRecipe(catalogRecipe: CatalogRecipe) {
-        recipe = catalogRecipe
+
+
         recipeCard.setRecipe(catalogRecipe)
-        if (catalogRecipe.userIngredients.isNotEmpty()) userIngredientsAdapter.addIngredients(catalogRecipe.userIngredients)
-        if (catalogRecipe.marketIngredients.isNotEmpty()) marketIngredientsAdapter.addIngredients(catalogRecipe.marketIngredients)
     }
 
 

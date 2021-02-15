@@ -12,7 +12,6 @@ import dagger.Provides
 class RoomModule {
 
     @Provides
-    @PerApplication
     fun provideRoomDB(@AppContext context: Context): MiamDataBase = Room.databaseBuilder(context, MiamDataBase::class.java, MiamDataBase.NAME).build()
 
     @Provides
@@ -36,7 +35,6 @@ class RoomModule {
     fun providesShopDao(miamDataBase: MiamDataBase): ShopDao = miamDataBase.shopDao()
 
     @Provides
-    @PerApplication
     fun providesMarketRecipesDao(miamDataBase: MiamDataBase): MarketRecipeDao = miamDataBase.marketRecipesDao()
 
     @Provides

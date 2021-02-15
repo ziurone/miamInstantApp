@@ -10,6 +10,7 @@ import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.*
+import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailIngredientsListViewModel
 import com.example.miaminstantapp.viewmodel.*
 import com.example.miaminstantapp.viewmodel.userfilters.AddAlergiesViewModel
 import com.example.miaminstantapp.viewmodel.userfilters.AddUserDietsViewModel
@@ -97,7 +98,7 @@ class UserResourcesModule {
     fun providesUserFirstTimeInAppAction(action: IsFirstTimeOpeningAppAction): IIsFirstTimeOpeningAppAction = action
 
     @Provides
-    fun providesGetDoableRecipeWithIdAction(action: GetDoableRecipeByIdAction): IGetDoableRecipeByIdAction = action
+    fun providesGetDoableRecipeWithIdAction(action: GetCatalogRecipeByIdAction): IGetDoableRecipeByIdAction = action
 
     @Provides
     fun providesAddRecipeAction(action: AddRecipeAction): IAddRecipeAction = action
@@ -204,5 +205,10 @@ class UserResourcesModule {
     @IntoMap
     @ViewModelKey(EditUserIngredientViewModel::class)
     fun providesEditUserIngredientsViewModelIntoMap(viewModel: EditUserIngredientViewModel): ViewModel = viewModel
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(CatalogRecipeDetailIngredientsListViewModel::class)
+    fun providesCatalogRecipeDetailIngredientsListViewModelIntoMap(viewModel: CatalogRecipeDetailIngredientsListViewModel): ViewModel = viewModel
 
 }

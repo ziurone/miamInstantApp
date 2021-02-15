@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class GetDoableRecipeByIdAction @Inject constructor(
+class GetCatalogRecipeByIdAction @Inject constructor(
     private val marketRecipesRepository: IMarketRecipesRepository
 ):
     BaseAction<IGetDoableRecipeByIdAction.Result>(),

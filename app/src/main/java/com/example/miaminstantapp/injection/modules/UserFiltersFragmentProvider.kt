@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.injection.modules
 
 import com.example.miaminstantapp.view.*
+import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailIngredientsListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -36,5 +37,8 @@ abstract class UserFiltersFragmentProvider {
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class, RoomModule::class])
     abstract fun providesEditUserIngredientFragment(): EditUserIngredientFragment
+
+    @ContributesAndroidInjector(modules = [UserResourcesModule::class, RoomModule::class])
+    abstract fun providesCatalogRecipeDetailIngredientsListFragment(): CatalogRecipeDetailIngredientsListFragment
 
 }
