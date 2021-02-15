@@ -18,6 +18,8 @@ class CatalogRecipeMarketIngredientItem(
 
     override fun getLayout(): Int = R.layout.item_catalog_recipe_market_ingredient
 
+    override fun createViewHolder(itemView: View): CatalogRecipeMarketIngredientItemViewHolder = CatalogRecipeMarketIngredientItemViewHolder(itemView)
+
     override fun bind(viewHolder: CatalogRecipeMarketIngredientItemViewHolder, position: Int) {
         viewHolder.articleName.text = marketIngredientEntity.articleName
         viewHolder.ingredientName.text = marketIngredientEntity.ingredientName

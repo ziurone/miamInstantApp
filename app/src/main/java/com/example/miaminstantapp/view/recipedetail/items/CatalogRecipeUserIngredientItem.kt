@@ -17,6 +17,8 @@ class CatalogRecipeUserIngredientItem(
         viewHolder.name.text = userIngredientEntity.ingredientName
     }
 
+    override fun createViewHolder(itemView: View): CatalogRecipeUserIngredientItemViewHolder = CatalogRecipeUserIngredientItemViewHolder(itemView)
+
     class CatalogRecipeUserIngredientItemViewHolder(view: View): GroupieViewHolder(view) {
         val name: TextView = view.findViewById(R.id.ingredientName);
     }

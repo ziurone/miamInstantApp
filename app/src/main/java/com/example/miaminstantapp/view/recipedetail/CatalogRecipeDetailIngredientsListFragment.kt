@@ -3,8 +3,11 @@ package com.example.miaminstantapp.view.recipedetail
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipe
 import com.example.miaminstantapp.view.BaseFragment
+import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeMarketIngredientItem
 import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeMarketIngredientsHeaderItem
+import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeUserIngredientItem
 import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeUserIngredientsHeaderItem
+import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -36,15 +39,21 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
     }
 
     private fun showIngredients(catalogRecipe: CatalogRecipe) {
-        val userIngredients = catalogRecipe.userIngredients.map { CatalogRecipeUserIngredientsHeaderItem() }
-        val marketIngredientsItems = catalogRecipe.userIngredients.map { CatalogRecipeUserIngredientsHeaderItem() }
-        val items = mutableListOf<Item<GroupieViewHolder>>()
+        val userIngredients = catalogRecipe.userIngredients
+        val marketIngredientsItems = catalogRecipe.marketIngredients
+        val items = mutableListOf<Group>()
         if(catalogRecipe.userIngredients.isNotEmpty()) {
             items.add(CatalogRecipeUserIngredientsHeaderItem())
         }
+
+        items.addAll(userIngredients.map { CatalogRecipeUserIngredientItem(it) })
+
         if(catalogRecipe.marketIngredients.isNotEmpty()) {
             items.add(CatalogRecipeMarketIngredientsHeaderItem())
         }
+
+        items.addAll(marketIngredientsItems.map { CatalogRecipeMarketIngredientItem(it) })
+
         adapter.update(items)
     }
 }
