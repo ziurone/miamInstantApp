@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.injection.modules
 
 import com.example.miaminstantapp.view.*
+import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailIngredientsListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

@@ -71,4 +71,8 @@
     <string name="total_minutes">%1$d min</string>
     <string name="catalog_recipe_market_ingredients_header">Te falta</string>
     <string name="catalog_recipe_user_ingredients_header">Tenés</string>
+
+    <!-- Recipe detail -->
+    <string name="recipe_ingredients_tab_title">Ingredientes</string>
+    <string name="recipe_preparation_tab_title">Preparacion</string>
 </resources>

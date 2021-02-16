@@ -26,6 +26,7 @@ class CatalogRecipeDetailViewModel @Inject constructor(
     private fun onAddDoableRecipe(result: IAddRecipeAction.Result) {
         when(result) {
             is IAddRecipeAction.Result.Success -> setState(State.AddRecipeSuccess)
+            is IAddRecipeAction.Result.Error -> Unit
         }
     }
 

@@ -39,20 +39,18 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
     }
 
     private fun showIngredients(catalogRecipe: CatalogRecipe) {
-        val userIngredients = catalogRecipe.userIngredients
-        val marketIngredientsItems = catalogRecipe.marketIngredients
         val items = mutableListOf<Group>()
         if(catalogRecipe.userIngredients.isNotEmpty()) {
             items.add(CatalogRecipeUserIngredientsHeaderItem())
         }
 
-        items.addAll(userIngredients.map { CatalogRecipeUserIngredientItem(it) })
+        items.addAll(catalogRecipe.userIngredients.map { CatalogRecipeUserIngredientItem(it) })
 
         if(catalogRecipe.marketIngredients.isNotEmpty()) {
             items.add(CatalogRecipeMarketIngredientsHeaderItem())
         }
 
-        items.addAll(marketIngredientsItems.map { CatalogRecipeMarketIngredientItem(it) })
+        items.addAll(catalogRecipe.marketIngredients.map { CatalogRecipeMarketIngredientItem(it) })
 
         adapter.update(items)
     }

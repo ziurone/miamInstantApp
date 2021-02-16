@@ -10,7 +10,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 @Dao
-interface MarketRecipeDao {
+interface CatalogRecipeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(recipes: List<CatalogRecipeEntity>): Completable
 
@@ -22,5 +22,4 @@ interface MarketRecipeDao {
 
     @Query("DELETE FROM " + CatalogRecipeEntity.TABLE_NAME)
     fun deleteAll(): Completable
-
 }

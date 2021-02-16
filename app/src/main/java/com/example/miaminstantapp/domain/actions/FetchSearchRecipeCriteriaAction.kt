@@ -40,7 +40,8 @@ class FetchSearchRecipeCriteriaAction @Inject constructor(
                         branches,
                         excludedIngredients
                     ))
-            }).subscribeOn(Schedulers.io())
+            })
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 successResult -> liveData.value = successResult

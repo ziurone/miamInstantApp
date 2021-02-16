@@ -6,25 +6,25 @@ import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.dtos.UserIngredientDTO
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipe
-import com.example.miaminstantapp.persistence.MarketRecipeDao
+import com.example.miaminstantapp.persistence.CatalogRecipeDao
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
 
 class MarketRecipesRepository @Inject constructor(
-    private val marketRecipeDao: MarketRecipeDao
+    private val catalogRecipeDao: CatalogRecipeDao
 ): IMarketRecipesRepository {
 
     override fun insertAll(recipes: List<CatalogRecipeEntity>): Completable {
-        return marketRecipeDao.insertAll(recipes)
+        return catalogRecipeDao.insertAll(recipes)
     }
 
-    override fun deleteAll(): Completable  = marketRecipeDao.deleteAll()
+    override fun deleteAll(): Completable  = catalogRecipeDao.deleteAll()
 
-    override fun fetchRecipeById(id: Int): Single<CatalogRecipe> = marketRecipeDao.fetchById(id)
+    override fun fetchRecipeById(id: Int): Single<CatalogRecipe> = catalogRecipeDao.fetchById(id)
 
-    override fun fetchSearchRecipes(): Single<List<CatalogRecipe>> = marketRecipeDao.fetchAll()
+    override fun fetchSearchRecipes(): Single<List<CatalogRecipe>> = catalogRecipeDao.fetchAll()
 
     override fun search(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTO>> {
 
