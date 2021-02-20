@@ -3,41 +3,64 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/quaternary">
 
-    <com.example.miaminstantapp.view.widgets.RecipeCardView
-        android:id="@+id/recipeCard"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/recipeContentTabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/recipeCard"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabTextColor="@color/colorPrimary"
-        android:background="@color/white"
-        />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/recipeContentPager"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/spacing_large"
-        android:layout_marginVertical="@dimen/spacing_large"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/recipeContentTabLayout"/>
-
-    <Button
-        android:id="@+id/addRecipe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Agregar receta" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.miaminstantapp.view.widgets.RecipeCardView
+                android:id="@+id/recipeCard"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/recipeContentTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/recipeCard"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabTextColor="@color/colorPrimary"
+                android:background="@color/white"
+                />
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/recipeContentPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_large"
+                android:layout_marginVertical="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_item"
+                app:layout_constraintTop_toBottomOf="@+id/recipeContentTabLayout"/>
+
+            <Button
+                android:id="@+id/addRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/recipeContentPager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/spacing_large"
+                app:layout_constraintVertical_bias="1.0"
+                android:text="Agregar receta" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
