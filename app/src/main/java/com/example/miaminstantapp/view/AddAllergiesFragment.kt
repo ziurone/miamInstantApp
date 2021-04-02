@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
 import com.example.miaminstantapp.domain.entities.ExcludedIngredientEntity
+import com.example.miaminstantapp.extensions.hideKeyboard
 import com.example.miaminstantapp.view.items.ShortIngredientItem
 import com.example.miaminstantapp.viewmodel.userfilters.AddAlergiesViewModel
 import com.google.android.material.chip.Chip
@@ -77,6 +78,7 @@ class AddAllergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMo
         ingredientsAdapter.update(ingredients.map { ingredient -> ShortIngredientItem(ingredient) {
             viewModel.add(ingredient)
             ingredientsAdapter.clear()
+            hideKeyboard()
         } })
     }
 
@@ -104,7 +106,10 @@ class AddAllergiesFragment: BaseFragment<AddAlergiesViewModel, AddAlergiesViewMo
 
         search.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                viewModel.search(s.toString())
+                ingredientsAdapter.clear()
+                if(s.toString().length > 3) {
+                    viewModel.search(s.toString())
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

@@ -18,6 +18,7 @@
             android:name=".view.PresentationFlowActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".view.SetUserFiltersActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".view.SplashScreenActivity"
