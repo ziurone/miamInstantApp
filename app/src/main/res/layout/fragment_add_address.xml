@@ -47,12 +47,15 @@
         android:layout_marginTop="@dimen/spacing_xxlarge"
         style="@style/InputPrimary"
         android:visibility="visible"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintTop_toBottomOf="@id/addAddressSubtitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/addAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusedByDefault="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             />
