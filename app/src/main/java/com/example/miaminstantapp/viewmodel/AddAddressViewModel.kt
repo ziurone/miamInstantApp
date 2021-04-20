@@ -25,6 +25,7 @@ class AddAddressViewModel @Inject constructor(
     private fun onAddressAdded(result: IAddUserAddressAction.Result) {
         when(result) {
             is IAddUserAddressAction.Result.Success -> setState(State.AddedSuccess)
+            is IAddUserAddressAction.Result.Error -> TODO()
         }
     }
 
