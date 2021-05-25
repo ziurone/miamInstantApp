@@ -63,9 +63,9 @@
     <!-- Recipe list -->
     <string name="search_recipe_hint">Buscar recetas</string>
     <string name="card_recipe_fulfilled_text">Tenés todo</string>
-    <string name="presentation_first_step_text">¡TE DOY LA BIENVENIDA! Vengo a ser tu aliado en la cocina</string>
-    <string name="presentation_second_step_text">CONTAME QUE INGREDIENTES TENÉS EN LA HELADERA</string>
-    <string name="presentation_third_step_text">Y TE VOY A ENSEÑAR RECETAS QUE PUEDAS COCINAR CON ESOS INGREDIENTES</string>
+    <string name="presentation_first_step_text">¡TE DOY LA BIENVENIDA!\nVengo a ser tu aliado\nen la cocina</string>
+    <string name="presentation_second_step_text">CONTAME QUE INGREDIENTES\n TENÉS EN LA HELADERA</string>
+    <string name="presentation_third_step_text">Y TE VOY A ENSEÑAR\nRECETAS QUE PUEDAS COCINAR\nCON ESOS INGREDIENTES</string>
     <string name="presentation_fourth_step_text">SI TE FALTA ALGUNO, TE VOY A SUGERIR tiendas cercanas para que puedas comprarlos</string>
     <string name="missing_ingredients_badge_text">Te faltan %1$d ingredientes  $%2$f</string>
     <string name="total_minutes">%1$d min</string>

@@ -27,18 +27,18 @@ class DietItemsPresenter constructor(
         }
     }
 
-    fun getIcon(diet: Diet) : Int {
+    fun getIcon(diet: Diet, isActive: Boolean) : Int {
         return when(diet) {
-            Diet.VEGAN -> R.drawable.ic_lettuce
-            Diet.VEGETARIAN -> R.drawable.ic_salad_bowl
-            Diet.CELIAC -> R.drawable.ic_tac
-            Diet.NONE -> R.drawable.ic_hot_dish
+            Diet.VEGAN -> if(isActive) R.drawable.ic_lettuce_active else R.drawable.ic_lettuce
+            Diet.VEGETARIAN -> if(isActive) R.drawable.ic_salad_bowl_active else R.drawable.ic_salad_bowl
+            Diet.CELIAC -> if(isActive) R.drawable.ic_tac_active else R.drawable.ic_tac
+            Diet.NONE -> if(isActive) R.drawable.ic_hot_dish_active else R.drawable.ic_hot_dish
         }
     }
 
     fun getBackground(active: Boolean): Int {
-        return if(active) ContextCompat.getColor(context, R.color.secondary)
-        else ContextCompat.getColor(context, R.color.secondary_light)
+        return if(active) ContextCompat.getColor(context, R.color.primaryLight400)
+        else ContextCompat.getColor(context, R.color.secondary_light_100)
     }
 
 }
