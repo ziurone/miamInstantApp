@@ -8,7 +8,7 @@ import javax.inject.Inject
 class CatalogRecipeDetailViewModel @Inject constructor(
     private val getDoableRecipeByIdAction: IGetDoableRecipeByIdAction,
     private val addRecipeAction: IAddRecipeAction
-): IDoableRecipeDetailViewModel() {
+): ICatalogRecipeDetailViewModel() {
 
     init {
         listenSource(getDoableRecipeByIdAction.getLiveData(), ::onGetDoableRecipeByIdResult)

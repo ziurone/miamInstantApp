@@ -2,17 +2,16 @@ package com.example.miaminstantapp.view.recipedetail
 
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipe
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
-import com.example.miaminstantapp.viewmodel.IDoableRecipeDetailViewModel
+import com.example.miaminstantapp.viewmodel.ICatalogRecipeDetailViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail.*
 
-class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, IDoableRecipeDetailViewModel.State>() {
+class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, ICatalogRecipeDetailViewModel.State>() {
 
     companion object {
         const val RECIPE_ID_KEY = "RecipeId"
@@ -48,17 +47,20 @@ class CatalogRecipeDetailFragment: BaseFragment<IDoableRecipeDetailViewModel, ID
         }
     }
 
-    override fun onStateChanged(state: IDoableRecipeDetailViewModel.State) {
+    override fun onStateChanged(state: ICatalogRecipeDetailViewModel.State) {
         when(state) {
-            is IDoableRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipe)
-            is IDoableRecipeDetailViewModel.State.AddRecipeSuccess -> {
-                recipeAddessSuccess()
+            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipe)
+            is ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> {
+                addRecipeSuccess()
             }
-            is IDoableRecipeDetailViewModel.State.Error -> Unit
+            is ICatalogRecipeDetailViewModel.State.Error -> Unit
+            ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> Unit
+            is ICatalogRecipeDetailViewModel.State.Error -> Unit
+            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> Unit
         }
     }
 
-    private fun recipeAddessSuccess() {
+    private fun addRecipeSuccess() {
         findNavController().navigate(R.id.action_global_toShopPurchase)
     }
 
