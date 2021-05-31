@@ -66,6 +66,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
 
     private fun showRecipe(catalogRecipe: CatalogRecipe) {
         recipeCard.setRecipe(catalogRecipe)
+        recipe = catalogRecipe
     }
 
 

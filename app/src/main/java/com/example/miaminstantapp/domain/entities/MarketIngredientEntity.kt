@@ -43,6 +43,7 @@ fun MarketIngredientEntity.toShopArticle(): ShopArticleEntity {
         articlesQuantity = articlesQuantity,
         articleName = articleName,
         unitPrice = unitPrice,
-        totalPrice = totalPrice
+        totalPrice = totalPrice,
+        recipeId = recipeId
     )
 }

@@ -11,7 +11,8 @@ data class ShopArticleEntity(
     val articlesQuantity: Int,
     val articleName: String,
     val unitPrice: Float,
-    val totalPrice: Float
+    val totalPrice: Float,
+    val recipeId: Int
 )
 
 {
