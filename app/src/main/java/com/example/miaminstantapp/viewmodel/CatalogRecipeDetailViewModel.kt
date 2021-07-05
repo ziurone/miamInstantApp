@@ -2,7 +2,7 @@ package com.example.miaminstantapp.viewmodel
 
 import com.example.miaminstantapp.domain.actions.IAddRecipeAction
 import com.example.miaminstantapp.domain.actions.IGetDoableRecipeByIdAction
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import javax.inject.Inject
 
 class CatalogRecipeDetailViewModel @Inject constructor(
@@ -19,8 +19,8 @@ class CatalogRecipeDetailViewModel @Inject constructor(
         getDoableRecipeByIdAction.fetchRecipeById(recipeId)
     }
 
-    override fun addRecipe(catalogRecipe: CatalogRecipe) {
-        addRecipeAction.addRecipe(catalogRecipe)
+    override fun addRecipe(catalogRecipeRelations: CatalogRecipeRelations) {
+        addRecipeAction.addRecipe(catalogRecipeRelations)
     }
 
     private fun onAddDoableRecipe(result: IAddRecipeAction.Result) {

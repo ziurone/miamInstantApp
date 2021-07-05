@@ -29,7 +29,7 @@ class EditUserIngredientFragment : BaseBottomSheetDialogFragment<EditUserIngredi
     }
 
     private fun showIngredientData(ingredient: UserIngredientWithVolumeUnits) {
-        ingredientName.text = ingredient.ingredient.name
+        ingredientWithQuantity.text = ingredient.ingredient.name
         ingredient.volumeUnits.forEach { volumeUnit ->
             if(volumeUnit.volumeUnitId == ingredient.ingredient.volumeUnitId) {
                 unitInput.text = SpannableStringBuilder(ingredient.ingredient.volumeUnitQuantity.toString())

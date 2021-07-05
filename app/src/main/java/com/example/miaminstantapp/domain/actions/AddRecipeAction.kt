@@ -2,7 +2,7 @@ package com.example.miaminstantapp.domain.actions
 
 import android.util.Log
 import com.example.miaminstantapp.domain.entities.*
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.domain.relations.toRecipeBookRecipe
 import com.example.miaminstantapp.domain.repositories.IRecipeBookRecipeIngredientRepository
 import com.example.miaminstantapp.domain.repositories.IRecipeBookRepository
@@ -17,15 +17,15 @@ class AddRecipeAction @Inject constructor(
     private val recipeBookRecipeIngredientRepository: IRecipeBookRecipeIngredientRepository
 ): BaseAction<IAddRecipeAction.Result>(), IAddRecipeAction {
 
-    override fun addRecipe(recipe: CatalogRecipe) {
+    override fun addRecipe(recipe: CatalogRecipeRelations) {
         shopArticleRepository
-            .insertAll(recipe.marketIngredients.map { it.toShopArticle() })
+            .insertAll(recipe.marketIngredients.map { it.marketIngredient.toShopArticle() })
             .andThen(recipeBookRepository.addRecipe(recipe.toRecipeBookRecipe()))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipe.userIngredients.map {
                 recipeUserIngredient -> recipeUserIngredient.toRecipeBookIngredient(recipe.recipe.id)
             }))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipe.marketIngredients.map {
-                marketIngredient -> marketIngredient.toRecipeBookIngredient(recipe.recipe.id)
+                it -> it.marketIngredient.toRecipeBookIngredient(recipe.recipe.id)
             }))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

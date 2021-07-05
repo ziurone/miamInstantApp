@@ -3,7 +3,7 @@ package com.example.miaminstantapp.view.recipedetail
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
 import com.example.miaminstantapp.viewmodel.ICatalogRecipeDetailViewModel
@@ -17,7 +17,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         const val RECIPE_ID_KEY = "RecipeId"
     }
 
-    private lateinit var recipe: CatalogRecipe
+    private lateinit var recipe: CatalogRecipeRelations
 
     override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_detail
 
@@ -49,7 +49,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
 
     override fun onStateChanged(state: ICatalogRecipeDetailViewModel.State) {
         when(state) {
-            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipe)
+            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipeRelations)
             is ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> {
                 addRecipeSuccess()
             }
@@ -64,9 +64,9 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         findNavController().navigate(R.id.action_global_toShopPurchase)
     }
 
-    private fun showRecipe(catalogRecipe: CatalogRecipe) {
-        recipeCard.setRecipe(catalogRecipe)
-        recipe = catalogRecipe
+    private fun showRecipe(catalogRecipeRelations: CatalogRecipeRelations) {
+        recipeCard.setRecipe(catalogRecipeRelations)
+        recipe = catalogRecipeRelations
     }
 
 

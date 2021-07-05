@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item

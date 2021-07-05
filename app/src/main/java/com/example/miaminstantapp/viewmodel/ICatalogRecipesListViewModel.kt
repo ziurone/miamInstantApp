@@ -1,10 +1,10 @@
 package com.example.miaminstantapp.viewmodel
 
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 
 abstract class ICatalogRecipesListViewModel: BaseViewModel<ICatalogRecipesListViewModel.State>() {
     sealed class State {
-        data class FetchedRecipesSuccess(val catalogRecipes: List<CatalogRecipe>): State()
+        data class FetchedRecipesSuccess(val catalogRecipeRelations: List<CatalogRecipeRelations>): State()
         data class Error(val errorMessage: String): State()
     }
 

@@ -5,7 +5,7 @@ import com.example.miaminstantapp.domain.dtos.MarketRecipeDTO
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.dtos.UserIngredientDTO
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -22,9 +22,9 @@ class MarketRecipesRepository @Inject constructor(
 
     override fun deleteAll(): Completable  = catalogRecipeDao.deleteAll()
 
-    override fun fetchRecipeById(id: Int): Single<CatalogRecipe> = catalogRecipeDao.fetchById(id)
+    override fun fetchRecipeById(id: Int): Single<CatalogRecipeRelations> = catalogRecipeDao.fetchById(id)
 
-    override fun fetchSearchRecipes(): Single<List<CatalogRecipe>> = catalogRecipeDao.fetchAll()
+    override fun fetchSearchRecipes(): Single<List<CatalogRecipeRelations>> = catalogRecipeDao.fetchAll()
 
     override fun search(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTO>> {
 
@@ -46,6 +46,8 @@ class MarketRecipesRepository @Inject constructor(
                         MarketIngredientDTO(
                             7,
                             "pollo deshuesado",
+                            3,
+                            1f,
                             100,
                             1000,
                             1000,
@@ -61,6 +63,8 @@ class MarketRecipesRepository @Inject constructor(
                         MarketIngredientDTO(
                             8,
                             "queso muzzarela",
+                            3,
+                            0.2f,
                             101,
                             400,
                             500,
@@ -76,6 +80,8 @@ class MarketRecipesRepository @Inject constructor(
                         MarketIngredientDTO(
                             9,
                             "jamon cocido",
+                            3,
+                            0.2f,
                             102,
                             200,
                             200,
@@ -91,6 +97,8 @@ class MarketRecipesRepository @Inject constructor(
                         MarketIngredientDTO(
                             10,
                             "puerro",
+                            3,
+                            0.2f,
                             103,
                             100,
                             300,
@@ -131,6 +139,8 @@ class MarketRecipesRepository @Inject constructor(
                         MarketIngredientDTO(
                             1,
                             "pollo",
+                            3,
+                            1f,
                             2,
                             100,
                             1,

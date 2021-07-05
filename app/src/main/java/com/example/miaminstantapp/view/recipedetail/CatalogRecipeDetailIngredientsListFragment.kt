@@ -1,7 +1,7 @@
 package com.example.miaminstantapp.view.recipedetail
 
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeMarketIngredientItem
 import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeMarketIngredientsHeaderItem
@@ -10,7 +10,6 @@ import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeUserIngre
 import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail_ingredients_list.*
 
 class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDetailIngredientsListViewModel, CatalogRecipeDetailIngredientsListViewModel.State>() {
@@ -38,19 +37,19 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
         recipeIngredientsList.adapter = adapter
     }
 
-    private fun showIngredients(catalogRecipe: CatalogRecipe) {
+    private fun showIngredients(catalogRecipeRelations: CatalogRecipeRelations) {
         val items = mutableListOf<Group>()
-        if(catalogRecipe.userIngredients.isNotEmpty()) {
+        if(catalogRecipeRelations.userIngredients.isNotEmpty()) {
             items.add(CatalogRecipeUserIngredientsHeaderItem())
         }
 
-        items.addAll(catalogRecipe.userIngredients.map { CatalogRecipeUserIngredientItem(it) })
+        items.addAll(catalogRecipeRelations.userIngredients.map { CatalogRecipeUserIngredientItem(it) })
 
-        if(catalogRecipe.marketIngredients.isNotEmpty()) {
+        if(catalogRecipeRelations.marketIngredients.isNotEmpty()) {
             items.add(CatalogRecipeMarketIngredientsHeaderItem())
         }
 
-        items.addAll(catalogRecipe.marketIngredients.map { CatalogRecipeMarketIngredientItem(it) })
+        items.addAll(catalogRecipeRelations.marketIngredients.map { CatalogRecipeMarketIngredientItem(it) })
 
         adapter.update(items)
     }

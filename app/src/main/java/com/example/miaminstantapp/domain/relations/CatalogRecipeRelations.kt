@@ -7,7 +7,7 @@ import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 
-data class CatalogRecipe (
+data class CatalogRecipeRelations (
 
     @Embedded
     val recipe: CatalogRecipeEntity,
@@ -15,12 +15,12 @@ data class CatalogRecipe (
     @Relation(parentColumn = "id", entityColumn = "recipeId")
     val userIngredients: List<CatalogRecipeUserIngredientEntity>,
 
-    @Relation(parentColumn = "id", entityColumn = "recipeId")
-    val marketIngredients: List<MarketIngredientEntity>
+    @Relation(parentColumn = "id", entityColumn = "recipeId", entity = MarketIngredientEntity::class)
+    val marketIngredients: List<MarketIngredientRelations>
 
 )
 
-fun CatalogRecipe.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
+fun CatalogRecipeRelations.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
     name = recipe.title,
     content = recipe.content,
     link = recipe.link,

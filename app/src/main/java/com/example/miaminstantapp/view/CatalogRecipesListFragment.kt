@@ -5,7 +5,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.view.items.RecipeItem
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
@@ -35,14 +35,14 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     override fun onStateChanged(state: ICatalogRecipesListViewModel.State) {
 
         when(state) {
-            is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.catalogRecipes)
+            is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.catalogRecipeRelations)
             is ICatalogRecipesListViewModel.State.Error -> Unit
         }
     }
 
-    private fun showRecipes(catalogRecipes: List<CatalogRecipe>) {
-        if (catalogRecipes.isNotEmpty()) {
-            val items = catalogRecipes.map { doableRecipe ->
+    private fun showRecipes(catalogRecipeRelations: List<CatalogRecipeRelations>) {
+        if (catalogRecipeRelations.isNotEmpty()) {
+            val items = catalogRecipeRelations.map { doableRecipe ->
                 RecipeItem(doableRecipe) {
                     val bundle = bundleOf(
                         CatalogRecipeDetailFragment.RECIPE_ID_KEY to doableRecipe.recipe.id

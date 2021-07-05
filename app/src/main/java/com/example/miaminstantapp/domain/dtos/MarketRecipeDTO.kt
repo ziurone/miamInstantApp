@@ -38,6 +38,8 @@ fun MarketRecipeDTO.toMarketRecipeEntity(): CatalogRecipeEntity {
 data class MarketIngredientDTO (
     val ingredientId: Int,
     val ingredientName: String,
+    val volumeUnitId: Int,
+    val volumeUnitQuantity: Float,
     val branchArticleId: Int,
     val usedQuantity: Int,
     val articleUnitQuantity: Int,
@@ -55,6 +57,8 @@ fun MarketIngredientDTO.toMarketIngredientEntity(): MarketIngredientEntity {
     return MarketIngredientEntity(
         ingredientId = ingredientId,
         ingredientName = ingredientName,
+        volumeUnitId = volumeUnitId,
+        volumeUnitQuantity = volumeUnitQuantity,
         branchArticleId = branchArticleId,
         usedQuantity = usedQuantity,
         articleUnitQuantity = articleUnitQuantity,

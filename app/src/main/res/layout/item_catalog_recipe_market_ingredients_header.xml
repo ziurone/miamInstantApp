@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/spacing_item"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -16,13 +16,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
         app:layout_constraintLeft_toRightOf="@id/icon"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginLeft="@dimen/spacing_medium"
+        android:layout_marginStart="@dimen/spacing_medium"
         style="@style/CatalogRecipeMarketIngredientsHeader"
-        android:textColor="@color/colorAccent"
-        android:text="@string/catalog_recipe_market_ingredients_header"/>
+        android:textColor="@color/black"
+        android:text="@string/catalog_recipe_market_ingredients_header"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

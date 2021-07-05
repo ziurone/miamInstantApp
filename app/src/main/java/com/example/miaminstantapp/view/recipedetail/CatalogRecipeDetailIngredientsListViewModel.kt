@@ -2,7 +2,7 @@ package com.example.miaminstantapp.view.recipedetail
 
 import com.example.miaminstantapp.domain.actions.GetCatalogRecipeByIdAction
 import com.example.miaminstantapp.domain.actions.IGetDoableRecipeByIdAction
-import com.example.miaminstantapp.domain.relations.CatalogRecipe
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.viewmodel.BaseViewModel
 import javax.inject.Inject
 
@@ -26,7 +26,7 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
     }
 
     sealed class State {
-        data class FetchSuccess(val recipe: CatalogRecipe): State()
+        data class FetchSuccess(val recipe: CatalogRecipeRelations): State()
     }
 
 }

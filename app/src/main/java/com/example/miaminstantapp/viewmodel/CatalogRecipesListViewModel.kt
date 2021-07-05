@@ -18,7 +18,7 @@ class CatalogRecipesListViewModel @Inject constructor(
 
     private fun onFetchRecipesResult(result: IFetchRecipesWithIngredientsAction.Result) {
         when(result) {
-            is IFetchRecipesWithIngredientsAction.Result.Success -> setState(State.FetchedRecipesSuccess(result.catalogRecipes))
+            is IFetchRecipesWithIngredientsAction.Result.Success -> setState(State.FetchedRecipesSuccess(result.catalogRecipeRelations))
             is IFetchRecipesWithIngredientsAction.Result.Error -> Unit
         }
     }

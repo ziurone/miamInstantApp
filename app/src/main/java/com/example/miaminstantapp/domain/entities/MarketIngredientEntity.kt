@@ -4,13 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.miaminstantapp.domain.entities.MarketIngredientEntity.Companion.TABLE_NAME
 
-
-
-
 @Entity(tableName = TABLE_NAME)
 data class MarketIngredientEntity (
     val ingredientId: Int,
     val ingredientName: String,
+    val volumeUnitId: Int,
+    val volumeUnitQuantity: Float,
     val branchArticleId: Int,
     val usedQuantity: Int,
     val articleUnitQuantity: Int,
