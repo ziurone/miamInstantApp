@@ -9,12 +9,14 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
 class CatalogRecipeMarketIngredientItem(
-    private val marketIngredientEntity: MarketIngredientRelations
+    private val marketIngredientEntity: MarketIngredientRelations,
+    private val clickListener: (MarketIngredientRelations) -> Unit
 ): Item<CatalogRecipeMarketIngredientItem.CatalogRecipeMarketIngredientItemViewHolder>() {
 
     class CatalogRecipeMarketIngredientItemViewHolder(view: View): GroupieViewHolder(view) {
         val ingredientName: TextView = view.findViewById(R.id.ingredientWithQuantity)
         val articleName: TextView = view.findViewById(R.id.articleName)
+        val haveIngredient: TextView = view.findViewById(R.id.haveIngredientButton)
     }
 
     override fun getLayout(): Int = R.layout.item_catalog_recipe_market_ingredient
@@ -24,5 +26,8 @@ class CatalogRecipeMarketIngredientItem(
     override fun bind(viewHolder: CatalogRecipeMarketIngredientItemViewHolder, position: Int) {
         viewHolder.articleName.text = marketIngredientEntity.marketIngredient.articleName + " " + marketIngredientEntity.marketIngredient.shopName
         viewHolder.ingredientName.text = marketIngredientEntity.marketIngredient.volumeUnitQuantity.toInt().toString() + " " + marketIngredientEntity.volumeUnit.name + " " +  marketIngredientEntity.marketIngredient.ingredientName
+        viewHolder.haveIngredient.setOnClickListener {
+            clickListener(marketIngredientEntity)
+        }
     }
 }

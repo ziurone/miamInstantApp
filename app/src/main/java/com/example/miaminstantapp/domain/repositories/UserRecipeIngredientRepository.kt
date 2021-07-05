@@ -9,4 +9,6 @@ class UserRecipeIngredientRepository @Inject constructor(
     private val userRecipeIngredientDao: RecipeUserIngredientDao
 ): IUserRecipeIngredientRepository {
     override fun insertAll(ingredients: List<CatalogRecipeUserIngredientEntity>): Completable = userRecipeIngredientDao.insertAll(ingredients)
+    override fun add(ingredient: CatalogRecipeUserIngredientEntity): Completable = userRecipeIngredientDao.insert(ingredient)
+
 }

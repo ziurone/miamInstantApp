@@ -5,4 +5,5 @@ import io.reactivex.Completable
 
 interface IUserRecipeIngredientRepository {
     fun insertAll(ingredients: List<CatalogRecipeUserIngredientEntity>): Completable
+    fun add(ingredient: CatalogRecipeUserIngredientEntity): Completable
 }

@@ -10,4 +10,7 @@ import io.reactivex.Completable
 interface RecipeUserIngredientDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(ingredients: List<CatalogRecipeUserIngredientEntity>): Completable
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(ingredient: CatalogRecipeUserIngredientEntity): Completable
 }

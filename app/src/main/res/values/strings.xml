@@ -75,4 +75,6 @@
     <!-- Recipe detail -->
     <string name="recipe_ingredients_tab_title">Ingredientes</string>
     <string name="recipe_preparation_tab_title">Preparacion</string>
+    <string name="recipe_detail_have_ingredient_action">Si lo tengo</string>
+
 </resources>

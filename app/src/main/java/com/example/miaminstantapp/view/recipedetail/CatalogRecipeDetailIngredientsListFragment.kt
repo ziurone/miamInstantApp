@@ -25,6 +25,7 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
     override fun onStateChanged(state: CatalogRecipeDetailIngredientsListViewModel.State) {
         when(state) {
             is CatalogRecipeDetailIngredientsListViewModel.State.FetchSuccess -> showIngredients(state.recipe)
+            CatalogRecipeDetailIngredientsListViewModel.State.RefetchSuccess -> TODO()
         }
     }
 
@@ -38,6 +39,7 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
     }
 
     private fun showIngredients(catalogRecipeRelations: CatalogRecipeRelations) {
+        adapter.clear()
         val items = mutableListOf<Group>()
         if(catalogRecipeRelations.userIngredients.isNotEmpty()) {
             items.add(CatalogRecipeUserIngredientsHeaderItem())
@@ -49,7 +51,11 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
             items.add(CatalogRecipeMarketIngredientsHeaderItem())
         }
 
-        items.addAll(catalogRecipeRelations.marketIngredients.map { CatalogRecipeMarketIngredientItem(it) })
+        items.addAll(catalogRecipeRelations.marketIngredients.map {
+            CatalogRecipeMarketIngredientItem(it) { marketIngredientRelations ->
+                viewModel.addUserIngredientFromMarketIngredient(marketIngredientRelations)
+            }
+        })
 
         adapter.update(items)
     }
