@@ -11,4 +11,6 @@ data class MarketIngredientRelations(
 
     @Relation(parentColumn = "volumeUnitId", entityColumn = "volumeUnitId", entity = VolumeUnitEntity::class)
     val volumeUnit: VolumeUnitEntity
+
+    
 )

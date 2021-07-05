@@ -57,6 +57,7 @@ class MarketRecipesRepository @Inject constructor(
                             100f,
                             100f,
                             1,
+                            "coto",
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060104004.jpg"
                         ),
@@ -74,6 +75,7 @@ class MarketRecipesRepository @Inject constructor(
                             278f,
                             278f,
                             1,
+                            "coto",
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060608007.jpg"
                         ),
@@ -91,6 +93,7 @@ class MarketRecipesRepository @Inject constructor(
                             207.65f,
                             207.65f,
                             1,
+                            "coto",
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060302018.jpg"
                         ),
@@ -108,6 +111,7 @@ class MarketRecipesRepository @Inject constructor(
                             34.9f,
                             34.9f,
                             1,
+                            "coto",
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060908001.jpg"
                         )
@@ -150,6 +154,7 @@ class MarketRecipesRepository @Inject constructor(
                             100f,
                             100f,
                             2,
+                            "coto",
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060104004.jpg"
                         )

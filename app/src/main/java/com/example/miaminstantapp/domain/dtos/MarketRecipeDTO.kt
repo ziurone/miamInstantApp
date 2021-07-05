@@ -49,6 +49,7 @@ data class MarketIngredientDTO (
     val unitPrice: Float,
     val totalPrice: Float,
     val branchId: Int,
+    val shopName: String,
     val recipeId: Int,
     val imageUrl: String
 )
@@ -68,6 +69,7 @@ fun MarketIngredientDTO.toMarketIngredientEntity(): MarketIngredientEntity {
         unitPrice = unitPrice,
         totalPrice = totalPrice,
         branchId = branchId,
+        shopName = shopName,
         recipeId = recipeId
     )
 }

@@ -22,7 +22,7 @@ class CatalogRecipeMarketIngredientItem(
     override fun createViewHolder(itemView: View): CatalogRecipeMarketIngredientItemViewHolder = CatalogRecipeMarketIngredientItemViewHolder(itemView)
 
     override fun bind(viewHolder: CatalogRecipeMarketIngredientItemViewHolder, position: Int) {
-        viewHolder.articleName.text = marketIngredientEntity.marketIngredient.articleName
+        viewHolder.articleName.text = marketIngredientEntity.marketIngredient.articleName + " " + marketIngredientEntity.marketIngredient.shopName
         viewHolder.ingredientName.text = marketIngredientEntity.marketIngredient.volumeUnitQuantity.toInt().toString() + " " + marketIngredientEntity.volumeUnit.name + " " +  marketIngredientEntity.marketIngredient.ingredientName
     }
 }

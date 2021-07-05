@@ -19,6 +19,7 @@ data class MarketIngredientEntity (
     val unitPrice: Float,
     val totalPrice: Float,
     val branchId: Int,
+    val shopName: String,
     val recipeId: Int
 ) {
     companion object {
