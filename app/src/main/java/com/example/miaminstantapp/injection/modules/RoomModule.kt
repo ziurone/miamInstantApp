@@ -38,7 +38,6 @@ class RoomModule {
     fun providesCatalogRecipeDao(miamDataBase: MiamDataBase): CatalogRecipeDao = miamDataBase.marketRecipesDao()
 
     @Provides
-    @PerApplication
     fun providesMarketIngredientsDao(miamDataBase: MiamDataBase): MarketIngredientDao = miamDataBase.marketIngredientDao()
 
     @Provides

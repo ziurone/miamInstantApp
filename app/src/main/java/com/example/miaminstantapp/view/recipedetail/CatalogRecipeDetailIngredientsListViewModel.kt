@@ -1,9 +1,6 @@
 package com.example.miaminstantapp.view.recipedetail
 
-import com.example.miaminstantapp.domain.actions.AddRecipeUserIngredientAction
-import com.example.miaminstantapp.domain.actions.AddUserIngredientAction
-import com.example.miaminstantapp.domain.actions.GetCatalogRecipeByIdAction
-import com.example.miaminstantapp.domain.actions.IGetDoableRecipeByIdAction
+import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.domain.relations.MarketIngredientRelations
@@ -13,7 +10,8 @@ import javax.inject.Inject
 
 class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
     private val getCatalogRecipeByIdAction: GetCatalogRecipeByIdAction,
-    private val addRecipeUserIngredientAction: AddRecipeUserIngredientAction
+    private val addRecipeUserIngredientAction: AddRecipeUserIngredientAction,
+    private val removeMarketIngredientAction: RemoveMarketIngredientAction
 ): BaseViewModel<CatalogRecipeDetailIngredientsListViewModel.State>() {
 
     init {
@@ -29,6 +27,7 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
     }
 
     fun addUserIngredientFromMarketIngredient(marketIngredientRelations: MarketIngredientRelations) {
+        removeMarketIngredientAction.remove(marketIngredientRelations.marketIngredient)
         addRecipeUserIngredientAction.addIngredient(marketIngredientRelations.toRecipeUserIngredient())
     }
 
