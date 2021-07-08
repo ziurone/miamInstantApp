@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view.recipedetail
 
 import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,6 +14,7 @@ import com.example.miaminstantapp.viewmodel.ICatalogRecipeDetailViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, ICatalogRecipeDetailViewModel.State>() {
 
@@ -25,8 +27,11 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
     override fun initViews() {
         super.initViews()
 
-        requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-
+        toolbarClose.navigationIcon =
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
+        toolbarClose.setNavigationOnClickListener {
+            activity?.onBackPressed()
+        }
         addRecipe.setOnClickListener {
             viewModel.addRecipe(recipe)
         }

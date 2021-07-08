@@ -63,4 +63,12 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/transparent_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

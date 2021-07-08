@@ -41,7 +41,7 @@ class MarketRecipesRepository @Inject constructor(
                     30,
                     50,
                     1,
-                    "https://cocinerosargentinos.com/content/recipes/thumb/recipes.11439.jpeg",
+                    "",
                     listOf(
                         MarketIngredientDTO(
                             7,
@@ -138,7 +138,7 @@ class MarketRecipesRepository @Inject constructor(
                     10,
                     20,
                     1,
-                    "https://images.media-allrecipes.com/userphotos/720x405/667748.jpg",
+                    "",
                     listOf(
                         MarketIngredientDTO(
                             1,
