@@ -14,6 +14,9 @@
         <activity android:name=".SessionActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name=".view.recipedetail.CatalogRecipeDetailActivity"
+            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".view.PresentationFlowActivity"
             android:screenOrientation="portrait"></activity>

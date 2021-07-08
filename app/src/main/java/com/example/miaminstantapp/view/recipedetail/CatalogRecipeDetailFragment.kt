@@ -1,11 +1,14 @@
 package com.example.miaminstantapp.view.recipedetail
 
+import android.view.WindowManager
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
+import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailActivity.Companion.CATALOG_RECIPE_ID_KEY
 import com.example.miaminstantapp.viewmodel.ICatalogRecipeDetailViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
@@ -13,38 +16,33 @@ import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail.*
 
 class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, ICatalogRecipeDetailViewModel.State>() {
 
-    companion object {
-        const val RECIPE_ID_KEY = "RecipeId"
-    }
-
     private lateinit var recipe: CatalogRecipeRelations
 
     override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_detail
 
+    private val screenArgs by navArgs<CatalogRecipeDetailFragmentArgs>()
+
     override fun initViews() {
         super.initViews()
 
-        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomAppBar)
-        bottomNav.isVisible = false
+        requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         addRecipe.setOnClickListener {
             viewModel.addRecipe(recipe)
         }
 
-        arguments?.let {
-            val recipeId = it.getInt(RECIPE_ID_KEY)
-            viewModel.fetchRecipe(recipeId)
+        val recipeId = screenArgs.catalogRecipeIdKey
+        viewModel.fetchRecipe(recipeId)
 
-            val adapter = CatalogRecipeDetailStateAdapter(requireActivity(), recipeId)
-            recipeContentPager.adapter = adapter
-            TabLayoutMediator(recipeContentTabLayout, recipeContentPager) { tab, position ->
-                tab.text = when(position) {
-                    0 -> requireContext().getString(R.string.recipe_ingredients_tab_title)
-                    1 -> requireContext().getString(R.string.recipe_preparation_tab_title)
-                    else -> throw IllegalArgumentException("Tab title position error")
-                }
-            }.attach()
-        }
+        val adapter = CatalogRecipeDetailStateAdapter(requireActivity(), recipeId)
+        recipeContentPager.adapter = adapter
+        TabLayoutMediator(recipeContentTabLayout, recipeContentPager) { tab, position ->
+            tab.text = when(position) {
+                0 -> requireContext().getString(R.string.recipe_ingredients_tab_title)
+                1 -> requireContext().getString(R.string.recipe_preparation_tab_title)
+                else -> throw IllegalArgumentException("Tab title position error")
+            }
+        }.attach()
     }
 
     override fun onStateChanged(state: ICatalogRecipeDetailViewModel.State) {

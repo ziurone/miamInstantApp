@@ -1,5 +1,7 @@
 package com.example.miaminstantapp.view.recipedetail
 
+import android.os.Build
+import android.view.WindowManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.view.BaseFragment
@@ -11,6 +13,7 @@ import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail_ingredients_list.*
+
 
 class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDetailIngredientsListViewModel, CatalogRecipeDetailIngredientsListViewModel.State>() {
 
@@ -31,6 +34,7 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
 
     override fun initViews() {
         super.initViews()
+
         arguments?.let {
             val recipeId = it.getInt(RECIPE_ID_KEY)
             viewModel.fetchRecipe(recipeId)

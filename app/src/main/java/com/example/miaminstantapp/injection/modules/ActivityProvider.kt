@@ -5,6 +5,7 @@ import com.example.miaminstantapp.scopes.PerActivity
 import com.example.miaminstantapp.view.PresentationFlowActivity
 import com.example.miaminstantapp.view.SetUserFiltersActivity
 import com.example.miaminstantapp.view.SplashScreenActivity
+import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -26,4 +27,8 @@ abstract class ActivityProvider {
     @PerActivity
     @ContributesAndroidInjector(modules = [UserFiltersFragmentProvider::class, UserResourcesModule::class])
     abstract fun bindUserFiltersActivity(): SetUserFiltersActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [UserFiltersFragmentProvider::class, UserResourcesModule::class])
+    abstract fun bindCatalogRecipeDetailActivity(): CatalogRecipeDetailActivity
 }

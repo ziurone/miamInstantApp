@@ -6,7 +6,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
+import com.example.miaminstantapp.routing.Launcher
 import com.example.miaminstantapp.view.items.RecipeItem
+import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailActivity.Companion.CATALOG_RECIPE_ID_KEY
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
 import com.xwray.groupie.GroupAdapter
@@ -44,10 +46,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
         if (catalogRecipeRelations.isNotEmpty()) {
             val items = catalogRecipeRelations.map { doableRecipe ->
                 RecipeItem(doableRecipe) {
-                    val bundle = bundleOf(
-                        CatalogRecipeDetailFragment.RECIPE_ID_KEY to doableRecipe.recipe.id
-                    )
-                    findNavController().navigate(R.id.action_doableRecipeList_to_doableRecipeDetail, bundle)
+                    Launcher(requireContext()).catalogRecipeDetail(doableRecipe.recipe.id)
                 }
             }
 

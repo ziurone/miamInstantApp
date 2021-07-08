@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/catalog_recipe_detail_graph"
+    app:startDestination="@id/catalogRecipeDetailFragment">
+
+    <fragment
+        android:id="@+id/catalogRecipeDetailFragment"
+        android:name="com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment">
+
+        <argument
+            android:name="catalogRecipeIdKey"
+            app:argType="integer"
+            app:nullable="false"/>
+
+    </fragment>
+
+</navigation>
