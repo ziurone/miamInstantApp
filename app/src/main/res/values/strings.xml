@@ -77,4 +77,7 @@
     <string name="recipe_preparation_tab_title">Preparacion</string>
     <string name="recipe_detail_have_ingredient_action">Si lo tengo</string>
 
+    <!-- Market ingredients addded to shopping list -->
+    <string name="market_ingredients_added_to_shopping_list_title">Agregaste ingredientes a tu carrito de compras</string>
+
 </resources>

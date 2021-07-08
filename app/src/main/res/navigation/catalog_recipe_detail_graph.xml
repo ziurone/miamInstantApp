@@ -13,6 +13,15 @@
             app:argType="integer"
             app:nullable="false"/>
 
+        <action
+            android:id="@+id/fromDetailToMarketIngredientsAdded"
+            app:destination="@id/marketIngredientsAddedToShoppingList"/>
+
     </fragment>
+
+    <fragment
+        android:id="@+id/marketIngredientsAddedToShoppingList"
+        android:name="com.example.miaminstantapp.view.recipedetail.MarketIngredientsAddedToShoppingListFragment"/>
+
 
 </navigation>

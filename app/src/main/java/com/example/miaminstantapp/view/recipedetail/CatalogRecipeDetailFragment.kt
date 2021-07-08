@@ -64,7 +64,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
     }
 
     private fun addRecipeSuccess() {
-        findNavController().navigate(R.id.action_global_toShopPurchase)
+        findNavController().navigate(R.id.fromDetailToMarketIngredientsAdded)
     }
 
     private fun showRecipe(catalogRecipeRelations: CatalogRecipeRelations) {
