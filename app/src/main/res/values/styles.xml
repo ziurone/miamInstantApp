@@ -51,6 +51,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="Heading1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/bebas_neue_bold</item>
+        <item name="android:textSize">29sp</item>
+        <item name="android:textColor">@color/secondary_dark_900</item>
+    </style>
+
     <style name="Heading6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/poppins</item>
         <item name="android:textSize">19sp</item>

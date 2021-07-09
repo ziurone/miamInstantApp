@@ -17,7 +17,6 @@ class PresentationFragment: Fragment() {
         const val DESCRIPTION_KEY = "descriptionKey"
         const val ICON_KEY = "iconKey"
         const val ENABLE_BUTTON_KEY = "enableButtonKey"
-
     }
 
     override fun onCreateView(
