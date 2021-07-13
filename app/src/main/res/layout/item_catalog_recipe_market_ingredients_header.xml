@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="@id/icon"
         app:layout_constraintBottom_toBottomOf="@id/icon"
         app:layout_constraintLeft_toRightOf="@id/icon"
-        android:layout_marginLeft="@dimen/spacing_medium"
         android:layout_marginStart="@dimen/spacing_medium"
-        style="@style/CatalogRecipeMarketIngredientsHeader"
-        android:textColor="@color/black"
+        style="@style/Heading3"
+        android:textColor="@color/secondary_dark_900"
+        android:textAllCaps="true"
         android:text="@string/catalog_recipe_market_ingredients_header"
         />
 

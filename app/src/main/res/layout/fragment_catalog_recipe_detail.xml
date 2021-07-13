@@ -43,8 +43,6 @@
                 android:id="@+id/recipeContentPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing_large"
-                android:layout_marginVertical="@dimen/spacing_large"
                 android:layout_marginBottom="@dimen/spacing_item"
                 app:layout_constraintTop_toBottomOf="@+id/recipeContentTabLayout"/>
 
