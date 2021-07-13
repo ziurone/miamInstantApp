@@ -22,13 +22,14 @@ class RecipeCardView @JvmOverloads constructor(
             .inflate(R.layout.recipe_card, this, true)
     }
 
-    fun setRecipe(catalogRecipeRelations: CatalogRecipeRelations) {
+    fun setRecipe(catalogRecipeRelations: CatalogRecipeRelations, showMissingIngredients: Boolean) {
         this.catalogRecipeRelations = catalogRecipeRelations
         setImage()
         setTotalMinutes()
-        setMissingIngredientsBadge()
+        setMissingIngredientsBadge(showMissingIngredients)
         setIsFavorite()
         setName()
+        setPrice()
     }
 
     private fun setName() {
@@ -43,16 +44,27 @@ class RecipeCardView @JvmOverloads constructor(
         totalMinutesText.text = context.getString( R.string.total_minutes ,catalogRecipeRelations.recipe.totalMinutes)
     }
 
-    private fun setMissingIngredientsBadge() {
-        if(catalogRecipeRelations.marketIngredients.isNullOrEmpty()) {
-            hasIngredientsBadge.isVisible = true
-            missingIngredientsBadge.isVisible = false
+    private fun setPrice() {
+        recipePrice.text = context.getString(R.string.recipe_card_price, catalogRecipeRelations.recipe.price.toInt())
+    }
+
+    private fun setMissingIngredientsBadge(show: Boolean) {
+        if(show) {
+            if(catalogRecipeRelations.marketIngredients.isNullOrEmpty()) {
+                hasIngredientsBadge.isVisible = true
+                missingIngredientsBadge.isVisible = false
+            } else {
+                hasIngredientsBadge.isVisible = false
+                missingIngredientsBadge.isVisible = true
+                missingIngredientsBadgeText.isVisible = true
+                missingIngredientsBadgeText.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipe.price)
+            }
         } else {
             hasIngredientsBadge.isVisible = false
-            missingIngredientsBadge.isVisible = true
-            missingIngredientsBadgeText.isVisible = true
-            missingIngredientsBadgeText.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipe.price)
+            missingIngredientsBadge.isVisible = false
+            missingIngredientsBadgeText.isVisible = false
         }
+
     }
 
     private fun setIsFavorite() {

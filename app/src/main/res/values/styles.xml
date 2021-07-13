@@ -57,6 +57,11 @@
         <item name="android:textColor">@color/secondary_dark_900</item>
     </style>
 
+    <style name="Heading2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
     <style name="Heading6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/poppins</item>
         <item name="android:textSize">19sp</item>

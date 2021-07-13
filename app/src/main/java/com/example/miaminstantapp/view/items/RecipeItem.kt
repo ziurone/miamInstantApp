@@ -18,7 +18,7 @@ class RecipeItem(
 
     override fun bind(viewHolder: RecipeItemViewHolder, position: Int) {
         val recipeCard = viewHolder.recipeCard
-        recipeCard.setRecipe(catalogRecipeRelations)
+        recipeCard.setRecipe(catalogRecipeRelations, true)
         recipeCard.setOnClickListener {
             clickListener()
         }

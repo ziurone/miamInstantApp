@@ -42,22 +42,10 @@
             android:translationY="-30dp">
 
             <TextView
-                android:id="@+id/totalMinutesText"
-                style="@style/Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_time_inactive"
-                android:drawableLeft="@drawable/ic_time_inactive"
-                android:drawablePadding="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
-                android:textColor="@color/tertiary"
-                app:layout_constraintRight_toLeftOf="@+id/iconLike"
-                app:layout_constraintTop_toTopOf="@+id/missingIngredientBadgeIcon"
-                tools:text="30 min." />
-
-            <TextView
                 android:id="@+id/recipeName"
-                style="@style/Subtitle2"
+                style="@style/Heading2"
+                android:textColor="@color/secondary_dark_900"
+                android:layout_marginHorizontal="@dimen/spacing_double_large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -65,16 +53,29 @@
                 tools:text="Zanahoria" />
 
 
-            <ImageButton
-                android:id="@+id/iconLike"
+            <TextView
+                android:id="@+id/totalMinutesText"
+                style="@style/Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/secondary_light"
-                android:src="@drawable/ic_like"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="@+id/totalMinutesText"
-                app:layout_constraintTop_toTopOf="@+id/missingIngredientBadgeIcon" />
+                android:drawableStart="@drawable/ic_time_inactive"
+                android:drawablePadding="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:textColor="@color/secondary_dark_1200"
+                app:layout_constraintLeft_toLeftOf="@+id/recipeName"
+                app:layout_constraintTop_toTopOf="@+id/missingIngredientBadgeIcon"
+                tools:text="30 min."/>
 
+            <TextView
+                android:id="@+id/recipePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/totalMinutesText"
+                app:layout_constraintLeft_toRightOf="@id/totalMinutesText"
+                android:layout_marginStart="@dimen/spacing_small"
+                style="@style/Body1"
+                android:textColor="@color/secondary_dark_1200"
+                tools:text="$180"/>
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/hasIngredientsBadge"
@@ -136,10 +137,6 @@
                 app:layout_constraintStart_toEndOf="@+id/missingIngredientBadgeIcon"
                 app:layout_constraintTop_toTopOf="@id/missingIngredientBadgeIcon"
                 />
-
-
-
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
