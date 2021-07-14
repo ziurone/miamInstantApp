@@ -12,8 +12,8 @@ data class CatalogRecipeRelations (
     @Embedded
     val recipe: CatalogRecipeEntity,
 
-    @Relation(parentColumn = "id", entityColumn = "recipeId")
-    val userIngredients: List<CatalogRecipeUserIngredientEntity>,
+    @Relation(parentColumn = "id", entityColumn = "recipeId", entity = CatalogRecipeUserIngredientEntity::class)
+    val userIngredients: List<CatalogRecipeUserIngredientRelations>,
 
     @Relation(parentColumn = "id", entityColumn = "recipeId", entity = MarketIngredientEntity::class)
     val marketIngredients: List<MarketIngredientRelations>

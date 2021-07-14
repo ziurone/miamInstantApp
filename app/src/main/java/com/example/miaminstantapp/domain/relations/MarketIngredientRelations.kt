@@ -19,6 +19,7 @@ fun MarketIngredientRelations.toRecipeUserIngredient() = CatalogRecipeUserIngred
     ingredientId = marketIngredient.ingredientId,
     ingredientName = marketIngredient.ingredientName,
     usedQuantity = marketIngredient.usedQuantity,
-    recipeId = marketIngredient.recipeId
-
+    recipeId = marketIngredient.recipeId,
+    volumeUnitId = volumeUnit.volumeUnitId,
+    volumeUnitQuantity = marketIngredient.volumeUnitQuantity
 )

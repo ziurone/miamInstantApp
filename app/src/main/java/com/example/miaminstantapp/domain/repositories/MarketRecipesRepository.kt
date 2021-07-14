@@ -163,7 +163,9 @@ class MarketRecipesRepository @Inject constructor(
                         UserIngredientDTO(
                             1,
                             "sal",
-                            100
+                            100,
+                            3,
+                            1f
                         )
                     )
                 )

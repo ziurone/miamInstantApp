@@ -77,5 +77,7 @@ fun MarketIngredientDTO.toMarketIngredientEntity(): MarketIngredientEntity {
 data class UserIngredientDTO (
     val id: Int,
     val name: String,
-    val usedQuantity: Int
+    val usedQuantity: Int,
+    val volumeUnitId: Int,
+    val volumeUnitQuantity: Float
 )

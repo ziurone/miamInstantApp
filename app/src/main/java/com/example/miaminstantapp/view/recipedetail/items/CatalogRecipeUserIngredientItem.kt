@@ -4,17 +4,18 @@ import android.view.View
 import android.widget.TextView
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
+import com.example.miaminstantapp.domain.relations.CatalogRecipeUserIngredientRelations
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
 class CatalogRecipeUserIngredientItem(
-    private val userIngredientEntity: CatalogRecipeUserIngredientEntity
+    private val userIngredientEntity: CatalogRecipeUserIngredientRelations
 ): Item<CatalogRecipeUserIngredientItem.CatalogRecipeUserIngredientItemViewHolder>() {
 
     override fun getLayout(): Int = R.layout.item_catalog_recipe_user_ingredient
 
     override fun bind(viewHolder: CatalogRecipeUserIngredientItemViewHolder, position: Int) {
-        viewHolder.name.text = userIngredientEntity.ingredientName
+        viewHolder.name.text = userIngredientEntity.userIngredient.ingredientName
     }
 
     override fun createViewHolder(itemView: View): CatalogRecipeUserIngredientItemViewHolder = CatalogRecipeUserIngredientItemViewHolder(itemView)

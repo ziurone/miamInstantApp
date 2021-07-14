@@ -22,7 +22,7 @@ class AddRecipeAction @Inject constructor(
             .insertAll(recipe.marketIngredients.map { it.marketIngredient.toShopArticle() })
             .andThen(recipeBookRepository.addRecipe(recipe.toRecipeBookRecipe()))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipe.userIngredients.map {
-                recipeUserIngredient -> recipeUserIngredient.toRecipeBookIngredient(recipe.recipe.id)
+                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(recipe.recipe.id)
             }))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipe.marketIngredients.map {
                 it -> it.marketIngredient.toRecipeBookIngredient(recipe.recipe.id)
