@@ -22,7 +22,7 @@
             android:padding="@dimen/spacing_large"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_catalog_recipe_market_ingredient"
-            />
+            tools:itemCount="3"/>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -40,7 +40,8 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_large"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_catalog_recipe_market_ingredient"
+            tools:listitem="@layout/item_catalog_recipe_user_ingredient"
+            tools:itemCount="3"
             />
 
     </com.google.android.material.card.MaterialCardView>
