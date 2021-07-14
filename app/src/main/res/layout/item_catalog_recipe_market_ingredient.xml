@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginStart="@dimen/spacing_double_large"
         style="@style/ItemTitle"
         tools:text="1/4 de pollo"/>
 

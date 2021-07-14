@@ -12,7 +12,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginHorizontal="@dimen/spacing_large"
-        android:padding="@dimen/spacing_large"
         android:background="@color/secondary_light"
         android:elevation="@dimen/spacing_thin">
 
@@ -20,6 +19,7 @@
             android:id="@+id/marketIngredientsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_large"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_catalog_recipe_market_ingredient"
             />
@@ -32,13 +32,13 @@
         app:layout_constraintTop_toBottomOf="@id/marketIngredientsCard"
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginHorizontal="@dimen/spacing_large"
-        android:elevation="@dimen/spacing_thin"
-        android:padding="@dimen/spacing_large">
+        android:elevation="@dimen/spacing_thin">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recipeIngredientsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_large"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_catalog_recipe_market_ingredient"
             />
