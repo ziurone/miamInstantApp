@@ -32,6 +32,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         toolbarClose.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
+
         addRecipe.setOnClickListener {
             viewModel.addRecipe(recipe)
         }
