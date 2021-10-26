@@ -18,6 +18,7 @@
     <color name="secondary_dark_900">#263238</color>
     <color name="secondary_dark_1200">#465A63</color>
     <color name="fridge_color">#5BD9B1</color>
+    <color name="background">#F8F3F2</color>
 
     <!--  Custom colors  -->
     <color name="cardGenericBadgetBackgroundColor">@color/quantum_black_100</color>
