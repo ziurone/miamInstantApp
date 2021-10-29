@@ -62,6 +62,7 @@
 
     <!-- Recipe list -->
     <string name="search_recipe_hint">Buscar recetas</string>
+    <string name="search_ingredient_hint">Agregar ingredientes</string>
     <string name="card_recipe_fulfilled_text">Tenés todo</string>
     <string name="presentation_first_step_text">¡TE DOY LA BIENVENIDA!\nVengo a ser tu aliado\nen la cocina</string>
     <string name="presentation_second_step_text">CONTAME QUE INGREDIENTES\n TENÉS EN LA HELADERA</string>

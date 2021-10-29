@@ -20,34 +20,25 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/filterButton"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:hint="@string/search_recipe_hint"
+        android:layout_marginLeft="@dimen/spacing_double_large"
+        android:layout_marginRight="@dimen/spacing_double_large"
+        android:enabled="true"
+        android:hint="@string/search_ingredient_hint"
+        app:hintTextColor="@color/primary_dark_700"
+        app:startIconTint="@color/primary_dark_700"
         style="@style/InputPrimary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ingredientsAutocompleteInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAppearance="@style/Subtitle2"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageButton
-        android:id="@+id/filterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/searchRecipes"
-        app:layout_constraintBottom_toBottomOf="@id/searchRecipes"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:background="@color/secondary_light"
-        android:src="@drawable/ic_filter"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeList"

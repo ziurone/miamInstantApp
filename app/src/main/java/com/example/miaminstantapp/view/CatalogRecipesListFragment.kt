@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
+import com.example.miaminstantapp.extensions.setFullScreen
 import com.example.miaminstantapp.routing.Launcher
 import com.example.miaminstantapp.view.items.RecipeItem
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailActivity.Companion.CATALOG_RECIPE_ID_KEY
@@ -13,6 +14,7 @@ import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
 import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_catalog_recipes_list.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>() {
 
@@ -22,6 +24,8 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
 
     override fun initViews() {
         super.initViews()
+
+        toolbarClose.title = "Buscar"
 
         initRecipeList()
         viewModel.fetchRecipes()

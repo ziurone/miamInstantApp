@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Legacy  -->
     <color name="colorPrimary">#5E001D</color>
     <color name="primaryLight400">#BE353D</color>
     <color name="secondary">#FFF9EF</color>
@@ -19,6 +20,11 @@
     <color name="secondary_dark_1200">#465A63</color>
     <color name="fridge_color">#5BD9B1</color>
     <color name="background">#F8F3F2</color>
+
+    <!--  Custom colors  -->
+    <color name="secondary_light_200">#CBD396</color>
+    <color name="secondary_dark_1000">#223300</color>
+    <color name="primary_dark_700">#E65622</color>
 
     <!--  Custom colors  -->
     <color name="cardGenericBadgetBackgroundColor">@color/quantum_black_100</color>
