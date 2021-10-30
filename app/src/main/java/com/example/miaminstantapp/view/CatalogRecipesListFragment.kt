@@ -26,14 +26,17 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     override fun initViews() {
         super.initViews()
 
+        ingredientsAutocompleteInput.clearFocus()
+
         toolbarClose.title = "Buscar"
 
-        ingredientsAutocompleteInput.onFocusChangeListener = object : View.OnFocusChangeListener {
-            override fun onFocusChange(v: View?, hasFocus: Boolean) {
-                if(hasFocus) findNavController().navigate(R.id.action_global_toIngredientAutocomplete)
+        ingredientsAutocompleteInput.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if(hasFocus) {
+                    findNavController().navigate(R.id.action_global_toIngredientAutocomplete)
+                    ingredientsAutocompleteInput.clearFocus()
+                }
             }
-
-        }
 
         initRecipeList()
         viewModel.fetchRecipes()

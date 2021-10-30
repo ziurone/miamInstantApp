@@ -25,6 +25,7 @@
         android:layout_marginLeft="@dimen/spacing_double_large"
         android:layout_marginRight="@dimen/spacing_double_large"
         android:hint="@string/search_ingredient_hint"
+        app:startIconDrawable="@drawable/ic_search_small"
         style="@style/InputPrimary">
 
         <com.google.android.material.textfield.TextInputEditText

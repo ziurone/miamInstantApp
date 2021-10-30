@@ -9,6 +9,6 @@
     android:paddingStart="@dimen/spacing_small"
     android:paddingEnd="@dimen/spacing_small"
     android:gravity="center_vertical"
-    android:textColor="@color/primaryDark"
+    android:textColor="@color/secondary_dark_1000"
     tools:text="Zanahoria"
-    style="@style/Body2"/>
+    style="@style/Subtitle2"/>
