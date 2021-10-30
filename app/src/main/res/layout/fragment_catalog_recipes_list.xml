@@ -15,7 +15,7 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/searchRecipes"
+        android:id="@+id/searchIngredients"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -24,10 +24,7 @@
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginLeft="@dimen/spacing_double_large"
         android:layout_marginRight="@dimen/spacing_double_large"
-        android:enabled="true"
         android:hint="@string/search_ingredient_hint"
-        app:hintTextColor="@color/primary_dark_700"
-        app:startIconTint="@color/primary_dark_700"
         style="@style/InputPrimary">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -36,6 +33,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:focusedByDefault="false"
             android:textAppearance="@style/Subtitle2"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -44,7 +42,7 @@
         android:id="@+id/recipeList"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/searchRecipes"
+        app:layout_constraintTop_toBottomOf="@id/searchIngredients"
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginLeft="@dimen/spacing_large"
         android:layout_marginStart="@dimen/spacing_large"

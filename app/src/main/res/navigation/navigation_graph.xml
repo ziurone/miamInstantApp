@@ -35,6 +35,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/ingredientAutocomplete"
+        android:name="com.example.miaminstantapp.view.ingredients.IngredientAutocompleteFragment">
+
+    </fragment>
+
+    <fragment
         android:id="@+id/doableRecipeDetailFragment"
         android:name="com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment">
 
@@ -71,5 +77,9 @@
     <action
         android:id="@+id/action_global_toShopPurchase"
         app:destination="@id/shopPurchaseFragment"/>
+
+    <action
+        android:id="@+id/action_global_toIngredientAutocomplete"
+        app:destination="@id/ingredientAutocomplete"/>
 
 </navigation>

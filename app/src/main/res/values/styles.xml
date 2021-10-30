@@ -123,6 +123,8 @@
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="startIconDrawable">@drawable/ic_search_small</item>
+        <item name="hintTextColor">@color/primary_dark_700</item>
+        <item name="startIconTint">@color/primary_dark_700</item>
     </style>
 
     <style name="PresentationTab" parent="Widget.Design.TabLayout">

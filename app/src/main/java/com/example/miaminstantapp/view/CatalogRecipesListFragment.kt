@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view
 
+import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -26,6 +27,13 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
         super.initViews()
 
         toolbarClose.title = "Buscar"
+
+        ingredientsAutocompleteInput.onFocusChangeListener = object : View.OnFocusChangeListener {
+            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+                if(hasFocus) findNavController().navigate(R.id.action_global_toIngredientAutocomplete)
+            }
+
+        }
 
         initRecipeList()
         viewModel.fetchRecipes()
