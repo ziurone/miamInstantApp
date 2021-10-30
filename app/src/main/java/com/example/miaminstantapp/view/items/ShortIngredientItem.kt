@@ -16,7 +16,7 @@ class ShortIngredientItem(
         val name: TextView = view.findViewById(R.id.name)
     }
 
-    override fun getLayout(): Int = R.layout.item_autocomplete
+    override fun getLayout(): Int = R.layout.ingredient_item_autocomplete
 
     override fun createViewHolder(itemView: View): ShortIngredientItemViewHolder = ShortIngredientItemViewHolder(itemView)
 
