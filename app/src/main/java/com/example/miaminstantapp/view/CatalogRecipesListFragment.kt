@@ -66,7 +66,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
             }
 
             recipeAdapter.update(items)
-        } else  { recipeListEmptyView.isVisible = true }
+        } else  { recipeListEmptyView.isVisible = false }
     }
 
 }

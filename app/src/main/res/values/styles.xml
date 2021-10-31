@@ -51,10 +51,16 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Heading1" parent="TextAppearance.MaterialComponents.Headline1">
+    <style name="Heading1Legacy" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/bebas_neue_bold</item>
         <item name="android:textSize">29sp</item>
         <item name="android:textColor">@color/secondary_dark_900</item>
+    </style>
+
+    <style name="Heading1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/fredoka_regular</item>
+        <item name="android:textSize">27sp</item>
+        <item name="android:textColor">@color/secondary_light_300</item>
     </style>
 
     <style name="Heading2" parent="TextAppearance.MaterialComponents.Headline2">
