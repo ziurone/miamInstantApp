@@ -12,6 +12,7 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
 
     override fun initViews() {
         viewModel.hasUserUsedAppBefore()
+        viewModel.fetchMasterData()
         super.initViews()
     }
 

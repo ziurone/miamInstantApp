@@ -7,4 +7,5 @@ abstract class ISplashScreenViewModel: BaseViewModel<ISplashScreenViewModel.Stat
     }
 
     abstract fun hasUserUsedAppBefore()
+    abstract fun fetchMasterData()
 }
