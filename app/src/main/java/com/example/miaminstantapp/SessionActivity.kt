@@ -40,10 +40,6 @@ class SessionActivity : DaggerAppCompatActivity() {
                         findNavController(R.id.userFiltersFragmentHost).navigate(R.id.global_action_toDispensaryFragment)
                         true
                     }
-                    R.id.profile -> {
-                        findNavController(R.id.userFiltersFragmentHost).navigate(R.id.global_action_toDispensaryFragment)
-                        true
-                    }
                     else -> false
                 }
         }

@@ -24,9 +24,11 @@
     <!--  Custom colors  -->
     <color name="secondary_light_200">#CBD396</color>
     <color name="secondary_light_300">#B6C26D</color>
+    <color name="secondary_light_400">#A7B74D</color>
     <color name="secondary_dark_1000">#223300</color>
     <color name="secondary_dark_700">#738A1A</color>
     <color name="primary_dark_700">#E65622</color>
+    <color name="primary_dark_600">#F45D27</color>
     <color name="surface">#1A27041A</color>
 
     <!--  Custom colors  -->

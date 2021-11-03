@@ -138,11 +138,11 @@
 
     <!-- Bottom bar -->
     <style name="BottomBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
-        <item name="backgroundTint">@color/secondary_light</item>
-        <item name="tabSelectedTextColor">@color/colorPrimary</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="tabSelectedTextColor">@color/primary_dark_700</item>
         <item name="itemTextAppearanceActive">@style/Caption</item>
-        <item name="itemIconTint">@color/colorPrimary</item>
-        <item name="itemTextColor">@color/colorSecondaryDark</item>
+        <item name="itemIconTint">@color/secondary_light_400</item>
+        <item name="itemTextColor">@color/secondary_light_400</item>
     </style>
 
     <style name="Caption" parent="TextAppearance.MaterialComponents.Caption">
