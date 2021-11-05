@@ -39,6 +39,20 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipsGroupSuggestedIngredients"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchIngredients"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
+        app:singleSelection="true"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:singleLine="true"
+        app:chipSpacing="12dp" />
+
     <ImageView
         android:id="@+id/searchImage"
         android:layout_width="wrap_content"
