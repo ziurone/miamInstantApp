@@ -21,10 +21,7 @@ class IngredientRepository @Inject constructor(
         val suggestedIngredients = mutableListOf(
             Ingredient(1, "sal", 1, 100, listOf(1,2,3)),
             Ingredient(2, "aceite", 2, 100, listOf(1,2,3)),
-            Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3)),
-            Ingredient(4, "ajo", 2, 100, listOf(1,2,3)),
-            Ingredient(5, "zapallito", 2, 100, listOf(1,2,3)),
-            Ingredient(6, "cebolla", 2, 100, listOf(1,2,3))
+            Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3))
         )
 
         if(excludeIngredientsIds.isNotEmpty() && excludeIngredientsIds.size.equals(suggestedIngredients.size)) {
