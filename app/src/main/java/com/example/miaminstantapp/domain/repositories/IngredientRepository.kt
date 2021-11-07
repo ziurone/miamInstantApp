@@ -27,6 +27,10 @@ class IngredientRepository @Inject constructor(
             Ingredient(6, "cebolla", 2, 100, listOf(1,2,3))
         )
 
+        if(excludeIngredientsIds.isNotEmpty() && excludeIngredientsIds.size.equals(suggestedIngredients.size)) {
+            suggestedIngredients.add(Ingredient(7, "huevo", 2, 100, listOf(1,2)))
+        }
+
         return Single.just(
             IngredientsListResponse(suggestedIngredients.filter { ingredient -> !excludeIngredientsIds.contains(ingredient.id)})
         )

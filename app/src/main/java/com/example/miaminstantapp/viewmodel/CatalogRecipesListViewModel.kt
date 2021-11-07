@@ -25,7 +25,7 @@ class CatalogRecipesListViewModel @Inject constructor(
 
     override fun addIngredient(ingredient: Ingredient) {
         replaceSuggestedIngredientsQuantity =+ 1
-        suggestedIngredientsShowedIds.add(ingredient.id)
+//        suggestedIngredientsShowedIds.add(ingredient.id)
 //        addUserIngredientAction.add(ingredient)
     }
 
