@@ -39,17 +39,32 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/suggestedIngredientsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/searchIngredients"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/suggested_ingredients_title"
+        android:gravity="center"
+        style="@style/Subtitle2"
+        android:textColor="@color/secondary_dark_700"/>
+
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipsGroupSuggestedIngredients"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchIngredients"
+        app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsTitle"
         android:layout_marginStart="@dimen/spacing_large"
         android:layout_marginEnd="@dimen/spacing_large"
         app:singleSelection="true"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/spacing_standard"
         app:singleLine="true"
         app:chipSpacing="12dp" />
 
