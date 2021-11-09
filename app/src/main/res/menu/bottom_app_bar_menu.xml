@@ -11,21 +11,21 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/appBarRecipeList"
+        android:id="@+id/doableRecipesList"
         android:icon="@drawable/ic_search_small"
         android:title="@string/app_bottom_bar_menu_recipe_book_title"
         android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/appBarFavorites"
+        android:id="@+id/recipeBookFragment"
         android:icon="@drawable/ic_recipe_book_small"
         android:title="@string/app_bottom_bar_menu_recipebook_title"
         android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/appBarShoppingCart"
+        android:id="@+id/shopPurchaseFragment"
         android:icon="@drawable/ic_shopping_cart"
         android:title="@string/app_bottom_bar_menu_shopping_cart_title"
         app:showAsAction="ifRoom"/>
