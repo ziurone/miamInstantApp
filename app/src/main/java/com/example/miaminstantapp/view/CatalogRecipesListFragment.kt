@@ -41,7 +41,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
             View.OnFocusChangeListener { _, hasFocus ->
                 if(hasFocus) {
                     findNavController().navigate(R.id.action_global_toIngredientAutocomplete)
-                    ingredientsAutocompleteInput.clearFocus()
+//                    ingredientsAutocompleteInput.clearFocus()
                 }
             }
 

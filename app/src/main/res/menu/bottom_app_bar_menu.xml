@@ -19,7 +19,7 @@
 
     <item
         android:id="@+id/recipeBookFragment"
-        android:icon="@drawable/ic_recipe_book_small"
+        android:icon="@drawable/ic_recipebook_small"
         android:title="@string/app_bottom_bar_menu_recipebook_title"
         android:enabled="true"
         app:showAsAction="ifRoom"/>
