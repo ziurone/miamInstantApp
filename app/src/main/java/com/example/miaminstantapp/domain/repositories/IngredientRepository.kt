@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.repositories
 
+import com.example.miaminstantapp.api.MiamApi
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
@@ -13,31 +14,34 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class IngredientRepository @Inject constructor(
-    private val userIngredientDao: UserIngredientDao
+    private val userIngredientDao: UserIngredientDao,
+    private val miamApi: MiamApi
 ): IIngredientRepository {
 
     override fun getSuggestedIngredients(excludeIngredientsIds: List<Int>): Single<IngredientsListResponse> {
 
-        val suggestedIngredients = mutableListOf(
-            Ingredient(1, "sal", 1, 100, listOf(1,2,3)),
-            Ingredient(2, "aceite", 2, 100, listOf(1,2,3)),
-            Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3))
-        )
+        return miamApi.fetchSuggestedIngredients(excludedIngredients = excludeIngredientsIds)
 
-        if(excludeIngredientsIds.isNotEmpty() && excludeIngredientsIds.size.equals(suggestedIngredients.size)) {
-            suggestedIngredients.add(Ingredient(7, "huevo", 2, 100, listOf(1,2)))
-        }
-
-        return Single.just(
-            IngredientsListResponse(suggestedIngredients.filter { ingredient -> !excludeIngredientsIds.contains(ingredient.id)})
-        )
+//        val suggestedIngredients = mutableListOf(
+//            Ingredient(1, "sal", 1, 100, listOf(1,2,3)),
+//            Ingredient(2, "aceite", 2, 100, listOf(1,2,3)),
+//            Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3))
+//        )
+//
+//        if(excludeIngredientsIds.isNotEmpty() && excludeIngredientsIds.size.equals(suggestedIngredients.size)) {
+//            suggestedIngredients.add(Ingredient(7, "huevo", 2, 100, listOf(1,2)))
+//        }
+//
+//        return Single.just(
+//            IngredientsListResponse(suggestedIngredients.filter { ingredient -> !excludeIngredientsIds.contains(ingredient.id)})
+//        )
 
     }
 
     override fun addIngredient(ingredient: Ingredient): Completable {
         val userIngredientVolumeUnitsRelationList = mutableListOf<UserIngredientVolumeUnitRelation>()
 
-        ingredient.volumeUnitIds.map {
+        ingredient.volumeUnitsIds.map {
             val userIngredientVolumeUnitRelation = UserIngredientVolumeUnitRelation(ingredient.id, it)
             userIngredientVolumeUnitsRelationList.add(userIngredientVolumeUnitRelation)
         }

@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.injection.modules
 
-import com.example.miaminstantapp.api.VolumeUnitApi
+import com.example.miaminstantapp.api.MiamApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -19,6 +19,6 @@ class NetworkModule {
     }
 
     @Provides
-    fun providesVolumeUnitApi(retrofit: Retrofit): VolumeUnitApi = retrofit.create(VolumeUnitApi::class.java)
+    fun providesVolumeUnitApi(retrofit: Retrofit): MiamApi = retrofit.create(MiamApi::class.java)
 
 }
