@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
+import android.util.Log
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,7 +14,8 @@ class GetIngredientsByNameAction @Inject constructor(
     IGetIngredientsByNameAction {
 
     override fun getErrorResult(throwable: Throwable): IGetIngredientsByNameAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i("AUTOCOMPLETE_ERROR", throwable.localizedMessage)
+        return IGetIngredientsByNameAction.Result.Error(throwable.localizedMessage)
     }
 
     override fun getFailureResult(failedResponseCode: String): IGetIngredientsByNameAction.Result? {

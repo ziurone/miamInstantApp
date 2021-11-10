@@ -62,15 +62,7 @@ class IngredientRepository @Inject constructor(
     }
 
     override fun getIngredientsByName(ingredientName: String): Single<IngredientsListResponse> {
-        return Single.just(
-            IngredientsListResponse(
-                listOf(
-                    Ingredient(10, "Batata", 1, 100, listOf(1,2,3)),
-                    Ingredient(11, "Papa", 1, 100, listOf(1,2,3)),
-                    Ingredient(12, "Crema", 1, 100, listOf(1,2,3))
-                )
-            )
-        )
+        return miamApi.searchIngredient(ingredientName)
     }
 
     override fun getShortIngredientsByName(queryText: String): Single<List<IngredientShortDto>> {
