@@ -71,7 +71,7 @@
     <string name="total_minutes">%1$d min</string>
     <string name="catalog_recipe_market_ingredients_header">Te falta</string>
     <string name="catalog_recipe_user_ingredients_header">Tenés</string>
-    <string name="suggested_ingredients_title">Seleccioná los ingredientes que tengas en tu heladera</string>
+    <string name="suggested_ingredients_title">Seleccioná los ingredientes que tenés</string>
 
     <string name="catalog_recipe_list_new_search_title">Buscá recetas nuevas!</string>
     <string name="catalog_recipe_list_new_search_subtitle">Podes agregar los ingredientes que tengas\nen tu casa o buscar una receta en particular</string>
