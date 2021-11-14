@@ -18,7 +18,9 @@ import com.example.miaminstantapp.domain.entities.*
     RecipeBookRecipeIngredientEntity::class,
     UserAddressEntity::class,
     DietEntity::class,
-    ExcludedIngredientEntity::class])
+    ExcludedIngredientEntity::class,
+    SuggestedIngredientVolumeUnitRelation::class,
+    SuggestedIngredientEntity::class])
 abstract class MiamDataBase: RoomDatabase() {
 
     companion object {
@@ -50,4 +52,6 @@ abstract class MiamDataBase: RoomDatabase() {
     abstract fun userDietsDao(): DietDao
 
     abstract fun excludedIngredientsDao(): ExcludedIngredientDao
+
+    abstract fun suggestedIngredientsDao(): SuggestedIngredientDao
 }

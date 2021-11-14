@@ -22,20 +22,6 @@ class IngredientRepository @Inject constructor(
 
         return miamApi.fetchSuggestedIngredients(excludedIngredients = excludeIngredientsIds)
 
-//        val suggestedIngredients = mutableListOf(
-//            Ingredient(1, "sal", 1, 100, listOf(1,2,3)),
-//            Ingredient(2, "aceite", 2, 100, listOf(1,2,3)),
-//            Ingredient(3, "zanahoria", 2, 100, listOf(1,2,3))
-//        )
-//
-//        if(excludeIngredientsIds.isNotEmpty() && excludeIngredientsIds.size.equals(suggestedIngredients.size)) {
-//            suggestedIngredients.add(Ingredient(7, "huevo", 2, 100, listOf(1,2)))
-//        }
-//
-//        return Single.just(
-//            IngredientsListResponse(suggestedIngredients.filter { ingredient -> !excludeIngredientsIds.contains(ingredient.id)})
-//        )
-
     }
 
     override fun addIngredient(ingredient: Ingredient): Completable {

@@ -62,4 +62,8 @@ class RoomModule {
     @Provides
     @PerApplication
     fun providesExcludedIngredientsDao(miamDataBase: MiamDataBase): ExcludedIngredientDao = miamDataBase.excludedIngredientsDao()
+
+    @Provides
+    @PerApplication
+    fun providesSuggestedIngredientsDato(miamDataBase: MiamDataBase): SuggestedIngredientDao = miamDataBase.suggestedIngredientsDao()
 }
