@@ -21,6 +21,7 @@ class IngredientAutocompleteViewModel @Inject constructor(
     }
 
     fun searchIngredientByName(ingredientName: String) {
+        if(ingredientName.length < 3) return
         getIngredientsByNameAction.getIngredients(ingredientName)
     }
 

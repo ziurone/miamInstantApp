@@ -9,6 +9,8 @@
         <item name="chipGroupStyle">@style/Chip</item>
         <item name="colorPrimary">#E65622</item>
         <item name="colorOnPrimary">#E65622</item>
+        <item name="colorSurface">@color/secondary_light_400</item>
+        <item name="colorOnSurface">@color/secondary_light_400</item>
     </style>
 
     <!-- Chip -->
@@ -149,12 +151,12 @@
     </style>
 
     <!-- Bottom bar -->
-    <style name="BottomBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+    <style name="BottomBar" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="backgroundTint">@color/white</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
     </style>
 
-    <style name="ThemeOverlay.App.BottomNavigationView" parent="@style/ThemeOverlay.MaterialComponents.BottomAppBar.Primary">
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/primary_dark_700</item>
         <item name="colorOnPrimary">@color/primary_dark_700</item>
         <item name="colorSurface">@color/secondary_light_400</item>
