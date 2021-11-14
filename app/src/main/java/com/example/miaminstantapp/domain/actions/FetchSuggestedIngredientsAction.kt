@@ -15,6 +15,28 @@ class FetchSuggestedIngredientsAction @Inject constructor(
 
     override fun fetch(excludeIngredientsIds: List<Int>) {
         ingredientRepository
+            .countSuggested()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe( { c -> onCountSuggestedSuccess(c, excludeIngredientsIds) }, ::onError)
+            .track()
+    }
+
+    private fun onCountSuggestedSuccess(suggestedCount: Int, excludeIngredientsIds: List<Int>) {
+        if(suggestedCount < 5) {
+            ingredientRepository
+                .refreshSuggested(excludeIngredientsIds)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ fetchSuggested(excludeIngredientsIds) }, ::onError)
+                .track()
+        } else {
+            fetchSuggested(excludeIngredientsIds)
+        }
+    }
+
+    private fun fetchSuggested(excludeIngredientsIds: List<Int>) {
+        ingredientRepository
             .getSuggestedIngredients(excludeIngredientsIds)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -23,7 +45,6 @@ class FetchSuggestedIngredientsAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IFetchSuggestedIngredientsAction.Result? {
-        Log.i("SUGGES_ERROR", throwable.localizedMessage)
         return IFetchSuggestedIngredientsAction.Result.Error(throwable.localizedMessage)
     }
 

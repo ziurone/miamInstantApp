@@ -3,6 +3,7 @@ package com.example.miaminstantapp.domain.repositories
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
+import com.example.miaminstantapp.domain.entities.SuggestedIngredientVolumeUnitRelation
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.entities.UserIngredientVolumeUnitRelation
 import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
@@ -18,4 +19,7 @@ interface IIngredientRepository {
     fun getShortIngredientsByName(queryText: String): Single<List<IngredientShortDto>>
     fun getUserIngredientsWithVolumeUnits(): Single<List<UserIngredientWithVolumeUnits>>
     fun getIngredientWithVolumeUnitsById(ingredientId: Int): Single<UserIngredientWithVolumeUnits>
+    fun countSuggested(): Single<Int>
+    fun fetchSuggestedFromLocal(): Single<List<SuggestedIngredientVolumeUnitRelation>>
+    fun refreshSuggested(excludeIngredientsIds: List<Int>): Completable
 }
