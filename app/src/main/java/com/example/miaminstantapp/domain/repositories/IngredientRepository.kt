@@ -19,12 +19,8 @@ class IngredientRepository @Inject constructor(
 ): IIngredientRepository {
 
     override fun getSuggestedIngredients(excludeIngredientsIds: List<Int>): Single<IngredientsListResponse> {
-
         return miamApi.fetchSuggestedIngredients(excludedIngredients = excludeIngredientsIds)
-
     }
-
-
 
     override fun addIngredient(ingredient: Ingredient): Completable {
         val userIngredientVolumeUnitsRelationList = mutableListOf<UserIngredientVolumeUnitRelation>()
@@ -81,11 +77,19 @@ class IngredientRepository @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun refreshSuggested(excludeIngredientsIds: List<Int>): Completable {
-        return miamApi
-            .fetchSuggestedIngredients(excludedIngredients = excludeIngredientsIds)
-            .map { ingredients -> {
-                ingredients.ingredients.map { ingredient ->
+    override fun addSuggestedExcludedIngredients(suggestedIngredient: SuggestedIngredientEntity): Completable {
+        TODO("Not yet implemented")
+    }
+
+    override fun refreshSuggested(showedSuggested: Int): Completable {
+        return suggestedIngredientDao
+            .fetchAllExcludedSuggestedIngredients()
+            .flatMap { excluded -> miamApi
+                .fetchSuggestedIngredients(excludedIngredients = excluded.map { it.id }, limit = showedSuggested)
+            }
+            .map { response -> {
+                suggestedIngredientDao.addAllExcludedSuggestedIngredient(response.ingredients.map { ExcludedSuggestedIngredientsEntity(it.id) })
+                response.ingredients.map { ingredient ->
                     suggestedIngredientDao.addSuggestedIngredient(
                         SuggestedIngredientEntity(
                             ingredient.id,

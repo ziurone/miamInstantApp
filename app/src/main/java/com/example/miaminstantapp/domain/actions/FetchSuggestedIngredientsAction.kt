@@ -23,9 +23,9 @@ class FetchSuggestedIngredientsAction @Inject constructor(
     }
 
     private fun onCountSuggestedSuccess(suggestedCount: Int, excludeIngredientsIds: List<Int>) {
-        if(suggestedCount < 5) {
+        if(suggestedCount < 3) {
             ingredientRepository
-                .refreshSuggested(excludeIngredientsIds)
+                .refreshSuggested(5 - suggestedCount)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ fetchSuggested(excludeIngredientsIds) }, ::onError)

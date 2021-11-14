@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
+import android.util.Log
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.persistence.VolumeUnitDao
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,7 +21,8 @@ class AddVolumeUnitsAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IAddVolumeUnitsAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i("ERROR_VOLUME_UNIT", throwable.message)
+        return IAddVolumeUnitsAction.Result.Error(throwable.localizedMessage)
     }
 
     override fun getFailureResult(failedResponseCode: String): IAddVolumeUnitsAction.Result? {

@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import com.example.miaminstantapp.domain.actions.SuggestedIngredientWithVolumeUnits
+import com.example.miaminstantapp.domain.entities.ExcludedSuggestedIngredientsEntity
 import com.example.miaminstantapp.domain.entities.SuggestedIngredientEntity
 import com.example.miaminstantapp.domain.entities.SuggestedIngredientVolumeUnitRelation
 import io.reactivex.Completable
@@ -26,4 +27,13 @@ interface SuggestedIngredientDao {
 
     @Query("SELECT COUNT(ingredientId) FROM " + SuggestedIngredientEntity.TABLE_NAME)
     fun countAll(): Single<Int>
+
+    @Insert
+    fun addExcludedSuggestedIngredient(excludedSuggestedIngredientsEntity: ExcludedSuggestedIngredientsEntity): Completable
+
+    @Insert
+    fun addAllExcludedSuggestedIngredient(excludedSuggestedIngredients: List<ExcludedSuggestedIngredientsEntity>): Completable
+
+    @Query("SELECT * FROM " + ExcludedSuggestedIngredientsEntity.TABLE_NAME)
+    fun fetchAllExcludedSuggestedIngredients(): Single<List<ExcludedSuggestedIngredientsEntity>>
 }
