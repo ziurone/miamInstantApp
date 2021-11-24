@@ -12,6 +12,7 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
 
     override fun initViews() {
         viewModel.hasUserUsedAppBefore()
+        viewModel.fetchMasterData()
         super.initViews()
     }
 
@@ -22,17 +23,13 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
 
     override fun onStateChanged(state: ISplashScreenViewModel.State) {
         when (state) {
-            ISplashScreenViewModel.State.UserHasAlreadyUseTheApp -> navigateToUserIngredients()
-            ISplashScreenViewModel.State.IsUserFirstTimeInApp -> navigateToPresentationFlow()
+            ISplashScreenViewModel.State.UserHasAlreadyUseTheApp, ISplashScreenViewModel.State.IsUserFirstTimeInApp -> navigateToCatalogRecipesFlow()
         }
+
         finish()
     }
 
-    private fun navigateToUserIngredients() {
+    private fun navigateToCatalogRecipesFlow() {
         this.startActivity(Intent(this, SessionActivity::class.java))
-    }
-
-    private fun navigateToPresentationFlow() {
-        this.startActivity(Intent(this, PresentationFlowActivity::class.java))
     }
 }

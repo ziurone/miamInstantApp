@@ -3,6 +3,7 @@ package com.example.miaminstantapp.view.widgets
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.example.miaminstantapp.R
@@ -60,6 +61,7 @@ class RecipeCardView @JvmOverloads constructor(
                 missingIngredientsBadgeText.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipe.price)
             }
         } else {
+            recipeIngredientsInfoBadgetContainer.visibility = View.GONE
             hasIngredientsBadge.isVisible = false
             missingIngredientsBadge.isVisible = false
             missingIngredientsBadgeText.isVisible = false

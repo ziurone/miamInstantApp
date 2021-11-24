@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
+import android.util.Log
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
@@ -22,6 +23,7 @@ class FetchSuggestedIngredientsAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IFetchSuggestedIngredientsAction.Result? {
+        Log.i("SUGGES_ERROR", throwable.localizedMessage)
         return IFetchSuggestedIngredientsAction.Result.Error(throwable.localizedMessage)
     }
 

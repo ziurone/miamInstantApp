@@ -64,7 +64,10 @@ ext {
 
     networking = Group {
         implementation deps.retrofit.retrofit
-        implementation deps.retrofit.gson
+        implementation deps.retrofit.moshi
+        implementation deps.retrofit.moshiConverter
+        kapt deps.retrofit.moshiCodeGen
+        implementation deps.retrofit.moshiAdapters
         implementation deps.retrofit.rx
 
         implementation deps.okHttp.okHttp

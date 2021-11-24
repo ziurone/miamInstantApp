@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Legacy  -->
     <color name="colorPrimary">#5E001D</color>
     <color name="primaryLight400">#BE353D</color>
     <color name="secondary">#FFF9EF</color>
@@ -14,10 +15,24 @@
     <color name="tertiary">#838080</color>
     <color name="quaternary">#FAFAFA</color>
     <color name="success_color">#00B577</color>
-    <color name="secondary_light_100">#CFD8DC</color>
+    <color name="secondary_light_100">#E0E5BF</color>
     <color name="secondary_dark_900">#263238</color>
     <color name="secondary_dark_1200">#465A63</color>
     <color name="fridge_color">#5BD9B1</color>
+    <color name="background">#F8F3F2</color>
+
+    <!--  Custom colors  -->
+    <color name="secondary_light_200">#CBD396</color>
+    <color name="secondary_light_300">#B6C26D</color>
+    <color name="secondary_light_400">#A7B74D</color>
+    <color name="secondary_light_600">#889C24</color>
+    <color name="secondary_dark_1000">#223300</color>
+
+
+    <color name="secondary_dark_700">#738A1A</color>
+    <color name="primary_dark_700">#E65622</color>
+    <color name="primary_dark_600">#F45D27</color>
+    <color name="surface">#1A27041A</color>
 
     <!--  Custom colors  -->
     <color name="cardGenericBadgetBackgroundColor">@color/quantum_black_100</color>

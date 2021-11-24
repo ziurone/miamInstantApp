@@ -18,9 +18,9 @@
 
     <!-- Bottom bar -->
     <string name="app_bottom_bar_menu_dispensary_title">Heladera</string>
-    <string name="app_bottom_bar_menu_recipe_book_title">Recetas</string>
-    <string name="app_bottom_bar_menu_favorites_title">Guardados</string>
-    <string name="app_bottom_bar_menu_shopping_cart_title">Mi lista</string>
+    <string name="app_bottom_bar_menu_recipe_book_title">Buscar</string>
+    <string name="app_bottom_bar_menu_recipebook_title">Recetario</string>
+    <string name="app_bottom_bar_menu_shopping_cart_title">Compras</string>
     <string name="app_bottom_bar_menu_profile_title">Perfil</string>
 
     <!-- Diets -->
@@ -46,7 +46,6 @@
     <string name="step_1_of_3">Paso 1 de 3</string>
     <string name="step_2_of_3">Paso 2 de 3</string>
     <string name="step_3_of_3">Paso 3 de 3</string>
-    <string name="suggested_ingredients_title">Quizas tengas...</string>
     <string name="dispensary_button">Ver recetas</string>
     <string name="selected_ingredients_title">Tenés</string>
 
@@ -60,8 +59,9 @@
     <!-- Edit user ingredient -->
     <string name="edit_user_ingredient_title">¿Cuanto tenés de este ingrediente?</string>
 
-    <!-- Recipe list -->
+    <!-- Catalog Recipe list -->
     <string name="search_recipe_hint">Buscar recetas</string>
+    <string name="search_ingredient_hint">Agregar ingredientes</string>
     <string name="card_recipe_fulfilled_text">Tenés todo</string>
     <string name="presentation_first_step_text">¡TE DOY LA BIENVENIDA!\nVengo a ser tu aliado\nen la cocina</string>
     <string name="presentation_second_step_text">CONTAME QUE INGREDIENTES\n TENÉS EN LA HELADERA</string>
@@ -71,6 +71,10 @@
     <string name="total_minutes">%1$d min</string>
     <string name="catalog_recipe_market_ingredients_header">Te falta</string>
     <string name="catalog_recipe_user_ingredients_header">Tenés</string>
+    <string name="suggested_ingredients_title">Seleccioná los ingredientes que tengas en tu heladera</string>
+
+    <string name="catalog_recipe_list_new_search_title">Buscá recetas nuevas!</string>
+    <string name="catalog_recipe_list_new_search_subtitle">Podes agregar los ingredientes que tengas\nen tu casa o buscar una receta en particular</string>
 
     <!-- Recipe detail -->
     <string name="recipe_ingredients_tab_title">Ingredientes</string>

@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/dispensary"
-    app:startDestination="@id/dispensary">
+    app:startDestination="@id/doableRecipesList">
 
     <fragment
         android:id="@+id/dispensary"
@@ -31,6 +31,12 @@
         <action
             android:id="@+id/action_doableRecipeList_to_doableRecipeDetail"
             app:destination="@id/doableRecipeDetailFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ingredientAutocomplete"
+        android:name="com.example.miaminstantapp.view.ingredients.IngredientAutocompleteFragment">
 
     </fragment>
 
@@ -71,5 +77,9 @@
     <action
         android:id="@+id/action_global_toShopPurchase"
         app:destination="@id/shopPurchaseFragment"/>
+
+    <action
+        android:id="@+id/action_global_toIngredientAutocomplete"
+        app:destination="@id/ingredientAutocomplete"/>
 
 </navigation>

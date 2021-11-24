@@ -5,36 +5,29 @@
 
     <item
         android:id="@+id/dispensary"
-        android:icon="@drawable/ic_refrigerator_small"
+        android:icon="@drawable/ic_fridge_small"
         android:title="@string/app_bottom_bar_menu_dispensary_title"
         android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/appBarRecipeList"
-        android:icon="@drawable/ic_recipe_book_small"
+        android:id="@+id/doableRecipesList"
+        android:icon="@drawable/ic_search_small"
         android:title="@string/app_bottom_bar_menu_recipe_book_title"
         android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/appBarFavorites"
-        android:icon="@drawable/ic_favorite_small"
-        android:title="@string/app_bottom_bar_menu_favorites_title"
+        android:id="@+id/recipeBookFragment"
+        android:icon="@drawable/ic_recipebook_small"
+        android:title="@string/app_bottom_bar_menu_recipebook_title"
         android:enabled="true"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/appBarShoppingCart"
-        android:icon="@drawable/ic_shopping_cart_small"
+        android:id="@+id/shopPurchaseFragment"
+        android:icon="@drawable/ic_shopping_cart"
         android:title="@string/app_bottom_bar_menu_shopping_cart_title"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/profile"
-        android:icon="@drawable/ic_profile_small"
-        android:title="@string/app_bottom_bar_menu_profile_title"
-        android:enabled="true"
         app:showAsAction="ifRoom"/>
 
 </menu>

@@ -17,7 +17,7 @@ class AutocompleteUserIngredientsAdapter(
     private var ingredients: List<Ingredient> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_autocomplete, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item_autocomplete, parent, false)
         return ViewHolder(view)
     }
 

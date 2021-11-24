@@ -29,7 +29,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/searchRecipes"
+                android:id="@+id/searchIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_large"
                 android:layout_marginEnd="@dimen/spacing_large"
-                app:layout_constraintTop_toBottomOf="@id/searchRecipes"/>
+                app:layout_constraintTop_toBottomOf="@id/searchIngredients"/>
 
             <TextView
                 android:id="@+id/suggestedIngredientsCardTitle"
