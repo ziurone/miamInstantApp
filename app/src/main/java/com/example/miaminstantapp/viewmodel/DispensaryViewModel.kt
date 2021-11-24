@@ -69,7 +69,7 @@ class DispensaryViewModel @Inject constructor(
                 excludedSuggestedIngredientsIds.add(excludeIngredientId)
             }
         }
-        fetchSuggestedIngredientsAction.fetch(excludedSuggestedIngredientsIds)
+        fetchSuggestedIngredientsAction.fetch()
     }
 
     override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
@@ -90,7 +90,7 @@ class DispensaryViewModel @Inject constructor(
     private fun onFetchSuggestedIngredientsResult(result: IFetchSuggestedIngredientsAction.Result) {
         when (result) {
             is IFetchSuggestedIngredientsAction.Result.Error -> setState(State.Error(result.message))
-            is IFetchSuggestedIngredientsAction.Result.Success -> setState(State.FetchSuggestedIngredientsSuccess(result.data.ingredients))
+            is IFetchSuggestedIngredientsAction.Result.Success -> setState(State.FetchSuggestedIngredientsSuccess(result.data.map { it.toIngredient() }))
         }
     }
 

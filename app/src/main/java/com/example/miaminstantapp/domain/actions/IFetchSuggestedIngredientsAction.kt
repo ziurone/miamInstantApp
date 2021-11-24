@@ -5,9 +5,9 @@ import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 
 interface IFetchSuggestedIngredientsAction: Action<IFetchSuggestedIngredientsAction.Result> {
     sealed class Result {
-        data class Success(val data: IngredientsListResponse): Result()
+        data class Success(val data: List<SuggestedIngredientWithVolumeUnits>): Result()
         data class Error(val message: String): Result()
     }
 
-    fun fetch(excludeIngredientsIds: List<Int>)
+    fun fetch()
 }

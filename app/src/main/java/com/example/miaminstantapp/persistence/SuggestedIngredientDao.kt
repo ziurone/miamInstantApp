@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import com.example.miaminstantapp.domain.actions.SuggestedIngredientWithVolumeUnits
-import com.example.miaminstantapp.domain.entities.ExcludedSuggestedIngredientsEntity
+import com.example.miaminstantapp.domain.entities.ExcludedSuggestedIngredientEntity
 import com.example.miaminstantapp.domain.entities.SuggestedIngredientEntity
 import com.example.miaminstantapp.domain.entities.SuggestedIngredientVolumeUnitRelation
 import io.reactivex.Completable
@@ -19,7 +19,15 @@ interface SuggestedIngredientDao {
 
     @Transaction
     @Insert
+    fun addAllSuggestedIngredientsVolumeUnits(suggestedIngredientsVolumeUnitRelation: List<SuggestedIngredientVolumeUnitRelation>): Completable
+
+    @Transaction
+    @Insert
     fun addSuggestedIngredient(suggestedIngredientEntity: SuggestedIngredientEntity): Completable
+
+    @Transaction
+    @Insert
+    fun addAllSuggestedIngredient(suggestedIngredientsEntity: List<SuggestedIngredientEntity>): Completable
 
     @Transaction
     @Query("SELECT * FROM " + SuggestedIngredientEntity.TABLE_NAME)
@@ -29,11 +37,11 @@ interface SuggestedIngredientDao {
     fun countAll(): Single<Int>
 
     @Insert
-    fun addExcludedSuggestedIngredient(excludedSuggestedIngredientsEntity: ExcludedSuggestedIngredientsEntity): Completable
+    fun addExcludedSuggestedIngredient(excludedSuggestedIngredientEntity: ExcludedSuggestedIngredientEntity): Completable
 
     @Insert
-    fun addAllExcludedSuggestedIngredient(excludedSuggestedIngredients: List<ExcludedSuggestedIngredientsEntity>): Completable
+    fun addAllExcludedSuggestedIngredient(excludedSuggestedIngredients: List<ExcludedSuggestedIngredientEntity>): Completable
 
-    @Query("SELECT * FROM " + ExcludedSuggestedIngredientsEntity.TABLE_NAME)
-    fun fetchAllExcludedSuggestedIngredients(): Single<List<ExcludedSuggestedIngredientsEntity>>
+    @Query("SELECT * FROM " + ExcludedSuggestedIngredientEntity.TABLE_NAME)
+    fun fetchAllExcludedSuggestedIngredients(): Single<List<ExcludedSuggestedIngredientEntity>>
 }

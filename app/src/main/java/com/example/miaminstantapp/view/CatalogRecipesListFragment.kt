@@ -67,21 +67,21 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     }
 
     private fun showSuggestedIngredients(suggestedIngredients: List<Ingredient>) {
-        suggestedIngredients.forEach {
+        suggestedIngredients.forEach { ingredient ->
             val chip = Chip(context)
             chip.apply {
                 layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-                text = it.name
-                isCloseIconVisible = false
+                text = ingredient.name
+                isCloseIconVisible = true
                 textSize = 16f
                 setChipIconTintResource(R.color.secondary_light_100)
                 setChipBackgroundColorResource(R.color.secondary_light_100)
                 setOnCloseIconClickListener {
                     it.visibility = View.GONE
-                    viewModel.fetchSuggestedIngredients()
+                    viewModel.removeSuggestedIngredient(ingredient)
                 }
             }
 

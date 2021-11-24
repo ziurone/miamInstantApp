@@ -2,6 +2,7 @@ package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.api.MiamApi
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
+import com.example.miaminstantapp.domain.actions.SuggestedIngredientWithVolumeUnits
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.entities.*
@@ -9,6 +10,7 @@ import com.example.miaminstantapp.domain.relations.UserIngredientWithVolumeUnits
 import com.example.miaminstantapp.persistence.SuggestedIngredientDao
 import com.example.miaminstantapp.persistence.UserIngredientDao
 import io.reactivex.Completable
+import io.reactivex.Completable.concat
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -18,8 +20,8 @@ class IngredientRepository @Inject constructor(
     private val miamApi: MiamApi
 ): IIngredientRepository {
 
-    override fun getSuggestedIngredients(excludeIngredientsIds: List<Int>): Single<IngredientsListResponse> {
-        return miamApi.fetchSuggestedIngredients(excludedIngredients = excludeIngredientsIds)
+    override fun getSuggestedIngredients(): Single<List<SuggestedIngredientWithVolumeUnits>> {
+        return suggestedIngredientDao.fetchAll()
     }
 
     override fun addIngredient(ingredient: Ingredient): Completable {
@@ -77,38 +79,37 @@ class IngredientRepository @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun addSuggestedExcludedIngredients(suggestedIngredient: SuggestedIngredientEntity): Completable {
-        TODO("Not yet implemented")
+    override fun addSuggestedExcludedIngredient(ingredient: Ingredient): Completable = suggestedIngredientDao.addExcludedSuggestedIngredient(ExcludedSuggestedIngredientEntity(ingredient.id))
+
+    override fun addSuggestedIngredientsVolumeUnits(ingredients: List<Ingredient>): Completable {
+
+        return suggestedIngredientDao
+            .addAllSuggestedIngredient(ingredients.map { it.toSuggestedIngredientEntity() })
+            .andThen ( run {
+                val ingredientsWithVolumeUnits = mutableListOf<Pair<Int, Int>>()
+                ingredients.map { ingredient ->
+                    ingredient.volumeUnitsIds.map {
+                        ingredientsWithVolumeUnits.add(Pair(ingredient.id, it))
+                    }
+                }
+
+                suggestedIngredientDao.addAllSuggestedIngredientsVolumeUnits(
+                    ingredientsWithVolumeUnits.map {
+                        SuggestedIngredientVolumeUnitRelation(
+                            it.first,
+                            it.second
+                        )
+                    })
+                }
+            )
     }
 
-    override fun refreshSuggested(showedSuggested: Int): Completable {
+    override fun fetchFromServer(showedSuggested: Int): Single<IngredientsListResponse> {
         return suggestedIngredientDao
             .fetchAllExcludedSuggestedIngredients()
             .flatMap { excluded -> miamApi
-                .fetchSuggestedIngredients(excludedIngredients = excluded.map { it.id }, limit = showedSuggested)
+                .fetchSuggestedIngredients(excludedIngredients = excluded.map { it.id }, limit = 5)
             }
-            .map { response -> {
-                suggestedIngredientDao.addAllExcludedSuggestedIngredient(response.ingredients.map { ExcludedSuggestedIngredientsEntity(it.id) })
-                response.ingredients.map { ingredient ->
-                    suggestedIngredientDao.addSuggestedIngredient(
-                        SuggestedIngredientEntity(
-                            ingredient.id,
-                            ingredient.name,
-                            ingredient.defaultVolumeUnitId,
-                            ingredient.defaultVolumeUnitQuantity
-                        )
-                    )
-                    ingredient.volumeUnitsIds.map { volumeUnitId ->
-                        suggestedIngredientDao.addSuggestedIngredientsVolumeUnits(
-                            SuggestedIngredientVolumeUnitRelation(
-                                ingredient.id,
-                                volumeUnitId
-                            )
-                        )
-                    }
-                }
-            } }
-            .toCompletable()
     }
 
 }

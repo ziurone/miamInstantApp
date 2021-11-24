@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
+import com.example.miaminstantapp.domain.actions.SuggestedIngredientWithVolumeUnits
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
 import com.example.miaminstantapp.domain.entities.SuggestedIngredientEntity
@@ -12,7 +13,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 interface IIngredientRepository {
-    fun getSuggestedIngredients(excludeIngredientsIds: List<Int>): Single<IngredientsListResponse>
+    fun getSuggestedIngredients(): Single<List<SuggestedIngredientWithVolumeUnits>>
     fun addIngredient(ingredient: Ingredient): Completable
     fun editIngredient(ingredientId: Int, volumeUnitId: Int, volumeUnitQuantity: Int): Completable
     fun getUserIngredients(): Single<List<UserIngredientEntity>>
@@ -22,6 +23,7 @@ interface IIngredientRepository {
     fun getIngredientWithVolumeUnitsById(ingredientId: Int): Single<UserIngredientWithVolumeUnits>
     fun countSuggested(): Single<Int>
     fun fetchSuggestedFromLocal(): Single<List<SuggestedIngredientVolumeUnitRelation>>
-    fun refreshSuggested(showedSuggested: Int): Completable
-    fun addSuggestedExcludedIngredients(suggestedIngredient: SuggestedIngredientEntity): Completable
+    fun fetchFromServer(showedSuggested: Int): Single<IngredientsListResponse>
+    fun addSuggestedIngredientsVolumeUnits(ingredients: List<Ingredient>): Completable
+    fun addSuggestedExcludedIngredient(ingredient: Ingredient): Completable
 }

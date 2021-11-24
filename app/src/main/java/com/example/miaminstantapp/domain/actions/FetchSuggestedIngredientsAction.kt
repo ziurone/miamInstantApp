@@ -1,8 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
 import android.util.Log
-import com.example.miaminstantapp.domain.dtos.IngredientsListResponse
-import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -13,31 +11,31 @@ class FetchSuggestedIngredientsAction @Inject constructor(
 ) : IFetchSuggestedIngredientsAction, BaseAction<IFetchSuggestedIngredientsAction.Result>()
 {
 
-    override fun fetch(excludeIngredientsIds: List<Int>) {
+    override fun fetch() {
         ingredientRepository
             .countSuggested()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe( { c -> onCountSuggestedSuccess(c, excludeIngredientsIds) }, ::onError)
+            .subscribe( { c -> onCountSuggestedSuccess(c) }, ::onError)
             .track()
     }
 
-    private fun onCountSuggestedSuccess(suggestedCount: Int, excludeIngredientsIds: List<Int>) {
+    private fun onCountSuggestedSuccess(suggestedCount: Int) {
         if(suggestedCount < 3) {
             ingredientRepository
-                .refreshSuggested(5 - suggestedCount)
+                .fetchFromServer(5 - suggestedCount)
+                .flatMapCompletable { response -> ingredientRepository.addSuggestedIngredientsVolumeUnits(response.ingredients) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ fetchSuggested(excludeIngredientsIds) }, ::onError)
+                .subscribe( ::fetchSuggested , ::onError)
                 .track()
         } else {
-            fetchSuggested(excludeIngredientsIds)
+            fetchSuggested()
         }
     }
 
-    private fun fetchSuggested(excludeIngredientsIds: List<Int>) {
-        ingredientRepository
-            .getSuggestedIngredients(excludeIngredientsIds)
+    private fun fetchSuggested() {
+        ingredientRepository.getSuggestedIngredients()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)
@@ -52,7 +50,7 @@ class FetchSuggestedIngredientsAction @Inject constructor(
         return IFetchSuggestedIngredientsAction.Result.Error(failedResponseCode)
     }
 
-    private fun onSuccess(listResponse: IngredientsListResponse) {
+    private fun onSuccess(listResponse: List<SuggestedIngredientWithVolumeUnits>) {
         liveData.value = IFetchSuggestedIngredientsAction.Result.Success(listResponse)
         cleanUp()
     }

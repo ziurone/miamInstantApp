@@ -2,10 +2,10 @@ package com.example.miaminstantapp.domain.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.miaminstantapp.domain.entities.ExcludedSuggestedIngredientsEntity.Companion.TABLE_NAME
+import com.example.miaminstantapp.domain.entities.ExcludedSuggestedIngredientEntity.Companion.TABLE_NAME
 
 @Entity(tableName = TABLE_NAME)
-data class ExcludedSuggestedIngredientsEntity(
+data class ExcludedSuggestedIngredientEntity(
     @PrimaryKey
     val id: Int
 ) {
