@@ -87,7 +87,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
             }
 
             chip.setOnClickListener {
-//                onAddIngredient(ingredient)
+                viewModel.addIngredient(ingredient)
                 viewModel.removeSuggestedIngredient(ingredient)
                 chipsGroupSuggestedIngredients.removeView(chip)
             }

@@ -1,8 +1,6 @@
 package com.example.miaminstantapp.viewmodel
 
-import com.example.miaminstantapp.domain.actions.FetchRecipesWithIngredientsAction
-import com.example.miaminstantapp.domain.actions.IFetchRecipesWithIngredientsAction
-import com.example.miaminstantapp.domain.actions.IFetchSuggestedIngredientsAction
+import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.actions.suggestedIngredients.RemoveSuggestedIngredientAction
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import javax.inject.Inject
@@ -10,15 +8,15 @@ import javax.inject.Inject
 class CatalogRecipesListViewModel @Inject constructor(
     private val fetchRecipesWithIngredientsAction: FetchRecipesWithIngredientsAction,
     private val fetchSuggestedIngredientsAction: IFetchSuggestedIngredientsAction,
-    private val removeSuggestedIngredientAction: RemoveSuggestedIngredientAction
+    private val removeSuggestedIngredientAction: RemoveSuggestedIngredientAction,
+    private val addUserIngredientAction: AddUserIngredientAction
 ): ICatalogRecipesListViewModel() {
-
-    private var replaceSuggestedIngredientsQuantity = 0
 
     init {
         listenSource(fetchRecipesWithIngredientsAction.getLiveData(), ::onFetchRecipesResult)
         listenSource(fetchSuggestedIngredientsAction.getLiveData(), ::onFetchSuggestedIngredientsResult)
         listenSource(removeSuggestedIngredientAction.getLiveData(), ::onRemoveSuggestedIngredientResult)
+        listenSource(addUserIngredientAction.getLiveData(), ::onAddedIngredientResult)
     }
 
     override fun fetchRecipes() {
@@ -26,9 +24,7 @@ class CatalogRecipesListViewModel @Inject constructor(
     }
 
     override fun addIngredient(ingredient: Ingredient) {
-        replaceSuggestedIngredientsQuantity =+ 1
-//        suggestedIngredientsShowedIds.add(ingredient.id)
-//        addUserIngredientAction.add(ingredient)
+        addUserIngredientAction.add(ingredient)
     }
 
     override fun removeSuggestedIngredient(ingredient: Ingredient) {
@@ -37,6 +33,13 @@ class CatalogRecipesListViewModel @Inject constructor(
 
     override fun fetchSuggestedIngredients() {
         fetchSuggestedIngredientsAction.fetch()
+    }
+
+    private fun onAddedIngredientResult(result: IAddUserIngredientAction.Result) {
+        when(result) {
+            is IAddUserIngredientAction.Result.Error -> throw Exception()
+            IAddUserIngredientAction.Result.Success -> Unit
+        }
     }
 
     private fun onRemoveSuggestedIngredientResult(result: RemoveSuggestedIngredientAction.Result) {
