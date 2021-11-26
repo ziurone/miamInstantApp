@@ -79,9 +79,11 @@ class IngredientRepository @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun addSuggestedExcludedIngredient(ingredient: Ingredient): Completable = suggestedIngredientDao.addExcludedSuggestedIngredient(ExcludedSuggestedIngredientEntity(ingredient.id))
+    override fun removeSuggestedIngredient(ingredient: Ingredient): Completable {
+        return suggestedIngredientDao.removeSuggestedIngredient(ingredient.toSuggestedIngredientEntity())
+    }
 
-    override fun addSuggestedIngredientsVolumeUnits(ingredients: List<Ingredient>): Completable {
+    override fun addSuggestedIngredientsAssociations(ingredients: List<Ingredient>): Completable {
 
         return suggestedIngredientDao
             .addAllSuggestedIngredient(ingredients.map { it.toSuggestedIngredientEntity() })
@@ -102,6 +104,7 @@ class IngredientRepository @Inject constructor(
                     })
                 }
             )
+            .andThen(suggestedIngredientDao.addAllExcludedSuggestedIngredient(ingredients.map { ExcludedSuggestedIngredientEntity(it.id) }))
     }
 
     override fun fetchFromServer(showedSuggested: Int): Single<IngredientsListResponse> {

@@ -13,7 +13,7 @@ class NetworkModule {
     @Provides
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl("http://10.0.2.2:81/app_dev.php/api/v1/")
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create().asLenient())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }

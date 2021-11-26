@@ -67,6 +67,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     }
 
     private fun showSuggestedIngredients(suggestedIngredients: List<Ingredient>) {
+        chipsGroupSuggestedIngredients.removeAllViews()
         suggestedIngredients.forEach { ingredient ->
             val chip = Chip(context)
             chip.apply {
@@ -87,7 +88,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
 
             chip.setOnClickListener {
 //                onAddIngredient(ingredient)
-                viewModel.fetchSuggestedIngredients()
+                viewModel.removeSuggestedIngredient(ingredient)
                 chipsGroupSuggestedIngredients.removeView(chip)
             }
 

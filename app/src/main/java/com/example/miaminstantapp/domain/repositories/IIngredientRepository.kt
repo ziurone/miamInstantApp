@@ -24,6 +24,6 @@ interface IIngredientRepository {
     fun countSuggested(): Single<Int>
     fun fetchSuggestedFromLocal(): Single<List<SuggestedIngredientVolumeUnitRelation>>
     fun fetchFromServer(showedSuggested: Int): Single<IngredientsListResponse>
-    fun addSuggestedIngredientsVolumeUnits(ingredients: List<Ingredient>): Completable
-    fun addSuggestedExcludedIngredient(ingredient: Ingredient): Completable
+    fun addSuggestedIngredientsAssociations(ingredients: List<Ingredient>): Completable
+    fun removeSuggestedIngredient(ingredient: Ingredient): Completable
 }

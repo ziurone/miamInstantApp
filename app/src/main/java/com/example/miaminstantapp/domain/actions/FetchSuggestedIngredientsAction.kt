@@ -1,6 +1,5 @@
 package com.example.miaminstantapp.domain.actions
 
-import android.util.Log
 import com.example.miaminstantapp.domain.repositories.IIngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -24,7 +23,7 @@ class FetchSuggestedIngredientsAction @Inject constructor(
         if(suggestedCount < 3) {
             ingredientRepository
                 .fetchFromServer(5 - suggestedCount)
-                .flatMapCompletable { response -> ingredientRepository.addSuggestedIngredientsVolumeUnits(response.ingredients) }
+                .flatMapCompletable { response -> ingredientRepository.addSuggestedIngredientsAssociations(response.ingredients) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe( ::fetchSuggested , ::onError)

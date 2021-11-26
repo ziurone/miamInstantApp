@@ -19,7 +19,7 @@ class RemoveSuggestedIngredientAction @Inject constructor(
 
     fun remove(ingredient: Ingredient) {
         ingredientRepository
-            .addSuggestedExcludedIngredient(ingredient)
+            .removeSuggestedIngredient(ingredient)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)

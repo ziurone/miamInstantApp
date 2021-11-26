@@ -17,7 +17,7 @@ interface MiamApi {
     @GET("ingredients/suggested")
     fun fetchSuggestedIngredients(
         @Query("limit") limit: Int = 5,
-        @Query("excludedIngredientsIds") excludedIngredients: List<Int>
+        @Query("excludedIngredientsIds[]") excludedIngredients: List<Int>
     ) : Single<IngredientsListResponse>
 
     @GET("ingredient/search/{query}")

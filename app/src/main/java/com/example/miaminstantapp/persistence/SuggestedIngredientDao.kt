@@ -1,9 +1,6 @@
 package com.example.miaminstantapp.persistence
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.example.miaminstantapp.domain.actions.SuggestedIngredientWithVolumeUnits
 import com.example.miaminstantapp.domain.entities.ExcludedSuggestedIngredientEntity
 import com.example.miaminstantapp.domain.entities.SuggestedIngredientEntity
@@ -38,6 +35,9 @@ interface SuggestedIngredientDao {
 
     @Insert
     fun addExcludedSuggestedIngredient(excludedSuggestedIngredientEntity: ExcludedSuggestedIngredientEntity): Completable
+
+    @Delete
+    fun removeSuggestedIngredient(suggestedIngredientEntity: SuggestedIngredientEntity): Completable
 
     @Insert
     fun addAllExcludedSuggestedIngredient(excludedSuggestedIngredients: List<ExcludedSuggestedIngredientEntity>): Completable
