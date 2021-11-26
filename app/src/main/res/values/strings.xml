@@ -50,7 +50,7 @@
     <string name="selected_ingredients_title">Tenés</string>
 
     <!-- Dispensary -->
-    <string name="dispensary">Despensa</string>
+    <string name="dispensary">Heladera</string>
     <string name="add_ingredient_hint">Agregá un ingrediente</string>
     <string name="dispensary_empty_view_title">Agregá ingredientes</string>
     <string name="dispensary_empty_view_subtitle">Para que pueda recomendarte recetas</string>
