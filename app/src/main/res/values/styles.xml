@@ -7,10 +7,13 @@
         <item name="chipStyle">@style/Chip</item>
         <item name="chipStandaloneStyle">@style/Chip</item>
         <item name="chipGroupStyle">@style/Chip</item>
-        <item name="colorPrimary">#E65622</item>
-        <item name="colorOnPrimary">#E65622</item>
-        <item name="colorSurface">@color/secondary_light_400</item>
-        <item name="colorOnSurface">@color/secondary_light_400</item>
+        <item name="colorPrimary">#FF652B</item>
+        <item name="colorPrimaryVariant">#D84F1F</item>
+        <item name="colorOnPrimary">#FAF5F2</item>
+        <item name="android:colorSecondary">#97AB2B</item>
+        <item name="colorSecondaryVariant">#5E7711</item>
+        <item name="colorSurface">#FAF5F2</item>
+        <item name="colorOnSurface">#1A2704</item>
     </style>
 
     <!-- Chip -->

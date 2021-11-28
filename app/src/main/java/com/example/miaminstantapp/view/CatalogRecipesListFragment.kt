@@ -78,8 +78,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
                 text = ingredient.name
                 isCloseIconVisible = true
                 textSize = 16f
-                setChipIconTintResource(R.color.secondary_light_100)
-                setChipBackgroundColorResource(R.color.secondary_light_100)
+
                 setOnCloseIconClickListener {
                     it.visibility = View.GONE
                     viewModel.removeSuggestedIngredient(ingredient)
