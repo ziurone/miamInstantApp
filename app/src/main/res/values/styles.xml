@@ -86,8 +86,8 @@
     </style>
 
     <style name="Heading3" parent="TextAppearance.MaterialComponents.Headline3">
-        <item name="fontFamily">@font/poppins_medium</item>
-        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="android:textSize">19sp</item>
     </style>
 
     <style name="Heading6" parent="TextAppearance.MaterialComponents.Headline6">
@@ -101,14 +101,14 @@
     </style>
 
     <style name="Headline3" parent="TextAppearance.MaterialComponents.Headline3">
-        <item name="fontFamily">@font/bebas_neue_bold</item>
-        <item name="android:textColor">@color/black_dark</item>
-        <item name="android:textSize">29sp</item>
+        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="android:textSize">19sp</item>
     </style>
 
     <style name="Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/poppins</item>
-        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="Subtitle2Legacy" parent="TextAppearance.MaterialComponents.Subtitle2">

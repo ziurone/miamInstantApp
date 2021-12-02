@@ -35,7 +35,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_margin="@dimen/generic_card_outer_margin"
-                android:padding="@dimen/generic_card_inner_padding">
+                android:padding="@dimen/generic_card_inner_padding"
+                android:elevation="@dimen/spacing_thin"
+                app:cardBackgroundColor="@color/white">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -48,9 +50,8 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginStart="@dimen/spacing_large"
-                        android:src="@drawable/ic_refrigerator"/>
+                        android:src="@drawable/ic_dispensary_icon"/>
 
                     <TextView
                         android:id="@+id/selectedIngredientsCardTitle"
@@ -59,10 +60,10 @@
                         app:layout_constraintTop_toTopOf="@id/dispensaryIcon"
                         app:layout_constraintBottom_toBottomOf="@id/dispensaryIcon"
                         app:layout_constraintLeft_toRightOf="@id/dispensaryIcon"
-                        android:textSize="22sp"
-                        android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginStart="@dimen/spacing_large"
                         style="@style/Headline3"
+                        android:textAllCaps="true"
+                        android:textColor="@color/secondary_dark_1000"
                         android:text="@string/selected_ingredients_title"/>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -70,8 +71,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/dispensaryIcon"
-                        android:layout_marginLeft="@dimen/spacing_large"
-                        android:layout_marginRight="@dimen/spacing_large"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:background="@color/secondary_light"
                         tools:listitem="@layout/item_user_ingredient"

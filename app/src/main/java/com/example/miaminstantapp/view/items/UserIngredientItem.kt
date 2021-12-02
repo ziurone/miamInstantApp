@@ -19,7 +19,6 @@ class UserIngredientItem constructor(
 
     class UserIngredientItemViewHolder(view: View): GroupieViewHolder(view) {
         val name: TextView = view.findViewById(R.id.ingredientName)
-        val ingredientDefaultQuantity: TextView = view.findViewById(R.id.ingredientDefaultQuantity)
         val deleteButton: ImageButton = view.findViewById(R.id.deleteButton)
     }
 
@@ -34,10 +33,8 @@ class UserIngredientItem constructor(
 
     override fun bind(viewHolder: UserIngredientItemViewHolder, position: Int) {
         viewHolder.name.text = userIngredient.ingredient.name.capitalize()
-        val defaultVolumeUnit = userIngredient.volumeUnits.filter { userIngredient.ingredient.volumeUnitId == it.volumeUnitId }[0]
-
-        viewHolder.ingredientDefaultQuantity.text = context.getString(R.string.ingredient_item_volume_unit_with_quantity
-            , userIngredient.ingredient.volumeUnitQuantity, defaultVolumeUnit.name)
+        // Code for mapping default volume unit to be shown if needed.
+//        val defaultVolumeUnit = userIngredient.volumeUnits.filter { userIngredient.ingredient.volumeUnitId == it.volumeUnitId }[0]
 
         viewHolder.deleteButton.setOnClickListener { deleteIconClickListemer() }
     }

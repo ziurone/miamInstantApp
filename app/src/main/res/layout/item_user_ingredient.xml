@@ -12,34 +12,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        style="@style/ItemTitle"
+        android:layout_marginStart="@dimen/spacing_xxlarge"
+        style="@style/Subtitle1"
+        android:textColor="@color/secondary_dark_1000"
         tools:text="Manzana"/>
-
-    <TextView
-        android:id="@+id/ingredientDefaultQuantity"
-        android:layout_width="@dimen/match_constraint"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ingredientName"
-        app:layout_constraintRight_toLeftOf="@id/editButton"
-        android:layout_marginRight="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_small"
-        android:gravity="end"
-        style="@style/ItemTitle"
-        tools:text="2 Unid."/>
-
-    <ImageButton
-        android:id="@+id/editButton"
-        android:layout_width="@dimen/match_constraint"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/deleteButton"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@color/secondary_light"
-        android:src="@drawable/ic_edit"/>
 
 
     <ImageButton
@@ -49,9 +25,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/spacing_large"
         android:clickable="true"
         android:focusable="true"
         android:background="@color/secondary_light"
-        android:src="@drawable/ic_item_close"/>
+        android:src="@drawable/ic_close_small"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
