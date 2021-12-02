@@ -44,7 +44,9 @@ class DispensaryViewModel @Inject constructor(
     }
 
     private fun onRemoveUserIngredientResult(result: RemoveUserIngredientAction.Result) {
-
+        when(result) {
+            RemoveUserIngredientAction.Result.Success -> fetchUserIngredients()
+        }
     }
 
     private fun onFetchSearchRecipeCriteriaResult(result: IFetchSearchRecipeCriteriaAction.Result) {

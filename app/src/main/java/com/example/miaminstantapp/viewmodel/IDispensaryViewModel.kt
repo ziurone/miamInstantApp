@@ -16,6 +16,7 @@ abstract class IDispensaryViewModel: BaseViewModel<IDispensaryViewModel.State>()
         data class SearchIngredientsByNameSuccess(val ingredients: List<Ingredient>): State()
         object SaveRecipesSuccess: State()
         data class FetchSearchRecipeCriteriaSuccess(val criteria: RecipeSearchCriteria): State()
+        object RemovUserIngredientSuccess : State()
     }
 
     abstract fun loadVolumeUnits()
