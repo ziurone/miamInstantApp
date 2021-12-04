@@ -18,8 +18,12 @@
     <dimen name="spacing_item_big">58dp</dimen>
     <dimen name="medium_centered_item">150dp</dimen>
 
+    <!-- Information screens  -->
+    <dimen name="centered_image_with_tool_bar_margin_top">180dp</dimen>
+
     <!-- Constraints utils  -->
     <dimen name="match_constraint">0dp</dimen>
+
 
     <!-- Buttons  -->
     <dimen name="spacing_corner_button_medium">20dp</dimen>

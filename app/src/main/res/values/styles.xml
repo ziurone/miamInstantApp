@@ -77,7 +77,6 @@
     <style name="Heading1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/fredoka_regular</item>
         <item name="android:textSize">27sp</item>
-        <item name="android:textColor">@color/secondary_light_300</item>
     </style>
 
     <style name="Heading2" parent="TextAppearance.MaterialComponents.Headline2">
@@ -118,9 +117,8 @@
     </style>
 
     <style name="Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="fontFamily">sans-serif</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/secondary_dark_1000</item>
+        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="android:textSize">14sp</item>
     </style>
     
     <!-- Button -->

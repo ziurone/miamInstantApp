@@ -28,6 +28,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/emptyViewImage"
+                    android:layout_width="184dp"
+                    android:layout_height="184dp"
+                    android:src="@drawable/ic_dispensary_big"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/centered_image_with_tool_bar_margin_top"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <TextView
+                    android:id="@+id/emptyViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/emptyViewImage"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    style="@style/Heading1"
+                    android:textColor="@color/secondary_light_300"
+                    android:text="@string/dispensary_empty_view_title"
+                    />
+
+                <TextView
+                    android:id="@+id/emptyViewSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/emptyViewTitle"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    style="@style/Subtitle2"
+                    android:textColor="@color/secondary_light_600"
+                    android:text="@string/dispensary_empty_view_subtitle"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/selectedIngredientsCard"
                 android:layout_width="match_parent"

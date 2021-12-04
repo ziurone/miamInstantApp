@@ -59,11 +59,11 @@ class DispensaryFragment : BaseFragment<IDispensaryViewModel, IDispensaryViewMod
     private fun updateSelectedIngredients(ingredients: List<UserIngredientWithVolumeUnits>) {
 
         if(ingredients.isEmpty()) {
-//            emptyView.isVisible = true
+            emptyView.isVisible = true
             selectedIngredientsCard.isVisible = false
         } else {
             selectedIngredientsCard.isVisible = true
-//            emptyView.isVisible = false
+            emptyView.isVisible = false
         }
 
         val ingredientsItems = ingredients.map{

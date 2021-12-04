@@ -52,8 +52,8 @@
     <!-- Dispensary -->
     <string name="dispensary">Heladera</string>
     <string name="add_ingredient_hint">Agregá un ingrediente</string>
-    <string name="dispensary_empty_view_title">Agregá ingredientes</string>
-    <string name="dispensary_empty_view_subtitle">Para que pueda recomendarte recetas</string>
+    <string name="dispensary_empty_view_title">Tu heladera esta vacia.</string>
+    <string name="dispensary_empty_view_subtitle">Empezá a llenarla buscando los ingredientes\n que tengas en tu casa</string>
     <string name="ingredient_item_volume_unit_with_quantity">%1$d %2$s</string>
 
     <!-- Edit user ingredient -->
