@@ -1,6 +1,8 @@
 package com.example.miaminstantapp.view.ingredients.viewmodels
 
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
+import com.example.miaminstantapp.domain.actions.AddUserIngredientAction
+import com.example.miaminstantapp.domain.actions.IAddUserIngredientAction
 import com.example.miaminstantapp.domain.actions.IGetIngredientsByNameAction
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.viewmodel.BaseViewModel
@@ -8,16 +10,23 @@ import com.example.miaminstantapp.viewmodel.IDispensaryViewModel
 import javax.inject.Inject
 
 class IngredientAutocompleteViewModel @Inject constructor(
-    private val getIngredientsByNameAction: IGetIngredientsByNameAction
+    private val getIngredientsByNameAction: IGetIngredientsByNameAction,
+    private val addUserIngredientAction: AddUserIngredientAction
 ): BaseViewModel<IngredientAutocompleteViewModel.State>() {
 
     sealed class State {
         data class IngredientsRetrieved(val ingredients: List<Ingredient>): State()
         object Loading: State()
+        object AddUserIngredientSuccess: State()
     }
 
     init {
         listenSource(getIngredientsByNameAction.getLiveData(), ::onGetIngredientsByNameSuccess)
+        listenSource(addUserIngredientAction.getLiveData(), ::onAddUserIngredient)
+    }
+
+    fun addUserIngredient(ingredient: Ingredient) {
+        addUserIngredientAction.add(ingredient)
     }
 
     fun searchIngredientByName(ingredientName: String) {
@@ -26,9 +35,15 @@ class IngredientAutocompleteViewModel @Inject constructor(
     }
 
     private fun onGetIngredientsByNameSuccess(result: IGetIngredientsByNameAction.Result) {
-
         when(result) {
             is IGetIngredientsByNameAction.Result.Success -> setState(IngredientAutocompleteViewModel.State.IngredientsRetrieved(result.ingredients))
+        }
+    }
+
+    private fun onAddUserIngredient(result: IAddUserIngredientAction.Result) {
+        when(result) {
+            is IAddUserIngredientAction.Result.Error -> TODO()
+            IAddUserIngredientAction.Result.Success -> setState(State.AddUserIngredientSuccess)
         }
     }
 }

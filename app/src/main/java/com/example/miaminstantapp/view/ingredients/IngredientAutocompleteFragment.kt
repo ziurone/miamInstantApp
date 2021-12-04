@@ -43,7 +43,12 @@ class IngredientAutocompleteFragment: BaseFragment<IngredientAutocompleteViewMod
         when(state) {
             is IngredientAutocompleteViewModel.State.IngredientsRetrieved -> showIngredients(state.ingredients)
             IngredientAutocompleteViewModel.State.Loading -> Unit
+            IngredientAutocompleteViewModel.State.AddUserIngredientSuccess -> onAddUserIngredientSuccess()
         }
+    }
+
+    private fun onAddUserIngredientSuccess() {
+        activity?.onBackPressed()
     }
 
     private fun searchIngredientsByName(ingredientName: CharSequence) {
@@ -51,7 +56,12 @@ class IngredientAutocompleteFragment: BaseFragment<IngredientAutocompleteViewMod
     }
 
     private fun showIngredients(ingredients: List<Ingredient>) {
-        val items = ingredients.map { ing -> AutocompleteIngredientItem(ing, { Log.i("Ingredient", ing.name) }) }
+        val items = ingredients.map { ing -> AutocompleteIngredientItem(ing) {
+            viewModel.addUserIngredient(
+                ing
+            )
+        }
+        }
         ingredientAdapter.update(items)
     }
 }
