@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view.ingredients
 
 import android.util.Log
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
@@ -42,12 +43,17 @@ class IngredientAutocompleteFragment: BaseFragment<IngredientAutocompleteViewMod
     override fun onStateChanged(state: IngredientAutocompleteViewModel.State) {
         when(state) {
             is IngredientAutocompleteViewModel.State.IngredientsRetrieved -> showIngredients(state.ingredients)
-            IngredientAutocompleteViewModel.State.Loading -> Unit
+            IngredientAutocompleteViewModel.State.Loading -> showLoading(true)
             IngredientAutocompleteViewModel.State.AddUserIngredientSuccess -> onAddUserIngredientSuccess()
         }
     }
 
+    private fun showLoading(show: Boolean) {
+        loading.isVisible = show
+    }
+
     private fun onAddUserIngredientSuccess() {
+        showLoading(false)
         activity?.onBackPressed()
     }
 
@@ -56,6 +62,7 @@ class IngredientAutocompleteFragment: BaseFragment<IngredientAutocompleteViewMod
     }
 
     private fun showIngredients(ingredients: List<Ingredient>) {
+        showLoading(false)
         val items = ingredients.map { ing -> AutocompleteIngredientItem(ing) {
             viewModel.addUserIngredient(
                 ing

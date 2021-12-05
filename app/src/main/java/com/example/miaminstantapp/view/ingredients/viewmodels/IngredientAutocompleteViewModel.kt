@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view.ingredients.viewmodels
 
+import android.util.Log
 import com.example.miaminstantapp.data.dislikeingredients.IngredientShortDto
 import com.example.miaminstantapp.domain.actions.AddUserIngredientAction
 import com.example.miaminstantapp.domain.actions.IAddUserIngredientAction
@@ -31,18 +32,19 @@ class IngredientAutocompleteViewModel @Inject constructor(
 
     fun searchIngredientByName(ingredientName: String) {
         if(ingredientName.length < 3) return
+        setState(State.Loading)
         getIngredientsByNameAction.getIngredients(ingredientName)
     }
 
     private fun onGetIngredientsByNameSuccess(result: IGetIngredientsByNameAction.Result) {
         when(result) {
-            is IGetIngredientsByNameAction.Result.Success -> setState(IngredientAutocompleteViewModel.State.IngredientsRetrieved(result.ingredients))
+            is IGetIngredientsByNameAction.Result.Success -> setState(State.IngredientsRetrieved(result.ingredients))
         }
     }
 
     private fun onAddUserIngredient(result: IAddUserIngredientAction.Result) {
         when(result) {
-            is IAddUserIngredientAction.Result.Error -> TODO()
+            is IAddUserIngredientAction.Result.Error -> Log.i("error", result.errorMessage)
             IAddUserIngredientAction.Result.Success -> setState(State.AddUserIngredientSuccess)
         }
     }
