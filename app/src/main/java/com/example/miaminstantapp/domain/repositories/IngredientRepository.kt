@@ -48,7 +48,7 @@ class IngredientRepository @Inject constructor(
     }
 
     override fun getIngredientsByName(ingredientName: String): Single<IngredientsListResponse> {
-        return miamApi.searchIngredient(ingredientName)
+        return userIngredientDao.fetchAll().flatMap { list -> miamApi.searchIngredient(ingredientName, list.map { it.ingredientId }) }
     }
 
     override fun getShortIngredientsByName(queryText: String): Single<List<IngredientShortDto>> {

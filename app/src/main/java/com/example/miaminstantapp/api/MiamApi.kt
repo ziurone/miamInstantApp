@@ -22,7 +22,8 @@ interface MiamApi {
 
     @GET("ingredient/search/{query}")
     fun searchIngredient(
-        @Path("query") queryText: String
+        @Path("query") queryText: String,
+        @Query("excludedIngredientsIds[]") excludedIngredients: List<Int>
     ): Single<IngredientsListResponse>
 
 }

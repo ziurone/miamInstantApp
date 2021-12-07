@@ -34,7 +34,6 @@ class IngredientAutocompleteFragment: BaseFragment<IngredientAutocompleteViewMod
 
         searchIngredients.setStartIconOnClickListener {
             findNavController().popBackStack()
-            ingredientsAutocompleteInput.clearFocus()
         }
 
         ingredientsAutocompleteInput.requestFocus()
