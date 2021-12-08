@@ -46,7 +46,7 @@
     <dimen name="card_radius">15dp</dimen>
 
     <!--  Recipe list -->
-    <dimen name="recipe_card_image_height">178dp</dimen>
+    <dimen name="recipe_card_image_height">194dp</dimen>
 
 
 </resources>

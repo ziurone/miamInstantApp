@@ -46,25 +46,20 @@ class RecipeCardView @JvmOverloads constructor(
     }
 
     private fun setPrice() {
-        recipePrice.text = context.getString(R.string.recipe_card_price, catalogRecipeRelations.recipe.price.toInt())
+//        recipePrice.text = context.getString(R.string.recipe_card_price, catalogRecipeRelations.recipe.price.toInt())
     }
 
     private fun setMissingIngredientsBadge(show: Boolean) {
         if(show) {
             if(catalogRecipeRelations.marketIngredients.isNullOrEmpty()) {
-                hasIngredientsBadge.isVisible = true
-                missingIngredientsBadge.isVisible = false
+                missingIngredients.text = context.getString(R.string.card_recipe_fulfilled_text)
+                missingIngredients.setTextColor(resources.getColor(R.color.secondary_light_700))
             } else {
-                hasIngredientsBadge.isVisible = false
-                missingIngredientsBadge.isVisible = true
-                missingIngredientsBadgeText.isVisible = true
-                missingIngredientsBadgeText.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipe.price)
+                missingIngredients.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipe.price)
+                missingIngredients.setTextColor(resources.getColor(R.color.onError))
             }
         } else {
-            recipeIngredientsInfoBadgetContainer.visibility = View.GONE
-            hasIngredientsBadge.isVisible = false
-            missingIngredientsBadge.isVisible = false
-            missingIngredientsBadgeText.isVisible = false
+            missingIngredients.visibility = View.GONE
         }
 
     }

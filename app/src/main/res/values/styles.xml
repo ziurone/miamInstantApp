@@ -62,9 +62,8 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="Body2" parent="Widget.MaterialComponents.BottomAppBar">
-        <item name="fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/tertiary</item>
+    <style name="Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/rubik_normal</item>
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -102,7 +101,7 @@
     <style name="Headline3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="fontFamily">@font/rubik_normal</item>
         <item name="android:fontFamily">@font/rubik</item>
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
