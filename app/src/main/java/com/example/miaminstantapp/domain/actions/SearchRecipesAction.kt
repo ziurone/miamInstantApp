@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.dtos.MarketIngredientDTO
+import com.example.miaminstantapp.domain.dtos.MarketIngredientDTOLegacy
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.dtos.toMarketRecipeEntity
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
@@ -29,9 +29,9 @@ class SearchRecipesAction @Inject constructor(
                 .toSingleDefault(recipes)
             }
             .flatMap { recipes ->
-                val marketIngredients = mutableListOf<MarketIngredientDTO>()
+                val marketIngredients = mutableListOf<MarketIngredientDTOLegacy>()
                 recipes.map {
-                    marketIngredients.addAll(it.marketIngredients)
+                    marketIngredients.addAll(it.marketIngredientLegacies)
                 }
                 marketIngredientRepository
                     .insertAll(marketIngredients)
@@ -45,7 +45,7 @@ class SearchRecipesAction @Inject constructor(
                 recipes.map {
                     val r = it
                     userIngredientsEntities.addAll(
-                        it.userIngredients.map { ingDTO ->
+                        it.userIngredientLegacies.map { ingDTO ->
                             CatalogRecipeUserIngredientEntity(
                                 ingredientId = ingDTO.id,
                                 ingredientName = ingDTO.name,

@@ -1,9 +1,8 @@
 package com.example.miaminstantapp.domain.actions
 
 import android.util.Log
-import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
+import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
 import com.example.miaminstantapp.domain.repositories.IMarketIngredientRepository
-import com.example.miaminstantapp.domain.repositories.MarketIngredientRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -17,9 +16,9 @@ class RemoveMarketIngredientAction @Inject constructor(
         object Error: Result()
     }
 
-    fun remove(marketIngredient: MarketIngredientEntity) {
+    fun remove(marketIngredientLegacy: MarketIngredientEntityLegacy) {
         marketIngredientRepository
-            .delete(marketIngredient)
+            .delete(marketIngredientLegacy)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onResult, ::onError)

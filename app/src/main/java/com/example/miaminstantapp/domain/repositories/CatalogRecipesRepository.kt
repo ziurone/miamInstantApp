@@ -1,9 +1,9 @@
 package com.example.miaminstantapp.domain.repositories
 
-import com.example.miaminstantapp.domain.dtos.MarketIngredientDTO
-import com.example.miaminstantapp.domain.dtos.MarketRecipeDTO
+import com.example.miaminstantapp.domain.dtos.MarketIngredientDTOLegacy
+import com.example.miaminstantapp.domain.dtos.MarketRecipeDTOLegacy
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
-import com.example.miaminstantapp.domain.dtos.UserIngredientDTO
+import com.example.miaminstantapp.domain.dtos.UserIngredientDTOLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
@@ -12,7 +12,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 
-class MarketRecipesRepository @Inject constructor(
+class CatalogRecipesRepository @Inject constructor(
     private val catalogRecipeDao: CatalogRecipeDao
 ): IMarketRecipesRepository {
 
@@ -26,11 +26,11 @@ class MarketRecipesRepository @Inject constructor(
 
     override fun fetchSearchRecipes(): Single<List<CatalogRecipeRelations>> = catalogRecipeDao.fetchAll()
 
-    override fun search(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTO>> {
+    override fun search(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTOLegacy>> {
 
         val searchWithMoneyResponse = Single.just(
             listOf(
-                MarketRecipeDTO(
+                MarketRecipeDTOLegacy(
                     1,
                     "Pollo relleno",
                     "Preparar pollo y rellenar",
@@ -43,7 +43,7 @@ class MarketRecipesRepository @Inject constructor(
                     1,
                     "",
                     listOf(
-                        MarketIngredientDTO(
+                        MarketIngredientDTOLegacy(
                             7,
                             "pollo deshuesado",
                             3,
@@ -61,7 +61,7 @@ class MarketRecipesRepository @Inject constructor(
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060104004.jpg"
                         ),
-                        MarketIngredientDTO(
+                        MarketIngredientDTOLegacy(
                             8,
                             "queso muzzarela",
                             3,
@@ -79,7 +79,7 @@ class MarketRecipesRepository @Inject constructor(
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060608007.jpg"
                         ),
-                        MarketIngredientDTO(
+                        MarketIngredientDTOLegacy(
                             9,
                             "jamon cocido",
                             3,
@@ -97,7 +97,7 @@ class MarketRecipesRepository @Inject constructor(
                             1,
                             "https://imagenes.preciosclaros.gob.ar/productos/categorias/060302018.jpg"
                         ),
-                        MarketIngredientDTO(
+                        MarketIngredientDTOLegacy(
                             10,
                             "puerro",
                             3,
@@ -127,7 +127,7 @@ class MarketRecipesRepository @Inject constructor(
 
         return Single.just(
             listOf(
-                MarketRecipeDTO(
+                MarketRecipeDTOLegacy(
                     1,
                     "Pollo con ensalada",
                     "Preparar pollo con ensalada",
@@ -140,7 +140,7 @@ class MarketRecipesRepository @Inject constructor(
                     1,
                     "",
                     listOf(
-                        MarketIngredientDTO(
+                        MarketIngredientDTOLegacy(
                             1,
                             "pollo",
                             3,
@@ -160,7 +160,7 @@ class MarketRecipesRepository @Inject constructor(
                         )
                     ),
                     listOf(
-                        UserIngredientDTO(
+                        UserIngredientDTOLegacy(
                             1,
                             "sal",
                             100,

@@ -1,17 +1,16 @@
 package com.example.miaminstantapp.persistence
 
-import android.widget.AutoCompleteTextView
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
-import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
+import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
 import io.reactivex.Completable
 
 @Dao
 interface MarketIngredientDao {
     @Insert
-    fun insertAll(marketsIngredients: List<MarketIngredientEntity>): Completable
+    fun insertAll(marketsIngredientLegacies: List<MarketIngredientEntityLegacy>): Completable
 
     @Delete
-    fun delete(marketIngredient: MarketIngredientEntity): Completable
+    fun delete(marketIngredientLegacy: MarketIngredientEntityLegacy): Completable
 }

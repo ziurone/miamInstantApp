@@ -11,7 +11,7 @@ import com.example.miaminstantapp.domain.entities.*
     BranchEntity::class,
     ShopEntity::class,
     CatalogRecipeEntity::class,
-    MarketIngredientEntity::class,
+    MarketIngredientEntityLegacy::class,
     CatalogRecipeUserIngredientEntity::class,
     ShopArticleEntity::class,
     RecipeBookRecipeEntity::class,

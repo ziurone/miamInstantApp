@@ -19,13 +19,13 @@ class AddRecipeAction @Inject constructor(
 
     override fun addRecipe(recipe: CatalogRecipeRelations) {
         shopArticleRepository
-            .insertAll(recipe.marketIngredients.map { it.marketIngredient.toShopArticle() })
+            .insertAll(recipe.marketIngredients.map { it.marketIngredientLegacy.toShopArticle() })
             .andThen(recipeBookRepository.addRecipe(recipe.toRecipeBookRecipe()))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipe.userIngredients.map {
                 recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(recipe.recipe.id)
             }))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipe.marketIngredients.map {
-                it -> it.marketIngredient.toRecipeBookIngredient(recipe.recipe.id)
+                it -> it.marketIngredientLegacy.toRecipeBookIngredient(recipe.recipe.id)
             }))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

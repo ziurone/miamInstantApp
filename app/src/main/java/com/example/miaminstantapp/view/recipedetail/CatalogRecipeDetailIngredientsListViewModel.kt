@@ -1,7 +1,6 @@
 package com.example.miaminstantapp.view.recipedetail
 
 import com.example.miaminstantapp.domain.actions.*
-import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.domain.relations.MarketIngredientRelations
 import com.example.miaminstantapp.domain.relations.toRecipeUserIngredient
@@ -27,7 +26,7 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
     }
 
     fun addUserIngredientFromMarketIngredient(marketIngredientRelations: MarketIngredientRelations) {
-        removeMarketIngredientAction.remove(marketIngredientRelations.marketIngredient)
+        removeMarketIngredientAction.remove(marketIngredientRelations.marketIngredientLegacy)
         addRecipeUserIngredientAction.addIngredient(marketIngredientRelations.toRecipeUserIngredient())
     }
 

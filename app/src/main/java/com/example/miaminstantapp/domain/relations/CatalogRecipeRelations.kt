@@ -2,7 +2,7 @@ package com.example.miaminstantapp.domain.relations
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
+import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
@@ -15,7 +15,7 @@ data class CatalogRecipeRelations (
     @Relation(parentColumn = "id", entityColumn = "recipeId", entity = CatalogRecipeUserIngredientEntity::class)
     val userIngredients: List<CatalogRecipeUserIngredientRelations>,
 
-    @Relation(parentColumn = "id", entityColumn = "recipeId", entity = MarketIngredientEntity::class)
+    @Relation(parentColumn = "id", entityColumn = "recipeId", entity = MarketIngredientEntityLegacy::class)
     val marketIngredients: List<MarketIngredientRelations>
 
 )

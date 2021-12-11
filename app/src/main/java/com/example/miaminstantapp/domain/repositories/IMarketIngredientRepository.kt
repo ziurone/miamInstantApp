@@ -1,10 +1,10 @@
 package com.example.miaminstantapp.domain.repositories
 
-import com.example.miaminstantapp.domain.dtos.MarketIngredientDTO
-import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
+import com.example.miaminstantapp.domain.dtos.MarketIngredientDTOLegacy
+import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
 import io.reactivex.Completable
 
 interface IMarketIngredientRepository {
-    fun insertAll(marketIngredients: List<MarketIngredientDTO>): Completable
-    fun delete(marketIngredient: MarketIngredientEntity): Completable
+    fun insertAll(marketIngredientLegacies: List<MarketIngredientDTOLegacy>): Completable
+    fun delete(marketIngredientLegacy: MarketIngredientEntityLegacy): Completable
 }

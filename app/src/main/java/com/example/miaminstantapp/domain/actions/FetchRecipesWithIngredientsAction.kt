@@ -1,13 +1,13 @@
 package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
-import com.example.miaminstantapp.domain.repositories.MarketRecipesRepository
+import com.example.miaminstantapp.domain.repositories.CatalogRecipesRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class FetchRecipesWithIngredientsAction @Inject constructor(
-    private val recipesRepository: MarketRecipesRepository
+    private val recipesRepository: CatalogRecipesRepository
 ):
     BaseAction<IFetchRecipesWithIngredientsAction.Result>(),
     IFetchRecipesWithIngredientsAction

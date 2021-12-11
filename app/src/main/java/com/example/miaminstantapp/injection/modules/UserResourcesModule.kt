@@ -9,7 +9,6 @@ import com.example.miaminstantapp.injection.qualifiers.AppContext
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
-import com.example.miaminstantapp.scopes.PerApplication
 import com.example.miaminstantapp.view.*
 import com.example.miaminstantapp.view.ingredients.viewmodels.IngredientAutocompleteViewModel
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
@@ -44,7 +43,7 @@ class UserResourcesModule {
     fun providesShopRepository(repository: ShopRepository): IShopRepository = repository
 
     @Provides
-    fun providesMarketRecipeRepository(repository: MarketRecipesRepository): IMarketRecipesRepository = repository
+    fun providesMarketRecipeRepository(repository: CatalogRecipesRepository): IMarketRecipesRepository = repository
 
     @Provides
     fun providesMarketIngredientRepository(repository: MarketIngredientRepository): IMarketIngredientRepository = repository

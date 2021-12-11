@@ -3,7 +3,6 @@ package com.example.miaminstantapp.view.recipedetail.items
 import android.view.View
 import android.widget.TextView
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
 import com.example.miaminstantapp.domain.relations.MarketIngredientRelations
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -24,8 +23,8 @@ class CatalogRecipeMarketIngredientItem(
     override fun createViewHolder(itemView: View): CatalogRecipeMarketIngredientItemViewHolder = CatalogRecipeMarketIngredientItemViewHolder(itemView)
 
     override fun bind(viewHolder: CatalogRecipeMarketIngredientItemViewHolder, position: Int) {
-        viewHolder.articleName.text = marketIngredientEntity.marketIngredient.articleName + " " + marketIngredientEntity.marketIngredient.shopName
-        viewHolder.ingredientName.text = marketIngredientEntity.marketIngredient.volumeUnitQuantity.toInt().toString() + " " + marketIngredientEntity.volumeUnit.name + " " +  marketIngredientEntity.marketIngredient.ingredientName
+        viewHolder.articleName.text = marketIngredientEntity.marketIngredientLegacy.articleName + " " + marketIngredientEntity.marketIngredientLegacy.shopName
+        viewHolder.ingredientName.text = marketIngredientEntity.marketIngredientLegacy.volumeUnitQuantity.toInt().toString() + " " + marketIngredientEntity.volumeUnit.name + " " +  marketIngredientEntity.marketIngredientLegacy.ingredientName
         viewHolder.haveIngredient.setOnClickListener {
             clickListener(marketIngredientEntity)
         }

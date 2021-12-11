@@ -1,9 +1,10 @@
 package com.example.miaminstantapp.domain.dtos
 
-import com.example.miaminstantapp.domain.entities.MarketIngredientEntity
+import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
+import com.squareup.moshi.JsonClass
 
-data class MarketRecipeDTO(
+data class MarketRecipeDTOLegacy(
     val id: Int,
     val title: String,
     val content: String,
@@ -15,11 +16,36 @@ data class MarketRecipeDTO(
     val totalMinutes: Int,
     val siteId: Int,
     val imageUrl: String,
-    val marketIngredients: List<MarketIngredientDTO>,
-    val userIngredients: List<UserIngredientDTO>
+    val marketIngredientLegacies: List<MarketIngredientDTOLegacy>,
+    val userIngredientLegacies: List<UserIngredientDTOLegacy>
 )
 
-fun MarketRecipeDTO.toMarketRecipeEntity(): CatalogRecipeEntity {
+data class CatalogRecipeDto(
+    val id: Int,
+    val title: String,
+    val content: String,
+    val preparingMinutes: Int,
+    val cookingMinutes: Int,
+    val totalMinutes: Int,
+    val imageUrl: String,
+    val marketIngredients: List<MarketIngredientDTO>,
+    val userIngredients: List<RecipeUserIngredientDTO>
+)
+
+@JsonClass(generateAdapter = true)
+data class MarketIngredientDTO(
+    val ingredient: Ingredient,
+    val usedQuantity: Int,
+    val usedVolumeUnitQuantityId: Int
+)
+
+data class RecipeUserIngredientDTO(
+    val id: Int,
+    val usedQuantity: Int,
+    val usedVolumeUnitQuantityId: Int
+)
+
+fun MarketRecipeDTOLegacy.toMarketRecipeEntity(): CatalogRecipeEntity {
     return CatalogRecipeEntity(
         id = id,
         title = title,
@@ -35,7 +61,7 @@ fun MarketRecipeDTO.toMarketRecipeEntity(): CatalogRecipeEntity {
     )
 }
 
-data class MarketIngredientDTO (
+data class MarketIngredientDTOLegacy (
     val ingredientId: Int,
     val ingredientName: String,
     val volumeUnitId: Int,
@@ -54,8 +80,8 @@ data class MarketIngredientDTO (
     val imageUrl: String
 )
 
-fun MarketIngredientDTO.toMarketIngredientEntity(): MarketIngredientEntity {
-    return MarketIngredientEntity(
+fun MarketIngredientDTOLegacy.toMarketIngredientEntity(): MarketIngredientEntityLegacy {
+    return MarketIngredientEntityLegacy(
         ingredientId = ingredientId,
         ingredientName = ingredientName,
         volumeUnitId = volumeUnitId,
@@ -74,7 +100,7 @@ fun MarketIngredientDTO.toMarketIngredientEntity(): MarketIngredientEntity {
     )
 }
 
-data class UserIngredientDTO (
+data class UserIngredientDTOLegacy (
     val id: Int,
     val name: String,
     val usedQuantity: Int,
