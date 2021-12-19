@@ -10,7 +10,7 @@ import com.example.miaminstantapp.domain.entities.*
     UserIngredientVolumeUnitRelation::class,
     BranchEntity::class,
     ShopEntity::class,
-    CatalogRecipeEntity::class,
+    CatalogRecipeEntityLegacy::class,
     MarketIngredientEntityLegacy::class,
     CatalogRecipeUserIngredientEntity::class,
     ShopArticleEntity::class,
@@ -21,7 +21,9 @@ import com.example.miaminstantapp.domain.entities.*
     ExcludedIngredientEntity::class,
     SuggestedIngredientVolumeUnitRelation::class,
     SuggestedIngredientEntity::class,
-    ExcludedSuggestedIngredientEntity::class])
+    ExcludedSuggestedIngredientEntity::class,
+    CatalogRecipeMarketIngredientEntity::class,
+    CatalogRecipeEntity::class])
 abstract class MiamDataBase: RoomDatabase() {
 
     companion object {

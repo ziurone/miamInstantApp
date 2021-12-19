@@ -10,7 +10,7 @@ import javax.inject.Inject
 class MarketIngredientRepository @Inject constructor(
     private val marketIngredientDao: MarketIngredientDao
 ): IMarketIngredientRepository {
-    override fun insertAll(marketIngredientLegacies: List<MarketIngredientDTOLegacy>): Completable  = marketIngredientDao.insertAll(
+    override fun insertAll(marketIngredientLegacies: List<MarketIngredientDTOLegacy>): Completable  = marketIngredientDao.insertAllLegacy(
         marketIngredientLegacies.map {
             it.toMarketIngredientEntity()
         }

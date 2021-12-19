@@ -1,7 +1,9 @@
 package com.example.miaminstantapp.domain.dtos
 
-import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
+import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
+import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
+import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
 import com.squareup.moshi.JsonClass
 
 data class MarketRecipeDTOLegacy(
@@ -27,26 +29,38 @@ data class CatalogRecipeDto(
     val preparingMinutes: Int,
     val cookingMinutes: Int,
     val totalMinutes: Int,
-    val imageUrl: String,
+    val imageUrl: String?,
     val marketIngredients: List<MarketIngredientDTO>,
     val userIngredients: List<RecipeUserIngredientDTO>
-)
+) {
+    fun toCatalogRecipeEntity() = CatalogRecipeEntity(
+        id, title, content, preparingMinutes, cookingMinutes, totalMinutes, imageUrl
+    )
+}
 
 @JsonClass(generateAdapter = true)
 data class MarketIngredientDTO(
     val ingredient: Ingredient,
     val usedQuantity: Int,
     val usedVolumeUnitQuantityId: Int
-)
+) {
+    fun toCatalogRecipeMarketIngredient(recipeId: Int) = CatalogRecipeMarketIngredientEntity(
+        ingredient.id,
+        usedQuantity,
+        usedVolumeUnitQuantityId,
+        recipeId
+    )
+}
 
+@JsonClass(generateAdapter = true)
 data class RecipeUserIngredientDTO(
     val id: Int,
     val usedQuantity: Int,
     val usedVolumeUnitQuantityId: Int
 )
 
-fun MarketRecipeDTOLegacy.toMarketRecipeEntity(): CatalogRecipeEntity {
-    return CatalogRecipeEntity(
+fun MarketRecipeDTOLegacy.toMarketRecipeEntity(): CatalogRecipeEntityLegacy {
+    return CatalogRecipeEntityLegacy(
         id = id,
         title = title,
         content = content,

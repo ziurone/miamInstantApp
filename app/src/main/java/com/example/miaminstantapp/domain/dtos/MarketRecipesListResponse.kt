@@ -1,7 +1,7 @@
 package com.example.miaminstantapp.domain.dtos
 
-import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
+import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
 
 data class MarketRecipesListResponse(
-    val recipes: List<CatalogRecipeEntity>
+    val recipeLegacies: List<CatalogRecipeEntityLegacy>
 )

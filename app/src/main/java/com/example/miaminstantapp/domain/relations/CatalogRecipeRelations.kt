@@ -3,14 +3,14 @@ package com.example.miaminstantapp.domain.relations
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
-import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
+import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 
 data class CatalogRecipeRelations (
 
     @Embedded
-    val recipe: CatalogRecipeEntity,
+    val recipeLegacy: CatalogRecipeEntityLegacy,
 
     @Relation(parentColumn = "id", entityColumn = "recipeId", entity = CatalogRecipeUserIngredientEntity::class)
     val userIngredients: List<CatalogRecipeUserIngredientRelations>,
@@ -21,13 +21,13 @@ data class CatalogRecipeRelations (
 )
 
 fun CatalogRecipeRelations.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
-    name = recipe.title,
-    content = recipe.content,
-    link = recipe.link,
-    servings = recipe.servings,
-    preparingMinutes = recipe.preparingMinutes,
-    cookingMinutes = recipe.cookingMinutes,
-    totalMinutes = recipe.totalMinutes,
-    siteId = recipe.siteId,
-    imageUrl = recipe.imageUrl
+    name = recipeLegacy.title,
+    content = recipeLegacy.content,
+    link = recipeLegacy.link,
+    servings = recipeLegacy.servings,
+    preparingMinutes = recipeLegacy.preparingMinutes,
+    cookingMinutes = recipeLegacy.cookingMinutes,
+    totalMinutes = recipeLegacy.totalMinutes,
+    siteId = recipeLegacy.siteId,
+    imageUrl = recipeLegacy.imageUrl
 )

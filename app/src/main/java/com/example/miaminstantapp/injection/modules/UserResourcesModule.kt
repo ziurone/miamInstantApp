@@ -94,7 +94,7 @@ class UserResourcesModule {
     fun providesFetchShopsAction(action: FetchShopsAction): IFetchShopsAction = action
 
     @Provides
-    fun providesSearchRecipesAction(action: SearchRecipesAction): ISearchRecipesAction = action
+    fun providesSearchRecipesAction(legacyAction: SearchRecipesLegacyAction): ISearchRecipesAction = legacyAction
 
     @Provides
     fun providesUserFirstTimeInAppAction(action: IsFirstTimeOpeningAppAction): IIsFirstTimeOpeningAppAction = action

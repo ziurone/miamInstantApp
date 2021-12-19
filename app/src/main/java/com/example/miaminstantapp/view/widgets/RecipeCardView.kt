@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.extensions.loadImageURL
@@ -34,15 +33,15 @@ class RecipeCardView @JvmOverloads constructor(
     }
 
     private fun setName() {
-        recipeName.text = catalogRecipeRelations.recipe.title
+        recipeName.text = catalogRecipeRelations.recipeLegacy.title
     }
 
     private fun setImage() {
-        recipeImage.loadImageURL(catalogRecipeRelations.recipe.imageUrl, R.drawable.placeholder_recipe_list_image)
+        recipeImage.loadImageURL(catalogRecipeRelations.recipeLegacy.imageUrl, R.drawable.placeholder_recipe_list_image)
     }
 
     private fun setTotalMinutes() {
-        totalMinutesText.text = context.getString( R.string.total_minutes ,catalogRecipeRelations.recipe.totalMinutes)
+        totalMinutesText.text = context.getString( R.string.total_minutes ,catalogRecipeRelations.recipeLegacy.totalMinutes)
     }
 
     private fun setPrice() {
@@ -55,7 +54,7 @@ class RecipeCardView @JvmOverloads constructor(
                 missingIngredients.text = context.getString(R.string.card_recipe_fulfilled_text)
                 missingIngredients.setTextColor(resources.getColor(R.color.secondary_light_700))
             } else {
-                missingIngredients.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipe.price)
+                missingIngredients.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipeLegacy.price)
                 missingIngredients.setTextColor(resources.getColor(R.color.onError))
             }
         } else {

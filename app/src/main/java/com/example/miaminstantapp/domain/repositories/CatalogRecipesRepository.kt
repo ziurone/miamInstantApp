@@ -1,23 +1,23 @@
 package com.example.miaminstantapp.domain.repositories
 
-import com.example.miaminstantapp.domain.dtos.MarketIngredientDTOLegacy
-import com.example.miaminstantapp.domain.dtos.MarketRecipeDTOLegacy
-import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
-import com.example.miaminstantapp.domain.dtos.UserIngredientDTOLegacy
-import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
+import com.example.miaminstantapp.domain.dtos.*
+import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
+import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
+import com.example.miaminstantapp.persistence.MarketIngredientDao
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
 
 class CatalogRecipesRepository @Inject constructor(
-    private val catalogRecipeDao: CatalogRecipeDao
+    private val catalogRecipeDao: CatalogRecipeDao,
+    private val marketIngredientDao: MarketIngredientDao
 ): IMarketRecipesRepository {
 
-    override fun insertAll(recipes: List<CatalogRecipeEntity>): Completable {
-        return catalogRecipeDao.insertAll(recipes)
+    override fun insertAll(recipeLegacies: List<CatalogRecipeEntityLegacy>): Completable {
+        return catalogRecipeDao.insertAllLegacy(recipeLegacies)
     }
 
     override fun deleteAll(): Completable  = catalogRecipeDao.deleteAll()
@@ -26,7 +26,38 @@ class CatalogRecipesRepository @Inject constructor(
 
     override fun fetchSearchRecipes(): Single<List<CatalogRecipeRelations>> = catalogRecipeDao.fetchAll()
 
-    override fun search(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTOLegacy>> {
+    override fun search(searchCriteria: RecipeSearchCriteria): Single<List<CatalogRecipeDto>> {
+        val recipe1 = CatalogRecipeDto(
+                1,
+            "Pastel de papas",
+            "Preparar pastel de papas",
+            10,
+            10,
+            20,
+            null,
+            listOf(
+                MarketIngredientDTO(
+                    ingredient = Ingredient(
+                        100,
+                        "papa",
+                        1,
+                        1000,
+                        listOf(1,2)
+                    ),
+                    usedVolumeUnitQuantityId = 1,
+                    usedQuantity = 100
+                )
+            ),
+            listOf()
+        )
+
+        val apiRecipes = listOf(recipe1)
+        val apiRecipesSingle = Single.just(apiRecipes)
+
+        return apiRecipesSingle
+    }
+
+    override fun searchLegacy(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTOLegacy>> {
 
         val searchWithMoneyResponse = Single.just(
             listOf(

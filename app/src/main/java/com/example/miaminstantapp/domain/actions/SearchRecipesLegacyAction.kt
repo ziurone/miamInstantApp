@@ -9,7 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class SearchRecipesAction @Inject constructor(
+class SearchRecipesLegacyAction @Inject constructor(
     private val recipesRepository: IMarketRecipesRepository,
     private val marketIngredientRepository: IMarketIngredientRepository,
     private val userRecipeIngredientRepository: IUserRecipeIngredientRepository
