@@ -40,7 +40,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
             }
 
         initRecipeList()
-        viewModel.fetchRecipes()
+        viewModel.searchRecipes()
         viewModel.fetchSuggestedIngredients()
     }
 

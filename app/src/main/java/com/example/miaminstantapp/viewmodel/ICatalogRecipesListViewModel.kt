@@ -14,4 +14,5 @@ abstract class ICatalogRecipesListViewModel: BaseViewModel<ICatalogRecipesListVi
     abstract fun fetchSuggestedIngredients()
     abstract fun addIngredient(ingredient: Ingredient)
     abstract fun removeSuggestedIngredient(ingredient: Ingredient)
+    abstract fun searchRecipes()
 }
