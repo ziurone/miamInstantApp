@@ -1,13 +1,13 @@
 package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
-import com.example.miaminstantapp.domain.repositories.IMarketRecipesRepository
+import com.example.miaminstantapp.domain.repositories.ICatalogRecipesRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class GetCatalogRecipeByIdAction @Inject constructor(
-    private val marketRecipesRepository: IMarketRecipesRepository
+    private val catalogRecipesRepository: ICatalogRecipesRepository
 ):
     BaseAction<IGetDoableRecipeByIdAction.Result>(),
     IGetDoableRecipeByIdAction
@@ -22,7 +22,7 @@ class GetCatalogRecipeByIdAction @Inject constructor(
     }
 
     override fun fetchRecipeById(id: Int) {
-        marketRecipesRepository
+        catalogRecipesRepository
             .fetchRecipeById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

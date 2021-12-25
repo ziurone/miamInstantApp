@@ -8,7 +8,7 @@ import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import io.reactivex.Completable
 import io.reactivex.Single
 
-interface IMarketRecipesRepository {
+interface ICatalogRecipesRepository {
     fun searchLegacy(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTOLegacy>>
     fun search(searchCriteria: RecipeSearchCriteria): Single<List<CatalogRecipeDto>>
     fun insertAll(recipeLegacies: List<CatalogRecipeEntityLegacy>): Completable

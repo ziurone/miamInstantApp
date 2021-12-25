@@ -2,7 +2,6 @@ package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.dtos.*
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
-import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
 import com.example.miaminstantapp.persistence.MarketIngredientDao
@@ -14,7 +13,7 @@ import javax.inject.Inject
 class CatalogRecipesRepository @Inject constructor(
     private val catalogRecipeDao: CatalogRecipeDao,
     private val marketIngredientDao: MarketIngredientDao
-): IMarketRecipesRepository {
+): ICatalogRecipesRepository {
 
     override fun insertAll(recipeLegacies: List<CatalogRecipeEntityLegacy>): Completable {
         return catalogRecipeDao.insertAllLegacy(recipeLegacies)

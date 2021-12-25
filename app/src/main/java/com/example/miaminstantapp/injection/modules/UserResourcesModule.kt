@@ -43,7 +43,7 @@ class UserResourcesModule {
     fun providesShopRepository(repository: ShopRepository): IShopRepository = repository
 
     @Provides
-    fun providesMarketRecipeRepository(repository: CatalogRecipesRepository): IMarketRecipesRepository = repository
+    fun providesMarketRecipeRepository(repository: CatalogRecipesRepository): ICatalogRecipesRepository = repository
 
     @Provides
     fun providesMarketIngredientRepository(repository: MarketIngredientRepository): IMarketIngredientRepository = repository

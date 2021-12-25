@@ -1,6 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.repositories.IMarketRecipesRepository
+import com.example.miaminstantapp.domain.repositories.ICatalogRecipesRepository
 import com.example.miaminstantapp.domain.repositories.IShopArticleRepository
 import com.example.miaminstantapp.domain.repositories.IUserMoneyRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,14 +17,14 @@ import javax.inject.Inject
 class DoPurchaseAction @Inject constructor(
     private val shopArticleRepository: IShopArticleRepository,
     private val moneyRepository: IUserMoneyRepository,
-    private val marketRecipesRepository: IMarketRecipesRepository
+    private val catalogRecipesRepository: ICatalogRecipesRepository
 ): BaseAction<IDoPurchaseAction.Result>(), IDoPurchaseAction {
 
     override fun doPurchase() {
         shopArticleRepository
             .getPurchaseMoney()
             .flatMapCompletable { purchaseMoney -> moneyRepository.restMoney(purchaseMoney) }
-            .andThen(marketRecipesRepository.deleteAll())
+            .andThen(catalogRecipesRepository.deleteAll())
             .andThen(shopArticleRepository.cleanPurchase())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

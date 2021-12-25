@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class SearchRecipesLegacyAction @Inject constructor(
-    private val recipesRepository: IMarketRecipesRepository,
+    private val recipesRepository: ICatalogRecipesRepository,
     private val marketIngredientRepository: IMarketIngredientRepository,
     private val userRecipeIngredientRepository: IUserRecipeIngredientRepository
 ): BaseAction<ISearchRecipesAction.Result>(), ISearchRecipesAction {
