@@ -21,7 +21,7 @@ class SearchRecipesLegacyAction @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .flatMap { recipes ->
-                recipesRepository.insertAll(recipes.map {
+                recipesRepository.insertAllLegacy(recipes.map {
                     it.toMarketRecipeEntity()
                 })
                 .subscribeOn(Schedulers.io())

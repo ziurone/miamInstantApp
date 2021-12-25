@@ -2,7 +2,6 @@ package com.example.miaminstantapp.domain.actions
 
 import com.example.miaminstantapp.domain.dtos.MarketIngredientDTOLegacy
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
-import com.example.miaminstantapp.domain.dtos.toMarketRecipeEntity
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.repositories.*
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,52 +16,10 @@ class SearchRecipesAction @Inject constructor(
 
     override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
         recipesRepository
-            .searchLegacy(searchCriteria)
+            .search(searchCriteria)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .flatMap { recipes ->
-                recipesRepository.insertAll(recipes.map {
-                    it.toMarketRecipeEntity()
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .toSingleDefault(recipes)
-            }
-            .flatMap { recipes ->
-                val marketIngredients = mutableListOf<MarketIngredientDTOLegacy>()
-                recipes.map {
-                    marketIngredients.addAll(it.marketIngredientLegacies)
-                }
-                marketIngredientRepository
-                    .insertAll(marketIngredients)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .toSingleDefault(recipes)
-            }
-            .flatMapCompletable { recipes ->
-                val userIngredientsEntities = mutableListOf<CatalogRecipeUserIngredientEntity>()
-
-                recipes.map {
-                    val r = it
-                    userIngredientsEntities.addAll(
-                        it.userIngredientLegacies.map { ingDTO ->
-                            CatalogRecipeUserIngredientEntity(
-                                ingredientId = ingDTO.id,
-                                ingredientName = ingDTO.name,
-                                usedQuantity = ingDTO.usedQuantity,
-                                volumeUnitId = ingDTO.volumeUnitId,
-                                volumeUnitQuantity = ingDTO.volumeUnitQuantity,
-                                recipeId = r.id
-                            )
-                        }
-                    )
-                }
-
-                userRecipeIngredientRepository
-                    .insertAll(userIngredientsEntities)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-            }
+            .flatMapCompletable { recipes -> recipesRepository.insertAll(recipes) }
             .subscribe(::onSuccess, ::onError)
             .track()
     }

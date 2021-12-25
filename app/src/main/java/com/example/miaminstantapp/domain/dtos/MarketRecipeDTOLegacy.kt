@@ -44,7 +44,7 @@ data class MarketIngredientDTO(
     val usedQuantity: Int,
     val usedVolumeUnitQuantityId: Int
 ) {
-    fun toCatalogRecipeMarketIngredient(recipeId: Int) = CatalogRecipeMarketIngredientEntity(
+    fun toCatalogRecipeMarketIngredientEntity(recipeId: Int) = CatalogRecipeMarketIngredientEntity(
         ingredient.id,
         usedQuantity,
         usedVolumeUnitQuantityId,

@@ -2,6 +2,7 @@ package com.example.miaminstantapp.domain.repositories
 
 import com.example.miaminstantapp.domain.dtos.*
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
+import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
 import com.example.miaminstantapp.persistence.MarketIngredientDao
@@ -15,8 +16,20 @@ class CatalogRecipesRepository @Inject constructor(
     private val marketIngredientDao: MarketIngredientDao
 ): ICatalogRecipesRepository {
 
-    override fun insertAll(recipeLegacies: List<CatalogRecipeEntityLegacy>): Completable {
+    override fun insertAllLegacy(recipeLegacies: List<CatalogRecipeEntityLegacy>): Completable {
         return catalogRecipeDao.insertAllLegacy(recipeLegacies)
+    }
+
+    override fun insertAll(recipes: List<CatalogRecipeDto>): Completable {
+        return catalogRecipeDao
+            .insertAll(recipes.map { it.toCatalogRecipeEntity() })
+            .andThen( run {
+                val marketIngredients = mutableListOf<CatalogRecipeMarketIngredientEntity>()
+
+                recipes.forEach { r -> r.marketIngredients.forEach { marketIngredients.add(it.toCatalogRecipeMarketIngredientEntity(r.id)) } }
+
+                marketIngredientDao.insertAll(marketIngredients)
+            } )
     }
 
     override fun deleteAll(): Completable  = catalogRecipeDao.deleteAll()
