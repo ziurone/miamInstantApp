@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
 import com.example.miaminstantapp.R
 
-fun ImageView.loadImageURL(url: String, @DrawableRes placeHolder : Int  = R.drawable.placeholder_recipe_list_image, @DrawableRes error : Int  = R.drawable.placeholder_recipe_list_image) {
+fun ImageView.loadImageURL(url: String, @DrawableRes placeHolder : Int  = R.drawable.ic_recipe_card_empty_image, @DrawableRes error : Int  = R.drawable.ic_recipe_card_empty_image) {
     Glide.with(this.context)
         .load(url)
         .placeholder(placeHolder)

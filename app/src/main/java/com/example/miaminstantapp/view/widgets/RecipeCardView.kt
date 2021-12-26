@@ -37,7 +37,7 @@ class RecipeCardView @JvmOverloads constructor(
     }
 
     private fun setImage() {
-        recipeImage.loadImageURL(catalogRecipeRelations.recipeLegacy.imageUrl, R.drawable.placeholder_recipe_list_image)
+        recipeImage.loadImageURL(catalogRecipeRelations.recipeLegacy.imageUrl, R.drawable.ic_recipe_card_empty_image)
     }
 
     private fun setTotalMinutes() {
@@ -54,7 +54,7 @@ class RecipeCardView @JvmOverloads constructor(
                 missingIngredients.text = context.getString(R.string.card_recipe_fulfilled_text)
                 missingIngredients.setTextColor(resources.getColor(R.color.secondary_light_700))
             } else {
-                missingIngredients.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size, catalogRecipeRelations.recipeLegacy.price)
+                missingIngredients.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelations.marketIngredients.size)
                 missingIngredients.setTextColor(resources.getColor(R.color.onError))
             }
         } else {

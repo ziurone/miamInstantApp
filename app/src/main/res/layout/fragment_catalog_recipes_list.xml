@@ -55,6 +55,7 @@
         android:textColor="@color/secondary_dark_700"/>
 
     <HorizontalScrollView
+        android:id="@+id/suggestedIngredientsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsTitle"
@@ -86,7 +87,8 @@
         android:layout_marginTop="90dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:src="@drawable/ic_search_big"/>
+        android:src="@drawable/ic_search_big"
+        tools:visibility="gone"/>
 
     <TextView
         android:id="@+id/searchTitle"
@@ -97,7 +99,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         style="@style/Heading1"
-        android:text="@string/catalog_recipe_list_new_search_title"/>
+        android:text="@string/catalog_recipe_list_new_search_title"
+        tools:visibility="gone"/>
 
     <TextView
         android:id="@+id/searchSubtitle"
@@ -110,19 +113,18 @@
         style="@style/Subtitle2"
         android:gravity="center"
         android:textColor="@color/secondary_light_300"
+        tools:visibility="gone"
         android:text="@string/catalog_recipe_list_new_search_subtitle"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeList"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/searchIngredients"
+        app:layout_constraintTop_toBottomOf="@id/suggestedIngredientsContainer"
         android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginLeft="@dimen/spacing_large"
-        android:layout_marginStart="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginStart="@dimen/spacing_xxxlarge"
+        android:layout_marginEnd="@dimen/spacing_xxxlarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_market_recipe" />
