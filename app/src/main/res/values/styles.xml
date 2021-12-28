@@ -14,6 +14,7 @@
         <item name="colorSecondaryVariant">#5E7711</item>
         <item name="colorSurface">#FAF5F2</item>
         <item name="colorOnSurface">#1A2704</item>
+        <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
     </style>
 
     <!-- Chip -->
@@ -23,9 +24,16 @@
         <item name="android:textAppearance">@style/Subtitle2</item>
     </style>
 
+    <!-- Card -->
+    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/on_primary</item>
+        <item name="cardElevation">@dimen/spacing_small</item>
+        <item name="cardCornerRadius">@dimen/spacing_small</item>
+    </style>
+
     <!-- Toolbar -->
     <style name="ToolbarStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:fontFamily">@font/rubik_normal</item>
+        <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="textAllCaps">false</item>
         <item name="android:textSize">19sp</item>
         <item name="android:textColor">@color/white</item>
@@ -67,6 +75,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="PrimaryButtonText" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="Heading1Legacy" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/bebas_neue_bold</item>
         <item name="android:textSize">29sp</item>
@@ -84,14 +97,13 @@
     </style>
 
     <style name="Heading3" parent="TextAppearance.MaterialComponents.Headline3">
-        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="fontFamily">@font/rubik_medium</item>
         <item name="android:textSize">19sp</item>
     </style>
 
     <style name="Heading6" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="fontFamily">@font/poppins</item>
-        <item name="android:textSize">19sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="Title" parent="TextAppearance.MaterialComponents.Headline4">
@@ -99,24 +111,24 @@
     </style>
 
     <style name="Headline3" parent="TextAppearance.MaterialComponents.Headline3">
-        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="fontFamily">@font/rubik_medium</item>
         <item name="android:fontFamily">@font/rubik</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="fontFamily">@font/rubik_medium</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="Subtitle2Legacy" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="fontFamily">@font/rubik_medium</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/secondary_dark_1000</item>
     </style>
 
     <style name="Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="fontFamily">@font/rubik_normal</item>
+        <item name="fontFamily">@font/rubik_medium</item>
         <item name="android:textSize">14sp</item>
     </style>
     

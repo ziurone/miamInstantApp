@@ -22,13 +22,14 @@
     <color name="background">#F8F3F2</color>
 
     <!--  Light palette  -->
+    <color name="secondary_light_50">#f3f5e5</color>
     <color name="secondary_light_200">#CBD396</color>
     <color name="secondary_light_300">#B6C26D</color>
     <color name="secondary_light_400">#A7B74D</color>
     <color name="secondary_light_600">#889C24</color>
     <color name="secondary_light_700">#738A1A</color>
     <color name="secondary_dark_1000">#223300</color>
-    <color name="on_surface">#1A2704DE</color>
+    <color name="on_surface">#1A2704</color>
     <color name="on_primary">#FAF5F2</color>
     <color name="onError">#DE0A44</color>
 

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    style="@style/Widget.App.CardView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/imageContainer"
@@ -19,15 +20,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_recipe_card_empty_image"/>
+            android:src="@drawable/ic_recipe_card_empty_image"
+            android:background="@color/secondary_light_50"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/recipeMainInfoBadgetContainer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recipeImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/on_primary">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/recipeName"
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/spacing_small"
-                android:textColor="#1A270499"
+                android:textColor="@color/on_surface"
                 app:layout_constraintTop_toBottomOf="@id/recipeName"
                 app:layout_constraintLeft_toLeftOf="@+id/recipeName"
                 tools:text="30 min."
@@ -75,7 +76,7 @@
             android:layout_marginTop="@dimen/spacing_large"
             android:layout_marginStart="@dimen/spacing_large"
             android:paddingBottom="@dimen/spacing_large"
-            style="@style/Body2"
+            style="@style/PrimaryButtonText"
             android:textColor="@color/onError"
             tools:text="Te faltan 2 ingredientes"
             android:textAllCaps="true"/>

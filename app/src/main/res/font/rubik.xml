@@ -3,5 +3,5 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/rubik_mono" />
+        android:font="@font/rubik_medium" />
 </font-family>
