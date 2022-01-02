@@ -3,7 +3,7 @@ package com.example.miaminstantapp.domain.repositories
 import com.example.miaminstantapp.domain.dtos.*
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
 import com.example.miaminstantapp.persistence.MarketIngredientDao
 import io.reactivex.Completable
@@ -34,9 +34,9 @@ class CatalogRecipesRepository @Inject constructor(
 
     override fun deleteAll(): Completable  = catalogRecipeDao.deleteAll()
 
-    override fun fetchRecipeById(id: Int): Single<CatalogRecipeRelations> = catalogRecipeDao.fetchById(id)
+    override fun fetchRecipeById(id: Int): Single<CatalogRecipeRelationsLegacy> = catalogRecipeDao.fetchById(id)
 
-    override fun fetchSearchRecipes(): Single<List<CatalogRecipeRelations>> = catalogRecipeDao.fetchAll()
+    override fun fetchSearchRecipes(): Single<List<CatalogRecipeRelationsLegacy>> = catalogRecipeDao.fetchAll()
 
     override fun search(searchCriteria: RecipeSearchCriteria): Single<List<CatalogRecipeDto>> {
         val recipe1 = CatalogRecipeDto(

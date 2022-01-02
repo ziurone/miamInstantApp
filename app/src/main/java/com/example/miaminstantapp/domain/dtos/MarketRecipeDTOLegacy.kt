@@ -46,6 +46,7 @@ data class MarketIngredientDTO(
 ) {
     fun toCatalogRecipeMarketIngredientEntity(recipeId: Int) = CatalogRecipeMarketIngredientEntity(
         ingredient.id,
+        ingredient.name,
         usedQuantity,
         usedVolumeUnitQuantityId,
         recipeId

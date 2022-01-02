@@ -8,8 +8,9 @@ import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientE
 data class CatalogRecipeMarketIngredientEntity(
     @PrimaryKey
     val ingredientId: Int,
+    val name: String,
     val usedQuantity: Int,
-    val usedVolumeUnitQuantityId: Int,
+    val usedVolumeUnitId: Int,
     val recipeId: Int
 ) {
     companion object {

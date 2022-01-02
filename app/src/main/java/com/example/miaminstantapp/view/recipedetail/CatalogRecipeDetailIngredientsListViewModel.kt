@@ -1,9 +1,8 @@
 package com.example.miaminstantapp.view.recipedetail
 
 import com.example.miaminstantapp.domain.actions.*
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.domain.relations.MarketIngredientRelations
-import com.example.miaminstantapp.domain.relations.toRecipeUserIngredient
 import com.example.miaminstantapp.viewmodel.BaseViewModel
 import javax.inject.Inject
 
@@ -27,7 +26,7 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
 
     fun addUserIngredientFromMarketIngredient(marketIngredientRelations: MarketIngredientRelations) {
         removeMarketIngredientAction.remove(marketIngredientRelations.marketIngredientLegacy)
-        addRecipeUserIngredientAction.addIngredient(marketIngredientRelations.toRecipeUserIngredient())
+//        addRecipeUserIngredientAction.addIngredient(marketIngredientRelations.toRecipeUserIngredient())
     }
 
     private fun onAddUserIngredientSuccess(result: AddRecipeUserIngredientAction.Result) {
@@ -38,13 +37,13 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
 
     private fun onGetCatalogRecipeByIdResult(result: IGetDoableRecipeByIdAction.Result) {
         when(result) {
-            is IGetDoableRecipeByIdAction.Result.Success -> setState(State.FetchSuccess(result.recipe))
+            is IGetDoableRecipeByIdAction.Result.Success -> setState(State.FetchSuccess(result.recipeLegacy))
             is IGetDoableRecipeByIdAction.Result.Error -> Unit
         }
     }
 
     sealed class State {
-        data class FetchSuccess(val recipe: CatalogRecipeRelations): State()
+        data class FetchSuccess(val recipeLegacy: CatalogRecipeRelationsLegacy): State()
         object RefetchSuccess: State()
     }
 

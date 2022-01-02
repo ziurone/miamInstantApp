@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntity
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import io.reactivex.Completable
 import io.reactivex.Single
 
@@ -19,10 +19,10 @@ interface CatalogRecipeDao {
     fun insertAll(recipeLegacies: List<CatalogRecipeEntity>): Completable
 
     @Query("Select * FROM " + CatalogRecipeEntityLegacy.TABLE_NAME)
-    fun fetchAll(): Single<List<CatalogRecipeRelations>>
+    fun fetchAll(): Single<List<CatalogRecipeRelationsLegacy>>
 
     @Query("SELECT * FROM " + CatalogRecipeEntityLegacy.TABLE_NAME + " WHERE id = :id ")
-    fun fetchById(id: Int): Single<CatalogRecipeRelations>
+    fun fetchById(id: Int): Single<CatalogRecipeRelationsLegacy>
 
     @Query("DELETE FROM " + CatalogRecipeEntityLegacy.TABLE_NAME)
     fun deleteAll(): Completable

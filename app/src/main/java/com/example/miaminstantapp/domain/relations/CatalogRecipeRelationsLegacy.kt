@@ -7,7 +7,7 @@ import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 
-data class CatalogRecipeRelations (
+data class CatalogRecipeRelationsLegacy (
 
     @Embedded
     val recipeLegacy: CatalogRecipeEntityLegacy,
@@ -20,7 +20,7 @@ data class CatalogRecipeRelations (
 
 )
 
-fun CatalogRecipeRelations.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
+fun CatalogRecipeRelationsLegacy.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
     name = recipeLegacy.title,
     content = recipeLegacy.content,
     link = recipeLegacy.link,

@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.routing.Launcher
 import com.example.miaminstantapp.view.items.RecipeItem
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
@@ -54,7 +54,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     override fun onStateChanged(state: ICatalogRecipesListViewModel.State) {
 
         when(state) {
-            is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.catalogRecipeRelations)
+            is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.catalogRecipeRelationLegacies)
             is ICatalogRecipesListViewModel.State.Error -> Unit
             is ICatalogRecipesListViewModel.State.FetchSuggestedIngredientsSuccess -> showSuggestedIngredients(state.suggestedIngredients)
         }
@@ -89,9 +89,9 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
         }
     }
 
-    private fun showRecipes(catalogRecipeRelations: List<CatalogRecipeRelations>) {
-        if (catalogRecipeRelations.isNotEmpty()) {
-            val items = catalogRecipeRelations.map { doableRecipe ->
+    private fun showRecipes(catalogRecipeRelationLegacies: List<CatalogRecipeRelationsLegacy>) {
+        if (catalogRecipeRelationLegacies.isNotEmpty()) {
+            val items = catalogRecipeRelationLegacies.map { doableRecipe ->
                 RecipeItem(doableRecipe) {
                     Launcher(requireContext()).catalogRecipeDetail(doableRecipe.recipeLegacy.id)
                 }

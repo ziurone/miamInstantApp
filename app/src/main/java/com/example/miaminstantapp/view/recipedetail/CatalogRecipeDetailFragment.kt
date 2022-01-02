@@ -1,24 +1,20 @@
 package com.example.miaminstantapp.view.recipedetail
 
-import android.view.WindowManager
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelations
+import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
-import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailActivity.Companion.CATALOG_RECIPE_ID_KEY
 import com.example.miaminstantapp.viewmodel.ICatalogRecipeDetailViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, ICatalogRecipeDetailViewModel.State>() {
 
-    private lateinit var recipe: CatalogRecipeRelations
+    private lateinit var recipeLegacy: CatalogRecipeRelationsLegacy
 
     override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_detail
 
@@ -34,7 +30,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         }
 
         addRecipe.setOnClickListener {
-            viewModel.addRecipe(recipe)
+            viewModel.addRecipe(recipeLegacy)
         }
 
         val recipeId = screenArgs.catalogRecipeIdKey
@@ -53,14 +49,12 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
 
     override fun onStateChanged(state: ICatalogRecipeDetailViewModel.State) {
         when(state) {
-            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipeRelations)
+            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipeRelationsLegacy)
             is ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> {
                 addRecipeSuccess()
             }
             is ICatalogRecipeDetailViewModel.State.Error -> Unit
             ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> Unit
-            is ICatalogRecipeDetailViewModel.State.Error -> Unit
-            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> Unit
         }
     }
 
@@ -68,9 +62,9 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         findNavController().navigate(R.id.fromDetailToMarketIngredientsAdded)
     }
 
-    private fun showRecipe(catalogRecipeRelations: CatalogRecipeRelations) {
-        recipeCard.setRecipe(catalogRecipeRelations, false)
-        recipe = catalogRecipeRelations
+    private fun showRecipe(catalogRecipeRelationsLegacy: CatalogRecipeRelationsLegacy) {
+        recipeCard.setRecipe(catalogRecipeRelationsLegacy, true)
+        recipeLegacy = catalogRecipeRelationsLegacy
     }
 
 
