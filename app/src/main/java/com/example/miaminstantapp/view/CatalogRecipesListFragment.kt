@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.dtos.Ingredient
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.routing.Launcher
 import com.example.miaminstantapp.view.items.RecipeItem
 import com.example.miaminstantapp.viewmodel.ICatalogRecipesListViewModel
@@ -89,9 +89,9 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
         }
     }
 
-    private fun showRecipes(catalogRecipeRelationLegacies: List<CatalogRecipeRelationsLegacy>) {
-        if (catalogRecipeRelationLegacies.isNotEmpty()) {
-            val items = catalogRecipeRelationLegacies.map { doableRecipe ->
+    private fun showRecipes(catalogRecipeAggregates: List<CatalogRecipeAgreggate>) {
+        if (catalogRecipeAggregates.isNotEmpty()) {
+            val items = catalogRecipeAggregates.map { doableRecipe ->
                 RecipeItem(doableRecipe) {
                     Launcher(requireContext()).catalogRecipeDetail(doableRecipe.recipeLegacy.id)
                 }

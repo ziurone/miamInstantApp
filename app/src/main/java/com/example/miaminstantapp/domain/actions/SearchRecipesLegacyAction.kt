@@ -51,7 +51,6 @@ class SearchRecipesLegacyAction @Inject constructor(
                                 ingredientName = ingDTO.name,
                                 usedQuantity = ingDTO.usedQuantity,
                                 volumeUnitId = ingDTO.volumeUnitId,
-                                volumeUnitQuantity = ingDTO.volumeUnitQuantity,
                                 recipeId = r.id
                             )
                         }

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.extensions.loadImageURL
 import kotlinx.android.synthetic.main.recipe_card.view.*
 
@@ -14,7 +14,7 @@ class RecipeCardView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    private lateinit var catalogRecipeRelationsLegacy: CatalogRecipeRelationsLegacy
+    private lateinit var catalogRecipeAggregate: CatalogRecipeAgreggate
 
     init {
         LayoutInflater
@@ -22,8 +22,8 @@ class RecipeCardView @JvmOverloads constructor(
             .inflate(R.layout.recipe_card, this, true)
     }
 
-    fun setRecipe(catalogRecipeRelationsLegacy: CatalogRecipeRelationsLegacy, showMissingIngredients: Boolean) {
-        this.catalogRecipeRelationsLegacy = catalogRecipeRelationsLegacy
+    fun setRecipe(catalogRecipeAggregate: CatalogRecipeAgreggate, showMissingIngredients: Boolean) {
+        this.catalogRecipeAggregate = catalogRecipeAggregate
         setImage()
         setTotalMinutes()
         setMissingIngredientsBadge(showMissingIngredients)
@@ -33,15 +33,15 @@ class RecipeCardView @JvmOverloads constructor(
     }
 
     private fun setName() {
-        recipeName.text = catalogRecipeRelationsLegacy.recipeLegacy.title
+        recipeName.text = catalogRecipeAggregate.recipeLegacy.title
     }
 
     private fun setImage() {
-        recipeImage.loadImageURL(catalogRecipeRelationsLegacy.recipeLegacy.imageUrl, R.drawable.ic_recipe_card_empty_image)
+        recipeImage.loadImageURL(catalogRecipeAggregate.recipeLegacy.imageUrl.orEmpty(), R.drawable.ic_recipe_card_empty_image)
     }
 
     private fun setTotalMinutes() {
-        totalMinutesText.text = context.getString( R.string.total_minutes ,catalogRecipeRelationsLegacy.recipeLegacy.totalMinutes)
+        totalMinutesText.text = context.getString( R.string.total_minutes ,catalogRecipeAggregate.recipeLegacy.totalMinutes)
     }
 
     private fun setPrice() {
@@ -50,11 +50,11 @@ class RecipeCardView @JvmOverloads constructor(
 
     private fun setMissingIngredientsBadge(show: Boolean) {
         if(show) {
-            if(catalogRecipeRelationsLegacy.marketIngredients.isNullOrEmpty()) {
+            if(catalogRecipeAggregate.marketIngredients.isNullOrEmpty()) {
                 missingIngredients.text = context.getString(R.string.card_recipe_fulfilled_text)
                 missingIngredients.setTextColor(resources.getColor(R.color.secondary_light_700))
             } else {
-                missingIngredients.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeRelationsLegacy.marketIngredients.size)
+                missingIngredients.text = context.getString(R.string.missing_ingredients_badge_text, catalogRecipeAggregate.marketIngredients.size)
                 missingIngredients.setTextColor(resources.getColor(R.color.onError))
             }
         } else {

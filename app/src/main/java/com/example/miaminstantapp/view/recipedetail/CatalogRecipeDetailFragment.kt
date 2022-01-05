@@ -4,6 +4,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.miaminstantapp.R
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, ICatalogRecipeDetailViewModel.State>() {
 
-    private lateinit var recipeLegacy: CatalogRecipeRelationsLegacy
+    private lateinit var recipeAgreggate: CatalogRecipeAgreggate
 
     override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_detail
 
@@ -30,7 +31,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         }
 
         addRecipe.setOnClickListener {
-            viewModel.addRecipe(recipeLegacy)
+//            viewModel.addRecipe(recipeAgreggate)
         }
 
         val recipeId = screenArgs.catalogRecipeIdKey
@@ -49,7 +50,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
 
     override fun onStateChanged(state: ICatalogRecipeDetailViewModel.State) {
         when(state) {
-            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipeRelationsLegacy)
+            is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipeAgreggate)
             is ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> {
                 addRecipeSuccess()
             }
@@ -62,9 +63,9 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         findNavController().navigate(R.id.fromDetailToMarketIngredientsAdded)
     }
 
-    private fun showRecipe(catalogRecipeRelationsLegacy: CatalogRecipeRelationsLegacy) {
-        recipeCard.setRecipe(catalogRecipeRelationsLegacy, true)
-        recipeLegacy = catalogRecipeRelationsLegacy
+    private fun showRecipe(catalogRecipeAgreggate: CatalogRecipeAgreggate) {
+        recipeCard.setRecipe(catalogRecipeAgreggate, true)
+        recipeAgreggate = catalogRecipeAgreggate
     }
 
 

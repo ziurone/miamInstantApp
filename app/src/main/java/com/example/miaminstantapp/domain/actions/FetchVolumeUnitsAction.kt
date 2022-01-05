@@ -26,12 +26,12 @@ class FetchVolumeUnitsAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IFetchVolumeUnitsAction.Result? {
-        Log.i("NETWORK_ERROR", throwable.localizedMessage)
         return IFetchVolumeUnitsAction.Result.Error(throwable.localizedMessage)
     }
 
     override fun getFailureResult(failedResponseCode: String): IFetchVolumeUnitsAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i("NETWORK_ERROR", "failure")
+        return  IFetchVolumeUnitsAction.Result.Error(failedResponseCode)
     }
 
     private fun onSuccess(response: VolumeUnitsListResponse) {

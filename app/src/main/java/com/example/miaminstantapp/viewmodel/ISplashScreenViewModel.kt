@@ -4,6 +4,7 @@ abstract class ISplashScreenViewModel: BaseViewModel<ISplashScreenViewModel.Stat
     sealed class State {
         object IsUserFirstTimeInApp: State()
         object UserHasAlreadyUseTheApp: State()
+        object MasterDataRetrievedSuccessfully: State()
     }
 
     abstract fun hasUserUsedAppBefore()

@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view.recipedetail
 
 import com.example.miaminstantapp.R
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeMarketIngredientItem
@@ -42,7 +43,7 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
         marketIngredientsList.adapter = marketIngredientsAdapter
     }
 
-    private fun showIngredients(catalogRecipeRelationsLegacy: CatalogRecipeRelationsLegacy) {
+    private fun showIngredients(catalogRecipeRelationsLegacy: CatalogRecipeAgreggate) {
         marketIngredientsAdapter.clear()
         userIngredientsAdapter.clear()
 

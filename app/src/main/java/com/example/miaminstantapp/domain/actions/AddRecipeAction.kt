@@ -18,19 +18,19 @@ class AddRecipeAction @Inject constructor(
 ): BaseAction<IAddRecipeAction.Result>(), IAddRecipeAction {
 
     override fun addRecipe(recipeLegacy: CatalogRecipeRelationsLegacy) {
-        shopArticleRepository
-            .insertAll(recipeLegacy.marketIngredients.map { it.marketIngredientLegacy.toShopArticle() })
-            .andThen(recipeBookRepository.addRecipe(recipeLegacy.toRecipeBookRecipe()))
-            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipeLegacy.userIngredients.map {
-                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(recipeLegacy.recipeLegacy.id)
-            }))
-            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipeLegacy.marketIngredients.map {
-                it -> it.marketIngredientLegacy.toRecipeBookIngredient(recipeLegacy.recipeLegacy.id)
-            }))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::onSuccess, ::onError)
-            .track()
+//        shopArticleRepository
+//            .insertAll(recipeLegacy.marketIngredients.map { it.marketIngredientLegacy.toShopArticle() })
+//            .andThen(recipeBookRepository.addRecipe(recipeLegacy.toRecipeBookRecipe()))
+//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipeLegacy.userIngredients.map {
+//                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(recipeLegacy.recipeLegacy.id)
+//            }))
+//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipeLegacy.marketIngredients.map {
+//                it -> it.marketIngredientLegacy.toRecipeBookIngredient(recipeLegacy.recipeLegacy.id)
+//            }))
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(::onSuccess, ::onError)
+//            .track()
     }
 
     override fun getFailureResult(failedResponseCode: String): IAddRecipeAction.Result? {

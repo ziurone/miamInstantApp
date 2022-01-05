@@ -2,13 +2,13 @@ package com.example.miaminstantapp.view.items
 
 import android.view.View
 import com.example.miaminstantapp.R
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.view.widgets.RecipeCardView
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
 class RecipeItem(
-    private val catalogRecipeRelationsLegacy: CatalogRecipeRelationsLegacy,
+    private val catalogRecipeAggregate: CatalogRecipeAgreggate,
     private val clickListener: () -> Unit
 ): Item<RecipeItem.RecipeItemViewHolder>() {
 
@@ -18,7 +18,7 @@ class RecipeItem(
 
     override fun bind(viewHolder: RecipeItemViewHolder, position: Int) {
         val recipeCard = viewHolder.recipeCard
-        recipeCard.setRecipe(catalogRecipeRelationsLegacy, true)
+        recipeCard.setRecipe(catalogRecipeAggregate, true)
         recipeCard.setOnClickListener {
             clickListener()
         }

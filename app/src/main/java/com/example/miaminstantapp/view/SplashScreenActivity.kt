@@ -23,7 +23,8 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
 
     override fun onStateChanged(state: ISplashScreenViewModel.State) {
         when (state) {
-            ISplashScreenViewModel.State.UserHasAlreadyUseTheApp, ISplashScreenViewModel.State.IsUserFirstTimeInApp -> navigateToCatalogRecipesFlow()
+            ISplashScreenViewModel.State.UserHasAlreadyUseTheApp, ISplashScreenViewModel.State.IsUserFirstTimeInApp -> Unit
+            ISplashScreenViewModel.State.MasterDataRetrievedSuccessfully -> navigateToCatalogRecipesFlow()
         }
 
         finish()

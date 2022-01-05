@@ -13,7 +13,6 @@ data class CatalogRecipeUserIngredientEntity(
     val ingredientName: String,
     val usedQuantity: Int,
     val volumeUnitId: Int,
-    val volumeUnitQuantity: Float,
     val recipeId: Int
 ) {
     companion object {

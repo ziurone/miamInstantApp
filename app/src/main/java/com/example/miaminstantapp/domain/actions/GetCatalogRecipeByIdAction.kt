@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.domain.repositories.ICatalogRecipesRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -9,19 +10,19 @@ import javax.inject.Inject
 class GetCatalogRecipeByIdAction @Inject constructor(
     private val catalogRecipesRepository: ICatalogRecipesRepository
 ):
-    BaseAction<IGetDoableRecipeByIdAction.Result>(),
-    IGetDoableRecipeByIdAction
+    BaseAction<IGetCatalogRecipeByIdAction.Result>(),
+    IGetCatalogRecipeByIdAction
 {
 
-    override fun getErrorResult(throwable: Throwable): IGetDoableRecipeByIdAction.Result? {
-        return IGetDoableRecipeByIdAction.Result.Error(throwable.localizedMessage)
+    override fun getErrorResult(throwable: Throwable): IGetCatalogRecipeByIdAction.Result? {
+        return IGetCatalogRecipeByIdAction.Result.Error(throwable.localizedMessage)
     }
 
-    override fun getFailureResult(failedResponseCode: String): IGetDoableRecipeByIdAction.Result? {
+    override fun getFailureResult(failedResponseCode: String): IGetCatalogRecipeByIdAction.Result? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun fetchRecipeById(id: Int) {
+    override fun fetch(id: Int) {
         catalogRecipesRepository
             .fetchRecipeById(id)
             .subscribeOn(Schedulers.io())
@@ -30,7 +31,7 @@ class GetCatalogRecipeByIdAction @Inject constructor(
             .track()
     }
 
-    fun onSuccess(recipeLegacy: CatalogRecipeRelationsLegacy) {
-        liveData.value = IGetDoableRecipeByIdAction.Result.Success(recipeLegacy)
+    fun onSuccess(recipeAggregate: CatalogRecipeAgreggate) {
+        liveData.value = IGetCatalogRecipeByIdAction.Result.Success(recipeAggregate)
     }
 }

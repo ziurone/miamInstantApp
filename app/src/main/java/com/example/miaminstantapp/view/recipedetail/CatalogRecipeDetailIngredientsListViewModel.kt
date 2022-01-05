@@ -1,6 +1,7 @@
 package com.example.miaminstantapp.view.recipedetail
 
 import com.example.miaminstantapp.domain.actions.*
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.domain.relations.MarketIngredientRelations
 import com.example.miaminstantapp.viewmodel.BaseViewModel
@@ -21,11 +22,11 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
 
     fun fetchRecipe(recipeId: Int) {
         showedRecipeId = recipeId
-        getCatalogRecipeByIdAction.fetchRecipeById(recipeId)
+        getCatalogRecipeByIdAction.fetch(recipeId)
     }
 
     fun addUserIngredientFromMarketIngredient(marketIngredientRelations: MarketIngredientRelations) {
-        removeMarketIngredientAction.remove(marketIngredientRelations.marketIngredientLegacy)
+        //removeMarketIngredientAction.remove(marketIngredientRelations.marketIngredientLegacy)
 //        addRecipeUserIngredientAction.addIngredient(marketIngredientRelations.toRecipeUserIngredient())
     }
 
@@ -35,15 +36,15 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
         }
     }
 
-    private fun onGetCatalogRecipeByIdResult(result: IGetDoableRecipeByIdAction.Result) {
+    private fun onGetCatalogRecipeByIdResult(result: IGetCatalogRecipeByIdAction.Result) {
         when(result) {
-            is IGetDoableRecipeByIdAction.Result.Success -> setState(State.FetchSuccess(result.recipeLegacy))
-            is IGetDoableRecipeByIdAction.Result.Error -> Unit
+            is IGetCatalogRecipeByIdAction.Result.Success -> setState(State.FetchSuccess(result.recipeAggregate))
+            is IGetCatalogRecipeByIdAction.Result.Error -> Unit
         }
     }
 
     sealed class State {
-        data class FetchSuccess(val recipeLegacy: CatalogRecipeRelationsLegacy): State()
+        data class FetchSuccess(val recipeLegacy: CatalogRecipeAgreggate): State()
         object RefetchSuccess: State()
     }
 

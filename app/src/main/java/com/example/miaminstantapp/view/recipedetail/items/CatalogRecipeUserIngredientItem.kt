@@ -16,7 +16,7 @@ class CatalogRecipeUserIngredientItem(
 
     override fun bind(viewHolder: CatalogRecipeUserIngredientItemViewHolder, position: Int) {
         viewHolder.name.text = userIngredientEntity.userIngredient.ingredientName
-        viewHolder.volumeUnitQuantity.text = userIngredientEntity.userIngredient.volumeUnitQuantity.toInt().toString() + userIngredientEntity.volumeUnit.name
+//        viewHolder.volumeUnitQuantity.text = userIngredientEntity.userIngredient.volumeUnitQuantity.toInt().toString() + userIngredientEntity.volumeUnit.name
     }
 
     override fun createViewHolder(itemView: View): CatalogRecipeUserIngredientItemViewHolder = CatalogRecipeUserIngredientItemViewHolder(itemView)

@@ -53,6 +53,7 @@ class SplashScreenViewModel @Inject constructor(
 
     private fun updateVolumeUnits(volumeUnits: List<VolumeUnitEntity>) {
         addVolumeUnitsAction.add(volumeUnits)
+        setState(ISplashScreenViewModel.State.MasterDataRetrievedSuccessfully)
     }
 
     private fun onCompleteAddVolumeUnits(result: IAddVolumeUnitsAction.Result) {
