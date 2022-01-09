@@ -2,7 +2,6 @@ package com.example.miaminstantapp.view.recipedetail
 
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeMarketIngredientItem
 import com.example.miaminstantapp.view.recipedetail.items.CatalogRecipeMarketIngredientsHeaderItem
@@ -27,7 +26,7 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
 
     override fun onStateChanged(state: CatalogRecipeDetailIngredientsListViewModel.State) {
         when(state) {
-            is CatalogRecipeDetailIngredientsListViewModel.State.FetchSuccess -> showIngredients(state.recipeLegacy)
+            is CatalogRecipeDetailIngredientsListViewModel.State.FetchSuccess -> showIngredients(state.recipeAggregate)
             CatalogRecipeDetailIngredientsListViewModel.State.RefetchSuccess -> TODO()
         }
     }
@@ -43,26 +42,26 @@ class CatalogRecipeDetailIngredientsListFragment: BaseFragment<CatalogRecipeDeta
         marketIngredientsList.adapter = marketIngredientsAdapter
     }
 
-    private fun showIngredients(catalogRecipeRelationsLegacy: CatalogRecipeAgreggate) {
+    private fun showIngredients(catalogRecipeAggregate: CatalogRecipeAgreggate) {
         marketIngredientsAdapter.clear()
         userIngredientsAdapter.clear()
 
         val marketIngredientsItems = mutableListOf<Group>()
-        if(catalogRecipeRelationsLegacy.marketIngredients.isNotEmpty()) {
+        if(catalogRecipeAggregate.marketIngredients.isNotEmpty()) {
             marketIngredientsItems.add(CatalogRecipeMarketIngredientsHeaderItem())
         }
 
-        marketIngredientsItems.addAll(catalogRecipeRelationsLegacy.marketIngredients.map {
+        marketIngredientsItems.addAll(catalogRecipeAggregate.marketIngredients.map {
             CatalogRecipeMarketIngredientItem(it) { marketIngredientRelations ->
                 viewModel.addUserIngredientFromMarketIngredient(marketIngredientRelations)
             }
         })
 
         val userIngredientsItems = mutableListOf<Group>()
-        if(catalogRecipeRelationsLegacy.userIngredients.isNotEmpty()) {
+        if(catalogRecipeAggregate.userIngredients.isNotEmpty()) {
             userIngredientsItems.add(CatalogRecipeUserIngredientsHeaderItem())
         }
-        userIngredientsItems.addAll(catalogRecipeRelationsLegacy.userIngredients.map { CatalogRecipeUserIngredientItem(it) })
+        userIngredientsItems.addAll(catalogRecipeAggregate.userIngredients.map { CatalogRecipeUserIngredientItem(it) })
 
 
         marketIngredientsAdapter.update(marketIngredientsItems)

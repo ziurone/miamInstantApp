@@ -44,7 +44,7 @@ class CatalogRecipeDetailIngredientsListViewModel @Inject constructor(
     }
 
     sealed class State {
-        data class FetchSuccess(val recipeLegacy: CatalogRecipeAgreggate): State()
+        data class FetchSuccess(val recipeAggregate: CatalogRecipeAgreggate): State()
         object RefetchSuccess: State()
     }
 

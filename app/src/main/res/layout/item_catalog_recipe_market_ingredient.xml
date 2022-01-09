@@ -17,31 +17,13 @@
         android:layout_marginStart="@dimen/spacing_double_large"
         tools:text="1/4 de pollo"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/match_constraint"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/CatalogRecipeMarketIngredientPrice"
-        tools:text="$200"/>
-
-    <TextView
-        android:id="@+id/articleName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/ingredientWithQuantity"
-        app:layout_constraintTop_toBottomOf="@id/ingredientWithQuantity"
-        style="@style/Body1"
-        android:textColor="@color/secondary_dark_1200"
-        tools:text="Pollo granja miam"/>
 
     <TextView
         android:id="@+id/haveIngredientButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="@id/ingredientWithQuantity"
-        app:layout_constraintTop_toBottomOf="@id/articleName"
+        app:layout_constraintTop_toBottomOf="@id/ingredientWithQuantity"
         android:layout_marginTop="@dimen/spacing_small"
         android:text="@string/recipe_detail_have_ingredient_action"
         android:textAllCaps="true"

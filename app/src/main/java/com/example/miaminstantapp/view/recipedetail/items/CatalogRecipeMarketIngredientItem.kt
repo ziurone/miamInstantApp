@@ -14,7 +14,6 @@ class CatalogRecipeMarketIngredientItem(
 
     class CatalogRecipeMarketIngredientItemViewHolder(view: View): GroupieViewHolder(view) {
         val ingredientName: TextView = view.findViewById(R.id.ingredientWithQuantity)
-        val articleName: TextView = view.findViewById(R.id.articleName)
         val haveIngredient: TextView = view.findViewById(R.id.haveIngredientButton)
     }
 
@@ -23,8 +22,7 @@ class CatalogRecipeMarketIngredientItem(
     override fun createViewHolder(itemView: View): CatalogRecipeMarketIngredientItemViewHolder = CatalogRecipeMarketIngredientItemViewHolder(itemView)
 
     override fun bind(viewHolder: CatalogRecipeMarketIngredientItemViewHolder, position: Int) {
-//        viewHolder.articleName.text = marketIngredientEntity.marketIngredientLegacy.articleName + " " + marketIngredientEntity.marketIngredientLegacy.shopName
-//        viewHolder.ingredientName.text = marketIngredientEntity.marketIngredientLegacy.volumeUnitQuantity.toInt().toString() + " " + marketIngredientEntity.volumeUnit.name + " " +  marketIngredientEntity.marketIngredientLegacy.ingredientName
+        viewHolder.ingredientName.text =  marketIngredientEntity.volumeUnit.name + " " +  marketIngredientEntity.marketIngredient.name
         viewHolder.haveIngredient.setOnClickListener {
             clickListener(marketIngredientEntity)
         }

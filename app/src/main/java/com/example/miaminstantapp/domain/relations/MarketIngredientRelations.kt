@@ -9,7 +9,7 @@ import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 
 data class MarketIngredientRelations(
     @Embedded
-    val marketIngredientLegacy: CatalogRecipeMarketIngredientEntity,
+    val marketIngredient: CatalogRecipeMarketIngredientEntity,
 
     @Relation(parentColumn = "volumeUnitId", entityColumn = "volumeUnitId", entity = VolumeUnitEntity::class)
     val volumeUnit: VolumeUnitEntity

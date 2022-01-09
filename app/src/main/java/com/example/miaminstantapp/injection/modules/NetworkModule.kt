@@ -12,7 +12,7 @@ class NetworkModule {
 
     @Provides
     fun providesRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl("https://api.dev.miam.cloud/api/v1/")
+        return Retrofit.Builder().baseUrl("https://api.dev.miam.cloud/app_dev.php/api/v1/")
             .addConverterFactory(MoshiConverterFactory.create().asLenient())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
