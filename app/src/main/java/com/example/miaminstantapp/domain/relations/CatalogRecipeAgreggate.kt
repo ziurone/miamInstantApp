@@ -13,4 +13,14 @@ data class CatalogRecipeAgreggate(
 
     @Relation(parentColumn = "id", entityColumn = "recipeId", entity = CatalogRecipeMarketIngredientEntity::class)
     val marketIngredients: List<MarketIngredientRelations>
-)
+) {
+    fun toRecipeBookRecipe() = RecipeBookRecipeEntity(
+        name = recipe.title,
+        content = recipe.content,
+        servings = 4,
+        preparingMinutes = recipe.preparingMinutes,
+        cookingMinutes = recipe.cookingMinutes,
+        totalMinutes = recipe.totalMinutes,
+        imageUrl = recipe.imageUrl
+    )
+}

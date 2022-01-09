@@ -23,11 +23,9 @@ data class CatalogRecipeRelationsLegacy (
 fun CatalogRecipeRelationsLegacy.toRecipeBookRecipe(): RecipeBookRecipeEntity = RecipeBookRecipeEntity(
     name = recipeLegacy.title,
     content = recipeLegacy.content,
-    link = recipeLegacy.link,
     servings = recipeLegacy.servings,
     preparingMinutes = recipeLegacy.preparingMinutes,
     cookingMinutes = recipeLegacy.cookingMinutes,
     totalMinutes = recipeLegacy.totalMinutes,
-    siteId = recipeLegacy.siteId,
     imageUrl = recipeLegacy.imageUrl
 )

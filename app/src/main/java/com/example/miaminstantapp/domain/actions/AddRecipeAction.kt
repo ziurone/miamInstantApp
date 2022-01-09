@@ -21,7 +21,7 @@ class AddRecipeAction @Inject constructor(
     override fun addRecipe(catalogRecipeAggregate: CatalogRecipeAgreggate) {
         shopArticleRepository
             .insertAll(catalogRecipeAggregate.marketIngredients.map { it.marketIngredient.toShoppingArticle() })
-//            .andThen(recipeBookRepository.addRecipe(catalogRecipeAggregate.toRecipeBookRecipe()))
+            .andThen(recipeBookRepository.addRecipe(catalogRecipeAggregate.toRecipeBookRecipe()))
 //            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.userIngredients.map {
 //                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(catalogRecipeAggregate.recipeLegacy.id)
 //            }))

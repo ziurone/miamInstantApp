@@ -11,8 +11,6 @@ data class RecipeBookRecipeEntity(
 
     val content: String,
 
-    val link: String,
-
     val servings: Int,
 
     val preparingMinutes: Int,
@@ -21,9 +19,7 @@ data class RecipeBookRecipeEntity(
 
     val totalMinutes: Int,
 
-    val siteId: Int,
-
-    val imageUrl: String
+    val imageUrl: String?
 ) {
     companion object {
         const val TABLE_NAME = "user_recipes"
