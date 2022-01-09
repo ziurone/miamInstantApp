@@ -33,15 +33,15 @@ class RecipeCardView @JvmOverloads constructor(
     }
 
     private fun setName() {
-        recipeName.text = catalogRecipeAggregate.recipeLegacy.title
+        recipeName.text = catalogRecipeAggregate.recipe.title
     }
 
     private fun setImage() {
-        recipeImage.loadImageURL(catalogRecipeAggregate.recipeLegacy.imageUrl.orEmpty(), R.drawable.ic_recipe_card_empty_image)
+        recipeImage.loadImageURL(catalogRecipeAggregate.recipe.imageUrl.orEmpty(), R.drawable.ic_recipe_card_empty_image)
     }
 
     private fun setTotalMinutes() {
-        totalMinutesText.text = context.getString( R.string.total_minutes ,catalogRecipeAggregate.recipeLegacy.totalMinutes)
+        totalMinutesText.text = context.getString( R.string.total_minutes ,catalogRecipeAggregate.recipe.totalMinutes)
     }
 
     private fun setPrice() {

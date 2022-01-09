@@ -91,9 +91,9 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
 
     private fun showRecipes(catalogRecipeAggregates: List<CatalogRecipeAgreggate>) {
         if (catalogRecipeAggregates.isNotEmpty()) {
-            val items = catalogRecipeAggregates.map { doableRecipe ->
-                RecipeItem(doableRecipe) {
-                    Launcher(requireContext()).catalogRecipeDetail(doableRecipe.recipeLegacy.id)
+            val items = catalogRecipeAggregates.map { catalogRecipeAggregate ->
+                RecipeItem(catalogRecipeAggregate) {
+                    Launcher(requireContext()).catalogRecipeDetail(catalogRecipeAggregate.recipe.id)
                 }
             }
 

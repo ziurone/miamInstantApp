@@ -6,7 +6,7 @@ import com.example.miaminstantapp.domain.entities.*
 
 data class CatalogRecipeAgreggate(
     @Embedded
-    val recipeLegacy: CatalogRecipeEntity,
+    val recipe: CatalogRecipeEntity,
 
     @Relation(parentColumn = "id", entityColumn = "recipeId", entity = CatalogRecipeUserIngredientEntity::class)
     val userIngredients: List<CatalogRecipeUserIngredientRelations>,
