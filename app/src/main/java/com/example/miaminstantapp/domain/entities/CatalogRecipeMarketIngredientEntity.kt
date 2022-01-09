@@ -25,4 +25,11 @@ data class CatalogRecipeMarketIngredientEntity(
         recipeId = recipeId
     )
 
+    fun toRecipeBookIngredient() = RecipeBookRecipeIngredientEntity(
+        name = name,
+        volumeUnitId = volumeUnitId,
+        quantity = usedQuantity,
+        recipeId = recipeId
+    )
+
 }

@@ -6,11 +6,9 @@ import com.example.miaminstantapp.domain.entities.RecipeBookRecipeIngredientEnti
 
 @Entity(tableName = TABLE_NAME)
 data class RecipeBookRecipeIngredientEntity(
-
     val name: String,
-
+    val volumeUnitId: Int,
     val quantity: Int,
-
     val recipeId: Int
 
 ) {

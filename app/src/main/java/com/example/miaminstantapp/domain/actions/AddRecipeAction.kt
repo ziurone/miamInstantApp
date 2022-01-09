@@ -22,12 +22,12 @@ class AddRecipeAction @Inject constructor(
         shopArticleRepository
             .insertAll(catalogRecipeAggregate.marketIngredients.map { it.marketIngredient.toShoppingArticle() })
             .andThen(recipeBookRepository.addRecipe(catalogRecipeAggregate.toRecipeBookRecipe()))
-//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.userIngredients.map {
-//                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(catalogRecipeAggregate.recipeLegacy.id)
-//            }))
-//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.marketIngredients.map {
-//                it -> it.marketIngredientLegacy.toRecipeBookIngredient(catalogRecipeAggregate.recipeLegacy.id)
-//            }))
+            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.userIngredients.map {
+                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(catalogRecipeAggregate.recipe.id)
+            }))
+            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.marketIngredients.map {
+                it -> it.marketIngredient.toRecipeBookIngredient()
+            }))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)

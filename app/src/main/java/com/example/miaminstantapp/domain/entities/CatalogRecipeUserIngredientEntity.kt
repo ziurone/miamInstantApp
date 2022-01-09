@@ -25,6 +25,7 @@ data class CatalogRecipeUserIngredientEntity(
 
 fun CatalogRecipeUserIngredientEntity.toRecipeBookIngredient(recipe: Int) = RecipeBookRecipeIngredientEntity(
     name = ingredientName,
+    volumeUnitId = volumeUnitId,
     quantity = usedQuantity,
     recipeId = recipe
 )
