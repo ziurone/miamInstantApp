@@ -9,11 +9,20 @@ data class CatalogRecipeMarketIngredientEntity(
     @PrimaryKey
     val ingredientId: Int,
     val name: String,
-    val usedQuantity: Int,
     val volumeUnitId: Int,
+    val usedQuantity: Int,
     val recipeId: Int
 ) {
     companion object {
         const val TABLE_NAME = "catalogRecipeMarketIngredients"
     }
+
+    fun toShoppingArticle() = ShoppingListArticleEntity(
+        ingredientId = ingredientId,
+        ingredientName = name,
+        volumeUnitId = volumeUnitId,
+        quantity = usedQuantity,
+        recipeId = recipeId
+    )
+
 }

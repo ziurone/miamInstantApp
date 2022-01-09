@@ -4,7 +4,6 @@ import com.example.miaminstantapp.domain.dtos.*
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
-import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
 import com.example.miaminstantapp.persistence.MarketIngredientDao
 import io.reactivex.Completable
@@ -57,7 +56,7 @@ class CatalogRecipesRepository @Inject constructor(
                         1000,
                         listOf(1,2)
                     ),
-                    usedVolumeUnitQuantityId = 1,
+                    volumeUnitId = 1,
                     usedQuantity = 100
                 )
             ),

@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 
 interface IAddRecipeAction: Action<IAddRecipeAction.Result> {
@@ -8,5 +9,5 @@ interface IAddRecipeAction: Action<IAddRecipeAction.Result> {
         data class Error(val errorMessage: String): Result()
     }
 
-    fun addRecipe(recipeLegacy: CatalogRecipeRelationsLegacy)
+    fun addRecipe(catalogRecipeAggregate: CatalogRecipeAgreggate)
 }

@@ -7,6 +7,7 @@ import androidx.room.Query
 import com.example.miaminstantapp.domain.entities.BranchEntity
 import com.example.miaminstantapp.domain.entities.ShopArticleEntity
 import com.example.miaminstantapp.domain.entities.ShopEntity
+import com.example.miaminstantapp.domain.entities.ShoppingListArticleEntity
 import com.example.miaminstantapp.domain.relations.ShopWithBranchesAndArticles
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -14,8 +15,14 @@ import io.reactivex.Single
 
 @Dao
 interface ShopArticleDao {
+
     @Insert
-    fun insertAll(articles: List<ShopArticleEntity>): Completable
+    fun insertAll(articles: List<ShoppingListArticleEntity>): Completable
+
+    
+
+    @Insert
+    fun insertAllLegacy(articles: List<ShopArticleEntity>): Completable
 
     @Query("SELECT * FROM " + ShopArticleEntity.TABLE_NAME)
     fun fetch(): Single<List<ShopArticleEntity>>

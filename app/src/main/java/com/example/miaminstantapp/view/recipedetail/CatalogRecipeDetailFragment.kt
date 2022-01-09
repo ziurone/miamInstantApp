@@ -31,7 +31,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
         }
 
         addRecipe.setOnClickListener {
-//            viewModel.addRecipe(recipeAgreggate)
+            viewModel.addRecipe(recipeAgreggate)
         }
 
         val recipeId = screenArgs.catalogRecipeIdKey

@@ -2,6 +2,7 @@ package com.example.miaminstantapp.domain.actions
 
 import android.util.Log
 import com.example.miaminstantapp.domain.entities.*
+import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.domain.relations.toRecipeBookRecipe
 import com.example.miaminstantapp.domain.repositories.IRecipeBookRecipeIngredientRepository
@@ -17,20 +18,20 @@ class AddRecipeAction @Inject constructor(
     private val recipeBookRecipeIngredientRepository: IRecipeBookRecipeIngredientRepository
 ): BaseAction<IAddRecipeAction.Result>(), IAddRecipeAction {
 
-    override fun addRecipe(recipeLegacy: CatalogRecipeRelationsLegacy) {
-//        shopArticleRepository
-//            .insertAll(recipeLegacy.marketIngredients.map { it.marketIngredientLegacy.toShopArticle() })
-//            .andThen(recipeBookRepository.addRecipe(recipeLegacy.toRecipeBookRecipe()))
-//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipeLegacy.userIngredients.map {
-//                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(recipeLegacy.recipeLegacy.id)
+    override fun addRecipe(catalogRecipeAggregate: CatalogRecipeAgreggate) {
+        shopArticleRepository
+            .insertAll(catalogRecipeAggregate.marketIngredients.map { it.marketIngredient.toShoppingArticle() })
+//            .andThen(recipeBookRepository.addRecipe(catalogRecipeAggregate.toRecipeBookRecipe()))
+//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.userIngredients.map {
+//                recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(catalogRecipeAggregate.recipeLegacy.id)
 //            }))
-//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(recipeLegacy.marketIngredients.map {
-//                it -> it.marketIngredientLegacy.toRecipeBookIngredient(recipeLegacy.recipeLegacy.id)
+//            .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.marketIngredients.map {
+//                it -> it.marketIngredientLegacy.toRecipeBookIngredient(catalogRecipeAggregate.recipeLegacy.id)
 //            }))
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe(::onSuccess, ::onError)
-//            .track()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::onSuccess, ::onError)
+            .track()
     }
 
     override fun getFailureResult(failedResponseCode: String): IAddRecipeAction.Result? {

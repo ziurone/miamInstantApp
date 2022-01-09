@@ -11,5 +11,5 @@ abstract class ICatalogRecipeDetailViewModel: BaseViewModel<ICatalogRecipeDetail
     }
 
     abstract fun fetchRecipe(recipeId: Int)
-    abstract fun addRecipe(catalogRecipeRelationsLegacy: CatalogRecipeRelationsLegacy)
+    abstract fun addRecipe(catalogRecipeAggregate: CatalogRecipeAgreggate)
 }
