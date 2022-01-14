@@ -16,7 +16,7 @@ data class CatalogRecipeUserIngredientEntity(
     val recipeId: Int
 ) {
     companion object {
-        const val TABLE_NAME = "doable_recipe_user_ingredients"
+        const val TABLE_NAME = "catalogRecipesUserIngredients"
     }
 
     @PrimaryKey(autoGenerate = true)

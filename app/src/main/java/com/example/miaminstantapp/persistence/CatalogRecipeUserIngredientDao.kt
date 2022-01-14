@@ -7,7 +7,7 @@ import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEnt
 import io.reactivex.Completable
 
 @Dao
-interface RecipeUserIngredientDao {
+interface CatalogRecipeUserIngredientDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(ingredients: List<CatalogRecipeUserIngredientEntity>): Completable
 

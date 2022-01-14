@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class FetchRecipesWithIngredientsAction @Inject constructor(
+class FetchCatalogRecipesAggregatesAction @Inject constructor(
     private val recipesRepository: CatalogRecipesRepository
 ):
     BaseAction<IFetchRecipesWithIngredientsAction.Result>(),
@@ -23,7 +23,7 @@ class FetchRecipesWithIngredientsAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IFetchRecipesWithIngredientsAction.Result? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        throw throwable
     }
 
     override fun getFailureResult(failedResponseCode: String): IFetchRecipesWithIngredientsAction.Result? {

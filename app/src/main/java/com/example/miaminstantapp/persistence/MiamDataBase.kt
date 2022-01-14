@@ -43,7 +43,7 @@ abstract class MiamDataBase: RoomDatabase() {
 
     abstract fun marketRecipesDao(): CatalogRecipeDao
 
-    abstract fun userIngredientsOnRecipeDao(): RecipeUserIngredientDao
+    abstract fun userIngredientsOnRecipeDao(): CatalogRecipeUserIngredientDao
 
     abstract fun shopArticlesDao(): ShopArticleDao
 

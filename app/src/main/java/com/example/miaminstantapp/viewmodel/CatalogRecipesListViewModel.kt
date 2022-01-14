@@ -7,7 +7,7 @@ import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import javax.inject.Inject
 
 class CatalogRecipesListViewModel @Inject constructor(
-    private val fetchRecipesWithIngredientsAction: FetchRecipesWithIngredientsAction,
+    private val fetchCatalogRecipesAggregatesAction: FetchCatalogRecipesAggregatesAction,
     private val fetchSuggestedIngredientsAction: IFetchSuggestedIngredientsAction,
     private val removeSuggestedIngredientAction: RemoveSuggestedIngredientAction,
     private val addUserIngredientAction: AddUserIngredientAction,
@@ -15,7 +15,7 @@ class CatalogRecipesListViewModel @Inject constructor(
 ): ICatalogRecipesListViewModel() {
 
     init {
-        listenSource(fetchRecipesWithIngredientsAction.getLiveData(), ::onFetchRecipesResult)
+        listenSource(fetchCatalogRecipesAggregatesAction.getLiveData(), ::onFetchRecipesResult)
         listenSource(fetchSuggestedIngredientsAction.getLiveData(), ::onFetchSuggestedIngredientsResult)
         listenSource(removeSuggestedIngredientAction.getLiveData(), ::onRemoveSuggestedIngredientResult)
         listenSource(addUserIngredientAction.getLiveData(), ::onAddedIngredientResult)
@@ -27,7 +27,7 @@ class CatalogRecipesListViewModel @Inject constructor(
     }
 
     override fun fetchRecipes() {
-        fetchRecipesWithIngredientsAction.fetch()
+        fetchCatalogRecipesAggregatesAction.fetch()
     }
 
     override fun addIngredient(ingredient: Ingredient) {

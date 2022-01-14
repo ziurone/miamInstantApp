@@ -3,9 +3,11 @@ package com.example.miaminstantapp.domain.repositories
 import com.example.miaminstantapp.domain.dtos.*
 import com.example.miaminstantapp.domain.entities.CatalogRecipeEntityLegacy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
+import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.persistence.CatalogRecipeDao
 import com.example.miaminstantapp.persistence.MarketIngredientDao
+import com.example.miaminstantapp.persistence.CatalogRecipeUserIngredientDao
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
@@ -13,7 +15,8 @@ import javax.inject.Inject
 
 class CatalogRecipesRepository @Inject constructor(
     private val catalogRecipeDao: CatalogRecipeDao,
-    private val marketIngredientDao: MarketIngredientDao
+    private val marketIngredientDao: MarketIngredientDao,
+    private val catalogRecipeUserIngredientDao: CatalogRecipeUserIngredientDao
 ): ICatalogRecipesRepository {
 
     override fun insertAllLegacy(recipeLegacies: List<CatalogRecipeEntityLegacy>): Completable {
@@ -29,6 +32,14 @@ class CatalogRecipesRepository @Inject constructor(
                 recipes.forEach { r -> r.marketIngredients.forEach { marketIngredients.add(it.toCatalogRecipeMarketIngredientEntity(r.id)) } }
 
                 marketIngredientDao.insertAll(marketIngredients)
+            } )
+            .andThen ( run {
+                val userIngredients = mutableListOf<CatalogRecipeUserIngredientEntity>()
+
+                recipes.forEach { r -> r.userIngredients.forEach { userIngredients.add(it.toCatalogRecipeUserIngredientEntity(r.id)) } }
+
+                catalogRecipeUserIngredientDao.insertAll(userIngredients)
+
             } )
     }
 
@@ -60,7 +71,13 @@ class CatalogRecipesRepository @Inject constructor(
                     usedQuantity = 100
                 )
             ),
-            listOf()
+            listOf(CatalogRecipeUserIngredientDTO(
+                id = 100,
+                name = "Batata",
+                usedQuantity = 2,
+                volumeUnitId = 1
+            )
+            )
         )
 
         val apiRecipes = listOf(recipe1)
