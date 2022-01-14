@@ -54,7 +54,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     override fun onStateChanged(state: ICatalogRecipesListViewModel.State) {
 
         when(state) {
-            is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.catalogRecipeRelationLegacies)
+            is ICatalogRecipesListViewModel.State.FetchedRecipesSuccess -> showRecipes(state.catalogRecipesAgreggates)
             is ICatalogRecipesListViewModel.State.Error -> Unit
             is ICatalogRecipesListViewModel.State.FetchSuggestedIngredientsSuccess -> showSuggestedIngredients(state.suggestedIngredients)
         }

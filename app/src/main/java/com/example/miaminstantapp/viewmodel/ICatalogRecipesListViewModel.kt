@@ -6,7 +6,7 @@ import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 
 abstract class ICatalogRecipesListViewModel: BaseViewModel<ICatalogRecipesListViewModel.State>() {
     sealed class State {
-        data class FetchedRecipesSuccess(val catalogRecipeRelationLegacies: List<CatalogRecipeAgreggate>): State()
+        data class FetchedRecipesSuccess(val catalogRecipesAgreggates: List<CatalogRecipeAgreggate>): State()
         data class Error(val errorMessage: String): State()
         data class FetchSuggestedIngredientsSuccess(val suggestedIngredients: List<Ingredient>) : State()
     }

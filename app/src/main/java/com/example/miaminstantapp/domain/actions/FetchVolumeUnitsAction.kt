@@ -1,23 +1,21 @@
 package com.example.miaminstantapp.domain.actions
 
 import android.util.Log
-import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.domain.repositories.IVolumeUnitRepository
-import com.example.miaminstantapp.dtos.volumeUnits.VolumeUnitDto
 import com.example.miaminstantapp.dtos.volumeUnits.VolumeUnitsListResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class FetchVolumeUnitsAction @Inject constructor(
-    private val userVolumeUnitRepository: IVolumeUnitRepository
+    private val volumeUnitRepository: IVolumeUnitRepository
 ):
     IFetchVolumeUnitsAction,
     BaseAction<IFetchVolumeUnitsAction.Result>()
 {
 
     override fun fetch() {
-        userVolumeUnitRepository
+        volumeUnitRepository
             .fetchAll()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -30,7 +28,6 @@ class FetchVolumeUnitsAction @Inject constructor(
     }
 
     override fun getFailureResult(failedResponseCode: String): IFetchVolumeUnitsAction.Result? {
-        Log.i("NETWORK_ERROR", "failure")
         return  IFetchVolumeUnitsAction.Result.Error(failedResponseCode)
     }
 
@@ -39,6 +36,5 @@ class FetchVolumeUnitsAction @Inject constructor(
             Log.i("volumeUnit", it.name)
             it.toEntity()
         })
-        cleanUp()
     }
 }

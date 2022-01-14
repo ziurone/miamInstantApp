@@ -32,6 +32,7 @@ data class MarketIngredientEntityLegacy (
 
 fun MarketIngredientEntityLegacy.toRecipeBookIngredient(recipe: Int): RecipeBookRecipeIngredientEntity = RecipeBookRecipeIngredientEntity(
     name = ingredientName,
+    volumeUnitId = volumeUnitId,
     quantity = usedQuantity,
     recipeId = recipe
 )

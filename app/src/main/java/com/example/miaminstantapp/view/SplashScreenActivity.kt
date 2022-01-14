@@ -11,7 +11,6 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
     override fun getLayoutId(): Int = R.layout.activity_splash_screen
 
     override fun initViews() {
-        viewModel.hasUserUsedAppBefore()
         viewModel.fetchMasterData()
         super.initViews()
     }
@@ -26,11 +25,10 @@ class SplashScreenActivity: NavigationActivity<ISplashScreenViewModel, ISplashSc
             ISplashScreenViewModel.State.UserHasAlreadyUseTheApp, ISplashScreenViewModel.State.IsUserFirstTimeInApp -> Unit
             ISplashScreenViewModel.State.MasterDataRetrievedSuccessfully -> navigateToCatalogRecipesFlow()
         }
-
-        finish()
     }
 
     private fun navigateToCatalogRecipesFlow() {
         this.startActivity(Intent(this, SessionActivity::class.java))
+        finish()
     }
 }

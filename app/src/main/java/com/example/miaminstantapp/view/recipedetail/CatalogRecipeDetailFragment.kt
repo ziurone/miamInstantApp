@@ -64,6 +64,7 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
     }
 
     private fun showRecipe(catalogRecipeAgreggate: CatalogRecipeAgreggate) {
+        addRecipe.isEnabled = true
         recipeCard.setRecipe(catalogRecipeAgreggate, true)
         recipeAgreggate = catalogRecipeAgreggate
     }

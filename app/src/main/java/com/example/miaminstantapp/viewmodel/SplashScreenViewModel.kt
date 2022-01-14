@@ -25,15 +25,12 @@ class SplashScreenViewModel @Inject constructor(
         isFirstTimeOpeningAppAction.isFirstTimeInApp()
     }
 
-
-
     override fun fetchMasterData() {
         fetchVolumeUnitsAction.fetch()
     }
 
     private fun onIsUserFirstTimeInApp(result: IIsFirstTimeOpeningAppAction.Result) {
         viewModelScope.launch {
-            delayer.delay(900)
             when(result) {
                 is IIsFirstTimeOpeningAppAction.Result.UserFirstTimeInApp -> {
                     setState(State.IsUserFirstTimeInApp)
@@ -53,10 +50,12 @@ class SplashScreenViewModel @Inject constructor(
 
     private fun updateVolumeUnits(volumeUnits: List<VolumeUnitEntity>) {
         addVolumeUnitsAction.add(volumeUnits)
-        setState(ISplashScreenViewModel.State.MasterDataRetrievedSuccessfully)
     }
 
     private fun onCompleteAddVolumeUnits(result: IAddVolumeUnitsAction.Result) {
-
+        when(result) {
+            is IAddVolumeUnitsAction.Result.Error -> TODO()
+            IAddVolumeUnitsAction.Result.Success -> setState(State.MasterDataRetrievedSuccessfully)
+        }
     }
 }

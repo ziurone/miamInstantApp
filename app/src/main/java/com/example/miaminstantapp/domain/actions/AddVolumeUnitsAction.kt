@@ -21,7 +21,6 @@ class AddVolumeUnitsAction @Inject constructor(
     }
 
     override fun getErrorResult(throwable: Throwable): IAddVolumeUnitsAction.Result? {
-        Log.i("ERROR_VOLUME_UNIT", throwable.message)
         return IAddVolumeUnitsAction.Result.Error(throwable.localizedMessage)
     }
 

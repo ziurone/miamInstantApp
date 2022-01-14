@@ -6,7 +6,7 @@ import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 interface IFetchRecipesWithIngredientsAction: Action<IFetchRecipesWithIngredientsAction.Result> {
 
     sealed class Result {
-        data class Success(val catalogRecipeRelationLegacies: List<CatalogRecipeAgreggate>): Result()
+        data class Success(val catalogRecipesAgreggates: List<CatalogRecipeAgreggate>): Result()
         data class Error(val errorMessage: String): Result()
     }
 

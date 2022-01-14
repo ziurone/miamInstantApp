@@ -43,6 +43,7 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
             is ITicketViewModel.State.PurchaseIsEmpty -> showEmptyView()
             is ITicketViewModel.State.FetchShopPurchasesSuccess -> showShopPurchases(state.shopsPurchases)
             is ITicketViewModel.State.DoPurchaseSuccess -> recipesDone()
+            is ITicketViewModel.State.Error -> TODO()
         }
     }
 
