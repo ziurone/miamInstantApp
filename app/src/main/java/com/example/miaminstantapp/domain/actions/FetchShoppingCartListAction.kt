@@ -1,12 +1,13 @@
 package com.example.miaminstantapp.domain.actions
 
+import com.example.miaminstantapp.domain.entities.ShoppingListArticleEntity
 import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
 import com.example.miaminstantapp.domain.repositories.IShopRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class FetchShopsPurchaseAction @Inject constructor(
+class FetchShoppingCartListAction @Inject constructor(
     private val shopRepository: IShopRepository
 ):
     BaseAction<IFetchShopsPurchaseAction.Result>(),
@@ -14,7 +15,7 @@ class FetchShopsPurchaseAction @Inject constructor(
 
     override fun fetch() {
         shopRepository
-            .fetchShopsPurchase()
+            .fetchShopArticlesList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)
@@ -29,7 +30,7 @@ class FetchShopsPurchaseAction @Inject constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    fun onSuccess(shopPurchases: List<ShopPurchaseRelation>) {
+    fun onSuccess(shopPurchases: List<ShoppingListArticleEntity>) {
         liveData.value = IFetchShopsPurchaseAction.Result.Success(shopPurchases)
     }
 }

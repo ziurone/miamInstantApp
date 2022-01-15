@@ -5,21 +5,24 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
+import com.example.miaminstantapp.domain.entities.ShoppingListArticleEntity
 import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
 import com.example.miaminstantapp.view.adapters.ShopPurchaseAdapter
+import com.example.miaminstantapp.view.items.ShoppingCartListItem
 import com.example.miaminstantapp.viewmodel.ITicketViewModel
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_shop_purchase_ticket.*
 
 class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewModel.State>(), ShopPurchaseAdapter.OnShopPurchaseItemClickListener {
 
-    private lateinit var shopPurchaseAdapter: ShopPurchaseAdapter
+    private val shopPurchaseAdapter = GroupAdapter<GroupieViewHolder>()
 
     override fun initViews() {
         super.initViews()
 
         doPurchaseButton.isEnabled = false
 
-        shopPurchaseAdapter = ShopPurchaseAdapter(this)
         shopPurchasesList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = shopPurchaseAdapter
@@ -41,7 +44,7 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
         when(state) {
             is ITicketViewModel.State.PurchaseHaveArticles -> fetchShopPurchases()
             is ITicketViewModel.State.PurchaseIsEmpty -> showEmptyView()
-            is ITicketViewModel.State.FetchShopPurchasesSuccess -> showShopPurchases(state.shopsPurchases)
+            is ITicketViewModel.State.FetchShoppingListArticlesSuccess -> showShopPurchases(state.shopsPurchases)
             is ITicketViewModel.State.DoPurchaseSuccess -> recipesDone()
             is ITicketViewModel.State.Error -> TODO()
         }
@@ -61,17 +64,12 @@ class ShopPurchaseTicketFragment: BaseFragment<ITicketViewModel, ITicketViewMode
         findNavController().navigate(R.id.global_action_toRecipeBookFragment)
     }
 
-    private fun showShopPurchases(shopPurchases: List<ShopPurchaseRelation>) {
-        shopPurchaseAdapter.setData(shopPurchases)
+    private fun showShopPurchases(shopPurchases: List<ShoppingListArticleEntity>) {
+        shopPurchaseAdapter.update(shopPurchases.map { ShoppingCartListItem(it) })
         doPurchaseButton.isEnabled = true
         doPurchaseButton.isVisible = true
     }
 
     override fun onClick(shopPurchase: ShopPurchaseRelation) {
-        val bundle = bundleOf(
-            TicketArticlesFragment.SHOP_ID_KEY to shopPurchase.shop.shopId
-        )
-
-        findNavController().navigate(R.id.action_shopPurchaseTicket_to_articlesTicket, bundle)
     }
 }

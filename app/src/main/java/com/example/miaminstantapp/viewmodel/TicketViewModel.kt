@@ -3,7 +3,7 @@ package com.example.miaminstantapp.viewmodel
 import com.example.miaminstantapp.domain.actions.IDoPurchaseAction
 import com.example.miaminstantapp.domain.actions.IFetchShopArticlesQuantityAction
 import com.example.miaminstantapp.domain.actions.IFetchShopsPurchaseAction
-import com.example.miaminstantapp.domain.relations.ShopPurchaseRelation
+import com.example.miaminstantapp.domain.entities.ShoppingListArticleEntity
 import javax.inject.Inject
 
 class TicketViewModel @Inject constructor(
@@ -33,11 +33,12 @@ class TicketViewModel @Inject constructor(
     private fun onFetchShopArticlesResult(result: IFetchShopsPurchaseAction.Result) {
         when (result) {
             is IFetchShopsPurchaseAction.Result.Success -> showShopPurchases(result.shopPurchaes)
+            is IFetchShopsPurchaseAction.Result.Error -> TODO()
         }
     }
 
-    private fun showShopPurchases(shopPurchases: List<ShopPurchaseRelation>) {
-        setState(State.FetchShopPurchasesSuccess(shopPurchases))
+    private fun showShopPurchases(shopPurchases: List<ShoppingListArticleEntity>) {
+        setState(State.FetchShoppingListArticlesSuccess(shopPurchases))
     }
 
     override fun fetchShopPurchases() {
