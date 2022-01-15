@@ -19,8 +19,6 @@ interface ShopArticleDao {
     @Insert
     fun insertAll(articles: List<ShoppingListArticleEntity>): Completable
 
-    
-
     @Insert
     fun insertAllLegacy(articles: List<ShopArticleEntity>): Completable
 

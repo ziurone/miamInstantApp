@@ -3,6 +3,7 @@ package com.example.miaminstantapp.routing
 import android.content.Context
 import com.example.miaminstantapp.SessionActivity
 import com.example.miaminstantapp.view.SetUserFiltersActivity
+import com.example.miaminstantapp.view.ShoppingCartActivity
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailActivity
 
 class Launcher constructor(
@@ -19,5 +20,9 @@ class Launcher constructor(
 
     fun catalogRecipeDetail(recipeId: Int) {
         CatalogRecipeDetailActivity.startActivity(context, recipeId)
+    }
+
+    fun shoppingCart() {
+        ShoppingCartActivity.startActivity(context)
     }
 }
