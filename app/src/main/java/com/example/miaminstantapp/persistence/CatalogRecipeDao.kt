@@ -25,6 +25,6 @@ interface CatalogRecipeDao {
     @Query("SELECT * FROM " + CatalogRecipeEntity.TABLE_NAME + " WHERE id = :id ")
     fun fetchById(id: Int): Single<CatalogRecipeAgreggate>
 
-    @Query("DELETE FROM " + CatalogRecipeEntityLegacy.TABLE_NAME)
+    @Query("DELETE FROM " + CatalogRecipeEntity.TABLE_NAME)
     fun deleteAll(): Completable
 }

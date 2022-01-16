@@ -47,7 +47,7 @@
     </fragment>
 
     <fragment android:id="@+id/shopPurchaseFragment"
-        android:name="com.example.miaminstantapp.view.ShopPurchaseTicketFragment">
+        android:name="com.example.miaminstantapp.view.ShoppingCartListFragment">
 
         <action
             android:id="@+id/action_shopPurchaseTicket_to_articlesTicket"

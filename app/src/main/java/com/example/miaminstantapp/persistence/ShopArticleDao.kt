@@ -37,7 +37,7 @@ interface ShopArticleDao {
             "WHERE s.shopId = :shopId")
     fun fetchByShopId(shopId: Int): Single<List<ShopArticleEntity>>
 
-    @Query("DELETE FROM " + ShopArticleEntity.TABLE_NAME)
+    @Query("DELETE FROM " + ShoppingListArticleEntity.TABLE_NAME)
     fun deleteAll(): Completable
 
     @Query("SELECT SUM(totalPrice) as purchasePrice FROM " + ShopArticleEntity.TABLE_NAME)

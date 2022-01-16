@@ -20,7 +20,7 @@ abstract class UserFiltersFragmentProvider {
     abstract fun providesDoableRecipeFragment(): CatalogRecipeDetailFragment
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
-    abstract fun providesTicketFragment(): ShopPurchaseTicketFragment
+    abstract fun providesTicketFragment(): ShoppingCartListFragment
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
     abstract fun providesTicketArticlesFragment(): TicketArticlesFragment

@@ -6,11 +6,11 @@ import com.example.miaminstantapp.domain.actions.IFetchShopsPurchaseAction
 import com.example.miaminstantapp.domain.entities.ShoppingListArticleEntity
 import javax.inject.Inject
 
-class TicketViewModel @Inject constructor(
+class ShoppingCartListViewModel @Inject constructor(
     private val fetchShopsPurchaseAction: IFetchShopsPurchaseAction,
     private val doPurchaseAction: IDoPurchaseAction,
     private val fetchShopArticlesQuantityAction: IFetchShopArticlesQuantityAction
-) : ITicketViewModel() {
+) : IShoppingCartListViewModel() {
 
     init {
         listenSource(fetchShopsPurchaseAction.getLiveData(), ::onFetchShopArticlesResult)

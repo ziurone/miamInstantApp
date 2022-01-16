@@ -155,11 +155,11 @@ class UserResourcesModule {
 
     @Provides
     @IntoMap
-    @ViewModelKey(ITicketViewModel::class)
-    fun proviesTicketViewModelIntoMap(viewModel: TicketViewModel): ViewModel = viewModel
+    @ViewModelKey(IShoppingCartListViewModel::class)
+    fun proviesTicketViewModelIntoMap(viewModel: ShoppingCartListViewModel): ViewModel = viewModel
 
     @Provides
-    fun providesTicket(fragment: ShopPurchaseTicketFragment, viewModelFactory: ViewModelFactory): ITicketViewModel = ViewModelProviders.of(fragment, viewModelFactory)[ITicketViewModel::class.java]
+    fun providesTicket(fragment: ShoppingCartListFragment, viewModelFactory: ViewModelFactory): IShoppingCartListViewModel = ViewModelProviders.of(fragment, viewModelFactory)[IShoppingCartListViewModel::class.java]
 
     @Provides
     @IntoMap
