@@ -22,7 +22,7 @@ data class RecipeBookRecipeEntity(
     val imageUrl: String?
 ) {
     companion object {
-        const val TABLE_NAME = "user_recipes"
+        const val TABLE_NAME = "recipeBookToDoRecipes"
     }
 
     @PrimaryKey(autoGenerate = true)
