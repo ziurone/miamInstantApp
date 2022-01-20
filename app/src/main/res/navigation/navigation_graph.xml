@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainNavigation"
-    app:startDestination="@id/doableRecipesList">
+    app:startDestination="@id/catalogRecipeList">
 
     <fragment
         android:id="@+id/dispensary"
@@ -25,7 +25,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/doableRecipesList"
+        android:id="@+id/catalogRecipeList"
         android:name="com.example.miaminstantapp.view.CatalogRecipesListFragment">
 
         <action
@@ -72,7 +72,7 @@
 
     <action
         android:id="@+id/action_global_market_recipes"
-        app:destination="@+id/doableRecipesList"/>
+        app:destination="@+id/catalogRecipeList"/>
 
     <action
         android:id="@+id/action_global_toShopPurchase"

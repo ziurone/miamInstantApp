@@ -11,7 +11,7 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/doableRecipesList"
+        android:id="@+id/catalogRecipeList"
         android:icon="@drawable/ic_search_small"
         android:title="@string/app_bottom_bar_menu_recipe_book_title"
         android:enabled="true"

@@ -10,7 +10,6 @@ import javax.inject.Inject
 
 class SplashScreenViewModel @Inject constructor(
     private val isFirstTimeOpeningAppAction: IIsFirstTimeOpeningAppAction,
-    private val delayer: Delayer,
     private val fetchVolumeUnitsAction: FetchVolumeUnitsAction,
     private val addVolumeUnitsAction: AddVolumeUnitsAction
 ): ISplashScreenViewModel() {
