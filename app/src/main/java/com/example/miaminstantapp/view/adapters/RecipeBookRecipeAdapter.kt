@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_recipe_book_recipe.*
+import kotlinx.android.synthetic.main.item_recipe_book_recipe_legacy.*
 
 class RecipeBookRecipeAdapter: RecyclerView.Adapter<RecipeBookRecipeAdapter.ViewHolder>() {
 
     private val recipes = mutableListOf<RecipeBookRecipeEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe_book_recipe, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe_book_recipe_legacy, parent, false)
         return ViewHolder(view)
     }
 
