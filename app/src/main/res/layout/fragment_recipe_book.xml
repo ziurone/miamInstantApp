@@ -4,20 +4,23 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recipesList"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/recipeBookContentTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabTextColor="@color/colorPrimary"
+        android:background="@color/white"
+        />
 
-    <TextView
-        android:id="@+id/recipeBookEmptyView"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/recipeBookPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
-        android:text="@string/recipe_book_empty_message"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_item"
+        app:layout_constraintTop_toBottomOf="@+id/recipeBookContentTabLayout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
