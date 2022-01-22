@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view.recipe_book
 
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
@@ -39,7 +40,11 @@ class RecipeBookToDoRecipesFragment: BaseFragment<RecipeBookToDoRecipesViewModel
 
     private fun showRecipes(recipes: List<RecipeBookRecipeEntity>) {
         recipeAdapter.update(
-            recipes.map { RecipeBookRecipeItem(it)}
+            recipes.map { RecipeBookRecipeItem(it, ::navigateToRecipeDetail)}
         )
+    }
+
+    private fun navigateToRecipeDetail(recipeId: Int) {
+        findNavController().navigate(R.id.action_global_toRecipeBookRecipeDetail)
     }
 }

@@ -11,6 +11,7 @@ import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.*
 import com.example.miaminstantapp.view.ingredients.viewmodels.IngredientAutocompleteViewModel
+import com.example.miaminstantapp.view.recipe_book.viewmodels.RecipeBookRecipeDetailViewModel
 import com.example.miaminstantapp.view.recipe_book.viewmodels.RecipeBookToDoRecipesViewModel
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailIngredientsListViewModel
@@ -224,4 +225,8 @@ class UserResourcesModule {
     @ViewModelKey(RecipeBookToDoRecipesViewModel::class)
     fun providesRecipeBookToDoRecipesViewModelIntoMap(viewModel: RecipeBookToDoRecipesViewModel): ViewModel = viewModel
 
+    @Provides
+    @IntoMap
+    @ViewModelKey(RecipeBookRecipeDetailViewModel::class)
+    fun providesRecipeBookDetaillIntoMap(viewModel: RecipeBookRecipeDetailViewModel): ViewModel = viewModel
 }

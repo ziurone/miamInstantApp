@@ -8,7 +8,8 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
 class RecipeBookRecipeItem(
-    private val recipeBookRecipeEntity: RecipeBookRecipeEntity
+    private val recipeBookRecipeEntity: RecipeBookRecipeEntity,
+    private val clickListener: (recipeId: Int) -> Unit
 ): Item<RecipeBookRecipeItem.RecipeBookRecipeItemViewHolder>() {
 
     class RecipeBookRecipeItemViewHolder(view: View): GroupieViewHolder(view) {
@@ -19,6 +20,9 @@ class RecipeBookRecipeItem(
 
     override fun bind(viewHolder: RecipeBookRecipeItemViewHolder, position: Int) {
         viewHolder.recipeCard.setRecipeBookRecipe(recipeBookRecipeEntity)
+        viewHolder.recipeCard.setOnClickListener {
+            clickListener(recipeBookRecipeEntity.id)
+        }
     }
 
     override fun getLayout(): Int = R.layout.item_recipe_book_recipe

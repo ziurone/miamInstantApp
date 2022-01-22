@@ -64,6 +64,10 @@
         android:id="@+id/recipeBookFragment"
         android:name="com.example.miaminstantapp.view.RecipeBookFragment"/>
 
+    <fragment
+        android:id="@+id/recipeBookRecipeDetail"
+        android:name="com.example.miaminstantapp.view.recipe_book.RecipeBookRecipeDetailFragment"/>
+
     <action android:id="@+id/global_action_toDispensaryFragment"
         app:destination="@id/dispensary"/>
 
@@ -81,5 +85,9 @@
     <action
         android:id="@+id/action_global_toIngredientAutocomplete"
         app:destination="@id/ingredientAutocomplete"/>
+
+    <action
+        android:id="@+id/action_global_toRecipeBookRecipeDetail"
+        app:destination="@id/recipeBookRecipeDetail"/>
 
 </navigation>

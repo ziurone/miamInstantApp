@@ -2,6 +2,7 @@ package com.example.miaminstantapp.injection.modules
 
 import com.example.miaminstantapp.view.*
 import com.example.miaminstantapp.view.ingredients.IngredientAutocompleteFragment
+import com.example.miaminstantapp.view.recipe_book.RecipeBookRecipeDetailFragment
 import com.example.miaminstantapp.view.recipe_book.RecipeBookToDoRecipesFragment
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailIngredientsListFragment
@@ -49,5 +50,8 @@ abstract class UserFiltersFragmentProvider {
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
     abstract fun providesRecipeBookToDoRecipesFragment(): RecipeBookToDoRecipesFragment
+
+    @ContributesAndroidInjector(modules = [UserResourcesModule::class])
+    abstract fun providesRecipeBookDetailToFragment(): RecipeBookRecipeDetailFragment
 
 }

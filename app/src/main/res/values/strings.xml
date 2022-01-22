@@ -18,7 +18,7 @@
 
     <!-- Bottom bar -->
     <string name="app_bottom_bar_menu_dispensary_title">Heladera</string>
-    <string name="app_bottom_bar_menu_recipe_book_title">Buscar</string>
+    <string name="app_bottom_bar_menu_recipe_book_title">Catalogo</string>
     <string name="app_bottom_bar_menu_recipebook_title">Recetario</string>
     <string name="app_bottom_bar_menu_shopping_cart_title">Compras</string>
     <string name="app_bottom_bar_menu_profile_title">Perfil</string>
