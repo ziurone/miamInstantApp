@@ -14,4 +14,7 @@ interface RecipeBookRecipeDao {
 
     @Query("SELECT * FROM " + RecipeBookRecipeEntity.TABLE_NAME + " ORDER by id DESC")
     fun fetchRecipesDesc(): Single<List<RecipeBookRecipeEntity>>
+
+    @Query("SELECT * FROM " + RecipeBookRecipeEntity.TABLE_NAME + " WHERE id = :id")
+    fun fetchRecipeById(id: Int): Single<RecipeBookRecipeEntity>
 }

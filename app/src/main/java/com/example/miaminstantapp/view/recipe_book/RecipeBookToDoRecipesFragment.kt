@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view.recipe_book
 
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miaminstantapp.R
@@ -45,6 +46,7 @@ class RecipeBookToDoRecipesFragment: BaseFragment<RecipeBookToDoRecipesViewModel
     }
 
     private fun navigateToRecipeDetail(recipeId: Int) {
-        findNavController().navigate(R.id.action_global_toRecipeBookRecipeDetail)
+        val bundle = bundleOf(RecipeBookRecipeDetailFragment.RECIPE_ID_KEY to recipeId)
+        findNavController().navigate(R.id.action_global_toRecipeBookRecipeDetail, bundle)
     }
 }
