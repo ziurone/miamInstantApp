@@ -35,8 +35,16 @@ class RecipeBookRecipeDetailFragment: BaseFragment<RecipeBookRecipeDetailViewMod
                     else -> throw IllegalArgumentException("Tab title position error")
                 }
             }.attach()
+
+            addRecipe.setOnClickListener {
+                viewModel.setRecipeAsMade(recipeId)
+            }
         }
 
+    }
+
+    override fun initViews() {
+        super.initViews()
     }
 
     override fun onStateChanged(state: RecipeBookRecipeDetailViewModel.State) {

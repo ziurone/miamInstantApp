@@ -15,6 +15,7 @@ data class CatalogRecipeAgreggate(
     val marketIngredients: List<MarketIngredientRelations>
 ) {
     fun toRecipeBookRecipe() = RecipeBookRecipeEntity(
+        recipeId = recipe.id,
         name = recipe.title,
         content = recipe.content,
         servings = 4,

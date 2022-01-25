@@ -1,5 +1,6 @@
-package com.example.miaminstantapp.domain.actions
+package com.example.miaminstantapp.domain.actions.recipebook
 
+import com.example.miaminstantapp.domain.actions.BaseAction
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 import com.example.miaminstantapp.domain.repositories.IRecipeBookRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,14 +25,14 @@ class FetchRecipeBookRecipeAction @Inject constructor(
     }
 
     private fun onSuccess(recipe: RecipeBookRecipeEntity) {
-        liveData.value = FetchRecipeBookRecipeAction.Result.FetchRecipeSuccess(recipe)
+        liveData.value = Result.FetchRecipeSuccess(recipe)
     }
 
-    override fun getErrorResult(throwable: Throwable): FetchRecipeBookRecipeAction.Result? {
+    override fun getErrorResult(throwable: Throwable): Result? {
         TODO("Not yet implemented")
     }
 
-    override fun getFailureResult(failedResponseCode: String): FetchRecipeBookRecipeAction.Result? {
+    override fun getFailureResult(failedResponseCode: String): Result? {
         TODO("Not yet implemented")
     }
 }

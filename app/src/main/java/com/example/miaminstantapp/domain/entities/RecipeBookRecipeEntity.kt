@@ -21,7 +21,9 @@ data class RecipeBookRecipeEntity(
 
     val imageUrl: String?,
 
-    val hasBeenPrepared: Boolean = false
+    val hasBeenPrepared: Boolean = false,
+
+    val recipeId: Int
 ) {
     companion object {
         const val TABLE_NAME = "recipeBookToDoRecipes"

@@ -1,5 +1,7 @@
-package com.example.miaminstantapp.domain.actions
+package com.example.miaminstantapp.domain.actions.recipebook
 
+import com.example.miaminstantapp.domain.actions.BaseAction
+import com.example.miaminstantapp.domain.actions.IFetchRecipeBookRecipesAction
 import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 import com.example.miaminstantapp.domain.repositories.IRecipeBookRepository
 import io.reactivex.android.schedulers.AndroidSchedulers

@@ -50,12 +50,12 @@
                 android:id="@+id/addRecipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/recipeContentPager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_margin="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_xxxlarge"
                 app:layout_constraintVertical_bias="1.0"
-                android:text="Agregar receta" />
+                android:text="Ya la hice" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
