@@ -14,4 +14,6 @@ class RecipeBookRepository @Inject constructor(
     override fun fetchRecipesDesc(): Single<List<RecipeBookRecipeEntity>> = recipeBookRecipeDao.fetchRecipesDesc()
 
     override fun fetchRecipeById(recipeId: Int): Single<RecipeBookRecipeEntity> = recipeBookRecipeDao.fetchRecipeById(recipeId)
+
+
 }
