@@ -8,10 +8,15 @@ import com.example.miaminstantapp.domain.entities.RecipeBookRecipeEntity
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.items.RecipeBookRecipeItem
 import com.example.miaminstantapp.view.recipe_book.viewmodels.RecipeBookToDoRecipesViewModel
+import com.example.miaminstantapp.view.recipedetail.RecipeBookRecipeIngredientsFragment
 import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_recipe_book_to_do_recipes.*
 
 class RecipeBookToDoRecipesFragment: BaseFragment<RecipeBookToDoRecipesViewModel, RecipeBookToDoRecipesViewModel.State>() {
+
+    companion object {
+        const val RECIPE_BOOK_RECIPES_MADE_KEY = "recipeBookRecipesMadeKey"
+    }
 
     private val recipeAdapter = GroupAdapter<RecipeBookRecipeItem.RecipeBookRecipeItemViewHolder>()
 
@@ -32,11 +37,17 @@ class RecipeBookToDoRecipesFragment: BaseFragment<RecipeBookToDoRecipesViewModel
             layoutManager = LinearLayoutManager(context)
             adapter = recipeAdapter
         }
+
+
     }
 
     override fun startInitialDomainAction() {
         super.startInitialDomainAction()
-        viewModel.fetchRecipes()
+
+        arguments?.let {
+            val made = it.getBoolean(RecipeBookToDoRecipesFragment.RECIPE_BOOK_RECIPES_MADE_KEY, false)
+            viewModel.fetchRecipes(made)
+        }
     }
 
     private fun showRecipes(recipes: List<RecipeBookRecipeEntity>) {

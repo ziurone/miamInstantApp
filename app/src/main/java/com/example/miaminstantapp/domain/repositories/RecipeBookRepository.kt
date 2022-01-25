@@ -11,7 +11,7 @@ class RecipeBookRepository @Inject constructor(
 ): IRecipeBookRepository {
     override fun addRecipe(recipe: RecipeBookRecipeEntity): Completable = recipeBookRecipeDao.addRecipeToRecipeBook(recipe)
 
-    override fun fetchRecipesDesc(): Single<List<RecipeBookRecipeEntity>> = recipeBookRecipeDao.fetchRecipesDesc()
+    override fun fetchRecipesDesc(made: Boolean): Single<List<RecipeBookRecipeEntity>> = recipeBookRecipeDao.fetchRecipesDesc(made)
 
     override fun fetchRecipeById(recipeId: Int): Single<RecipeBookRecipeEntity> = recipeBookRecipeDao.fetchRecipeById(recipeId)
 

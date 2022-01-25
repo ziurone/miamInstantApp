@@ -8,5 +8,5 @@ abstract class IRecipeBookViewModel: BaseViewModel<IRecipeBookViewModel.State>()
         data class Error(val errorMessage: String): State()
     }
 
-    abstract fun fetchRecipes()
+    abstract fun fetchRecipes(made: Boolean)
 }

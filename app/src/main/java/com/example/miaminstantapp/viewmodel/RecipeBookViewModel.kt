@@ -10,11 +10,12 @@ class RecipeBookViewModel @Inject constructor(
         listenSource(fetchRecipeBookRecipesAction.getLiveData(), ::onFetchRecipesResult)
     }
 
-    override fun fetchRecipes() = fetchRecipeBookRecipesAction.fetch()
+    override fun fetchRecipes(made: Boolean) = fetchRecipeBookRecipesAction.fetch(made)
 
     private fun onFetchRecipesResult(result: IFetchRecipeBookRecipesAction.Result) {
         when(result) {
             is IFetchRecipeBookRecipesAction.Result.Success -> setState(State.FetchRecipeSuccess(result.recipes))
+            is IFetchRecipeBookRecipesAction.Result.Error -> TODO()
         }
     }
 }

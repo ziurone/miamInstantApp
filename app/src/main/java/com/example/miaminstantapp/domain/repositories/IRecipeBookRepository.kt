@@ -6,6 +6,6 @@ import io.reactivex.Single
 
 interface IRecipeBookRepository {
     fun addRecipe(recipe: RecipeBookRecipeEntity): Completable
-    fun fetchRecipesDesc(): Single<List<RecipeBookRecipeEntity>>
+    fun fetchRecipesDesc(made: Boolean): Single<List<RecipeBookRecipeEntity>>
     fun fetchRecipeById(recipeId: Int): Single<RecipeBookRecipeEntity>
 }

@@ -22,8 +22,8 @@ class RecipeBookToDoRecipesViewModel @Inject constructor(
         listenSource(fetchRecipeBookRecipesAction.getLiveData(), ::onFetchRecipeBookRecipes)
     }
 
-    fun fetchRecipes() {
-        fetchRecipeBookRecipesAction.fetch()
+    fun fetchRecipes(made: Boolean) {
+        fetchRecipeBookRecipesAction.fetch(made)
     }
 
     private fun onFetchRecipeBookRecipes(result: IFetchRecipeBookRecipesAction.Result) {

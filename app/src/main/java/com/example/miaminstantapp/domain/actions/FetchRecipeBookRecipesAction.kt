@@ -10,9 +10,9 @@ class FetchRecipeBookRecipesAction @Inject constructor(
     private val recipeBookRepository: IRecipeBookRepository
 ): BaseAction<IFetchRecipeBookRecipesAction.Result>(), IFetchRecipeBookRecipesAction
 {
-    override fun fetch() {
+    override fun fetch(made: Boolean) {
         recipeBookRepository
-            .fetchRecipesDesc()
+            .fetchRecipesDesc(made)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)

@@ -8,5 +8,5 @@ interface IFetchRecipeBookRecipesAction: Action<IFetchRecipeBookRecipesAction.Re
         data class Error(val errorMessage: String): Result()
     }
 
-    fun fetch()
+    fun fetch(made: Boolean)
 }
