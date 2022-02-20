@@ -16,7 +16,6 @@ import com.xwray.groupie.GroupAdapter
 import kotlinx.android.synthetic.main.fragment_catalog_recipes_list.*
 import kotlinx.android.synthetic.main.fragment_catalog_recipes_list.chipsGroupSuggestedIngredients
 import kotlinx.android.synthetic.main.fragment_catalog_recipes_list.ingredientsAutocompleteInput
-import kotlinx.android.synthetic.main.toolbar.*
 
 class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICatalogRecipesListViewModel.State>() {
 
@@ -29,7 +28,6 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
 
         ingredientsAutocompleteInput.clearFocus()
 
-        toolbarClose.title = "Buscar"
 
         ingredientsAutocompleteInput.onFocusChangeListener =
             View.OnFocusChangeListener { _, hasFocus ->
