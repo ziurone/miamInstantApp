@@ -35,6 +35,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/catalogRecipeFilters"
+        android:name="com.example.miaminstantapp.view.recipes_catalog.CatalogRecipeFiltersFragment">
+
+    </fragment>
+
+    <fragment
         android:id="@+id/ingredientAutocomplete"
         android:name="com.example.miaminstantapp.view.ingredients.IngredientAutocompleteFragment">
 
@@ -89,5 +95,9 @@
     <action
         android:id="@+id/action_global_toRecipeBookRecipeDetail"
         app:destination="@id/recipeBookRecipeDetail"/>
+
+    <action
+        android:id="@+id/action_global_toRecipeCatalogFilters"
+        app:destination="@id/catalogRecipeFilters"/>
 
 </navigation>

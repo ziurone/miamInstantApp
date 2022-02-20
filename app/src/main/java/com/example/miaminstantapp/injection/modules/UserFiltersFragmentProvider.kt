@@ -7,6 +7,7 @@ import com.example.miaminstantapp.view.recipe_book.RecipeBookToDoRecipesFragment
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailIngredientsListFragment
 import com.example.miaminstantapp.view.recipedetail.RecipeBookRecipeIngredientsFragment
+import com.example.miaminstantapp.view.recipes_catalog.CatalogRecipeFiltersFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -57,5 +58,8 @@ abstract class UserFiltersFragmentProvider {
 
     @ContributesAndroidInjector(modules = [UserResourcesModule::class])
     abstract fun providesRecipeBookDetailIngredientsToFragment(): RecipeBookRecipeIngredientsFragment
+
+    @ContributesAndroidInjector(modules = [UserResourcesModule::class])
+    abstract fun providesCatalogRecipeFilter(): CatalogRecipeFiltersFragment
 
 }

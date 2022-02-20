@@ -28,6 +28,17 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
 
         ingredientsAutocompleteInput.clearFocus()
 
+        toolbar.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                R.id.filters -> {
+                    findNavController().navigate(R.id.action_global_toRecipeCatalogFilters)
+                    true
+                }
+                else -> false
+            }
+
+        }
+
 
         ingredientsAutocompleteInput.onFocusChangeListener =
             View.OnFocusChangeListener { _, hasFocus ->

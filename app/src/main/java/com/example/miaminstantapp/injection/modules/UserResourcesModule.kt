@@ -16,6 +16,8 @@ import com.example.miaminstantapp.view.recipe_book.viewmodels.RecipeBookRecipeDe
 import com.example.miaminstantapp.view.recipe_book.viewmodels.RecipeBookToDoRecipesViewModel
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailFragment
 import com.example.miaminstantapp.view.recipedetail.CatalogRecipeDetailIngredientsListViewModel
+import com.example.miaminstantapp.view.recipes_catalog.CatalogRecipeFiltersFragment
+import com.example.miaminstantapp.view.recipes_catalog.CatalogRecipeFiltersViewModel
 import com.example.miaminstantapp.viewmodel.*
 import com.example.miaminstantapp.viewmodel.recipebook.RecipeBookRecipeIngredientsViewModel
 import com.example.miaminstantapp.viewmodel.userfilters.AddAlergiesViewModel
@@ -236,4 +238,9 @@ class UserResourcesModule {
     @IntoMap
     @ViewModelKey(RecipeBookRecipeIngredientsViewModel::class)
     fun providesRecipeBookRecipeIngredientsIntoMap(viewModel: RecipeBookRecipeIngredientsViewModel): ViewModel = viewModel
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(CatalogRecipeFiltersViewModel::class)
+    fun providesCatalogRecipeFiltersIntoMap(viewModel: CatalogRecipeFiltersViewModel): ViewModel = viewModel
 }
