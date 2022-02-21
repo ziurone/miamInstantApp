@@ -39,7 +39,6 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
 
         }
 
-        ingredientsAutocompleteInput.isFocusable = false
         ingredientsAutocompleteInput.setOnClickListener {
             findNavController().navigate(R.id.action_global_toIngredientAutocomplete)
         }
