@@ -117,6 +117,7 @@
                         app:layout_constraintTop_toBottomOf="@id/dispensaryIcon"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:background="@color/secondary_light"
+                        android:overScrollMode="never"
                         tools:listitem="@layout/item_user_ingredient"
                         tools:itemCount="1"/>
 
