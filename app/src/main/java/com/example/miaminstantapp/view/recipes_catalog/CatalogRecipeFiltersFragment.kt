@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view.recipes_catalog
 
+import android.util.Log
 import android.view.ViewGroup
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.SessionActivity
@@ -9,17 +10,25 @@ import kotlinx.android.synthetic.main.fragment_catalog_recipe_filters.*
 
 class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, CatalogRecipeFiltersViewModel.State>() {
 
+    override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_filters
+
     override fun startInitialDomainAction() {
         super.startInitialDomainAction()
         viewModel.fetchRecipeTimeAmounts()
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_filters
+    override fun initViews() {
+        super.initViews()
+        applyFilters.setOnClickListener {
+            val totalMinutes = (timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text as String).toInt()
+            viewModel.applyFilters(totalMinutes)
+        }
+    }
 
     override fun onStateChanged(state: CatalogRecipeFiltersViewModel.State) {
         when(state) {
             is CatalogRecipeFiltersViewModel.State.FetchTimeAmountsSuccess -> showTimeFilters(state.amounts)
-            CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> TODO()
+            CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> Log.i("FILTERS_APPLIED_SUCCESS", "totalTimeFilter")
         }
     }
 
@@ -38,8 +47,6 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
             }
             timeAmountsGroup.addView(chip)
         }
-
-        timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text
 
     }
 }

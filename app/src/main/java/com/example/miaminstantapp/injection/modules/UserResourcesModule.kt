@@ -8,6 +8,7 @@ import com.example.miaminstantapp.domain.actions.recipebook.FetchRecipeBookRecip
 import com.example.miaminstantapp.domain.repositories.*
 import com.example.miaminstantapp.injection.qualifiers.AppContext
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
+import com.example.miaminstantapp.persistence.CatalogRecipeTotalTimeFilterPreference
 import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.*
@@ -70,7 +71,13 @@ class UserResourcesModule {
     fun providesExcludedIngredientRepository(repository: ExcludedIngredientRepository): IExcludedIngredientRepository = repository
 
     @Provides
+    fun providesCatalogRecipeTotalMinutesRepository(repository: CatalogRecipeTotalTimeMinutesRepository): ICatalogRecipeTotalTimeMinutesRepository = repository
+
+    @Provides
     fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
+
+    @Provides
+    fun providesCatalogRecipeTotalMinutesFilterPreferences(@AppContext context: Context): CatalogRecipeTotalTimeFilterPreference = CatalogRecipeTotalTimeFilterPreference(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides
     fun providesUserFirstTimeInAppPreference(@AppContext context: Context): IsFirstTimeInAppPreference = IsFirstTimeInAppPreference(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
