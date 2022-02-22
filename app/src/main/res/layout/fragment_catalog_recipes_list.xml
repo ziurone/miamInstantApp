@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_standard"
             app:singleLine="true"
-            app:chipSpacing="12dp" />
+            app:chipSpacing="@dimen/chips_spacing" />
 
     </HorizontalScrollView>
 

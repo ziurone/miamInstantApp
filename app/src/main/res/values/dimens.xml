@@ -48,5 +48,7 @@
     <!--  Recipe list -->
     <dimen name="recipe_card_image_height">194dp</dimen>
 
+    <!-- Chips -->
+    <dimen name="chips_spacing">12dp</dimen>
 
 </resources>
