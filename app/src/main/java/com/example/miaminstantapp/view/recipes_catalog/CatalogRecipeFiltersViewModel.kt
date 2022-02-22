@@ -45,7 +45,7 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
 
     private fun onSetTotalTime(result: SetTotalTimeCatalogRecipeFilterAction.Result) {
         when(result) {
-            SetTotalTimeCatalogRecipeFilterAction.Result.SetTotalTimeSuccess -> State.FiltersAppliedSuccess
+            SetTotalTimeCatalogRecipeFilterAction.Result.SetTotalTimeSuccess -> setState(State.FiltersAppliedSuccess)
         }
     }
 
