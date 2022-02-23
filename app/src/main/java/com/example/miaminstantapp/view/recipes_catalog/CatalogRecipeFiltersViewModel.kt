@@ -22,7 +22,7 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
     init {
         listenSource(fetchRecipeTimeFilterAmountAction.getLiveData(), ::onFetchTimeAmounts)
         listenSource(setTotalTimeCatalogRecipeFilterAction.getLiveData(), ::onSetTotalTime)
-        listenSource(dietAction.getLiveData(), {})
+        listenSource(dietAction.getLiveData(), ::onDietsResults)
     }
 
     fun applyFilters(totalMinutes: Int?, diets: List<Diet>) {
@@ -39,6 +39,10 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
 
     fun fetchDiets() {
         setState(State.FetchDietsSuccess(Diet.values()))
+    }
+
+    private fun onDietsResults(result: DietAction.Result) {
+
     }
 
     fun fetchRecipeTimeAmounts() {

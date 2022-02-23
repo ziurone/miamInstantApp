@@ -19,7 +19,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
     override fun startInitialDomainAction() {
         super.startInitialDomainAction()
         viewModel.fetchRecipeTimeAmounts()
-        viewModel.fetchDiets()
+        showDiets()
     }
 
     override fun initViews() {
@@ -27,7 +27,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
 
         applyFilters.setOnClickListener {
             val totalMinutes = if(!timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).equals(View.NO_ID)) {
-                 (timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text as String).toInt()
+                 TimeChipsPresenter.getMinutesByChipText(timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text as String)
             } else {
                 null
             }
@@ -50,12 +50,11 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
         when(state) {
             is CatalogRecipeFiltersViewModel.State.FetchTimeAmountsSuccess -> showTimeFilters(state.amounts)
             CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> activity?.onBackPressed()
-            is CatalogRecipeFiltersViewModel.State.FetchDietsSuccess -> showDiets(state.diets)
         }
     }
 
-    private fun showDiets(diets: Array<Diet>) {
-        diets.forEach { diet ->
+    private fun showDiets() {
+        Diet.values().forEach { diet ->
             val chip = Chip(context)
             chip.apply {
                 layoutParams = ViewGroup.LayoutParams(
@@ -79,12 +78,13 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
 
-                text = amount.toString()
+                text = TimeChipsPresenter.getChipText(amount)
                 isCloseIconVisible = false
 
             }
             timeAmountsGroup.addView(chip)
         }
 
+        viewModel.fetchDiets()
     }
 }
