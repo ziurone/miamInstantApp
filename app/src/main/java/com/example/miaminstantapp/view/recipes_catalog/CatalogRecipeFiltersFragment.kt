@@ -26,7 +26,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
         super.initViews()
 
         applyFilters.setOnClickListener {
-            val totalMinutes = if(!timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).equals(View.NO_ID)) {
+            val totalMinutes = if(timeAmountsGroup.checkedChipId != View.NO_ID) {
                  TimeChipsPresenter.getMinutesByChipText(timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text as String)
             } else {
                 null
@@ -37,7 +37,6 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
             }
 
             viewModel.applyFilters(totalMinutes, diets)
-
         }
 
         clearFilters.setOnClickListener {
@@ -85,6 +84,5 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
             timeAmountsGroup.addView(chip)
         }
 
-        viewModel.fetchDiets()
     }
 }
