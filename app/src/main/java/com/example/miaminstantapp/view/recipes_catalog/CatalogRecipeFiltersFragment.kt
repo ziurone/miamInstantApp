@@ -10,6 +10,7 @@ import com.example.miaminstantapp.domain.enums.Diet
 import com.example.miaminstantapp.view.BaseFragment
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_filters.*
+import kotlinx.android.synthetic.main.item_recipe_book_recipe_legacy.*
 
 class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, CatalogRecipeFiltersViewModel.State>() {
 
@@ -23,6 +24,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
 
     override fun initViews() {
         super.initViews()
+
         applyFilters.setOnClickListener {
             val totalMinutes = if(!timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).equals(View.NO_ID)) {
                  (timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text as String).toInt()
@@ -36,6 +38,11 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
 
             viewModel.applyFilters(totalMinutes, diets)
 
+        }
+
+        clearFilters.setOnClickListener {
+            dietsGroup.clearCheck()
+            timeAmountsGroup.clearCheck()
         }
     }
 
