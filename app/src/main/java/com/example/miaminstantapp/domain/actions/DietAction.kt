@@ -14,6 +14,7 @@ class DietAction @Inject constructor(
     sealed class Result {
         data class FetchUserDietsSuccess(val diets: List<DietEntity>): Result()
         object AddUserDietSuccess: Result()
+        object AddUserDietsSuccess: Result()
     }
 
     fun getDiets() = dietRepository.getDiets()
@@ -38,6 +39,19 @@ class DietAction @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onAddSuccess, ::onError)
             .track()
+    }
+
+    fun addDiets(diets: List<Diet>) {
+        dietRepository
+            .addDiets(diets)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::onAddAllSuccess, ::onError)
+            .track()
+    }
+
+    private fun onAddAllSuccess() {
+        liveData.value = Result.AddUserDietsSuccess
     }
 
     override fun getErrorResult(throwable: Throwable): Result? {

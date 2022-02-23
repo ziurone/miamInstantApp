@@ -12,5 +12,15 @@ class DietsPresenter {
                 Diet.NONE -> "Omnivora"
             }
         }
+
+        fun getDietFromLocalizedName(name: String): Diet {
+            return when(name) {
+                "Vegana" -> Diet.VEGAN
+                "Vegetariana" -> Diet.VEGETARIAN
+                "Celiaca" -> Diet.CELIAC
+                "Omnivora" -> Diet.NONE
+                else -> Diet.NONE
+            }
+        }
     }
 }

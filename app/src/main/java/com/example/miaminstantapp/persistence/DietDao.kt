@@ -14,6 +14,12 @@ interface DietDao {
     @Insert
     fun insert(diet: DietEntity): Completable
 
+    @Insert
+    fun insertAll(diets: List<DietEntity>): Completable
+
+    @Query("DELETE FROM " + DietEntity.TABLE_NAME)
+    fun removeAll(): Completable
+
     @Query("DELETE FROM " + DietEntity.TABLE_NAME + " WHERE name  = :name")
     fun remove(name: String): Completable
 

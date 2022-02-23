@@ -1,6 +1,8 @@
 package com.example.miaminstantapp.view.recipes_catalog
 
 import android.util.Log
+import android.view.View
+import android.view.View.NO_ID
 import android.view.ViewGroup
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.SessionActivity
@@ -22,8 +24,18 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
     override fun initViews() {
         super.initViews()
         applyFilters.setOnClickListener {
-            val totalMinutes = (timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text as String).toInt()
-            viewModel.applyFilters(totalMinutes)
+            val totalMinutes = if(!timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).equals(View.NO_ID)) {
+                 (timeAmountsGroup.findViewById<Chip>(timeAmountsGroup.checkedChipId).text as String).toInt()
+            } else {
+                null
+            }
+
+            val diets = dietsGroup.checkedChipIds.map {
+                DietsPresenter.getDietFromLocalizedName(dietsGroup.findViewById<Chip>(it).text.toString())
+            }
+
+            viewModel.applyFilters(totalMinutes, diets)
+
         }
     }
 
