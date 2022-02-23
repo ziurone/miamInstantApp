@@ -86,6 +86,7 @@
 
     <!-- Catalog Recipe filters -->
     <string name="catalog_recipes_time_amount_filter_title">¿Cuánto tiempo tenés?</string>
+    <string name="catalog_recipes_diets_filter_title">¿?</string>
 
 
     <!-- Market ingredients addded to shopping list -->

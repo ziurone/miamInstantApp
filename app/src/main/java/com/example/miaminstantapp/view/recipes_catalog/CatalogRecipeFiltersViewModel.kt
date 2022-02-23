@@ -2,6 +2,7 @@ package com.example.miaminstantapp.view.recipes_catalog
 
 import com.example.miaminstantapp.domain.actions.recipes_catalog.FetchRecipeTimeFilterAmountAction
 import com.example.miaminstantapp.domain.actions.recipes_catalog.SetTotalTimeCatalogRecipeFilterAction
+import com.example.miaminstantapp.domain.enums.Diet
 import com.example.miaminstantapp.viewmodel.BaseViewModel
 import javax.inject.Inject
 
@@ -13,6 +14,7 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
     sealed class State {
         object FiltersAppliedSuccess: State()
         data class FetchTimeAmountsSuccess(val amounts: List<Int>): State()
+        data class FetchDietsSuccess(val diets: Array<Diet>): State()
     }
 
     init {
@@ -27,6 +29,10 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
             }
 
         }
+    }
+
+    fun fetchDiets() {
+        setState(State.FetchDietsSuccess(Diet.values()))
     }
 
     fun fetchRecipeTimeAmounts() {

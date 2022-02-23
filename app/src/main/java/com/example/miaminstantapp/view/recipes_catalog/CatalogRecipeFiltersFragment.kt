@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.ViewGroup
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.SessionActivity
+import com.example.miaminstantapp.domain.enums.Diet
 import com.example.miaminstantapp.view.BaseFragment
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_filters.*
@@ -15,6 +16,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
     override fun startInitialDomainAction() {
         super.startInitialDomainAction()
         viewModel.fetchRecipeTimeAmounts()
+        viewModel.fetchDiets()
     }
 
     override fun initViews() {
@@ -28,7 +30,24 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
     override fun onStateChanged(state: CatalogRecipeFiltersViewModel.State) {
         when(state) {
             is CatalogRecipeFiltersViewModel.State.FetchTimeAmountsSuccess -> showTimeFilters(state.amounts)
-            CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> Log.i("FILTERS_APPLIED_SUCCESS", "totalTimeFilter")
+            CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> activity?.onBackPressed()
+            is CatalogRecipeFiltersViewModel.State.FetchDietsSuccess -> showDiets(state.diets)
+        }
+    }
+
+    private fun showDiets(diets: Array<Diet>) {
+        diets.forEach { diet ->
+            val chip = Chip(context)
+            chip.apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+
+                text = DietsPresenter.getLocalizedName(diet)
+                isCloseIconVisible = false
+            }
+            dietsGroup.addView(chip)
         }
     }
 
