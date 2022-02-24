@@ -48,7 +48,13 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
     override fun onStateChanged(state: CatalogRecipeFiltersViewModel.State) {
         when(state) {
             is CatalogRecipeFiltersViewModel.State.FetchTimeAmountsSuccess -> showTimeFilters(state.amounts)
-            CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> activity?.onBackPressed()
+            CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> {
+                viewModel.refreshRecipes()
+            }
+            CatalogRecipeFiltersViewModel.State.SearchRecipesSuccces -> {
+                Log.i("RECIPE_FETCH", "SUCCESS")
+                activity?.onBackPressed()
+            }
         }
     }
 
