@@ -11,7 +11,7 @@ import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEnt
 data class CatalogRecipeUserIngredientEntity(
     val ingredientId: Int,
     val ingredientName: String,
-    val usedQuantity: Int,
+    val usedQuantity: Double,
     val volumeUnitId: Int,
     val recipeId: Int
 ) {

@@ -68,13 +68,13 @@ class CatalogRecipesRepository @Inject constructor(
                         listOf(1,2)
                     ),
                     volumeUnitId = 1,
-                    usedQuantity = 100
+                    usedQuantity = 100.0
                 )
             ),
             listOf(CatalogRecipeUserIngredientDTO(
                 id = 100,
                 name = "Batata",
-                usedQuantity = 2,
+                usedQuantity = 0.5,
                 volumeUnitId = 1
             )
             )
@@ -109,7 +109,7 @@ class CatalogRecipesRepository @Inject constructor(
                             3,
                             1f,
                             100,
-                            1000,
+                            1000.0,
                             1000,
                             1,
                             1000,
@@ -127,7 +127,7 @@ class CatalogRecipesRepository @Inject constructor(
                             3,
                             0.2f,
                             101,
-                            400,
+                            400.0,
                             500,
                             1,
                             500,
@@ -145,7 +145,7 @@ class CatalogRecipesRepository @Inject constructor(
                             3,
                             0.2f,
                             102,
-                            200,
+                            200.0,
                             200,
                             1,
                             200,
@@ -163,7 +163,7 @@ class CatalogRecipesRepository @Inject constructor(
                             3,
                             0.2f,
                             103,
-                            100,
+                            100.0,
                             300,
                             1,
                             300,
@@ -206,7 +206,7 @@ class CatalogRecipesRepository @Inject constructor(
                             3,
                             1f,
                             2,
-                            100,
+                            100.0,
                             1,
                             1,
                             1,
