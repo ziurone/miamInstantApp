@@ -63,7 +63,7 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
     }
 
     fun getSelectedDiets() {
-        dietAction.getDiets()
+        dietAction.getUserDiets()
     }
 
     private fun onDietsResults(result: DietAction.Result) {
