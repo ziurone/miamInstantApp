@@ -18,7 +18,7 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
 
     sealed class State {
         object FiltersAppliedSuccess: State()
-        data class FetchTimeAmountsSuccess(val amounts: List<Int>): State()
+        data class FetchTimeAmountsSuccess(val amounts: List<Int>, val selectedMinutes: Int): State()
         object SearchRecipesSuccces: State()
     }
 
@@ -75,7 +75,7 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
 
     private fun onFetchTimeAmounts(result: FetchRecipeTimeFilterAmountAction.Result) {
         when(result) {
-            is FetchRecipeTimeFilterAmountAction.Result.FetchSuccess -> setState(State.FetchTimeAmountsSuccess(result.amounts))
+            is FetchRecipeTimeFilterAmountAction.Result.FetchSuccess -> setState(State.FetchTimeAmountsSuccess(result.amounts, result.selectedTotalTime))
         }
     }
 

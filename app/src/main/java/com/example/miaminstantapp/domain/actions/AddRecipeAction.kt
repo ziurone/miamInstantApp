@@ -26,7 +26,7 @@ class AddRecipeAction @Inject constructor(
                 recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(catalogRecipeAggregate.recipe.id)
             }))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.marketIngredients.map {
-                it -> it.marketIngredient.toRecipeBookIngredient()
+                it.marketIngredient.toRecipeBookIngredient()
             }))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
