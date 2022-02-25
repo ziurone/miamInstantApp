@@ -8,14 +8,18 @@ import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 import com.example.miaminstantapp.view.BaseFragment
 import com.example.miaminstantapp.view.adapters.recipedetail.CatalogRecipeDetailStateAdapter
+import com.example.miaminstantapp.view.dialogs.MessageDialogHandler
 import com.example.miaminstantapp.viewmodel.ICatalogRecipeDetailViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_catalog_recipe_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
+import javax.inject.Inject
 
 class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, ICatalogRecipeDetailViewModel.State>() {
 
     private lateinit var recipeAgreggate: CatalogRecipeAgreggate
+
+    @Inject lateinit var messageDialogHandler: MessageDialogHandler
 
     override fun getLayoutId(): Int = R.layout.fragment_catalog_recipe_detail
 
@@ -51,16 +55,19 @@ class CatalogRecipeDetailFragment: BaseFragment<ICatalogRecipeDetailViewModel, I
     override fun onStateChanged(state: ICatalogRecipeDetailViewModel.State) {
         when(state) {
             is ICatalogRecipeDetailViewModel.State.FetchRecipeSuccess -> showRecipe(state.catalogRecipeAgreggate)
-            is ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> {
-                addRecipeSuccess()
-            }
             is ICatalogRecipeDetailViewModel.State.Error -> Unit
-            ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> Unit
+            is ICatalogRecipeDetailViewModel.State.AddRecipeSuccess -> showAddedRecipeDialog(state.hasMarketIngredients)
         }
     }
 
-    private fun addRecipeSuccess() {
-        findNavController().navigate(R.id.fromDetailToMarketIngredientsAdded)
+    private fun showAddedRecipeDialog(hasMarketIngredients: Boolean) {
+        val message = if(hasMarketIngredients) "Agregaste ingredientes a tu lista de compras y guardaste las recetas en el recetario" else "Restate ingredientes de tu heladera y guardaste las recetas en el recetario"
+        val secondaryButtonText = if(hasMarketIngredients) "Ver lista de compras" else "Ver recetario"
+        messageDialogHandler.show(this, false, {
+                                               activity?.onBackPressed()
+        }, {
+           if(hasMarketIngredients) findNavController().navigate(R.id.action_global_toShopPurchase) else findNavController().navigate(R.id.global_action_toRecipeBookFragment)
+        }, message, "Seguir viendo recetas", secondaryButtonText)
     }
 
     private fun showRecipe(catalogRecipeAgreggate: CatalogRecipeAgreggate) {
