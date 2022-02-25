@@ -19,7 +19,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
     override fun startInitialDomainAction() {
         super.startInitialDomainAction()
         viewModel.fetchRecipeTimeAmounts()
-        showDiets()
+        viewModel.getSelectedDiets()
     }
 
     override fun initViews() {
@@ -55,10 +55,11 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
                 Log.i("RECIPE_FETCH", "SUCCESS")
                 activity?.onBackPressed()
             }
+            is CatalogRecipeFiltersViewModel.State.FetchSelectedDietsSuccess -> showDiets(state.diets)
         }
     }
 
-    private fun showDiets() {
+    private fun showDiets(selectedDiets: List<Diet>) {
         Diet.values().forEach { diet ->
             val chip = Chip(context)
             chip.apply {
@@ -66,6 +67,10 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
+
+                if(selectedDiets.contains(diet)) {
+                    isChecked = true
+                }
 
                 text = DietsPresenter.getLocalizedName(diet)
                 isCloseIconVisible = false

@@ -20,6 +20,7 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
         object FiltersAppliedSuccess: State()
         data class FetchTimeAmountsSuccess(val amounts: List<Int>, val selectedMinutes: Int): State()
         object SearchRecipesSuccces: State()
+        data class FetchSelectedDietsSuccess(val diets: List<Diet>): State()
     }
 
     init {
@@ -61,8 +62,16 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
         }
     }
 
-    private fun onDietsResults(result: DietAction.Result) {
+    fun getSelectedDiets() {
+        dietAction.getDiets()
+    }
 
+    private fun onDietsResults(result: DietAction.Result) {
+        when(result) {
+            DietAction.Result.AddUserDietSuccess -> Unit
+            DietAction.Result.AddUserDietsSuccess -> Unit
+            is DietAction.Result.FetchUserDietsSuccess -> setState(State.FetchSelectedDietsSuccess(result.diets.map { Diet.valueOf(it.name) }))
+        }
     }
 
     fun fetchRecipeTimeAmounts() {
