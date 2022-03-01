@@ -14,7 +14,8 @@ class SearchRecipesAction @Inject constructor(
 
     override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
         recipesRepository
-            .search(searchCriteria)
+            .deleteAll()
+            .andThen(recipesRepository.search(searchCriteria))
             .flatMapCompletable { recipes -> recipesRepository.insertAll(recipes) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

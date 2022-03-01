@@ -64,8 +64,8 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
 
     private fun onDietsResults(result: DietAction.Result) {
         when(result) {
-            DietAction.Result.AddUserDietSuccess -> TODO()
-            DietAction.Result.AddUserDietsSuccess -> TODO()
+            DietAction.Result.AddUserDietSuccess -> Unit
+            DietAction.Result.AddUserDietsSuccess -> Unit
             is DietAction.Result.FetchUserDietsSuccess -> Log.i("FETCH_SUCCESS", "RECIPES_IN_DB")
         }
     }
