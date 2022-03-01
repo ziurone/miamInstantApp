@@ -26,8 +26,6 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     override fun initViews() {
         super.initViews()
 
-        ingredientsAutocompleteInput.clearFocus()
-
         toolbar.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 R.id.filters -> {

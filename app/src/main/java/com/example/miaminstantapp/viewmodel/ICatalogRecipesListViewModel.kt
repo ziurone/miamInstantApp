@@ -5,6 +5,7 @@ import com.example.miaminstantapp.domain.relations.CatalogRecipeAgreggate
 import com.example.miaminstantapp.domain.relations.CatalogRecipeRelationsLegacy
 
 abstract class ICatalogRecipesListViewModel: BaseViewModel<ICatalogRecipesListViewModel.State>() {
+
     sealed class State {
         data class FetchedRecipesSuccess(val catalogRecipesAgreggates: List<CatalogRecipeAgreggate>): State()
         data class Error(val errorMessage: String): State()

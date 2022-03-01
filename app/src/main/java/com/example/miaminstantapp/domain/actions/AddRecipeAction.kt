@@ -26,11 +26,11 @@ class AddRecipeAction @Inject constructor(
                 recipeUserIngredient -> recipeUserIngredient.userIngredient.toRecipeBookIngredient(catalogRecipeAggregate.recipe.id)
             }))
             .andThen(recipeBookRecipeIngredientRepository.addRecipeIngredients(catalogRecipeAggregate.marketIngredients.map {
-                it -> it.marketIngredient.toRecipeBookIngredient()
+                it.marketIngredient.toRecipeBookIngredient()
             }))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::onSuccess, ::onError)
+            .subscribe({onSuccess(catalogRecipeAggregate)}, ::onError)
             .track()
     }
 
@@ -42,9 +42,9 @@ class AddRecipeAction @Inject constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    fun onSuccess() {
+    fun onSuccess(catalogRecipeAggregate: CatalogRecipeAgreggate) {
         Log.i("ARTICLES_INSERTED", "SUCCESS")
-        liveData.value = IAddRecipeAction.Result.Success
+        liveData.value = IAddRecipeAction.Result.Success(catalogRecipeAggregate.marketIngredients.isNotEmpty())
     }
 
 }

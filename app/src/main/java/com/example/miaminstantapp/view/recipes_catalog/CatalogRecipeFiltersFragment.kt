@@ -19,7 +19,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
     override fun startInitialDomainAction() {
         super.startInitialDomainAction()
         viewModel.fetchRecipeTimeAmounts()
-        showDiets()
+        viewModel.getSelectedDiets()
     }
 
     override fun initViews() {
@@ -47,7 +47,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
 
     override fun onStateChanged(state: CatalogRecipeFiltersViewModel.State) {
         when(state) {
-            is CatalogRecipeFiltersViewModel.State.FetchTimeAmountsSuccess -> showTimeFilters(state.amounts)
+            is CatalogRecipeFiltersViewModel.State.FetchTimeAmountsSuccess -> showTimeFilters(state.amounts, state.selectedMinutes)
             CatalogRecipeFiltersViewModel.State.FiltersAppliedSuccess -> {
                 viewModel.refreshRecipes()
             }
@@ -55,10 +55,11 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
                 Log.i("RECIPE_FETCH", "SUCCESS")
                 activity?.onBackPressed()
             }
+            is CatalogRecipeFiltersViewModel.State.FetchSelectedDietsSuccess -> showDiets(state.diets)
         }
     }
 
-    private fun showDiets() {
+    private fun showDiets(selectedDiets: List<Diet>) {
         Diet.values().forEach { diet ->
             val chip = Chip(context)
             chip.apply {
@@ -67,6 +68,10 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
 
+                if(selectedDiets.contains(diet)) {
+                    isChecked = true
+                }
+
                 text = DietsPresenter.getLocalizedName(diet)
                 isCloseIconVisible = false
             }
@@ -74,7 +79,7 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
         }
     }
 
-    private fun showTimeFilters(amounts: List<Int>) {
+    private fun showTimeFilters(amounts: List<Int>, selectedMinutes: Int) {
         amounts.forEach { amount ->
             val chip = Chip(context)
             chip.apply {
@@ -82,6 +87,9 @@ class CatalogRecipeFiltersFragment: BaseFragment<CatalogRecipeFiltersViewModel, 
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
+                if(selectedMinutes == amount) {
+                    isChecked = true
+                }
 
                 text = TimeChipsPresenter.getChipText(amount)
                 isCloseIconVisible = false

@@ -7,7 +7,7 @@ abstract class ICatalogRecipeDetailViewModel: BaseViewModel<ICatalogRecipeDetail
     sealed class State {
         data class FetchRecipeSuccess(val catalogRecipeAgreggate: CatalogRecipeAgreggate): State()
         data class Error(val errorMessage: String): State()
-        object AddRecipeSuccess: State()
+        data class AddRecipeSuccess(val hasMarketIngredients: Boolean): State()
     }
 
     abstract fun fetchRecipe(recipeId: Int)

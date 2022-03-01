@@ -17,8 +17,6 @@ class DietAction @Inject constructor(
         object AddUserDietsSuccess: Result()
     }
 
-    fun getDiets() = dietRepository.getDiets()
-
     fun getUserDiets() {
         dietRepository
             .getUserDiets()
