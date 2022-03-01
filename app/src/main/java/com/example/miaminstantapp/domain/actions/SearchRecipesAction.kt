@@ -1,8 +1,6 @@
 package com.example.miaminstantapp.domain.actions
 
-import com.example.miaminstantapp.domain.dtos.MarketIngredientDTOLegacy
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
-import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.repositories.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -14,7 +12,7 @@ class SearchRecipesAction @Inject constructor(
 
     override fun searchRecipes(searchCriteria: RecipeSearchCriteria) {
         recipesRepository
-            .deleteAll()
+            .clean()
             .andThen(recipesRepository.search(searchCriteria))
             .flatMapCompletable { recipes -> recipesRepository.insertAll(recipes) }
             .subscribeOn(Schedulers.io())
