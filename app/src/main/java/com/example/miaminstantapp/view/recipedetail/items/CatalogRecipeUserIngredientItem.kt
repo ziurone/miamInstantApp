@@ -5,6 +5,7 @@ import android.widget.TextView
 import com.example.miaminstantapp.R
 import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.relations.CatalogRecipeUserIngredientRelations
+import com.example.miaminstantapp.view.recipedetail.presenters.DecimalToFractionsPresenter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
@@ -16,7 +17,13 @@ class CatalogRecipeUserIngredientItem(
 
     override fun bind(viewHolder: CatalogRecipeUserIngredientItemViewHolder, position: Int) {
         viewHolder.name.text = userIngredientEntity.userIngredient.ingredientName
-//        viewHolder.volumeUnitQuantity.text = userIngredientEntity.userIngredient.volumeUnitQuantity.toInt().toString() + userIngredientEntity.volumeUnit.name
+        val quantity = if(userIngredientEntity.userIngredient.usedQuantity % 1.0 == 0.0) {
+            userIngredientEntity.userIngredient.usedQuantity.toInt().toString()
+        } else {
+            DecimalToFractionsPresenter.convertDecimalToFraction(userIngredientEntity.userIngredient.usedQuantity)
+        }
+
+        viewHolder.volumeUnitQuantity.text = quantity
     }
 
     override fun createViewHolder(itemView: View): CatalogRecipeUserIngredientItemViewHolder = CatalogRecipeUserIngredientItemViewHolder(itemView)

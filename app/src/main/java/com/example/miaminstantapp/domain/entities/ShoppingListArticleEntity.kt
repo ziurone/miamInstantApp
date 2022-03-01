@@ -10,7 +10,7 @@ data class ShoppingListArticleEntity(
     val ingredientId: Int,
     val ingredientName: String,
     val volumeUnitId: Int,
-    val quantity: Int,
+    val quantity: Double,
     val recipeId: Int
 ){
     companion object {

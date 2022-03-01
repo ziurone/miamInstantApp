@@ -8,7 +8,7 @@ import com.example.miaminstantapp.domain.entities.RecipeBookRecipeIngredientEnti
 data class RecipeBookRecipeIngredientEntity(
     val name: String,
     val volumeUnitId: Int,
-    val quantity: Int,
+    val quantity: Double,
     val recipeId: Int
 
 ) {
