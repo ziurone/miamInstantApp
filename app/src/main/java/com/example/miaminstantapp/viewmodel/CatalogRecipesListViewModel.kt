@@ -23,7 +23,7 @@ class CatalogRecipesListViewModel @Inject constructor(
     }
 
     override fun searchRecipes() {
-        searchRecipesAction.searchRecipes(RecipeSearchCriteria(listOf(), 0, listOf(), listOf()))
+        searchRecipesAction.searchRecipes(RecipeSearchCriteria(listOf(), 0, listOf(), listOf(), listOf()))
     }
 
     override fun fetchRecipes() {

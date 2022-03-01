@@ -9,4 +9,5 @@ interface IRecipeBookRepository {
     fun fetchRecipesDesc(made: Boolean): Single<List<RecipeBookRecipeEntity>>
     fun fetchRecipeById(recipeId: Int): Single<RecipeBookRecipeEntity>
     fun setRecipeAsMade(recipeId: Int): Completable
+    fun fetchRecipeBookRecipesIds(): Single<List<Int>>
 }

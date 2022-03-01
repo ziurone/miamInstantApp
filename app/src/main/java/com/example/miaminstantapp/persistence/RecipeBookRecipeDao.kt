@@ -20,4 +20,7 @@ interface RecipeBookRecipeDao {
 
     @Query("UPDATE " + RecipeBookRecipeEntity.TABLE_NAME + " SET hasBeenPrepared = :prepared WHERE recipeId = :recipeId")
     fun setRecipeAsMade(recipeId: Int, prepared: Boolean = true): Completable
+
+    @Query("SELECT id FROM " + RecipeBookRecipeEntity.TABLE_NAME)
+    fun fetchRecipesIds(): Single<List<Int>>
 }

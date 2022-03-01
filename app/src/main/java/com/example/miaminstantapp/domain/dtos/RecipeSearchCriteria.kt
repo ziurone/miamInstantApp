@@ -8,5 +8,6 @@ data class RecipeSearchCriteria(
     val ingredients: List<UserIngredientEntity>,
     val userMoney: Int,
     val branchesIds: List<BranchEntity>,
-    val excludedIngredients: List<ExcludedIngredientEntity>
+    val excludedIngredients: List<ExcludedIngredientEntity>,
+    val excludedRecipesIds: List<Int>
 )

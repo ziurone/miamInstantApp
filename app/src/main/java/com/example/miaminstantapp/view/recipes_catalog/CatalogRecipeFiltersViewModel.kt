@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view.recipes_catalog
 
+import android.util.Log
 import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.actions.recipes_catalog.FetchRecipeTimeFilterAmountAction
 import com.example.miaminstantapp.domain.actions.recipes_catalog.SetTotalTimeCatalogRecipeFilterAction
@@ -62,7 +63,11 @@ class CatalogRecipeFiltersViewModel @Inject constructor(
     }
 
     private fun onDietsResults(result: DietAction.Result) {
-
+        when(result) {
+            DietAction.Result.AddUserDietSuccess -> TODO()
+            DietAction.Result.AddUserDietsSuccess -> TODO()
+            is DietAction.Result.FetchUserDietsSuccess -> Log.i("FETCH_SUCCESS", "RECIPES_IN_DB")
+        }
     }
 
     fun fetchRecipeTimeAmounts() {
