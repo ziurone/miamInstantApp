@@ -27,7 +27,7 @@ class FetchSearchRecipeCriteriaAction @Inject constructor(
 
         val userMoneySingle = moneyRepository.getUserMoney()
 
-        val branchesSingle = branchesRepository.fetchAllFromLocal()
+        val branchesSingle = Single.just(listOf<BranchEntity>())
 
         val excludedIngredientSingle = excludedIngredientsRepository.fetchAll()
 

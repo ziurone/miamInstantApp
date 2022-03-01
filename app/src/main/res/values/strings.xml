@@ -84,6 +84,11 @@
     <!-- Recipe card -->
     <string name="recipe_card_price">- $%1$d</string>
 
+    <!-- Catalog Recipe filters -->
+    <string name="catalog_recipes_time_amount_filter_title">¿Cuánto tiempo tenés?</string>
+    <string name="catalog_recipes_diets_filter_title">¿?</string>
+
+
     <!-- Market ingredients addded to shopping list -->
     <string name="market_ingredients_added_to_shopping_list_title">Agregaste ingredientes\na tu carrito de compras</string>
 

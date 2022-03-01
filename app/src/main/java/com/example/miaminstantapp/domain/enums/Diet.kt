@@ -10,3 +10,4 @@ enum class Diet {
 
     fun toEntity(): DietEntity = DietEntity(this.toString())
 }
+
