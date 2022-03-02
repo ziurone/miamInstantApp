@@ -1,8 +1,10 @@
 package com.example.miaminstantapp.persistence
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import com.example.miaminstantapp.domain.entities.CatalogRecipeMarketIngredientEntity
-import com.example.miaminstantapp.domain.entities.CatalogRecipeUserIngredientEntity
 import com.example.miaminstantapp.domain.entities.MarketIngredientEntityLegacy
 import io.reactivex.Completable
 
@@ -16,7 +18,4 @@ interface MarketIngredientDao {
 
     @Delete
     fun delete(marketIngredientLegacy: MarketIngredientEntityLegacy): Completable
-
-    @Query("DELETE FROM " + CatalogRecipeMarketIngredientEntity.TABLE_NAME)
-    fun clear(): Completable
 }
