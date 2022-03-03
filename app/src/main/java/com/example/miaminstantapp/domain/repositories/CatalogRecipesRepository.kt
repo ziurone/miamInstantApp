@@ -43,7 +43,11 @@ class CatalogRecipesRepository @Inject constructor(
             } )
     }
 
-    override fun clean(): Completable  = catalogRecipeDao.deleteAll()
+    override fun clean(): Completable  =
+        catalogRecipeDao
+            .deleteAll()
+            .andThen(marketIngredientDao.clean())
+            .andThen(catalogRecipeUserIngredientDao.clean())
 
     override fun fetchRecipeById(id: Int): Single<CatalogRecipeAgreggate> = catalogRecipeDao.fetchById(id)
 
