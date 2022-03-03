@@ -15,4 +15,7 @@ class CatalogRecipeTotalTimeMinutesRepository @Inject constructor(
         return catalogRecipeTotalTimeFilterPreference
             .setTotalTimeFilter(totalMinutes)
     }
+
+    override fun getTotalMinutes(): Single<Int> = catalogRecipeTotalTimeFilterPreference.getTotalTimeFilter()
+
 }

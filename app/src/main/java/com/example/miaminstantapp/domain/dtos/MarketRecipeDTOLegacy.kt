@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.domain.dtos
 
+import android.os.IInterface
 import com.example.miaminstantapp.domain.entities.*
 import com.squareup.moshi.JsonClass
 
@@ -38,7 +39,7 @@ data class CatalogRecipeDto(
 @JsonClass(generateAdapter = true)
 data class MarketIngredientDTO(
     val ingredient: Ingredient,
-    val usedQuantity: Int,
+    val usedQuantity: Double,
     val volumeUnitId: Int
 ) {
     fun toCatalogRecipeMarketIngredientEntity(recipeId: Int) = CatalogRecipeMarketIngredientEntity(
@@ -54,7 +55,7 @@ data class MarketIngredientDTO(
 data class CatalogRecipeUserIngredientDTO(
     val id: Int,
     val name: String,
-    val usedQuantity: Int,
+    val usedQuantity: Double,
     val volumeUnitId: Int
 ) {
     fun toCatalogRecipeUserIngredientEntity(recipeId: Int) = CatalogRecipeUserIngredientEntity(
@@ -88,7 +89,7 @@ data class MarketIngredientDTOLegacy (
     val volumeUnitId: Int,
     val volumeUnitQuantity: Float,
     val branchArticleId: Int,
-    val usedQuantity: Int,
+    val usedQuantity: Double,
     val articleUnitQuantity: Int,
     val articleTotalQuantity: Int,
     val articlesQuantity: Int,

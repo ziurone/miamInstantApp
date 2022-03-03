@@ -49,7 +49,7 @@ class SearchRecipesLegacyAction @Inject constructor(
                             CatalogRecipeUserIngredientEntity(
                                 ingredientId = ingDTO.id,
                                 ingredientName = ingDTO.name,
-                                usedQuantity = ingDTO.usedQuantity,
+                                usedQuantity = 1.0,
                                 volumeUnitId = ingDTO.volumeUnitId,
                                 recipeId = r.id
                             )

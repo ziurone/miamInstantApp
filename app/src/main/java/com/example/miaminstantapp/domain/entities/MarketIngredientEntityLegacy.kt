@@ -11,7 +11,7 @@ data class MarketIngredientEntityLegacy (
     val volumeUnitId: Int,
     val volumeUnitQuantity: Float,
     val branchArticleId: Int,
-    val usedQuantity: Int,
+    val usedQuantity: Double,
     val articleUnitQuantity: Int,
     val articleTotalQuantity: Int,
     val articlesQuantity: Int,

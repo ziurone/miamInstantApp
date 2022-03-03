@@ -25,7 +25,6 @@ class AddUserDietsViewModel @Inject constructor(
     }
 
     override fun fetchDiets() {
-        setState(State.DietsFetched(dietAction.getDiets()))
         dietAction.getUserDiets()
     }
 
