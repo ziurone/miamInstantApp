@@ -16,5 +16,5 @@ interface ICatalogRecipesRepository {
     fun insertAll(recipeLegacies: List<CatalogRecipeDto>): Completable
     fun fetchSearchRecipes(): Single<List<CatalogRecipeAgreggate>>
     fun fetchRecipeById(id: Int): Single<CatalogRecipeAgreggate>
-    fun deleteAll(): Completable
+    fun clean(): Completable
 }

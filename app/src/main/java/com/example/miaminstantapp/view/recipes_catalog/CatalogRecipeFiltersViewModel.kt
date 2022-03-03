@@ -1,5 +1,6 @@
 package com.example.miaminstantapp.view.recipes_catalog
 
+import android.util.Log
 import com.example.miaminstantapp.domain.actions.*
 import com.example.miaminstantapp.domain.actions.recipes_catalog.FetchRecipeTimeFilterAmountAction
 import com.example.miaminstantapp.domain.actions.recipes_catalog.SetTotalTimeCatalogRecipeFilterAction

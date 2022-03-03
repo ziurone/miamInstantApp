@@ -24,7 +24,7 @@ class DoPurchaseAction @Inject constructor(
         shopArticleRepository
             .getPurchaseMoney()
             .flatMapCompletable { purchaseMoney -> moneyRepository.restMoney(purchaseMoney) }
-            .andThen(catalogRecipesRepository.deleteAll())
+            .andThen(catalogRecipesRepository.clean())
             .andThen(shopArticleRepository.cleanPurchase())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

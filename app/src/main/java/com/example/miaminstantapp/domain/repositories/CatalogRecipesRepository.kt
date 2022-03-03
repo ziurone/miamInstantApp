@@ -43,11 +43,17 @@ class CatalogRecipesRepository @Inject constructor(
             } )
     }
 
-    override fun deleteAll(): Completable  = catalogRecipeDao.deleteAll()
+    override fun clean(): Completable  =
+        catalogRecipeDao
+            .deleteAll()
+            .andThen(marketIngredientDao.clean())
+            .andThen(catalogRecipeUserIngredientDao.clean())
 
     override fun fetchRecipeById(id: Int): Single<CatalogRecipeAgreggate> = catalogRecipeDao.fetchById(id)
 
     override fun fetchSearchRecipes(): Single<List<CatalogRecipeAgreggate>> = catalogRecipeDao.fetchAll()
+
+
 
     override fun search(searchCriteria: RecipeSearchCriteria): Single<List<CatalogRecipeDto>> {
         val recipe1 = CatalogRecipeDto(
@@ -80,10 +86,37 @@ class CatalogRecipesRepository @Inject constructor(
             )
         )
 
-        val apiRecipes = listOf(recipe1)
-        val apiRecipesSingle = Single.just(apiRecipes)
+        val recipe2 = CatalogRecipeDto(
+            2,
+            "Pastel de papas 2",
+            "Preparar pastel de papas 2",
+            10,
+            10,
+            20,
+            null,
+            listOf(
+                MarketIngredientDTO(
+                    ingredient = Ingredient(
+                        100,
+                        "papa",
+                        1,
+                        1000,
+                        listOf(1,2)
+                    ),
+                    volumeUnitId = 1,
+                    usedQuantity = 100.0
+                )
+            ),
+            listOf()
+        )
 
-        return apiRecipesSingle
+
+
+        var apiRecipes = listOf(recipe1, recipe2)
+
+        apiRecipes = apiRecipes.filter { !searchCriteria.excludedRecipesIds.contains(it.id) }
+
+        return Single.just(apiRecipes)
     }
 
     override fun searchLegacy(searchCriteria: RecipeSearchCriteria): Single<List<MarketRecipeDTOLegacy>> {

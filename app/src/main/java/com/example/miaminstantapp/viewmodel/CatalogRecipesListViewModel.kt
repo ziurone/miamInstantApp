@@ -11,7 +11,8 @@ class CatalogRecipesListViewModel @Inject constructor(
     private val fetchSuggestedIngredientsAction: IFetchSuggestedIngredientsAction,
     private val removeSuggestedIngredientAction: RemoveSuggestedIngredientAction,
     private val addUserIngredientAction: AddUserIngredientAction,
-    private val searchRecipesAction: ISearchRecipesAction
+    private val searchRecipesAction: ISearchRecipesAction,
+    private val fetchSearchRecipeCriteriaAction: FetchSearchRecipeCriteriaAction
 ): ICatalogRecipesListViewModel() {
 
     init {
@@ -20,10 +21,18 @@ class CatalogRecipesListViewModel @Inject constructor(
         listenSource(removeSuggestedIngredientAction.getLiveData(), ::onRemoveSuggestedIngredientResult)
         listenSource(addUserIngredientAction.getLiveData(), ::onAddedIngredientResult)
         listenSource(searchRecipesAction.getLiveData(), ::onSearchedRecipes)
+        listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteria)
     }
 
     override fun searchRecipes() {
-        searchRecipesAction.searchRecipes(RecipeSearchCriteria(listOf(), 0, listOf(), listOf()))
+        fetchSearchRecipeCriteriaAction.fetch()
+    }
+
+    private fun onFetchSearchRecipeCriteria(result: IFetchSearchRecipeCriteriaAction.Result) {
+        when(result) {
+            is IFetchSearchRecipeCriteriaAction.Result.Error -> throw Exception("Error fetching search criteria")
+            is IFetchSearchRecipeCriteriaAction.Result.Success -> searchRecipesAction.searchRecipes(result.recipeSearchCriteria)
+        }
     }
 
     override fun fetchRecipes() {
