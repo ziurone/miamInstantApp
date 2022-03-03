@@ -104,7 +104,7 @@ class CatalogRecipesRepository @Inject constructor(
                         listOf(1,2)
                     ),
                     volumeUnitId = 1,
-                    usedQuantity = 100
+                    usedQuantity = 100.0
                 )
             ),
             listOf()
