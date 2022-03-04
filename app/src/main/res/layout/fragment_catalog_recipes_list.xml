@@ -149,4 +149,6 @@
         android:visibility="gone"
         android:text="@string/recipe_list_empty_message"/>
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

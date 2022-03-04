@@ -63,7 +63,7 @@ class CatalogRecipesListViewModel @Inject constructor(
     private fun onAddedIngredientResult(result: IAddUserIngredientAction.Result) {
         when(result) {
             is IAddUserIngredientAction.Result.Error -> throw Exception()
-            IAddUserIngredientAction.Result.Success -> Unit
+            IAddUserIngredientAction.Result.Success -> setState(State.AddSuggestedIngredientSuccess)
         }
     }
 
