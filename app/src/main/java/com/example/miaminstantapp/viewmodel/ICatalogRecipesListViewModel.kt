@@ -11,6 +11,7 @@ abstract class ICatalogRecipesListViewModel: BaseViewModel<ICatalogRecipesListVi
         data class Error(val errorMessage: String): State()
         data class FetchSuggestedIngredientsSuccess(val suggestedIngredients: List<Ingredient>) : State()
         object AddSuggestedIngredientSuccess: State()
+        object SuggestedIngredientsLoading: State()
     }
 
     abstract fun fetchRecipes()

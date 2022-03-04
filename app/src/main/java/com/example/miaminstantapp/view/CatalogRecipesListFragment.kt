@@ -27,7 +27,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
 
     override fun initViews() {
         super.initViews()
-
+        suggestedIngredientsLoading.hide()
         toolbar.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 R.id.filters -> {
@@ -62,7 +62,19 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
             is ICatalogRecipesListViewModel.State.Error -> Unit
             is ICatalogRecipesListViewModel.State.FetchSuggestedIngredientsSuccess -> showSuggestedIngredients(state.suggestedIngredients)
             ICatalogRecipesListViewModel.State.AddSuggestedIngredientSuccess -> showAddIngredientSuccessMessage()
+            ICatalogRecipesListViewModel.State.SuggestedIngredientsLoading -> { suggestedIngredientsLoading(true) }
         }
+    }
+
+    private fun suggestedIngredientsLoading(show: Boolean) {
+        if(show) {
+            suggestedIngredientsLoading.show()
+            chipsGroupSuggestedIngredients.visibility = View.GONE
+        } else {
+            suggestedIngredientsLoading.hide()
+            chipsGroupSuggestedIngredients.visibility = View.VISIBLE
+        }
+
     }
 
     private fun showAddIngredientSuccessMessage() {
@@ -72,6 +84,7 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     }
 
     private fun showSuggestedIngredients(suggestedIngredients: List<Ingredient>) {
+        suggestedIngredientsLoading(false)
         chipsGroupSuggestedIngredients.removeAllViews()
         suggestedIngredients.forEach { ingredient ->
             val chip = Chip(context)
@@ -91,8 +104,8 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
             }
 
             chip.setOnClickListener {
-                viewModel.addIngredient(ingredient)
                 viewModel.removeSuggestedIngredient(ingredient)
+                viewModel.addIngredient(ingredient)
                 chipsGroupSuggestedIngredients.removeView(chip)
             }
 

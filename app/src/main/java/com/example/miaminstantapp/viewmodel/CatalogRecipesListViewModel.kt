@@ -40,10 +40,12 @@ class CatalogRecipesListViewModel @Inject constructor(
     }
 
     override fun addIngredient(ingredient: Ingredient) {
+        setState(State.SuggestedIngredientsLoading)
         addUserIngredientAction.add(ingredient)
     }
 
     override fun removeSuggestedIngredient(ingredient: Ingredient) {
+        setState(State.SuggestedIngredientsLoading)
         removeSuggestedIngredientAction.remove(ingredient)
     }
 
