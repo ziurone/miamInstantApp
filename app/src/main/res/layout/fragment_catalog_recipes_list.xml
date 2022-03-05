@@ -90,6 +90,17 @@
 
     </HorizontalScrollView>
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/suggestedIngredientsLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/primary_dark_700"
+        android:layout_marginTop="@dimen/spacing_large"
+        app:layout_constraintTop_toTopOf="@+id/suggestedIngredientsContainer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/Widget.AppCompat.ProgressBar" />
+
     <ImageView
         android:id="@+id/searchImage"
         android:layout_width="wrap_content"
@@ -148,5 +159,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="gone"
         android:text="@string/recipe_list_empty_message"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

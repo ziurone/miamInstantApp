@@ -40,10 +40,12 @@ class CatalogRecipesListViewModel @Inject constructor(
     }
 
     override fun addIngredient(ingredient: Ingredient) {
+        setState(State.SuggestedIngredientsLoading)
         addUserIngredientAction.add(ingredient)
     }
 
     override fun removeSuggestedIngredient(ingredient: Ingredient) {
+        setState(State.SuggestedIngredientsLoading)
         removeSuggestedIngredientAction.remove(ingredient)
     }
 
@@ -63,7 +65,7 @@ class CatalogRecipesListViewModel @Inject constructor(
     private fun onAddedIngredientResult(result: IAddUserIngredientAction.Result) {
         when(result) {
             is IAddUserIngredientAction.Result.Error -> throw Exception()
-            IAddUserIngredientAction.Result.Success -> Unit
+            IAddUserIngredientAction.Result.Success -> setState(State.AddSuggestedIngredientSuccess)
         }
     }
 
