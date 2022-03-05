@@ -69,10 +69,10 @@ class CatalogRecipesListFragment: BaseFragment<ICatalogRecipesListViewModel, ICa
     private fun suggestedIngredientsLoading(show: Boolean) {
         if(show) {
             suggestedIngredientsLoading.show()
-            chipsGroupSuggestedIngredients.visibility = View.GONE
+            suggestedIngredientsContainer.visibility = View.INVISIBLE
         } else {
             suggestedIngredientsLoading.hide()
-            chipsGroupSuggestedIngredients.visibility = View.VISIBLE
+            suggestedIngredientsContainer.visibility = View.VISIBLE
         }
 
     }
