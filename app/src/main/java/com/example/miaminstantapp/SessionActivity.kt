@@ -23,16 +23,25 @@ class SessionActivity : BaseActivity<SessionViewModel, SessionViewModel.State>()
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun initViews() {
+        super.initViews()
         val navController = Navigation.findNavController(this, R.id.userFiltersFragmentHost)
         NavigationUI.setupWithNavController(bottomAppBar, navController)
+        viewModel.listenIngredientsCount()
     }
 
     override fun getLayoutId(): Int = R.layout.activity_session
 
     override fun onStateChanged(state: SessionViewModel.State) {
-        TODO("Not yet implemented")
+        when(state) {
+            is SessionViewModel.State.DispensaryCounterChange -> updateDispensaryBadget(state.ingredientsCount)
+        }
     }
+
+    private fun updateDispensaryBadget(ingredientCount: Int) {
+        val badge = bottomAppBar.getOrCreateBadge(R.id.dispensary)
+        badge.isVisible = true
+        badge.number = ingredientCount
+    }
+
 }

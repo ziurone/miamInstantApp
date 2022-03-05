@@ -4,6 +4,10 @@ import javax.inject.Inject
 
 class SessionViewModel @Inject constructor(): BaseViewModel<SessionViewModel.State>() {
     sealed class State {
-        object FetchSuccess: State()
+        data class DispensaryCounterChange(val ingredientsCount: Int): State()
+    }
+
+    fun listenIngredientsCount() {
+        setState(State.DispensaryCounterChange(99))
     }
 }

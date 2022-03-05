@@ -2,6 +2,7 @@ package com.example.miaminstantapp.view
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import com.example.miaminstantapp.viewmodel.BaseViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -11,14 +12,12 @@ abstract class BaseActivity<V, S> : BaseViewInterface<S, V>, DaggerAppCompatActi
     @Inject
     lateinit var viewModel: V
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        initStateObservers()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initStateObservers()
         setContentView(getLayoutId())
+        initViews()
+        startInitialDomainAction()
     }
 
     override fun getDomainViewModel(): V {
