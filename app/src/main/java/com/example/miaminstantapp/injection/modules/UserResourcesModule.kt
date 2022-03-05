@@ -250,4 +250,9 @@ class UserResourcesModule {
     @IntoMap
     @ViewModelKey(CatalogRecipeFiltersViewModel::class)
     fun providesCatalogRecipeFiltersIntoMap(viewModel: CatalogRecipeFiltersViewModel): ViewModel = viewModel
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(SessionViewModel::class)
+    fun providesSessionViewModelIntoMap(viewModel: SessionViewModel): ViewModel = viewModel
 }

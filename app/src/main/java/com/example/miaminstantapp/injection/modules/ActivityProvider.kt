@@ -15,7 +15,7 @@ abstract class ActivityProvider {
 
     @PerActivity
     @ContributesAndroidInjector(modules = [UserFiltersFragmentProvider::class, UserResourcesModule::class])
-    abstract fun bindUserResourcesActivity(): SessionActivity
+    abstract fun bindSessionActivity(): SessionActivity
 
     @PerActivity
     @ContributesAndroidInjector(modules = [UserFiltersFragmentProvider::class, UserResourcesModule::class])
