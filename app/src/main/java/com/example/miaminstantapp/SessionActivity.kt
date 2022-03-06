@@ -45,8 +45,12 @@ class SessionActivity : BaseActivity<SessionViewModel, SessionViewModel.State>()
 
     private fun updateDispensaryBadget(ingredientCount: Int) {
         val badge = bottomAppBar.getOrCreateBadge(R.id.dispensary)
-        badge.isVisible = true
-        badge.number = ingredientCount
+        if(ingredientCount > 0) {
+            badge.isVisible = true
+            badge.number = ingredientCount
+        } else {
+            badge.isVisible = false
+        }
     }
 
 }

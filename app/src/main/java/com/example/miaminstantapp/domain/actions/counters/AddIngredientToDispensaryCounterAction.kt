@@ -16,7 +16,8 @@ class AddIngredientToDispensaryCounterAction @Inject constructor(
 
     fun ingredientAdded() {
         dispensaryCounterSharedPreference
-            .ingredientAdded(5)
+            .getCounter()
+            .flatMapCompletable { i -> dispensaryCounterSharedPreference.ingredientAdded(i + 1) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onSuccess, ::onError)
