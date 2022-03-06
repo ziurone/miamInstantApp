@@ -9,6 +9,7 @@ import com.example.miaminstantapp.domain.repositories.*
 import com.example.miaminstantapp.injection.qualifiers.AppContext
 import com.example.miaminstantapp.injection.qualifiers.ViewModelKey
 import com.example.miaminstantapp.persistence.CatalogRecipeTotalTimeFilterPreference
+import com.example.miaminstantapp.persistence.DispensaryCounterSharedPreference
 import com.example.miaminstantapp.persistence.IsFirstTimeInAppPreference
 import com.example.miaminstantapp.persistence.UserMoneySharedPreferences
 import com.example.miaminstantapp.view.*
@@ -75,6 +76,9 @@ class UserResourcesModule {
 
     @Provides
     fun providesUserMoneySharedPreferences(@AppContext context: Context): UserMoneySharedPreferences = UserMoneySharedPreferences(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
+
+    @Provides
+    fun providesDispensaryCounterSharedPreferences(@AppContext context: Context): DispensaryCounterSharedPreference = DispensaryCounterSharedPreference(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
 
     @Provides
     fun providesCatalogRecipeTotalMinutesFilterPreferences(@AppContext context: Context): CatalogRecipeTotalTimeFilterPreference = CatalogRecipeTotalTimeFilterPreference(context.getSharedPreferences("RxPrefs", Context.MODE_PRIVATE))
@@ -250,4 +254,9 @@ class UserResourcesModule {
     @IntoMap
     @ViewModelKey(CatalogRecipeFiltersViewModel::class)
     fun providesCatalogRecipeFiltersIntoMap(viewModel: CatalogRecipeFiltersViewModel): ViewModel = viewModel
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(SessionViewModel::class)
+    fun providesSessionViewModelIntoMap(viewModel: SessionViewModel): ViewModel = viewModel
 }
