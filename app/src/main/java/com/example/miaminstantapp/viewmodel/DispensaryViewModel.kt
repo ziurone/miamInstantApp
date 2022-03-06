@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.entities.VolumeUnitEntity
 import com.example.miaminstantapp.domain.actions.*
+import com.example.miaminstantapp.domain.actions.counters.ResetDispensaryIngredientsCounterAction
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
 import com.example.miaminstantapp.domain.entities.UserIngredientEntity
 import javax.inject.Inject
@@ -17,7 +18,8 @@ class DispensaryViewModel @Inject constructor(
     private val getIngredientsByNameAction: IGetIngredientsByNameAction,
     private val searchRecipesAction: ISearchRecipesAction,
     private val fetchSearchRecipeCriteriaAction: IFetchSearchRecipeCriteriaAction,
-    private val removeUserIngredientAction: RemoveUserIngredientAction
+    private val removeUserIngredientAction: RemoveUserIngredientAction,
+    private val resetDispensaryIngredientsCounterAction: ResetDispensaryIngredientsCounterAction
 ): IDispensaryViewModel() {
 
     companion object {
@@ -37,6 +39,12 @@ class DispensaryViewModel @Inject constructor(
         listenSource(searchRecipesAction.getLiveData(), ::onSearchRecipes)
         listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteriaResult)
         listenSource(removeUserIngredientAction.getLiveData(), ::onRemoveUserIngredientResult)
+        listenSource(resetDispensaryIngredientsCounterAction.getLiveData(), ::onResetDispensaryCounter)
+        resetDispensaryIngredientsCounterAction.resetCounter()
+    }
+
+    private fun onResetDispensaryCounter(result: ResetDispensaryIngredientsCounterAction.Result) {
+
     }
 
     override fun removeUserIngredient(userIngredientEntity: UserIngredientEntity) {
