@@ -1,8 +1,6 @@
 package com.example.miaminstantapp.view
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
 import com.example.miaminstantapp.viewmodel.BaseViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject

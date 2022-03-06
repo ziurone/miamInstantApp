@@ -1,6 +1,8 @@
 package com.example.miaminstantapp.viewmodel
 
+import android.util.Log
 import com.example.miaminstantapp.domain.actions.*
+import com.example.miaminstantapp.domain.actions.counters.AddIngredientToDispensaryCounterAction
 import com.example.miaminstantapp.domain.actions.suggestedIngredients.RemoveSuggestedIngredientAction
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
@@ -12,7 +14,8 @@ class CatalogRecipesListViewModel @Inject constructor(
     private val removeSuggestedIngredientAction: RemoveSuggestedIngredientAction,
     private val addUserIngredientAction: AddUserIngredientAction,
     private val searchRecipesAction: ISearchRecipesAction,
-    private val fetchSearchRecipeCriteriaAction: FetchSearchRecipeCriteriaAction
+    private val fetchSearchRecipeCriteriaAction: FetchSearchRecipeCriteriaAction,
+    private val addIngredientToDispensaryCounterAction: AddIngredientToDispensaryCounterAction
 ): ICatalogRecipesListViewModel() {
 
     init {
@@ -22,6 +25,13 @@ class CatalogRecipesListViewModel @Inject constructor(
         listenSource(addUserIngredientAction.getLiveData(), ::onAddedIngredientResult)
         listenSource(searchRecipesAction.getLiveData(), ::onSearchedRecipes)
         listenSource(fetchSearchRecipeCriteriaAction.getLiveData(), ::onFetchSearchRecipeCriteria)
+        listenSource(addIngredientToDispensaryCounterAction.getLiveData(), ::onUpdateDispensaryIngredientsCounter)
+    }
+
+    private fun onUpdateDispensaryIngredientsCounter(result: AddIngredientToDispensaryCounterAction.Result) {
+        when(result) {
+            AddIngredientToDispensaryCounterAction.Result.AddedSuccess -> setState(State.AddSuggestedIngredientSuccess)
+        }
     }
 
     override fun searchRecipes() {
@@ -65,8 +75,12 @@ class CatalogRecipesListViewModel @Inject constructor(
     private fun onAddedIngredientResult(result: IAddUserIngredientAction.Result) {
         when(result) {
             is IAddUserIngredientAction.Result.Error -> throw Exception()
-            IAddUserIngredientAction.Result.Success -> setState(State.AddSuggestedIngredientSuccess)
+            IAddUserIngredientAction.Result.Success -> updateIngredientsCounter()
         }
+    }
+
+    private fun updateIngredientsCounter() {
+        addIngredientToDispensaryCounterAction.ingredientAdded()
     }
 
     private fun onRemoveSuggestedIngredientResult(result: RemoveSuggestedIngredientAction.Result) {
