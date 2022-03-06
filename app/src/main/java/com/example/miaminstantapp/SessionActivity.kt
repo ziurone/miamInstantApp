@@ -28,13 +28,18 @@ class SessionActivity : BaseActivity<SessionViewModel, SessionViewModel.State>()
         val navController = Navigation.findNavController(this, R.id.userFiltersFragmentHost)
         NavigationUI.setupWithNavController(bottomAppBar, navController)
         viewModel.listenIngredientsCount()
+
+        viewModel.ingredientsCountLiveData.observe(this) {
+            updateDispensaryBadget(it)
+        }
+
     }
 
     override fun getLayoutId(): Int = R.layout.activity_session
 
     override fun onStateChanged(state: SessionViewModel.State) {
         when(state) {
-            is SessionViewModel.State.DispensaryCounterChange -> updateDispensaryBadget(state.ingredientsCount)
+            is SessionViewModel.State.DispensaryCounterChange -> Unit
         }
     }
 

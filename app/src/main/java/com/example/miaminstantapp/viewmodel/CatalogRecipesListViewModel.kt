@@ -6,6 +6,7 @@ import com.example.miaminstantapp.domain.actions.counters.AddIngredientToDispens
 import com.example.miaminstantapp.domain.actions.suggestedIngredients.RemoveSuggestedIngredientAction
 import com.example.miaminstantapp.domain.dtos.Ingredient
 import com.example.miaminstantapp.domain.dtos.RecipeSearchCriteria
+import com.example.miaminstantapp.persistence.DispensaryCounterSharedPreference
 import javax.inject.Inject
 
 class CatalogRecipesListViewModel @Inject constructor(
